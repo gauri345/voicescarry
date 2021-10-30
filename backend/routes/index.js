@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'TP-WorkerWellbeing' });
 });
 
+router.get('/all_users', function (req, res, next) {
+
+});
+
 module.exports = router;
