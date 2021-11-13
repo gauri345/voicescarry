@@ -31,6 +31,12 @@ export default {
 </script>
 
 <style scoped>
+.modal-title {
+  font-weight: bold;;
+}
+.modal-content {
+  font-weight: normal;
+}
 .close {
   border: none;
   border-radius: 5px;
