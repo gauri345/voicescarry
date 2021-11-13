@@ -6,9 +6,9 @@
       <img alt="question image" src="../../assets/image_1.png"/>
     </div>
     <div class="question-answers">
-      <em class="fas fa-smile"></em>
-      <em class="fas fa-meh"></em>
-      <em class="fas fa-frown"></em>
+      <em class="fas fa-smile" @click="answer('happy')"></em>
+      <em class="fas fa-meh" @click="answer('so so')"></em>
+      <em class="fas fa-frown" @click="answer('not happy')"></em>
     </div>
   </div>
 </template>
@@ -18,6 +18,11 @@ export default {
   name: 'Content',
   props: {
     questionTitle: String,
+  },
+  methods: {
+    answer: function (answer) {
+      console.log(answer);
+    }
   }
 }
 </script>
@@ -54,14 +59,17 @@ export default {
 .fa-smile {
   color: #F44209;
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .fa-meh {
   color: #F4DD09;
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .fa-frown {
   color: #4EB729;
+  cursor: pointer;
 }
 </style>

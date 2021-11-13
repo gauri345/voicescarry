@@ -5,7 +5,11 @@
   </div>
   <!-- Question Container -->
   <div class="question-container">
-    <Description :question-number="questionNumber" :question-content="questionTitle"></Description>
+    <Description
+        :question-number="questionNumber"
+        :question-content="questionTitle"
+        additional-information="This is the additional information that is to be displayed on the modal box"
+    ></Description>
     <Content :question-title="questionTitle"></Content>
 
     <!-- The button to navigate between questions goes here -->
