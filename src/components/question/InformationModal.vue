@@ -29,3 +29,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.close {
+  border: none;
+  border-radius: 5px;
+}
+</style>
