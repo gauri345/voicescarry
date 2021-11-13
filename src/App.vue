@@ -1,9 +1,8 @@
 <template>
-<GeneralButton>
+ <GeneralButton text="Enter the page"/>
 </template>
 
 <script>
-import GeneralButton from './components/GeneralButton.vue'
 import GeneralButton from './GeneralButton.vue'
 
 export default {
