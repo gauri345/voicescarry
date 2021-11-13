@@ -5,7 +5,7 @@
   </div>
   <!-- Question Container -->
   <div class="question-container">
-    <Description :question-number="questionNumber"></Description>
+    <Description :question-number="questionNumber" :question-content="questionTitle"></Description>
     <Content :question-title="questionTitle"></Content>
 
     <!-- The button to navigate between questions goes here -->
