@@ -32,10 +32,12 @@ export default {
 
 <style scoped>
 .modal-title {
-  font-weight: bold;;
+  font-weight: bold;
+  text-align: left;
 }
 .modal-content {
   font-weight: normal;
+  text-align: left;
 }
 .close {
   border: none;
