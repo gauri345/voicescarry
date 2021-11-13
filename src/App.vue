@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Question questionNumber="1" questionTitle="How happy are you with your working conditions?" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Question from './components/Question.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Question
   }
 }
 </script>
