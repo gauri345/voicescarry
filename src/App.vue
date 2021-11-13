@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import GeneralButton from './GeneralButton.vue'
+import GeneralButton from './components/GeneralButton.vue'
 
 export default {
   name: 'App',
