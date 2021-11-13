@@ -1,4 +1,7 @@
 <template>
+  <div class="current-page-number">
+    Page {{currentPageNumber}} of 10
+  </div>
   <div class="progress">
     <div class="progress-value"></div>
   </div>
@@ -6,37 +9,34 @@
 
 <script>
 export default {
-  name: 'Progress'
+  name: 'Progress',
+  props: {
+    currentPageNumber: String
+  }
 }
 </script>
 
 <style scoped>
-body {
-  justify-content: center;
-  align-items: center;
-  background: #000;
-  display: flex;
-  height: 100vh;
-  padding: 0;
-  margin: 0;
+
+.current-page-number {
+  margin: 0 0 20px 20px;
+  text-align: left;
 }
 
 .progress {
   background: #D8D8D8;
   justify-content: flex-start;
-  border-radius: 100px;
   align-items: center;
   position: relative;
   padding: 0 5px;
   display: flex;
   height: 30px;
-  width: 100%;
+  width: 99%;
 }
 
 .progress-value {
   animation: load 3s normal forwards;
   background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);;
-  border-radius: 100px;
   height: 30px;
   width: 0;
 }

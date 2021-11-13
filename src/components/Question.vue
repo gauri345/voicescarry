@@ -5,10 +5,11 @@
   </div>
   <!-- Question Container -->
   <div class="question-container">
-   <Description></Description>
-    <Content></Content>
+    <Description :question-number="questionNumber"></Description>
+    <Content :question-title="questionTitle"></Content>
+
     <!-- The button to navigate between questions goes here -->
-    <div class="progress-buttons">
+    <div class="navigation-buttons">
       <div class="button-next">
         <Button></Button>
       </div>
@@ -16,7 +17,7 @@
 
     <!-- The progress bar goes here -->
     <div class="progress">
-      <Progress></Progress>
+      <Progress current-page-number="1"></Progress>
     </div>
   </div>
 </template>
@@ -43,9 +44,14 @@ export default {
 </script>
 
 <style>
+
+.navigation-buttons {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .question-container {
   min-height: 300px;
-  border: 1px solid #2c3e50;
 }
 
 
