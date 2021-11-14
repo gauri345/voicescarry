@@ -1,32 +1,8 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <label>Email:</label>
-    <input type="email" v-model="email" required>
-
-    <label>Password:</label>
-    <input type="password" v-model="password" required>
-    <div v-if="passwordError" class="error">{{ passwordError }}</div>
-
-    <label>Role:</label>
-    <select v-model="role">
-      <option value="developer">Web Developer</option>
-      <option value="designer">Web Designer</option>
-    </select>
-
-    <label>Skills (press alt + comma to add):</label>
-    <input type="text" v-model="tempSkill" @keyup.alt="addSkill">
-    <div v-for="skill in skills" :key="skill" class="pill">
-      <span @click="deleteSkill(skill)">{{ skill }}</span>
-    </div>
-
-    <div class="terms">
-      <input type="checkbox" v-model="terms" required>
-      <label>Accept terms and conditions</label>
-    </div>
-
-    <div class="submit">
-      <button>Create an Account</button>
-    </div>
+    <label>Factory code:</label>
+    <input type="code" v-model="code" required>
+    <div v-if="codeError" class="error">{{ codeError }}</div>
   </form>
 </template>
 
@@ -34,40 +10,18 @@
 export default {
   data() {
     return {
-      email: '',
-      password: '',
-      role: 'developer',
-      terms: false,
-      skills: [],
-      tempSkill: '',
-      passwordError: null,
+      code: '',
+      codeError: null,
     }
   },
   methods: {
-    addSkill($event) {
-      if($event.key === ',' && this.tempSkill) {
-        if (!this.skills.includes(this.tempSkill)) {
-          this.skills.push(this.tempSkill)
-        }
-        this.tempSkill = ''
-      }
-    },
-    deleteSkill(skill) {
-      this.skills = this.skills.filter(item => {
-        return skill !== item
-      })
-    },
     handleSubmit() {
       // validate password
-      this.passwordError = this.password.length > 5 ?
-        '' : 'Password must be at least 6 characters long'
-      if (!this.passwordError) {
+      this.codeError = this.code.length > 5 ?
+        '' : 'Password must be at least X characters long/Wrong password'
+      if (!this.codeError) {
         // make request to database to save user
-        console.log('email: ', this.email)
-        console.log('password: ', this.password)
-        console.log('role: ', this.role)
-        console.log('skills: ', this.skills)
-        console.log('terms accepted: ', this.terms)
+        console.log('code: ', this.code)
       }
     }
   }
@@ -94,19 +48,17 @@ export default {
   }
   input, select {
     display: block;
-    padding: 10px 6px;
-    width: 100%;
+    padding: 10px 6px;  
+    width: 234px;
+    height: 39px;
+    left: 15px;
+    top: 35px;
+
+    /* White */
+    background: #FFFFFF;
+    border: 1px solid rgba(36, 54, 86, 0.3);
     box-sizing: border-box;
-    border: none;
-    border-bottom: 1px solid #ddd;
-    color: #555;
-  }
-  input[type="checkbox"] {
-    display: inline-block;
-    width: 16px;
-    margin: 0 10px 0 0;
-    position: relative;
-    top: 2px;
+    border-radius: 20px;
   }
   .pill {
     display: inline-block;
@@ -119,14 +71,6 @@ export default {
     font-weight: bold;
     color: #777;
     cursor: pointer;
-  }
-  button {
-    background: #0b6dff;
-    border: 0;
-    padding: 10px 20px;
-    margin-top: 20px;
-    color: white;
-    border-radius: 20px;
   }
   .submit {
     text-align: center;
