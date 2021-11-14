@@ -6,8 +6,8 @@
   <!-- Question Container -->
   <div class="question-container">
     <Description
-        :question-number="questionNumber"
         :question-content="questionTitle"
+        :question-number="questionNumber"
         additional-information="This is the additional information that is to be displayed on the modal box"
     ></Description>
     <Content :question-title="questionTitle"></Content>
@@ -15,7 +15,7 @@
     <!-- The button to navigate between questions goes here -->
     <div class="navigation-buttons">
       <div class="button-next">
-        <Button></Button>
+        <CustomButton name="Next"></CustomButton>
       </div>
     </div>
 
@@ -28,7 +28,7 @@
 
 <script>
 import Progress from "@/components/Progress";
-import Button from "@/components/Button";
+import CustomButton from "@/components/CustomButton";
 import Description from "@/components/question/Description";
 import Content from "@/components/question/Content";
 
@@ -37,12 +37,18 @@ export default {
   components: {
     Content,
     Description,
-    Button,
+    CustomButton,
     Progress
   },
   props: {
-    questionNumber: String,
-    questionTitle: String
+    questionNumber: {
+      type: String,
+      default: "1"
+    },
+    questionTitle: {
+      type: String,
+      default: "How happy are you with your working conditions?"
+    }
   }
 }
 </script>

@@ -1,15 +1,19 @@
 <template>
-  <Question questionNumber="1" questionTitle="How happy are you with your working conditions?" />
+
+  <router-view></router-view>
+
+  <!-- <Question questionNumber="1" questionTitle="How happy are you with your working conditions?" /> -->
+
 </template>
 
 <script>
-import Question from './components/Question.vue'
+//import Question from './components/Question.vue'
 
 export default {
   name: 'App',
-  components: {
+ /* components: {
     Question
-  }
+  } */
 }
 </script>
 
