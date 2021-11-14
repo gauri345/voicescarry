@@ -1,0 +1,74 @@
+<template>
+  <!--- Header must be included here -->
+  <div class="header">
+    <h1>This is header</h1>
+  </div>
+  <!-- Question Container -->
+  <div class="question-container">
+    <Description
+        :question-content="questionTitle"
+        :question-number="questionNumber"
+        additional-information="This is the additional information that is to be displayed on the modal box"
+    ></Description>
+    <Content :question-title="questionTitle"></Content>
+
+    <!-- The button to navigate between questions goes here -->
+    <div class="navigation-buttons">
+      <div class="button-next">
+        <CustomButton name="Next"></CustomButton>
+      </div>
+    </div>
+
+    <!-- The progress bar goes here -->
+    <div class="progress">
+      <Progress current-page-number="1"></Progress>
+    </div>
+  </div>
+</template>
+
+<script>
+import Progress from "@/components/Progress";
+import CustomButton from "@/components/CustomButton";
+import Description from "@/components/question/Description";
+import Content from "@/components/question/Content";
+
+export default {
+  name: 'Question',
+  components: {
+    Content,
+    Description,
+    CustomButton,
+    Progress
+  },
+  props: {
+    questionNumber: {
+      type: String,
+      default: "1"
+    },
+    questionTitle: {
+      type: String,
+      default: "How happy are you with your working conditions?"
+    }
+  }
+}
+</script>
+
+<style>
+
+.navigation-buttons {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.question-container {
+  min-height: 300px;
+}
+
+
+/** Some temporary Header Style. Please remove this once the header component is completed **/
+.header {
+  border: 1px solid #2c3e50;
+  min-height: 100px;
+  margin-bottom: 10px;
+}
+</style>

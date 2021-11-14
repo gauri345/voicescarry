@@ -1,19 +1,11 @@
 <template>
   <Header/>
-  <GeneralButton text="Enter the page"/>
+  <router-view></router-view>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import GeneralButton from './components/GeneralButton.vue'
-
 export default {
-  name: 'App',
-  components: {
-    Header,
-    GeneralButton
-  }
-      
+  name: 'App'
 }
 </script>
 
