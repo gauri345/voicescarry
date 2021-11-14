@@ -11,15 +11,21 @@
 
     <!-- The button to navigate between questions goes here -->
     <div class="navigation-buttons">
-      <div class="button-next">
-        <GeneralButton text="Next"></GeneralButton>
+      <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
+        <router-link :to="'/question/' + previousQuestion.questionNumber">
+          <GeneralButton text="Previous" left="0" position="relative" top="0"></GeneralButton>
+        </router-link>
+      </div>
+      <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
+        <router-link :to="'/question/' + nextQuestion.questionNumber">
+          <GeneralButton text="Next" left="0" position="relative" top="0"></GeneralButton>
+        </router-link>
       </div>
     </div>
 
     <!-- The progress bar goes here -->
-    <div class="progress">
-      <Progress current-page-number="1"></Progress>
-    </div>
+    <Progress :current-page-number="currentQuestion.questionNumber"></Progress>
+
   </div>
 </template>
 
@@ -41,13 +47,15 @@ export default {
 
   data: function () {
     return {
-      currentQuestion: store.state.currentQuestion
+      currentQuestion: store.state.currentQuestion,
+      nextQuestion: store.state.nextQuestion,
+      previousQuestion: store.state.previousQuestion
     }
   },
 
   beforeCreate: function () {
-    const questionNumber = this.$route.params.number;
-    store.setQuestionAction(parseInt(questionNumber));
+    store.clearSelectedQuestions();
+    store.setQuestionsAction(parseInt(this.$route.params.number));
   }
 }
 </script>
@@ -55,8 +63,22 @@ export default {
 <style>
 
 .navigation-buttons {
-  margin-top: 20px;
+  position: absolute;
   margin-bottom: 20px;
+  top: 55%;
+  left: 33%;
+  margin-top: -50px;
+  margin-left: -50px;
+}
+
+.button-previous {
+  position: relative;
+  margin-right: 20px;
+  float: left;
+}
+
+.button-next {
+  float: left;
 }
 
 .question-container {
