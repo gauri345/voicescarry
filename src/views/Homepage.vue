@@ -1,15 +1,15 @@
 <template>
   <h1>Welcome</h1>
   <router-link to="/question">
-    <CustomButton name="Start Questionnaire"></CustomButton>
+    <GeneralButton text="Start Questionnaire"></GeneralButton>
   </router-link>
 </template>
 
 <script>
-  import CustomButton from "@/components/CustomButton";
+  import GeneralButton from "@/components/GeneralButton";
   export default {
     name: "Homepage",
-    components: {CustomButton}
+    components: {GeneralButton}
   }
 </script>
 

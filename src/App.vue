@@ -1,19 +1,10 @@
 <template>
-
   <router-view></router-view>
-
-  <!-- <Question questionNumber="1" questionTitle="How happy are you with your working conditions?" /> -->
-
 </template>
 
 <script>
-//import Question from './components/Question.vue'
-
 export default {
-  name: 'App',
- /* components: {
-    Question
-  } */
+  name: 'App'
 }
 </script>
 
