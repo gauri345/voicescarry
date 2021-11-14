@@ -1,6 +1,6 @@
 <template>
   <h1>Welcome</h1>
-  <router-link to="/question">
+  <router-link to="/question/1">
     <GeneralButton text="Start Questionnaire"></GeneralButton>
   </router-link>
 </template>

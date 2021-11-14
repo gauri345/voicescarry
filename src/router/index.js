@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
 import HomePage from "@/views/Homepage";
-import Question from "@/components/Question";
+import Question from "@/components/question/Question";
 
 const routes = [
     {
@@ -10,7 +10,7 @@ const routes = [
         component: HomePage
     },
     {
-        path: "/question",
+        path: "/question/:number",
         name: "Question",
         component: Question
     }

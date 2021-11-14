@@ -15,7 +15,7 @@ import InformationModal from "@/components/question/InformationModal";
 export default {
   name: 'Description',
   props: {
-    questionNumber: String,
+    questionNumber: Number,
     questionContent: String,
     additionalInformation: String
   },

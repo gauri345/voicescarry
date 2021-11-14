@@ -1,21 +1,22 @@
 <template>
   <!--- Header must be included here -->
   <div class="header">
-    <h1>This is header</h1>
+    <h1>This is header for <em>{{ currentQuestion.questionCategory }}</em></h1>
+    Current Question {{ $route.params.number }}
   </div>
   <!-- Question Container -->
   <div class="question-container">
     <Description
-        :question-content="questionTitle"
-        :question-number="questionNumber"
-        additional-information="This is the additional information that is to be displayed on the modal box"
+        :additional-information="currentQuestion.additionalInformation"
+        :question-content="currentQuestion.questionTitle"
+        :question-number="currentQuestion.questionNumber"
     ></Description>
-    <Content :question-title="questionTitle"></Content>
+    <Content :question-title="currentQuestion.questionTitle"></Content>
 
     <!-- The button to navigate between questions goes here -->
     <div class="navigation-buttons">
       <div class="button-next">
-        <CustomButton name="Next"></CustomButton>
+        <GeneralButton text="Next"></GeneralButton>
       </div>
     </div>
 
@@ -28,27 +29,29 @@
 
 <script>
 import Progress from "@/components/Progress";
-import CustomButton from "@/components/CustomButton";
 import Description from "@/components/question/Description";
 import Content from "@/components/question/Content";
+import GeneralButton from "@/components/GeneralButton";
+import store from "@/store";
 
 export default {
   name: 'Question',
   components: {
     Content,
     Description,
-    CustomButton,
+    GeneralButton,
     Progress
   },
-  props: {
-    questionNumber: {
-      type: String,
-      default: "1"
-    },
-    questionTitle: {
-      type: String,
-      default: "How happy are you with your working conditions?"
+
+  data: function () {
+    return {
+      currentQuestion: store.state.currentQuestion
     }
+  },
+
+  beforeCreate: function () {
+    const questionNumber = this.$route.params.number;
+    store.setQuestionAction(parseInt(questionNumber));
   }
 }
 </script>
