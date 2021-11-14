@@ -1,13 +1,10 @@
 <template>
-  <header>
-    <nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar fixed-top navbar-dark bg-primary">
         <a class="navbar-brand" href="#">
-        WorkerWellbeing
+        'Measuring WorkerWellbeing'
         </a>
     </nav>
-  </header>
 </template>
-
 
 <script>
 export default {
@@ -15,7 +12,9 @@ export default {
 }
 </script>
 
-
 <style>
+nav {
+background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
+}
 
 </style>
