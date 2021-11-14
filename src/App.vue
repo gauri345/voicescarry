@@ -1,15 +1,10 @@
 <template>
- <GeneralButton text="Enter the page"/>
+  <router-view></router-view>
 </template>
 
 <script>
-import GeneralButton from './components/GeneralButton.vue'
-
 export default {
-  name: 'App',
-  components: {
-    GeneralButton
-  }
+  name: 'App'
 }
 </script>
 
