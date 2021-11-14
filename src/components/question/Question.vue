@@ -1,9 +1,5 @@
 <template>
-  <!--- Header must be included here -->
-  <div class="header">
-    <h1>This is header for <em>{{ currentQuestion.questionCategory }}</em></h1>
-    Current Question {{ $route.params.number }}
-  </div>
+
   <!-- Question Container -->
   <div class="question-container">
     <Description
@@ -65,13 +61,5 @@ export default {
 
 .question-container {
   min-height: 300px;
-}
-
-
-/** Some temporary Header Style. Please remove this once the header component is completed **/
-.header {
-  border: 1px solid #2c3e50;
-  min-height: 100px;
-  margin-bottom: 10px;
 }
 </style>

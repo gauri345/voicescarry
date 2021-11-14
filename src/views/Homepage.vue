@@ -7,9 +7,10 @@
 
 <script>
   import GeneralButton from "@/components/GeneralButton";
+
   export default {
     name: "Homepage",
-    components: {GeneralButton}
+    components: { GeneralButton }
   }
 </script>
 

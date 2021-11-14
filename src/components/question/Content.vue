@@ -57,7 +57,7 @@ export default {
 }
 
 .fa-smile {
-  color: #F44209;
+  color: #4EB729;
   margin-right: 30px;
   cursor: pointer;
 }
@@ -69,7 +69,7 @@ export default {
 }
 
 .fa-frown {
-  color: #4EB729;
+  color: #F44209;
   cursor: pointer;
 }
 </style>
