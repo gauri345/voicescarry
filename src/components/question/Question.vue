@@ -1,18 +1,18 @@
 <template>
- 
+
   <!-- Question Container -->
   <div class="question-container">
     <Description
-        :question-content="questionTitle"
-        :question-number="questionNumber"
-        additional-information="This is the additional information that is to be displayed on the modal box"
+        :additional-information="currentQuestion.additionalInformation"
+        :question-content="currentQuestion.questionTitle"
+        :question-number="currentQuestion.questionNumber"
     ></Description>
-    <Content :question-title="questionTitle"></Content>
+    <Content :question-title="currentQuestion.questionTitle"></Content>
 
     <!-- The button to navigate between questions goes here -->
     <div class="navigation-buttons">
       <div class="button-next">
-        <CustomButton name="Next"></CustomButton>
+        <GeneralButton text="Next"></GeneralButton>
       </div>
     </div>
 
@@ -25,27 +25,29 @@
 
 <script>
 import Progress from "@/components/Progress";
-import CustomButton from "@/components/CustomButton";
 import Description from "@/components/question/Description";
 import Content from "@/components/question/Content";
+import GeneralButton from "@/components/GeneralButton";
+import store from "@/store";
 
 export default {
   name: 'Question',
   components: {
     Content,
     Description,
-    CustomButton,
+    GeneralButton,
     Progress
   },
-  props: {
-    questionNumber: {
-      type: String,
-      default: "1"
-    },
-    questionTitle: {
-      type: String,
-      default: "How happy are you with your working conditions?"
+
+  data: function () {
+    return {
+      currentQuestion: store.state.currentQuestion
     }
+  },
+
+  beforeCreate: function () {
+    const questionNumber = this.$route.params.number;
+    store.setQuestionAction(parseInt(questionNumber));
   }
 }
 </script>
@@ -59,13 +61,5 @@ export default {
 
 .question-container {
   min-height: 300px;
-}
-
-
-/** Some temporary Header Style. Please remove this once the header component is completed **/
-.header {
-  border: 1px solid #2c3e50;
-  min-height: 100px;
-  margin-bottom: 10px;
 }
 </style>
