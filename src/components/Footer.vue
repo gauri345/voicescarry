@@ -1,10 +1,20 @@
 <template>
     <nav class="navbar justify-content-center navbar-expand fixed-bottom navbar-dark bg-primary">
             <div class="navbar-nav">
-                    <a class="nav-item nav-link"><router-link to="/">Home</router-link></a>
-                    <a class="nav-item nav-link"><router-link to="/question">Survey</router-link></a>
-                    <a class="nav-item nav-link" href="#">Complaint</a>
-                    <a class="nav-item nav-link" href="#">Language</a>
+                    <a class="nav-item nav-link">
+                      <router-link to="/">
+                        <span class= "material-icons">home</span>
+                        Home
+                      </router-link>
+                    </a>
+                    <a class="nav-item nav-link">
+                      <router-link to="/question">
+                        <span class= "material-icons">assignment</span>
+                        Survey
+                      </router-link>
+                    </a>
+                    <a class="nav-item nav-link" href="#"><span class= "material-icons">assignment_late</span>Complaint</a>
+                    <a class="nav-item nav-link" href="#"><span class= "material-icons">language</span>Language</a>
             </div>
     </nav>
 </template>
@@ -21,6 +31,12 @@ nav {
     background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
     margin-top: 10px;
 }
+
+a {
+  display: flex;
+  align-items: center;
+}
+
 a:visited {
   color:rgba(255, 255, 255, 0.75);
   text-decoration: none;
