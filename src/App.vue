@@ -1,18 +1,17 @@
 <template>
   <Header/>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <GeneralButton text="Enter the page"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
+import GeneralButton from './components/GeneralButton.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    HelloWorld
+    GeneralButton
   }
       
 }
