@@ -1,8 +1,5 @@
 <template>
-  <!--- Header must be included here -->
-  <div class="header">
-    <h1>This is header</h1>
-  </div>
+ 
   <!-- Question Container -->
   <div class="question-container">
     <Description
