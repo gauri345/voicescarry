@@ -1,18 +1,11 @@
 <template>
     <!-- The Header bar goes here -->
-    <div class="header">
-      <Header text="Welcome! You’ve successfully entered this survey."></Header>
-       <h1>Welcome! </h1>
-       <h2> You’ve successfully entered this survey.</h2>
-       <p>We have two featuresin this page, Survey and Complaints.</p>
-       <p>If you want know more about the survey, please click on the info icon below.</p>
+   
+      <div class="Image">
+      <img alt="Image" src="@/assets/homepagewoman.png" />
     </div>
-       
-
-    <!-- The Footer bar goes here -->
-    <div class="footer">
-      <Footer text="Random Footer Text"></Footer>
-    </div>
+     
+    <div class="homepageblue"> <br> {{ hpwelcome  }} <br><br><br> {{ hpenter  }}<br><br> {{ hpfeature  }} <br><br> {{ hpinfo  }} </div>
 
     <div class="navigation-buttons">
       <div class="button-next">
@@ -25,27 +18,148 @@
       <div class="button-next">
         <CustomButton name="Start Survey"></CustomButton>
       </div>
+
     </div>
-  </router-link>
+    </router-link>
+
+     <!-- The Footer bar goes here -->
+    <div class="footer">
+      <Footer></Footer>
+    </div>
+
+  
 </template>
+
 
 <script>
   import CustomButton from "@/components/CustomButton";
-  import Header from "@/components/Header";
   import Footer from "@/components/Footer";
+ 
 
   
   export default {
     name: "Homepage",
+    props: {
+    hpwelcome: {
+    type: String,
+    default: "Welcome!" },
+    hpenter: {
+    type: String,
+    default: "You’ve successfully entered this survey." },
+    hpfeature: {
+    type: String,
+    default: "We have two features in this page, Survey and Complaints." },
+    hpinfo: {
+    type: String,
+    default: "If you want know more about the survey, please click on the info icon below."}
+  },
     components: {CustomButton, 
-    Header, 
     Footer,
     }
-
   }
 </script>
 
 <style>
+
+.hpwelcome {
+position: absolute;
+width: 211px;
+height: 100.57px;
+left: 168px;
+top: 63.32px;
+
+font-family: Manrope;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 33px;
+
+/* White */
+
+color: #FFFFFF;
+}
+
+.hpenter {
+position: absolute;
+width: 211px;
+height: 100.57px;
+left: 168px;
+top: 63.32px;
+
+font-family: Manrope;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 33px;
+
+/* White */
+
+color: #FFFFFF;
+}
+
+.hpfeature {
+position: absolute;
+width: 211px;
+height: 100.57px;
+left: 168px;
+top: 63.32px;
+
+font-family: Manrope;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 33px;
+
+/* White */
+
+color: #FFFFFF;
+}
+
+.hpinfo {
+position: absolute;
+width: 211px;
+height: 100.57px;
+left: 168px;
+top: 63.32px;
+
+font-family: Manrope;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 33px;
+
+/* White */
+
+color: #FFFFFF;
+}
+
+.Image {
+
+scale: 0.5;
+max-height: 40px;
+max-width: 40px;
+shape-outside: circle(10%);
+border-radius: 10%;
+}
+
+.homepageblue {
+
+min-height: 300px;
+min-width: 100px;
+
+left: 0px;
+top: 0px;
+
+/* Gradient */
+
+background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
+/* blue */
+
+box-shadow: 0px 16px 36px -16px rgba(21, 70, 160, 0.5);
+border-radius: 40px 40px 41px 0px;
+}
+
+
 
 
 </style>
