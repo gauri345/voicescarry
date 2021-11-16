@@ -4,6 +4,9 @@
   <router-link to="/question/1">
     <GeneralButton text="Start Questionnaire"></GeneralButton>
   </router-link>
+  <router-link to="/complaint">
+    <GeneralButton text="Report Complaint"></GeneralButton>
+  </router-link>
   <Footer/>
 </template>
 

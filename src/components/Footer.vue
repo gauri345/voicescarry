@@ -13,7 +13,12 @@
                         Survey
                       </router-link>
                     </a>
-                    <a class="nav-item nav-link" href="#"><span class= "material-icons">assignment_late</span>Complaint</a>
+                    <a class="nav-item nav-link">
+                      <router-link to="/complaint">
+                      <span class= "material-icons">assignment_late</span>
+                      Complaint 
+                      </router-link>
+                    </a>
                     <a class="nav-item nav-link" href="#"><span class= "material-icons">language</span>Language</a>
             </div>
     </nav>
