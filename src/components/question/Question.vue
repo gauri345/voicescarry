@@ -1,5 +1,4 @@
 <template>
-
   <!-- Question Container -->
   <div class="question-container">
     <Description
@@ -13,12 +12,12 @@
     <div class="navigation-buttons">
       <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
         <router-link :to="'/question/' + previousQuestion.questionNumber">
-          <GeneralButton text="Previous" left="0" position="relative" top="0"></GeneralButton>
+          <GeneralButton text="Previous"></GeneralButton>
         </router-link>
       </div>
       <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
         <router-link :to="'/question/' + nextQuestion.questionNumber">
-          <GeneralButton text="Next" left="0" position="relative" top="0"></GeneralButton>
+          <GeneralButton text="Next"></GeneralButton>
         </router-link>
       </div>
     </div>
@@ -61,27 +60,19 @@ export default {
 </script>
 
 <style>
-
-.navigation-buttons {
-  position: absolute;
-  margin-bottom: 20px;
-  top: 55%;
-  left: 33%;
-  margin-top: -50px;
-  margin-left: -50px;
+.navigation-buttons{
+  width: 80%;
+  display: inline-block;
 }
-
 .button-previous {
-  position: relative;
-  margin-right: 20px;
-  float: left;
+  display: inline-block;
+  width: 20%;
+  margin-right: 10px;
 }
 
-.button-next {
-  float: left;
-}
-
-.question-container {
-  min-height: 300px;
+.button-next{
+  display: inline-block;
+  width: 20%;
+  margin-left: 10px;
 }
 </style>
