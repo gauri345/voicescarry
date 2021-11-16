@@ -8,7 +8,7 @@ import TextField from './components/TextField.vue'
 export default {
   name: 'App',
   components: {
-    TextField
+    TextField,
   }
 }
 </script>

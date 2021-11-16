@@ -3,10 +3,16 @@
     <label>Factory code:</label>
     <input type="code" v-model="code" required>
     <div v-if="codeError" class="error">{{ codeError }}</div>
+
+    <div class="submit">
+      <GeneralButton text="Enter the survey"/>
+    </div>
   </form>
 </template>
 
 <script>
+import GeneralButton from './GeneralButton.vue'
+
 export default {
   data() {
     return {
@@ -14,11 +20,14 @@ export default {
       codeError: null,
     }
   },
+  components: {
+    GeneralButton
+  },
   methods: {
     handleSubmit() {
-      // validate password
+      // validate factory code
       this.codeError = this.code.length > 5 ?
-        '' : 'Password must be at least X characters long/Wrong password'
+        '' : 'The factory code is numeric and has to be 6 characters long!'
       if (!this.codeError) {
         // make request to database to save user
         console.log('code: ', this.code)
@@ -29,15 +38,15 @@ export default {
 </script>
 
 <style>
-  form {
-    max-width: 420px;
+form {
+    width:auto;
     margin: 30px auto;
     background: white;
     text-align: left;
     padding: 40px;
     border-radius: 10px;
-  }
-  label {
+}
+label {
     color: #aaa;
     display: inline-block;
     margin: 25px 0 15px;
@@ -45,12 +54,13 @@ export default {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: bold;
-  }
-  input {
+}
+input {
     display: block;
     padding: 10px 6px;  
-    width: 234px;
-    height: 39px;
+    width: 60%;
+    height: 43px;
+    font-size: 12px;
     left: 15px;
     top: 35px;
 
@@ -59,26 +69,15 @@ export default {
     border: 1px solid rgba(36, 54, 86, 0.3);
     box-sizing: border-box;
     border-radius: 20px;
-  }
-  .pill {
-    display: inline-block;
-    margin: 20px 10px 0 0;
-    padding: 6px 12px;
-    background: #eee;
-    border-radius: 20px;
-    font-size: 12px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    color: #777;
-    cursor: pointer;
-  }
-  .submit {
+}
+.submit {
     text-align: center;
-  }
-  .error {
+}
+.error {
     color: #ff0062;
+    width: 60%;
     margin-top: 10px;
     font-size: 0.8em;
     font-weight: bold;
-  }
+}
 </style>
