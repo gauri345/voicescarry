@@ -1,11 +1,12 @@
 <template>
     <!-- The Header bar goes here -->
-   
-      <div class="Image">
-      <img alt="Image" src="@/assets/homepagewoman.png" />
-    </div>
      
-    <div class="homepageblue"> <br> {{ hpwelcome  }} <br><br><br> {{ hpenter  }}<br><br> {{ hpfeature  }} <br><br> {{ hpinfo  }} </div>
+    <div class="homepageblue">
+      <div class="div-vertical">
+        <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/homepagewoman.png" /></div>
+        <div class="div-top-txt"><br> {{ hpwelcome  }} <br><br><br> {{ hpenter  }}<br><br> {{ hpfeature  }} <br><br> {{ hpinfo  }} </div>
+      </div>
+    </div>
 
     <div class="navigation-buttons">
       <div class="button-next">
@@ -133,22 +134,33 @@ line-height: 33px;
 color: #FFFFFF;
 }
 
-.Image {
-
-scale: 0.5;
-max-height: 40px;
-max-width: 40px;
+.img-top {
+width: 240px;
 shape-outside: circle(10%);
 border-radius: 10%;
 }
+
+.div-top-txt{
+  float:left
+}
+
+.div-top-img{
+  float:left
+}
+
+.div-vertical{
+  width: fit-content;
+  margin: auto;
+}
+
 
 .homepageblue {
 
 min-height: 300px;
 min-width: 100px;
 
-left: 0px;
-top: 0px;
+/* left: 0px;
+top: 0px; */
 
 /* Gradient */
 
@@ -157,6 +169,10 @@ background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #154
 
 box-shadow: 0px 16px 36px -16px rgba(21, 70, 160, 0.5);
 border-radius: 40px 40px 41px 0px;
+
+color: #FFFFFF;
+display: flex;
+align-items: center;
 }
 
 
