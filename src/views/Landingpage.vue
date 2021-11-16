@@ -1,7 +1,7 @@
 <template>
-  <h1>Welcome to the Home Page</h1>
-  <router-link to="/question/1">
-    <GeneralButton text="Start Questionnaire"></GeneralButton>
+  <h1>Welcome to the Landing Page</h1>
+  <router-link to="/homepage">
+    <GeneralButton text="Enter the survey"></GeneralButton>
   </router-link>
 </template>
 
@@ -9,8 +9,7 @@
   import GeneralButton from "@/components/GeneralButton";
 
   export default {
-    name: "Homepage",
+    name: "Landingpage",
     components: { GeneralButton }
   }
 </script>
-
