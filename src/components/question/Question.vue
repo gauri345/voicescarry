@@ -1,4 +1,5 @@
 <template>
+  <Header/>
   <!-- Question Container -->
   <div class="question-container">
     <Description
@@ -26,6 +27,7 @@
     <Progress :current-page-number="currentQuestion.questionNumber"></Progress>
 
   </div>
+  <Footer/>
 </template>
 
 <script>
@@ -34,6 +36,8 @@ import Description from "@/components/question/Description";
 import Content from "@/components/question/Content";
 import GeneralButton from "@/components/GeneralButton";
 import store from "@/store";
+import Footer from "@/components/Footer"
+import Header from "@/components/Header";
 
 export default {
   name: 'Question',
@@ -41,7 +45,9 @@ export default {
     Content,
     Description,
     GeneralButton,
-    Progress
+    Progress,
+    Header,
+    Footer
   },
 
   data: function () {
