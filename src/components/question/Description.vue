@@ -73,8 +73,6 @@ export default {
 .description-title {
   position: relative;
   width: 100%;
-  font-family: Roboto, serif;
-  font-style: normal;
   font-weight: bold;
   font-size: 24px;
   line-height: 28px;
