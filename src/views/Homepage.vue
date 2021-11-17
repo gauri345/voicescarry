@@ -8,16 +8,18 @@
       </div>
     </div>
 
+    <router-link to="/complaint">
     <div class="navigation-buttons">
       <div class="button-next">
-        <GeneralButton name="Report a complaint"></GeneralButton>
+        <GeneralButton text="Report a complaint"></GeneralButton>
       </div>
     </div>
+    </router-link>
 
-    <router-link to="/question">
+    <router-link to="/question/1">
     <div class="navigation-buttons">
       <div class="button-next">
-        <GeneralButton name="Start Survey"></GeneralButton>
+        <GeneralButton text="Start Survey"></GeneralButton>
       </div>
 
     </div>
