@@ -67,18 +67,18 @@ export default {
 
 <style>
 .navigation-buttons{
-  width: 80%;
+  width: 90%;
   display: inline-block;
 }
 .button-previous {
   display: inline-block;
-  width: 20%;
+  width: 30%;
   margin-right: 10px;
 }
 
 .button-next{
   display: inline-block;
-  width: 20%;
+  width: 30%;
   margin-left: 10px;
 }
 </style>
