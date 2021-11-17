@@ -6,9 +6,9 @@
       <img alt="question image" src="../../assets/image_1.png"/>
     </div>
     <div class="question-answers">
-      <em class="fas fa-smile" @click="answer('happy')"></em>
-      <em class="fas fa-meh" @click="answer('so so')"></em>
       <em class="fas fa-frown" @click="answer('not happy')"></em>
+      <em class="fas fa-meh" @click="answer('so so')"></em>
+      <em class="fas fa-smile" @click="answer('happy')"></em>
     </div>
   </div>
 </template>
@@ -47,9 +47,6 @@ export default {
 
 .question-title {
   position: relative;
-  font-family: Roboto, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 24px;
   line-height: 28px;
 
@@ -58,18 +55,18 @@ export default {
 
 .fa-smile {
   color: #4EB729;
-  margin-right: 30px;
+  margin-left: 30px;
   cursor: pointer;
 }
 
 .fa-meh {
   color: #F4DD09;
-  margin-right: 30px;
   cursor: pointer;
 }
 
 .fa-frown {
   color: #F44209;
+  margin-right: 30px;
   cursor: pointer;
 }
 </style>

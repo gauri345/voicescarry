@@ -1,6 +1,6 @@
 <template>
     <!-- The Header bar goes here -->
-     
+     <Header/>
     <div class="homepageblue">
       <div class="div-vertical">
         <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/homepagewoman.png" /></div>
@@ -10,14 +10,14 @@
 
     <div class="navigation-buttons">
       <div class="button-next">
-        <CustomButton name="Report a complaint"></CustomButton>
+        <GeneralButton name="Report a complaint"></GeneralButton>
       </div>
     </div>
 
     <router-link to="/question">
     <div class="navigation-buttons">
       <div class="button-next">
-        <CustomButton name="Start Survey"></CustomButton>
+        <GeneralButton name="Start Survey"></GeneralButton>
       </div>
 
     </div>
@@ -25,7 +25,7 @@
 
      <!-- The Footer bar goes here -->
     <div class="footer">
-      <Footer></Footer>
+      <Footer/>
     </div>
 
   
@@ -33,8 +33,9 @@
 
 
 <script>
-  import CustomButton from "@/components/CustomButton";
-  import Footer from "@/components/Footer";
+  import GeneralButton from "@/components/GeneralButton";
+  import Footer from "@/components/Footer"
+  import Header from "@/components/Header";
  
 
   
@@ -54,7 +55,8 @@
     type: String,
     default: "If you want know more about the survey, please click on the info icon below."}
   },
-    components: {CustomButton, 
+    components: {GeneralButton, 
+    Header,
     Footer,
     }
   }
