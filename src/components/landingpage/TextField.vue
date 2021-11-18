@@ -5,13 +5,15 @@
     <div v-if="codeError" class="error">{{ codeError }}</div>
 
     <div class="submit">
+      <router-link to="/homepage">
       <GeneralButton text="Enter the survey"/>
+      </router-link>
     </div>
   </form>
 </template>
 
 <script>
-import GeneralButton from './GeneralButton.vue'
+import GeneralButton from '../GeneralButton.vue'
 
 export default {
   data() {
