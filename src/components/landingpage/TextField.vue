@@ -1,4 +1,9 @@
 <template>
+
+  <SpeechBubble description="Hi! My name is..."/>
+  <SpeechBubble description="I will guide you through the survey."/>
+  <SpeechBubble description="To enter the survey, please type your factory code or access via QR code."/>
+  <SpeechBubble description="Factory code / QR code can be found in ...."/>
   <form @submit.prevent="handleSubmit">
     <label>Factory code:</label>
     <input type="code" v-model="code" required>
@@ -14,6 +19,7 @@
 
 <script>
 import GeneralButton from '../GeneralButton.vue'
+import SpeechBubble from '../landingpage/SpeechBubble.vue'
 
 export default {
   data() {
@@ -23,7 +29,8 @@ export default {
     }
   },
   components: {
-    GeneralButton
+    GeneralButton,
+    SpeechBubble
   },
   methods: {
     handleSubmit() {
@@ -60,7 +67,7 @@ label {
 input {
     display: block;
     padding: 10px 6px;  
-    width: 60%;
+    width: 100%;
     height: 43px;
     font-size: 12px;
     left: 15px;
