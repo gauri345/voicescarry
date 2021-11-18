@@ -94,4 +94,7 @@ input {
     font-size: 0.8em;
     font-weight: bold;
 }
+.persona {
+  background-image: url('../../assets/Background.png');
+}
 </style>
