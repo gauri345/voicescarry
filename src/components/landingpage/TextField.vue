@@ -1,20 +1,25 @@
 <template>
+  <section class="persona">
+    <img alt="Persona" src="../../assets/Woman.png" style="float: left" width="250" height="400" />
 
-  <SpeechBubble description="Hi! My name is..."/>
-  <SpeechBubble description="I will guide you through the survey."/>
-  <SpeechBubble description="To enter the survey, please type your factory code or access via QR code."/>
-  <SpeechBubble description="Factory code / QR code can be found in ...."/>
-  <form @submit.prevent="handleSubmit">
-    <label>Factory code:</label>
-    <input type="code" v-model="code" required>
-    <div v-if="codeError" class="error">{{ codeError }}</div>
+    <SpeechBubble description="Hi! My name is..."/>
+    <SpeechBubble description="I will guide you through the survey."/>
+    <SpeechBubble description="To enter the survey, please type your factory code or access via QR code."/>
+    <SpeechBubble description="Factory code / QR code can be found in ...."/>
+  </section>
 
-    <div class="submit">
-      <router-link to="/homepage">
-      <GeneralButton text="Enter the survey"/>
-      </router-link>
-    </div>
-  </form>
+  <section class="pageentry">
+    <form @submit.prevent="handleSubmit">
+      <label>Factory code:</label>
+      <input type="code" v-model="code" required>
+      <div v-if="codeError" class="error">{{ codeError }}</div>
+      <div class="submit">
+        <router-link to="/homepage">
+        <GeneralButton text="Enter the survey"/>
+        </router-link>
+      </div>
+    </form>
+  </section>
 </template>
 
 <script>
@@ -88,5 +93,11 @@ input {
     margin-top: 10px;
     font-size: 0.8em;
     font-weight: bold;
+}
+.persona {
+  background-image:image("Background.png");
+}
+.pageentry {
+  margin-top: 15px;
 }
 </style>

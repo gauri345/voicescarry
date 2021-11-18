@@ -33,7 +33,6 @@ export default {
   content: "";
   position: absolute;
   bottom: -15px;
-  left: 50px;
   display:block;
   width:0;
   height: 0;
@@ -53,12 +52,12 @@ export default {
 .triangle-isosceles.left:after{
   top: auto;
   right: auto;
-  bottom: 20px;
-  left: -55px;
+  bottom: 15px;
+  left: -20px;
   
   border-bottom: 10px solid transparent;
-  border-left: 60;
-  border-right: 55px solid #1477F8;
+  border-left: 0;
+  border-right: 25px solid #1477F8;
   border-top: 10px solid transparent;
 }
 
