@@ -95,8 +95,8 @@ input {
     font-weight: bold;
 }
 .persona {
-  background-image:image("Background.png");
-}
+  background-image: url('../../assets/Background.png');
+} 
 .pageentry {
   margin-top: 15px;
 }
