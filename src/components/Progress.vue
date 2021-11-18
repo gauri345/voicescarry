@@ -1,0 +1,76 @@
+<template>
+  <div class="progress-container">
+    <div class="current-page-number">
+      Page {{ currentPageNumber }} of {{ totalQuestions }}
+    </div>
+    <div class="progress">
+      <div class="progress-value"></div>
+    </div>
+  </div>
+</template>
+
+<script>
+import store from "@/store";
+
+export default {
+  name: 'Progress',
+  props: {
+    currentPageNumber: Number,
+  },
+  data: function () {
+    return {
+      totalQuestions: store.totalAvailableQuestions(),
+      progressPercentage: this.calculateProgressPercentage()
+    }
+  },
+
+  methods: {
+    calculateProgressPercentage: function () {
+      return ((this.currentPageNumber / store.totalAvailableQuestions()) * 100) + "%";
+    }
+  },
+
+}
+</script>
+
+<style scoped>
+
+.progress-container {
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+
+.current-page-number {
+  margin: 0 0 20px 20px;
+  text-align: left;
+}
+
+
+.progress {
+  background: #D8D8D8;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  padding: 0 5px;
+  display: flex;
+  height: 30px;
+  width: 99%;
+  margin-top: 20px;
+}
+
+.progress-value {
+  animation: load 3s normal forwards;
+  background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);;
+  height: 30px;
+  width: 0;
+}
+
+@keyframes load {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: v-bind(progressPercentage)
+  }
+}
+</style>

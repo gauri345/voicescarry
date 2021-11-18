@@ -10,6 +10,7 @@ export default {
   props: {
     text: String,
     color: String,
+    
   },
   methods: {
     onClick() {
@@ -22,11 +23,15 @@ export default {
 <style scoped>
 .btn {
   cursor: pointer;
-  display: block;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
   color: rgb(255, 255, 255);
-  font-size: 12px;
+  font-size: 16px;
   border: 0;
-  width: 60%;
+  padding: 10px;
+  position: relative;
+  width: 100%;
   height: 43px;
   background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
   box-shadow: 0px 24px 48px -18px rgba(21, 70, 160, 0.5);

@@ -1,15 +1,12 @@
 <template>
-  <TextField/>
+  <router-view :key="$route.path"></router-view>
 </template>
 
 <script>
-import TextField from './components/TextField.vue'
+
 
 export default {
-  name: 'App',
-  components: {
-    TextField,
-  }
+  name: 'App'
 }
 </script>
 
