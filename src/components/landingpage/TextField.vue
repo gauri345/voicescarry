@@ -1,5 +1,5 @@
 <template>
-  <section class="persona">
+  <section class="persona" style="height:400px">
     <img alt="Persona" src="../../assets/Woman.png" style="float: left" width="250" height="400" />
 
     <SpeechBubble description="Hi! My name is..."/>
@@ -93,11 +93,5 @@ input {
     margin-top: 10px;
     font-size: 0.8em;
     font-weight: bold;
-}
-.persona {
-  background-image:image("Background.png");
-}
-.pageentry {
-  margin-top: 15px;
 }
 </style>
