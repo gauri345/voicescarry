@@ -21,7 +21,7 @@ export default {
 
 .triangle-isosceles{
   position: relative;
-  width: 50%;
+  width: 250px;
   padding: 15px;
   margin: 20px 0;
   color: rgb(255, 255, 255);

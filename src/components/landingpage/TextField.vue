@@ -1,11 +1,12 @@
 <template>
   <section class="persona" style="height:400px">
-    <img alt="Persona" src="../../assets/Woman.png" style="float: left" width="250" height="400" />
-
+    <img alt="Persona" src="../../assets/Woman.png" style="float: left" />
+  
     <SpeechBubble description="Hi! My name is..."/>
     <SpeechBubble description="I will guide you through the survey."/>
     <SpeechBubble description="To enter the survey, please type your factory code or access via QR code."/>
     <SpeechBubble description="Factory code / QR code can be found in ...."/>
+  
   </section>
 
   <section class="pageentry">
@@ -52,6 +53,9 @@ export default {
 </script>
 
 <style>
+img {
+  max-height: 400px;
+}
 form {
     width:auto;
     margin: 30px auto;
