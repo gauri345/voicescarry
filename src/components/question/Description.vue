@@ -68,6 +68,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .description-title {

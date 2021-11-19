@@ -1,7 +1,9 @@
 <template>
-  <Header/>
+  <div class="questionTitle">
+    SHINE principle
+  </div>
   <!-- Question Container -->
-  <div class="question-container">
+  <div class="question-container" >
     <Description
         :additional-information="currentQuestion.additionalInformation"
         :question-content="currentQuestion.questionTitle"
@@ -37,7 +39,6 @@ import Content from "@/components/question/Content";
 import GeneralButton from "@/components/GeneralButton";
 import store from "@/store";
 import Footer from "@/components/Footer"
-import Header from "@/components/Header";
 
 export default {
   name: 'Question',
@@ -46,7 +47,6 @@ export default {
     Description,
     GeneralButton,
     Progress,
-    Header,
     Footer
   },
 
@@ -80,5 +80,22 @@ export default {
   display: inline-block;
   width: 30%;
   margin-left: 10px;
+}
+.questionTitle {
+  position: relative;
+  width: 100%;
+  height: 125px;
+  text-align: center;
+
+
+  color: rgba(255, 255, 255, 0.7);
+  font-style: normal;
+  font-size: 24px;
+
+  /* Gradient */
+  background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
+  /* blue */
+  box-shadow: 0px 16px 36px -16px rgba(21, 70, 160, 0.5);
+  border-radius: 0px 0px 41px 0px;
 }
 </style>
