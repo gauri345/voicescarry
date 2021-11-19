@@ -66,86 +66,15 @@
 
 <style>
 
-.hpwelcome {
-position: absolute;
-width: 211px;
-height: 100.57px;
-left: 168px;
-top: 63.32px;
-
-font-family: Manrope;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 33px;
-
-/* White */
-
-color: #FFFFFF;
-}
-
-.hpenter {
-position: absolute;
-width: 211px;
-height: 100.57px;
-left: 168px;
-top: 63.32px;
-
-font-family: Manrope;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 33px;
-
-/* White */
-
-color: #FFFFFF;
-}
-
-.hpfeature {
-position: absolute;
-width: 211px;
-height: 100.57px;
-left: 168px;
-top: 63.32px;
-
-font-family: Manrope;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 33px;
-
-/* White */
-
-color: #FFFFFF;
-}
-
-.hpinfo {
-position: absolute;
-width: 211px;
-height: 100.57px;
-left: 168px;
-top: 63.32px;
-
-font-family: Manrope;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 33px;
-
-/* White */
-
-color: #FFFFFF;
-}
-
 .img-top {
 width: 240px;
 shape-outside: circle(10%);
 border-radius: 10%;
+vertical-align: 0%;
 }
 
 .div-top-txt{
-  float:left
+  float:center;
 }
 
 .div-top-img{
@@ -157,14 +86,13 @@ border-radius: 10%;
   margin: auto;
 }
 
-
 .homepageblue {
+text-align: justify;
+height: 20%;
+width: 50%;
+margin-left:25%;
+margin-right:25%;
 
-min-height: 300px;
-min-width: 100px;
-
-/* left: 0px;
-top: 0px; */
 
 /* Gradient */
 
@@ -172,14 +100,11 @@ background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #154
 /* blue */
 
 box-shadow: 0px 16px 36px -16px rgba(21, 70, 160, 0.5);
-border-radius: 40px 40px 41px 0px;
+border-radius: 40px 40px 40px 40px;
 
 color: #FFFFFF;
 display: flex;
 align-items: center;
 }
-
-
-
 
 </style>
