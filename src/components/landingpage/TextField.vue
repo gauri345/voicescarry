@@ -1,19 +1,31 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <label>Factory code:</label>
-    <input type="code" v-model="code" required>
-    <div v-if="codeError" class="error">{{ codeError }}</div>
+  <section class="persona" style="height:400px">
+    <img alt="Persona" src="../../assets/Woman.png" style="float: left" />
+  
+    <SpeechBubble description="Hi! My name is..."/>
+    <SpeechBubble description="I will guide you through the survey."/>
+    <SpeechBubble description="To enter the survey, please type your factory code or access via QR code."/>
+    <SpeechBubble description="Factory code / QR code can be found in ...."/>
+  
+  </section>
 
-    <div class="submit">
-      <router-link to="/homepage">
-      <GeneralButton text="Enter the survey"/>
-      </router-link>
-    </div>
-  </form>
+  <section class="pageentry">
+    <form @submit.prevent="handleSubmit">
+      <label>Factory code:</label>
+      <input type="code" v-model="code" required>
+      <div v-if="codeError" class="error">{{ codeError }}</div>
+      <div class="submit">
+        <router-link to="/homepage">
+        <GeneralButton text="Enter the survey"/>
+        </router-link>
+      </div>
+    </form>
+  </section>
 </template>
 
 <script>
 import GeneralButton from '../GeneralButton.vue'
+import SpeechBubble from '../landingpage/SpeechBubble.vue'
 
 export default {
   data() {
@@ -23,7 +35,8 @@ export default {
     }
   },
   components: {
-    GeneralButton
+    GeneralButton,
+    SpeechBubble
   },
   methods: {
     handleSubmit() {
@@ -40,6 +53,9 @@ export default {
 </script>
 
 <style>
+img {
+  max-height: 400px;
+}
 form {
     width:auto;
     margin: 30px auto;
@@ -60,7 +76,7 @@ label {
 input {
     display: block;
     padding: 10px 6px;  
-    width: 60%;
+    width: 100%;
     height: 43px;
     font-size: 12px;
     left: 15px;
@@ -81,5 +97,8 @@ input {
     margin-top: 10px;
     font-size: 0.8em;
     font-weight: bold;
+}
+.persona {
+  background-image: url('../../assets/Background.png');
 }
 </style>
