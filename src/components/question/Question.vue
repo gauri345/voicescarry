@@ -15,14 +15,14 @@
     <div class="navigation-buttons">
       <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
         <router-link :to="'/question/' + previousQuestion.questionNumber">
-          <GeneralButton text="Previous" icon1="arrow_backwards">
-          </GeneralButton>
+          <SurveyButton text="Previous" icon1="arrow_backwards">
+          </SurveyButton>
         </router-link>
       </div>
       <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
         <router-link :to="'/question/' + nextQuestion.questionNumber">
-          <GeneralButton text="Next" icon2="arrow_forwards">
-          </GeneralButton>
+          <SurveyButton text="Next" icon2="arrow_forwards">
+          </SurveyButton>
         </router-link>
       </div>
     </div>
@@ -38,7 +38,7 @@
 import Progress from "@/components/Progress";
 import Description from "@/components/question/Description";
 import Content from "@/components/question/Content";
-import GeneralButton from "@/components/GeneralButton";
+import SurveyButton from "@/components/question/SurveyButton";
 import store from "@/store";
 import Footer from "@/components/Footer"
 
@@ -47,7 +47,7 @@ export default {
   components: {
     Content,
     Description,
-    GeneralButton,
+    SurveyButton,
     Progress,
     Footer
   },
