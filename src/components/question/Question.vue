@@ -15,12 +15,14 @@
     <div class="navigation-buttons">
       <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
         <router-link :to="'/question/' + previousQuestion.questionNumber">
-          <GeneralButton text="Previous"></GeneralButton>
+          <GeneralButton text="Previous" icon1="arrow_backwards">
+          </GeneralButton>
         </router-link>
       </div>
       <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
         <router-link :to="'/question/' + nextQuestion.questionNumber">
-          <GeneralButton text="Next"></GeneralButton>
+          <GeneralButton text="Next" icon2="arrow_forwards">
+          </GeneralButton>
         </router-link>
       </div>
     </div>
@@ -65,26 +67,26 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .navigation-buttons{
   width: 90%;
   display: inline-block;
 }
 .button-previous {
   display: inline-block;
-  width: 30%;
-  margin-right: 10px;
+  width: 40%;
+  margin-right: 2%;
 }
 
 .button-next{
   display: inline-block;
-  width: 30%;
-  margin-left: 10px;
+  width: 40%;
+  margin-left: 2%;
 }
 .questionTitle {
   position: relative;
   width: 100%;
-  height: 125px;
+  height: 30%;
   text-align: center;
 
 
@@ -98,4 +100,5 @@ export default {
   box-shadow: 0px 16px 36px -16px rgba(21, 70, 160, 0.5);
   border-radius: 0px 0px 41px 0px;
 }
+
 </style>

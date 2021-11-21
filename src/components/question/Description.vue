@@ -1,7 +1,6 @@
 <template>
   <div class="question-description-container">
     <div class="question-description description-title">
-      <div>Question {{ questionNumber }}</div>
       <em class="fas fa-volume-up" v-on:click="readQuestionContent"></em>
       <em class="fas fa-info-circle" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal"></em>
       <InformationModal :additional-information="additionalInformation" :question-content="questionContent"/>
