@@ -6,9 +6,11 @@
       <img alt="question image" src="../../assets/image_1.png"/>
     </div>
     <div class="question-answers">
-      <em class="fas fa-frown" @click="answer('not happy')"></em>
-      <em class="fas fa-meh" @click="answer('so so')"></em>
-      <em class="fas fa-smile" @click="answer('happy')"></em>
+      <span class="material-icons very_dissatisfied" @click="answer('very dissatisfied')">sentiment_very_dissatisfied</span>
+      <span class="material-icons dissatisfied" @click="answer('dissatisfied')">sentiment_dissatisfied</span>
+      <span class="material-icons neutral" @click="answer('neutral')">sentiment_neutral</span>
+      <span class="material-icons satisfied" @click="answer('satisfied')">sentiment_satisfied</span>
+      <span class="material-icons very_satisfied" @click="answer('very satisfied')">sentiment_very_satisfied</span>
     </div>
   </div>
 </template>
@@ -27,20 +29,22 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.material-icons{
+  font-size:48px;
+}
 
 .question-image {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 .question-content {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 .question-answers{
-  font-size: 55px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 2%;
+  margin-bottom: 2%;
   width: 100%;
   justify-content: space-evenly;
 }
@@ -53,20 +57,28 @@ export default {
   color: #393939;
 }
 
-.fa-smile {
-  color: #4EB729;
-  margin-left: 30px;
+.material-icons.very_satisfied {
+  color: #1f7500;
+  margin-left: 2%;
   cursor: pointer;
 }
-
-.fa-meh {
+.material-icons.satisfied {
+  color: #68da3e;
+  margin-left: 2%;
+  cursor: pointer;
+}
+.material-icons.neutral {
   color: #F4DD09;
   cursor: pointer;
 }
-
-.fa-frown {
+.material-icons.dissatisfied {
+  color: #f09309;
+  margin-right: 2%;
+  cursor: pointer;
+}
+.material-icons.very_dissatisfied {
   color: #F44209;
-  margin-right: 30px;
+  margin-right: 2%;
   cursor: pointer;
 }
 </style>

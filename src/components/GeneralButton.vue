@@ -1,6 +1,8 @@
 <template>
   <button @click="onClick()" :style="{ background: color }" class="btn">
+    <span class="material-icons back-arrow">{{ icon1 }}</span>
     {{ text }}
+    <span class="material-icons next-arrow">{{ icon2 }}</span>
   </button>
 </template>
 
@@ -10,6 +12,8 @@ export default {
   props: {
     text: String,
     color: String,
+    icon1: String,
+    icon2: String,
     
   },
   methods: {
@@ -30,7 +34,6 @@ export default {
   font-size: 16px;
   border: 0;
   padding: 10px;
-  position: relative;
   width: 100%;
   height: 43px;
   background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
@@ -40,4 +43,13 @@ export default {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+.material-icons.back-arrow{
+  float:left;
+  width:24px;
+}
+.material-icons.next-arrow{
+  float:right;
+  width:24px;
+}
+
 </style>
