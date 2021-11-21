@@ -1,9 +1,8 @@
 <template>
   <button @click="onClick()" :style="{ background: color }" class="btn">
-    <div class="button-text-wrapper">
-      <span class="material-icons icon">{{ icon }}</span>
-      {{ text }}
-    </div>
+    <span class="material-icons back-arrow">{{ icon1 }}</span>
+    {{ text }}
+    <span class="material-icons next-arrow">{{ icon2 }}</span>
   </button>
 </template>
 
@@ -13,8 +12,9 @@ export default {
   props: {
     text: String,
     color: String,
-    icon: String,
-
+    icon1: String,
+    icon2: String,
+    
   },
   methods: {
     onClick() {
@@ -43,12 +43,12 @@ export default {
   margin-bottom: 10px;
   margin-top: 10px;
 }
-.button-text-wrapper{
-  display: inline-flex;
+.material-icons.back-arrow{
+  float:left;
+  width:24px;
 }
-.material-icons.icon{
-  display: flex;
-  align-items: center;
+.material-icons.next-arrow{
+  float:right;
   width:24px;
 }
 </style>
