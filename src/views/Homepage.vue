@@ -1,4 +1,4 @@
-<template v-slot:welcome>
+<template>
     
   <Header>
       <div class="div-vertical">
@@ -64,18 +64,19 @@
 
 <style scoped>
 .img-top {
-width: 240px;
+width: 50%;
 shape-outside: circle(10%);
 border-radius: 10%;
-vertical-align: 0%;
+vertical-align: top;
 }
 
 .div-top-txt{
-  float:center;
+  /*float:center;*/
+  display:inline-block;
 }
 
 .div-top-img{
-  float:left
+  float:left;
 }
 
 .div-vertical{

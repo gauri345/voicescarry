@@ -40,7 +40,6 @@ export default {
   box-shadow: 0px 24px 48px -18px rgba(21, 70, 160, 0.5);
   border-radius: 20px;
   text-align:center;
-  margin-bottom: 10px;
   margin-top: 10px;
 }
 .button-text-wrapper{
