@@ -8,20 +8,19 @@
       </div>
     </div>
 
-    <router-link to="/complaint">
+   <router-link to="/question/1">
     <div class="navigation-buttons">
       <div class="button-next">
-        <GeneralButton text="Report a complaint"></GeneralButton>
+        <GeneralButton text="Start Survey" icon="assignment"></GeneralButton>
       </div>
     </div>
     </router-link>
 
-    <router-link to="/question/1">
+    <router-link to="/complaint">
     <div class="navigation-buttons">
       <div class="button-next">
-        <GeneralButton text="Start Survey"></GeneralButton>
+        <GeneralButton text="Report a complaint" icon="assignment_late"></GeneralButton>
       </div>
-
     </div>
     </router-link>
 
@@ -64,8 +63,7 @@
   }
 </script>
 
-<style>
-
+<style scoped>
 .img-top {
 width: 240px;
 shape-outside: circle(10%);
