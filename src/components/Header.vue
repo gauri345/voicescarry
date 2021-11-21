@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar fixed-top navbar-dark bg-primary">
+    <nav class="navbar relative-top navbar-dark bg-primary">
         <a class="navbar-brand" href="#">
         'Measuring WorkerWellbeing'
         </a>
