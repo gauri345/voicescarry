@@ -4,12 +4,11 @@
   </div>
   <!-- Question Container -->
   <div class="question-container" >
-    <Description
-        :additional-information="currentQuestion.additionalInformation"
-        :question-content="currentQuestion.questionTitle"
-        :question-number="currentQuestion.questionNumber"
-    ></Description>
-    <Content :question-title="currentQuestion.questionTitle"></Content>
+    <Content  :question-title="currentQuestion.questionTitle"
+              :additional-information="currentQuestion.additionalInformation"
+              :question-content="currentQuestion.questionTitle"
+              :question-number="currentQuestion.questionNumber">
+    </Content>
 
     <!-- The button to navigate between questions goes here -->
     <div class="navigation-buttons">
@@ -36,7 +35,6 @@
 
 <script>
 import Progress from "@/components/Progress";
-import Description from "@/components/question/Description";
 import Content from "@/components/question/Content";
 import SurveyButton from "@/components/question/SurveyButton";
 import store from "@/store";
@@ -46,7 +44,6 @@ export default {
   name: 'Question',
   components: {
     Content,
-    Description,
     SurveyButton,
     Progress,
     Footer
