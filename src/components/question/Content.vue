@@ -87,7 +87,7 @@ export default {
   width: 50%;
 }
 .speechbubble{
-  height: 30%;
+  height: 40%;
   width: 80%;
   color: rgb(255, 255, 255);
   background: #1546A0;
