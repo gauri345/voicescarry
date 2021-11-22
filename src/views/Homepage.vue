@@ -9,17 +9,13 @@
 
    <router-link to="/question/1">
     <div class="navigation-buttons">
-      <div class="button-next">
         <GeneralButton text="Start Survey" icon="assignment"></GeneralButton>
-      </div>
     </div>
     </router-link>
 
     <router-link to="/complaint">
     <div class="navigation-buttons">
-      <div class="button-next">
         <GeneralButton text="Report a complaint" icon="assignment_late"></GeneralButton>
-      </div>
     </div>
     </router-link>
 
@@ -85,6 +81,12 @@ vertical-align: top;
   color: white;
 
 }
-
+.navigation-buttons{
+  width: 80%;
+  display: inline-block;
+}
+.btn{
+  margin-top: 5%;
+}
 
 </style>
