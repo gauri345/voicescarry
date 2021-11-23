@@ -86,46 +86,40 @@ export default {
 .survey-question-wrapper{
   width: 50%;
 }
+
 .speechbubble{
-  height: 40%;
+  background: #1546A0;
+  border-radius: 10px;
+  display:inline-block;
   width: 80%;
   color: rgb(255, 255, 255);
-  background: #1546A0;
-  border-radius: 10px; 
-  position: relative; 
+  position: relative;
+  vertical-align: top;
   padding: 15px;
   margin: 20px 0;
-  
 }
-.speechbubble::after{
-  content: "";
+.speechbubble::before{
+  background-color: #1546A0;
+  content: "\00a0";
+  display: block;
+  height:16px;
+  width: 20px;
   position: absolute;
-  bottom: -15px;
-  display:block;
-  width:0;
-  height: 0;
-  border-top: 15px solid #1546A0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-}
-.left.speechbubble::after{
-  top: auto;
-  right: auto;
-  bottom: 80px;
-  left: -20px;
-  
-  border-bottom: 10px solid transparent;
-  border-left: 0;
-  border-right: 25px solid #1546A0;
-  border-top: 10px solid transparent;
+  top:10px;
+  left:-9px;
+  transform:rotate(29deg) skew(-35deg);
+  -moz-transform: rotate(29deg) skew(-35deg);
+  -ms-transform: rotate(29deg) skew(-35deg);
+  -o-transform: rotate(29deg) skew(-35deg);
+  -webkit-transform: rotate(29deg) skew(-35deg);
 }
 .material-icons.audio {
-  font-size: 24px;
+  font-size: 32px;
   margin-left: 10px;
   cursor: pointer;
 }
 .material-icons.info {
-  font-size: 24px;
+  font-size: 32px;
   margin-left: 10px;
   cursor: pointer;
 
@@ -148,7 +142,6 @@ export default {
   position: relative;
   font-size: 24px;
   line-height: 28px;
-
   color: rgba(255, 255, 255, 0.75);
 }
 .material-icons.very_satisfied {
