@@ -1,15 +1,17 @@
 <template>
   <div class="questionTitle">
-    SHINE principle
+    <div class="ShinePrinciple">
+      <span class="material-icons">self_improvement</span>
+      Overall Wellbeing
+    </div>
   </div>
   <!-- Question Container -->
   <div class="question-container" >
-    <Description
-        :additional-information="currentQuestion.additionalInformation"
-        :question-content="currentQuestion.questionTitle"
-        :question-number="currentQuestion.questionNumber"
-    ></Description>
-    <Content :question-title="currentQuestion.questionTitle"></Content>
+    <Content  :question-title="currentQuestion.questionTitle"
+              :additional-information="currentQuestion.additionalInformation"
+              :question-content="currentQuestion.questionTitle"
+              :question-number="currentQuestion.questionNumber">
+    </Content>
 
     <!-- The button to navigate between questions goes here -->
     <div class="navigation-buttons">
@@ -36,7 +38,6 @@
 
 <script>
 import Progress from "@/components/Progress";
-import Description from "@/components/question/Description";
 import Content from "@/components/question/Content";
 import SurveyButton from "@/components/question/SurveyButton";
 import store from "@/store";
@@ -46,10 +47,9 @@ export default {
   name: 'Question',
   components: {
     Content,
-    Description,
     SurveyButton,
     Progress,
-    Footer
+    Footer,
   },
 
   data: function () {
@@ -86,19 +86,28 @@ export default {
 .questionTitle {
   position: relative;
   width: 100%;
-  height: 30%;
-  text-align: center;
-
-
-  color: rgba(255, 255, 255, 0.7);
-  font-style: normal;
-  font-size: 24px;
+  height: 20%;
+  padding-bottom: 10%;
 
   /* Gradient */
   background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
   /* blue */
   box-shadow: 0px 16px 36px -16px rgba(21, 70, 160, 0.5);
   border-radius: 0px 0px 41px 0px;
+}
+.ShinePrinciple {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.7);
+  font-style: normal;
+  font-size: 3vw;
+}
+.material-icons {
+  font-size: 5vw;
+  vertical-align: text-bottom;
 }
 
 </style>
