@@ -1,6 +1,6 @@
 <template>
   <div class="landingpage">
-    <Header/>
+    <Header HeaderText="Project 'Measuring Employee Wellbeing'"/>
     <TextField/>
     <LandingFooter/>
   </div>
