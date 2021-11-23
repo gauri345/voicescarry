@@ -74,20 +74,26 @@ export default {
 
 .survey-question-container{
   width: 100%;
+  height: 300px;
   margin-top: 2%;
   display: inline-block;
+  overflow: hidden;
+  background-image: url('../../assets/Background.png');
 }
 .center{
   display: flex;
 }
 .survey-persona-wrapper{
   width: 50%;
+  height:100%;
 }
 img{
-  max-height:400px;
+  max-height:300px;
 }
 .survey-question-wrapper{
   width: 50%;
+  height:100%;
+  
 }
 
 .speechbubble{
@@ -143,7 +149,7 @@ img{
 }
 .question-title {
   position: relative;
-  font-size: 24px;
+  font-size: 120%;
   line-height: 28px;
   color: rgba(255, 255, 255, 0.75);
 }
