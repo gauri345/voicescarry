@@ -1,12 +1,14 @@
 <template>
-  <section class="persona" style="height:400px">
-    <img alt="Persona" src="../../assets/Woman.png" style="float: left" />
-  
-    <SpeechBubble description="Hi! My name is..."/>
-    <SpeechBubble description="I will guide you through the survey."/>
-    <SpeechBubble description="To enter the survey, please type your factory code or access via QR code."/>
-    <SpeechBubble description="Factory code / QR code can be found in ...."/>
-  
+  <section class="persona-container">
+    <div class="center">
+      <div class="image-wrapper">
+        <img alt="Persona" src="../../assets/Woman.png"/>
+      </div>
+      <div class="speech-wrapper">
+        <SpeechBubble description="Hi! My name is... I will help you."/>
+        <SpeechBubble description="To enter the survey, please type your factory code or access via QR code."/>
+      </div>
+    </div>
   </section>
 
   <section class="pageentry">
@@ -52,22 +54,40 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.persona-container{
+  width: 100%;
+  max-height:320px;
+  margin-top: 2%;
+  display: inline-block;
+  overflow:hidden;
+  background-image: url('../../assets/Background.png');
+}
+.center{
+  display:flex;
+}
+.image-wrapper{
+  width: 50%;
+  height:100%;
+}
+.speech-wrapper{
+  width: 50%;
+  height:100%;
+}
 img {
-  max-height: 400px;
+  max-height: 320px;
 }
 form {
-    width:auto;
-    margin: 30px auto;
+    width:80%;
+    margin-top: 2%;
     background: white;
     text-align: left;
-    padding: 40px;
+    display: inline-block;
     border-radius: 10px;
 }
 label {
     color: #aaa;
     display: inline-block;
-    margin: 25px 0 15px;
     font-size: 0.6em;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -81,8 +101,6 @@ input {
     font-size: 12px;
     left: 15px;
     top: 35px;
-
-    /* White */
     background: #FFFFFF;
     border: 1px solid rgba(36, 54, 86, 0.3);
     box-sizing: border-box;
@@ -97,8 +115,5 @@ input {
     margin-top: 10px;
     font-size: 0.8em;
     font-weight: bold;
-}
-.persona {
-  background-image: url('../../assets/Background.png');
 }
 </style>
