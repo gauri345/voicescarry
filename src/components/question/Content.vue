@@ -6,7 +6,7 @@
             <img alt="Persona" src="../../assets/Woman.png"/>
           </div>
           <div class="survey-question-wrapper">
-            <div class="speechbubble left">
+            <div class="speechbubble">
               <div class="question-title">{{ questionTitle }}</div>
               <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>
                 <InformationModal :additional-information="additionalInformation" 
@@ -74,17 +74,26 @@ export default {
 
 .survey-question-container{
   width: 100%;
+  height: 300px;
   margin-top: 2%;
   display: inline-block;
+  overflow: hidden;
+  background-image: url('../../assets/Background.png');
 }
 .center{
   display: flex;
 }
 .survey-persona-wrapper{
   width: 50%;
+  height:100%;
+}
+img{
+  max-height:300px;
 }
 .survey-question-wrapper{
   width: 50%;
+  height:100%;
+  
 }
 
 .speechbubble{
@@ -140,7 +149,7 @@ export default {
 }
 .question-title {
   position: relative;
-  font-size: 24px;
+  font-size: 120%;
   line-height: 28px;
   color: rgba(255, 255, 255, 0.75);
 }

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="triangle-isosceles left">
+    <div class="speechbubble">
         {{ description }}
     </div>
     
@@ -17,48 +17,33 @@ export default {
 </script>
 
 
-<style>
-
-.triangle-isosceles{
+<style scoped>
+.speechbubble{
+  background: #1546A0;
+  border-radius: 10px;
+  display:inline-block;
+  width: 80%;
+  color: rgb(255, 255, 255);
   position: relative;
-  width: 250px;
+  vertical-align: top;
   padding: 15px;
   margin: 20px 0;
-  color: rgb(255, 255, 255);
-  background: linear-gradient(#338bfd, #1477F8);
-  border-radius: 10px;  
+  max-height:100%;
 }
-
-.triangle-isosceles:after{
-  content: "";
+.speechbubble::before{
+  background-color: #1546A0;
+  content: "\00a0";
+  display: block;
+  height:16px;
+  width: 20px;
   position: absolute;
-  bottom: -15px;
-  display:block;
-  width:0;
-  height: 0;
-  
-  border-top: 15px solid #1477F8;
-  
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  
-}
-
-.triangle-isosceles.left{
-  background: #1477F8;
-  margin-left: 250px;
-}
-
-.triangle-isosceles.left:after{
-  top: auto;
-  right: auto;
-  bottom: 15px;
-  left: -20px;
-  
-  border-bottom: 10px solid transparent;
-  border-left: 0;
-  border-right: 25px solid #1477F8;
-  border-top: 10px solid transparent;
+  top:10px;
+  left:-9px;
+  transform:rotate(29deg) skew(-35deg);
+  -moz-transform: rotate(29deg) skew(-35deg);
+  -ms-transform: rotate(29deg) skew(-35deg);
+  -o-transform: rotate(29deg) skew(-35deg);
+  -webkit-transform: rotate(29deg) skew(-35deg);
 }
 
 </style>

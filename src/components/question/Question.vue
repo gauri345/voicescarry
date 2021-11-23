@@ -1,39 +1,41 @@
 <template>
-  <div class="questionTitle">
-    <div class="ShinePrinciple">
-      <span class="material-icons">self_improvement</span>
-      Overall Wellbeing
-    </div>
-  </div>
-  <!-- Question Container -->
-  <div class="question-container" >
-    <Content  :question-title="currentQuestion.questionTitle"
-              :additional-information="currentQuestion.additionalInformation"
-              :question-content="currentQuestion.questionTitle"
-              :question-number="currentQuestion.questionNumber">
-    </Content>
-
-    <!-- The button to navigate between questions goes here -->
-    <div class="navigation-buttons">
-      <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
-        <router-link :to="'/question/' + previousQuestion.questionNumber">
-          <SurveyButton text="Previous" icon1="arrow_backwards">
-          </SurveyButton>
-        </router-link>
-      </div>
-      <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
-        <router-link :to="'/question/' + nextQuestion.questionNumber">
-          <SurveyButton text="Next" icon2="arrow_forwards">
-          </SurveyButton>
-        </router-link>
+  <div class="surveypage">
+    <div class="questionTitle">
+      <div class="ShinePrinciple">
+        <span class="material-icons">self_improvement</span>
+        Overall Wellbeing
       </div>
     </div>
+    <!-- Question Container including voting-->
+    <div class="question-container" >
+      <Content  :question-title="currentQuestion.questionTitle"
+                :additional-information="currentQuestion.additionalInformation"
+                :question-content="currentQuestion.questionTitle"
+                :question-number="currentQuestion.questionNumber">
+      </Content>
 
-    <!-- The progress bar goes here -->
-    <Progress :current-page-number="currentQuestion.questionNumber"></Progress>
+      <!-- The button to navigate between questions goes here -->
+      <div class="navigation-buttons">
+        <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
+          <router-link :to="'/question/' + previousQuestion.questionNumber">
+            <SurveyButton text="Previous" icon1="arrow_backwards">
+            </SurveyButton>
+          </router-link>
+        </div>
+        <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
+          <router-link :to="'/question/' + nextQuestion.questionNumber">
+            <SurveyButton text="Next" icon2="arrow_forwards">
+            </SurveyButton>
+          </router-link>
+        </div>
+      </div>
 
-  </div>
-  <Footer/>
+      <!-- The progress bar goes here -->
+      <Progress :current-page-number="currentQuestion.questionNumber"></Progress>
+
+    </div>
+    <Footer/>
+  </div>  
 </template>
 
 <script>
@@ -68,6 +70,10 @@ export default {
 </script>
 
 <style scoped>
+.surveypage{
+  overflow:hidden;
+}
+
 .navigation-buttons{
   width: 90%;
   display: inline-block;
