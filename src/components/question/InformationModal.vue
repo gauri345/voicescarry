@@ -34,10 +34,12 @@ export default {
 .modal-title {
   font-weight: bold;
   text-align: left;
+  color:black;
 }
 .modal-content {
   font-weight: normal;
   text-align: left;
+  color: black;
 }
 .close {
   border: none;
