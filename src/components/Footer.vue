@@ -35,6 +35,8 @@ export default {
 nav {
     background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
     margin-top: 10px;
+    height: 43px;
+    width: 100%;
 }
 
 a {
@@ -49,6 +51,9 @@ a:visited {
 a:link {
   color:rgba(255, 255, 255, 0.75);
   text-decoration: none;
+}
+.nav-item.nav-link {
+  font-size:90%;
 }
 
 </style>

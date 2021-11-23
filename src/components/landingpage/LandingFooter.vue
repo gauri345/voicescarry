@@ -16,6 +16,7 @@ export default {
 <style scoped>
 nav {
 background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
+margin-top:2%;
 }
 img {
   height: 50px;

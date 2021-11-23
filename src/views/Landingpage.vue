@@ -1,8 +1,9 @@
 <template>
-  <Header/>
-  <h1>Welcome to the Landing Page</h1>
-  <TextField/>
-  <LandingFooter/>
+  <div class="landingpage">
+    <Header/>
+    <TextField/>
+    <LandingFooter/>
+  </div>
 </template>
 
 <script>
@@ -20,3 +21,9 @@
       }
   }
 </script>
+
+<style>
+.landingpage{
+  overflow:hidden;
+}
+</style>
