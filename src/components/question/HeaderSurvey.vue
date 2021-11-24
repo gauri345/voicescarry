@@ -35,10 +35,10 @@ export default {
 
     color: rgba(255, 255, 255, 0.7);
     font-style: normal;
-    font-size: 4vw;
+    font-size: 3vw;
     } 
     .material-icons {
-    font-size: 5vw;
+    font-size: 4vw;
     vertical-align: text-bottom;
     }
 </style>
