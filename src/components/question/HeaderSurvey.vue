@@ -12,7 +12,7 @@ export default {
   name: 'QuestionModal',
   props: {
     questionCategory: String,
-    questionIcon: Element,
+    questionIcon: String,
   }
 }
 </script>
