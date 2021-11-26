@@ -3,7 +3,7 @@
     <div class="questionTitle">
       <div class="ShinePrinciple">
         <span class="material-icons">self_improvement</span>
-        Overall Wellbeing
+        {{currentQuestion.questionCategory}}
       </div>
     </div>
     <!-- Question Container including voting-->

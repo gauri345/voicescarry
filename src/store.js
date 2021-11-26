@@ -23,13 +23,13 @@ const store = {
                 questionNumber: 3,
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "My workload is manageable",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 5"
             },
             {
                 questionNumber: 4,
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "The physical working conditions are good",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 4"
             },
             {
                 questionNumber: 5,
