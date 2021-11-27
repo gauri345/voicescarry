@@ -3,6 +3,7 @@
       <HeaderSurvey :question-category="currentQuestion.questionCategory"
                     :question-icon="currentQuestion.questionIcon">
       </HeaderSurvey>
+
     <!-- Question Container including voting-->
     <div class="question-container" >
       <Content  :question-title="currentQuestion.questionTitle"
