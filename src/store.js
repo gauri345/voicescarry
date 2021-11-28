@@ -147,6 +147,27 @@ const store = {
                 questionTitle: "I have good housing",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
+            {
+                questionNumber: 21,
+                questionIcon: "wc",
+                questionCategory: "General Information",
+                questionTitle: "What is your gender?",
+                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+            },
+            {
+                questionNumber: 22,
+                questionIcon: "date_range",
+                questionCategory: "General Information",
+                questionTitle: "What is yor age?",
+                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+            },
+            {
+                questionNumber: 23,
+                questionIcon: "person_pin",
+                questionCategory: "General Information",
+                questionTitle: "In which position are you working?",
+                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+            },
         ]
     }),
 
