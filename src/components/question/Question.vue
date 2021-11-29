@@ -20,6 +20,13 @@
             </SurveyButton>
           </router-link>
         </div>
+        <div v-if="previousQuestion.questionNumber ==22" class="button-previous">
+            <router-link :to="'/homepage'">
+            <SurveyButton text="Submit" class="submit">
+            </SurveyButton>
+            </router-link>
+        </div>
+
         <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
           <router-link :to="'/question/' + nextQuestion.questionNumber">
             <SurveyButton text="Next" icon2="arrow_forwards">
@@ -42,7 +49,7 @@ import Content from "@/components/question/Content";
 import SurveyButton from "@/components/question/SurveyButton";
 import store from "@/store";
 import Footer from "@/components/Footer";
-import HeaderSurvey from "@/components/question/HeaderSurvey"
+import HeaderSurvey from "@/components/question/HeaderSurvey";
 
 export default {
   name: 'Question',
@@ -91,6 +98,12 @@ export default {
   display: inline-block;
   width: 40%;
   margin-left: 2%;
+}
+.submit {
+  display: inline-block;
+  width: 100%;
+  margin-left: 2%;
+  background: red;
 }
 
 </style>
