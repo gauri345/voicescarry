@@ -20,9 +20,10 @@
             </SurveyButton>
           </router-link>
         </div>
-        <div v-if="previousQuestion.questionNumber ==23" class="button-previous">
-            <SurveyButton text="Submit" class="submit">
-            </SurveyButton>
+        <div v-if="previousQuestion.questionNumber ==23" class="button-previous" data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
+            <FinishModal :additional-information="additionalInformation" 
+                                  :question-content="questionContent"/>
+            <SurveyButton text="Submit" class="submit"></SurveyButton>
         </div>
 
         <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
@@ -48,6 +49,7 @@ import SurveyButton from "@/components/question/SurveyButton";
 import store from "@/store";
 import Footer from "@/components/Footer";
 import HeaderSurvey from "@/components/question/HeaderSurvey";
+import FinishModal from "@/components/question/FinishModal";
 
 
 export default {
@@ -57,7 +59,8 @@ export default {
     SurveyButton,
     Progress,
     Footer,
-    HeaderSurvey
+    HeaderSurvey,
+    FinishModal
   },
 
   data: function () {
