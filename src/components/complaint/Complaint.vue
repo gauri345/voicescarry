@@ -1,6 +1,5 @@
 <template>
-    <Header HeaderText="Project 'Measuring Employee Wellbeing'"/>
-    <h1>This is the complaint page </h1>
+    <Header HeaderIcon="assignment_late" HeaderText="Complaint"/>
     <p> Click on the button to report a complaint directly to an independent partner of Vaude. 
         For more information, visit this link: 
         <a href="https://csr-report.vaude.com/gri-en/social/complaints-system.php">Fair Wear Complaint Helpline</a> 
