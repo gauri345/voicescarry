@@ -10,8 +10,12 @@ import messages from './lang';
 import {createI18n} from "vue-i18n";
 
 export const i18n = createI18n({
-    legacy: false, locale: 'en', fallbackLocale: 'en', globalInjection: true, messages: messages
+    locale: 'en',
+    fallbackLocale: 'en',
+    globalInjection: true,
+    messages: messages
 });
+
 
 createApp(App)
     .use(router)

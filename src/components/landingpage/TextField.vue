@@ -17,7 +17,7 @@
       <input type="code" v-model="code" required>
       <div v-if="codeError" class="error">{{ codeError }}</div>
       <div class="submit">
-        <router-link to="/homepage">
+        <router-link to="'/' + $i18n.locale + '/homepage">
         <GeneralButton text="Enter the survey"/>
         </router-link>
       </div>

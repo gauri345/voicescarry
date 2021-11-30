@@ -2,19 +2,19 @@
     <nav class="navbar justify-content-center navbar-expand fixed-bottom navbar-dark bg-primary">
             <div class="navbar-nav">
                     <a class="nav-item nav-link">
-                      <router-link to="/homepage">
+                      <router-link to="/en/homepage">
                         <span class= "material-icons">home</span>
                         Home
                       </router-link>
                     </a>
                     <a class="nav-item nav-link">
-                      <router-link to="/question/1">
+                      <router-link to="/en/question/1">
                         <span class= "material-icons">assignment</span>
                         Survey
                       </router-link>
                     </a>
                     <a class="nav-item nav-link">
-                      <router-link to="/complaint">
+                      <router-link to="/en/complaint">
                       <span class= "material-icons">assignment_late</span>
                       Complaint 
                       </router-link>
