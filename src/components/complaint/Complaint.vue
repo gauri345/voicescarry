@@ -1,7 +1,13 @@
 <template>
-    <Header/>
+    <Header HeaderText="Project 'Measuring Employee Wellbeing'"/>
     <h1>This is the complaint page </h1>
-    <GeneralButton onclick=" window.open('http://www.vaude.de','_blank')" text="Go to the Complaint System of Vaude"/>
+    <p> Click on the button to report a complaint directly to an independent partner of Vaude. 
+        For more information, visit this link: 
+        <a href="https://csr-report.vaude.com/gri-en/social/complaints-system.php">Fair Wear Complaint Helpline</a> 
+    </p>
+    <div class=buttonwrapper>
+      <GeneralButton onclick=" window.open('http://www.vaude.de','_blank')" text="Go to the Complaint System of Vaude"/>
+    </div>
     <Footer/>
 </template>
 
@@ -19,4 +25,12 @@ export default {
       }
 }
 </script>
+
+<style scoped>
+.buttonwrapper {
+    width:80%;
+    display: inline-block;
+}
+
+</style>
 
