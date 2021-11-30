@@ -1,10 +1,8 @@
 <template>
   <div class="landingpage">
 
-    {{$t('message')}}
-
     <LanguageSwitcher/>
-    <Header HeaderText="Project 'Measuring Employee Wellbeing'"/>
+    <Header :HeaderText="$t('headerText')"/>
     <TextField/>
     <LandingFooter/>
   </div>
