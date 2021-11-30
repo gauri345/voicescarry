@@ -49,7 +49,12 @@
       <option value="worker">Worker</option>
       <option value="manager">Manager</option>
     </select>
-  </div> 
+  </div>
+
+  <div v-else-if="questionNumber == 24" class="question-answers">
+    <textarea class="textfield">
+    </textarea>
+  </div>
 
 </template>
 
@@ -210,15 +215,26 @@ img{
   margin-right: 2%;
   cursor: pointer;
 }
-  select {
+select {
+  display: center;
+  height: 50px;
+  padding: 10px 6px;
+  width: 80%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+.textfield {
     display: center;
-    height: 50px;
-    padding: 10px 6px;
+    padding: 10px 6px;  
     width: 80%;
+    height: 100px;
+    font-size: 14px;
+    background: #FFFFFF;
+    border: 1px solid rgba(36, 54, 86, 0.3);
     box-sizing: border-box;
-    border: none;
-    border-bottom: 1px solid #ddd;
-    color: #555;
-  }
+    border-radius: 20px;
+}
 
 </style>

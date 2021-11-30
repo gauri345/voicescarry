@@ -168,6 +168,13 @@ const store = {
                 questionTitle: "In which position are you working?",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
+            {
+                questionNumber: 24,
+                questionIcon: "person_pin",
+                questionCategory: "General Information",
+                questionTitle: "Do you have any other feedback which you want to provide?",
+                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+            },
         ]
     }),
 

@@ -4,7 +4,6 @@ import LandingPage from '@/views/Landingpage';
 import HomePage from "@/views/Homepage";
 import Question from "@/components/question/Question";
 import Complaint from "@/components/complaint/Complaint";
-import Language from "@/components/question/QuestionForm";
 
 const routes = [
     {
@@ -27,11 +26,6 @@ const routes = [
         name: "Complaint",
         component: Complaint
     },
-    {
-        path: "/language",
-        name: "Language",
-        component: Language
-    }
 
 ];
 

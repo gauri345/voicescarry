@@ -20,10 +20,8 @@
                       </router-link>
                     </a>
                     <a class="nav-item nav-link">
-                      <router-link to="/language">
                       <span class= "material-icons">language</span>
                       Language
-                      </router-link>
                     </a>
             </div>
     </nav>

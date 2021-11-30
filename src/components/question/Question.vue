@@ -20,11 +20,9 @@
             </SurveyButton>
           </router-link>
         </div>
-        <div v-if="previousQuestion.questionNumber ==22" class="button-previous">
-            <router-link :to="'/homepage'">
+        <div v-if="previousQuestion.questionNumber ==23" class="button-previous">
             <SurveyButton text="Submit" class="submit">
             </SurveyButton>
-            </router-link>
         </div>
 
         <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
@@ -51,6 +49,7 @@ import store from "@/store";
 import Footer from "@/components/Footer";
 import HeaderSurvey from "@/components/question/HeaderSurvey";
 
+
 export default {
   name: 'Question',
   components: {
@@ -74,7 +73,7 @@ export default {
   beforeCreate: function () {
     store.clearSelectedQuestions();
     store.setQuestionsAction(parseInt(this.$route.params.number));
-  }
+  },
 }
 </script>
 
@@ -103,7 +102,7 @@ export default {
   display: inline-block;
   width: 100%;
   margin-left: 2%;
-  background: red;
+  background: #4EB562;
 }
 
 </style>
