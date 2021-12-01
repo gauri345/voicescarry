@@ -20,7 +20,7 @@
 
   <router-link to="/complaint">
     <div class="navigation-buttons">
-      <GeneralButton icon="assignment_late" text="Report a complaint"></GeneralButton>
+      <GeneralButton icon="assignment_late" :text="$t('homepage_report_complaint')"></GeneralButton>
     </div>
   </router-link>
 

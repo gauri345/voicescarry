@@ -2,7 +2,7 @@
   <div class="locale-changer">
     <select v-model="$i18n.locale" @change="changeLanguage">
       <option value="vi" :selected="$i18n.locale === 'vi'">🇻🇳</option>
-      <option value="en" :selected="$i18n.locale === 'en'">🇬🇧</option>
+      <option value="en" :selected="$i18n.locale === 'en'">en</option>
     </select>
   </div>
 </template>
