@@ -1,14 +1,8 @@
 <template>
   <div>
-    &nbsp;
-    <a href="#" class="btn btn-outline-info lang-button">EN</a>
+    <a href="#" class="btn btn-outline-info lang-button" @click="changeLanguage">EN</a>
     |
-    <a class="btn btn-outline-info lang-button">VI</a>
-
-    <!--<select v-model="$i18n.locale" @change="changeLanguage">
-      <option value="vi" :selected="$i18n.locale === 'vi'">🇻🇳</option>
-      <option value="en" :selected="$i18n.locale === 'en'">en</option>
-    </select> -->
+    <a class="btn btn-outline-info lang-button" @click="changeLanguage">VI</a>
   </div>
 </template>
 <script>
@@ -19,7 +13,9 @@ export default {
   components: {},
   methods: {
     changeLanguage(event) {
-      localStorage.setItem('language', event.target.value)
+      const locale = event.target.innerHTML.toLocaleLowerCase();
+      this.$i18n.locale = locale;
+      localStorage.setItem('language', locale)
     }
   }
 };
