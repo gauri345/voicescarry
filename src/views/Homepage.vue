@@ -70,7 +70,6 @@ export default {
   width: fit-content;
   margin: auto;
   color: white;
-
 }
 
 .navigation-buttons {
