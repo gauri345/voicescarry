@@ -14,7 +14,7 @@
 
   <router-link to="/question/1">
     <div class="navigation-buttons">
-      <GeneralButton icon="assignment" text="Start Survey"></GeneralButton>
+      <GeneralButton icon="assignment" :text="$t('homepage_start_survey')"></GeneralButton>
     </div>
   </router-link>
 

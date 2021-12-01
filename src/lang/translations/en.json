@@ -7,5 +7,6 @@
   "homepage_welcome": "Welcome!",
   "homepage_entered_message": "You’ve successfully entered this survey.",
   "homepage_feature_message": "We have two features in this page, Survey and Complaints.",
-  "homepage_info_message": "If you want know more about the survey, please click on the info icon below."
+  "homepage_info_message": "If you want know more about the survey, please click on the info icon below.",
+  "homepage_start_survey": "Start Survey"
 }
