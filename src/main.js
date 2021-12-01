@@ -5,17 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import router from './router'
 
-import messages from './lang';
-
-import {createI18n} from "vue-i18n";
-
-export const i18n = createI18n({
-    locale: 'en',
-    fallbackLocale: 'en',
-    globalInjection: true,
-    messages: messages
-});
-
+import i18n from './lang';
 
 createApp(App)
     .use(router)

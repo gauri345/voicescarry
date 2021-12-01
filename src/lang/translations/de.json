@@ -1,8 +1,0 @@
-{
-  "message": "Hallo",
-  "headerText": "Projekt 'Messung des Wohlbefindens der Mitarbeiter'",
-  "speechBubbleName": "Hallo! Mein Name ist... Ich werde dir helfen.",
-  "speechBubbleQR": "Um an der Umfrage teilzunehmen, geben Sie bitte Ihren Fabrikcode ein oder greifen Sie auf den QR-Code zu.",
-  "labelFactoryCode": "Fabrikcode:",
-  "generalButtonStartSurvey": "Geben Sie die Umfrage ein"
-}

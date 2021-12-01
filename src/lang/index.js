@@ -1,7 +1,14 @@
-import de from './translations/de';
+import vi from './translations/vi';
 import en from './translations/en';
 
-export default {
-    de,
-    en
-};
+import {createI18n} from "vue-i18n/index";
+
+export default createI18n({
+    locale: localStorage.getItem('language'),
+    fallbackLocale: 'en',
+    globalInjection: true,
+    messages: {
+        vi,
+        en
+    }
+});

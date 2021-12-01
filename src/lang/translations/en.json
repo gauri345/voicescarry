@@ -1,8 +1,11 @@
 {
-  "message": "Hello",
   "headerText": "Project 'Measuring Employee Wellbeing'",
   "speechBubbleName": "Hi! My name is... I will help you.",
   "speechBubbleQR": "To enter the survey, please type your factory code or access via QR code.",
   "labelFactoryCode": "Factory code:",
-  "generalButtonStartSurvey": "Enter the survey"
+  "generalButtonStartSurvey": "Enter the survey",
+  "homepage_welcome": "Welcome!",
+  "homepage_entered_message": "You’ve successfully entered this survey.",
+  "homepage_feature_message": "We have two features in this page, Survey and Complaints.",
+  "homepage_info_message": "If you want know more about the survey, please click on the info icon below."
 }

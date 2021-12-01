@@ -2,31 +2,40 @@
     <nav class="navbar justify-content-center navbar-expand fixed-bottom navbar-dark bg-primary">
             <div class="navbar-nav">
                     <a class="nav-item nav-link">
-                      <router-link to="/en/homepage">
+                      <router-link to="/">
                         <span class= "material-icons">home</span>
                         Home
                       </router-link>
                     </a>
                     <a class="nav-item nav-link">
-                      <router-link to="/en/question/1">
+                      <router-link to="/question/1">
                         <span class= "material-icons">assignment</span>
                         Survey
                       </router-link>
                     </a>
                     <a class="nav-item nav-link">
-                      <router-link to="/en/complaint">
+                      <router-link to="/complaint">
                       <span class= "material-icons">assignment_late</span>
                       Complaint 
                       </router-link>
                     </a>
-                    <a class="nav-item nav-link" href="#"><span class= "material-icons">language</span>Language</a>
+                    <a class="nav-item nav-link" href="#">
+                      <LanguageSwitcher />
+                      <!-- <span class= "material-icons">language</span> -->
+                      Language
+                    </a>
             </div>
     </nav>
 </template>
 
 <script>
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  components: {
+    LanguageSwitcher
+  }
 }
 
 </script>

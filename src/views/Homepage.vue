@@ -1,91 +1,84 @@
 <template>
-    
+
   <Header>
-      <div class="div-vertical">
-        <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/homepagewoman.png" /></div>
-        <div class="div-top-txt"><br> {{ hpwelcome  }} <br><br> {{ hpenter  }}<br><br> {{ hpfeature  }} <br><br> {{ hpinfo  }} </div>
+    <div class="div-vertical">
+      <div class="div-top-img"><img alt="top image" class="img-top" src="@/assets/homepagewoman.png"/></div>
+      <div class="div-top-txt">
+        <br>{{ $t('homepage_welcome') }}<br>
+        <br> {{ $t('homepage_entered_message') }}<br>
+        <br> {{ $t('homepage_feature_message') }}<br>
+        <br> {{ $t('homepage_info_message') }}
       </div>
+    </div>
   </Header>
 
-   <router-link to="/question/1">
+  <router-link to="/question/1">
     <div class="navigation-buttons">
-        <GeneralButton text="Start Survey" icon="assignment"></GeneralButton>
+      <GeneralButton icon="assignment" text="Start Survey"></GeneralButton>
     </div>
-    </router-link>
+  </router-link>
 
-    <router-link to="/complaint">
+  <router-link to="/complaint">
     <div class="navigation-buttons">
-        <GeneralButton text="Report a complaint" icon="assignment_late"></GeneralButton>
+      <GeneralButton icon="assignment_late" text="Report a complaint"></GeneralButton>
     </div>
-    </router-link>
+  </router-link>
 
-     <!-- The Footer bar goes here -->
-    <div class="footer">
-      <Footer/>
-    </div>
+  <!-- The Footer bar goes here -->
+  <div class="footer">
+    <Footer/>
+  </div>
 
-  
+
 </template>
 
 
 <script>
-  import GeneralButton from "@/components/GeneralButton";
-  import Footer from "@/components/Footer"
-  import Header from "@/components/Header";
- 
+import GeneralButton from "@/components/GeneralButton";
+import Footer from "@/components/Footer"
+import Header from "@/components/Header";
 
-  
-  export default {
-    name: "Homepage",
-    props: {
-    hpwelcome: {
-    type: String,
-    default: "Welcome!" },
-    hpenter: {
-    type: String,
-    default: "You’ve successfully entered this survey." },
-    hpfeature: {
-    type: String,
-    default: "We have two features in this page, Survey and Complaints." },
-    hpinfo: {
-    type: String,
-    default: "If you want know more about the survey, please click on the info icon below."}
-  },
-    components: {GeneralButton, 
+
+export default {
+  name: "Homepage",
+  components: {
+    GeneralButton,
     Header,
     Footer,
-    }
   }
+}
 </script>
 
 <style scoped>
 .img-top {
-width: 50%;
-shape-outside: circle(10%);
-border-radius: 10%;
-vertical-align: top;
+  width: 50%;
+  shape-outside: circle(10%);
+  border-radius: 10%;
+  vertical-align: top;
 }
 
-.div-top-txt{
+.div-top-txt {
   /*float:center;*/
-  display:inline-block;
+  display: inline-block;
 }
 
-.div-top-img{
-  float:left;
+.div-top-img {
+  float: left;
 }
 
-.div-vertical{
+.div-vertical {
   width: fit-content;
   margin: auto;
   color: white;
 
 }
-.navigation-buttons{
+
+.navigation-buttons {
   width: 80%;
   display: inline-block;
 }
-.btn{
+
+.btn {
   margin-top: 5%;
 }
 

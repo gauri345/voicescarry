@@ -22,10 +22,6 @@ export default {
     Header,
     TextField,
     LanguageSwitcher
-  },
-  data() {
-    console.log(this.$i18n.locale)
-
   }
 }
 </script>
