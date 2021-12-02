@@ -5,6 +5,8 @@ import HomePage from "@/views/Homepage";
 import Question from "@/components/question/Question";
 import Complaint from "@/components/complaint/Complaint";
 
+import i18n from '../lang';
+
 const routes = [
     {
         path: "/",
@@ -25,13 +27,16 @@ const routes = [
         path: "/complaint",
         name: "Complaint",
         component: Complaint
-    },
-
+    }
 ];
 
 const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
-    routes
+    history: createWebHistory(process.env.BASE_URL), routes
 });
+
+router.beforeEach((to, from, next) => {
+    i18n.locale = localStorage.getItem('language') || 'en'
+    return next()
+})
 
 export default router;

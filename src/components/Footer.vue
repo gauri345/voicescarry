@@ -2,7 +2,7 @@
     <nav class="navbar justify-content-center navbar-expand fixed-bottom navbar-dark bg-primary">
             <div class="navbar-nav">
                     <a class="nav-item nav-link">
-                      <router-link to="/homepage">
+                      <router-link to="/">
                         <span class= "material-icons">home</span>
                         Home
                       </router-link>
@@ -16,20 +16,25 @@
                     <a class="nav-item nav-link">
                       <router-link to="/complaint">
                       <span class= "material-icons">assignment_late</span>
-                      Complaint 
+                      Complaint
                       </router-link>
                     </a>
-                    <a class="nav-item nav-link">
-                      <span class= "material-icons">language</span>
-                      Language
+                    <a class="nav-item nav-link" href="#">
+                      <LanguageSwitcher />
                     </a>
+
             </div>
     </nav>
 </template>
 
 <script>
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  components: {
+    LanguageSwitcher
+  }
 }
 
 </script>
@@ -58,5 +63,7 @@ a:link {
 .nav-item.nav-link {
   font-size:90%;
 }
+
+
 
 </style>

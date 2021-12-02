@@ -1,0 +1,14 @@
+{
+  "headerText": "Dự án 'Đo lường phúc lợi của nhân viên'",
+  "speechBubbleName": "Chào! Tên tôi là ... Tôi sẽ giúp bạn.",
+  "speechBubbleQR": "Để tham gia khảo sát, vui lòng nhập mã nhà máy của bạn hoặc truy cập qua mã QR.",
+  "labelFactoryCode": "Mã nhà máy:",
+  "generalButtonStartSurvey": "Nhập cuộc khảo sát",
+  "homepage_welcome": "Chào mừng!",
+  "homepage_entered_message": "Bạn đã tham gia cuộc khảo sát này thành công.",
+  "homepage_feature_message": "Chúng tôi có hai tính năng trong trang này, Khảo sát và Khiếu nại.",
+  "homepage_info_message": "Nếu bạn muốn biết thêm về cuộc khảo sát, vui lòng nhấp vào biểu tượng thông tin bên dưới.",
+  "homepage_start_survey": "Bắt đầu khảo sát",
+  "homepage_report_complaint": "Báo cáo khiếu nại"
+
+}
