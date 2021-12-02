@@ -3,9 +3,10 @@
     <div class="picture-wrapper">
       <img alt="Uni Mannheim" src="../../assets/Logo_UMA_EN_Weiss.png" class="uni-logo"/>
       <img alt="Vaude" src="../../assets/image-removebg-preview.png" class="vaude-logo"/>
-      <div class="language-changer">
+    </div>
+
+    <div class="language-changer">
         <LanguageSwitcher/>
-      </div>
     </div>
   </nav>
 </template>
@@ -28,32 +29,29 @@ nav {
 }
 
 img {
-  height: 50px;
-}
-
-.picture-wrapper {
-  width: 100%;
-  text-align: left;
+  height: 30px;
 }
 
 .uni-logo {
-  height: 50px;
+  height: 30px;
   border-right: 1px solid #FFFFFF;
   padding-right: 10px;
+  vertical-align: center;
+
 }
 
 .vaude-logo {
-  height: 100px;
+  height: 45px;
   padding-left: 10px;
-  vertical-align: bottom;
+  vertical-align: center;
   bottom: -20px;
-  position: absolute;
+
 }
 
 .language-changer {
-  position: absolute;
-  top: 20px;
-  right: 30px;
+  position: relative;
+  display: flex;
+  vertical-align: center;
 }
 
 

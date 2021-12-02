@@ -2,7 +2,7 @@
     <nav class="navbar justify-content-center navbar-expand fixed-bottom navbar-dark bg-primary">
             <div class="navbar-nav">
                     <a class="nav-item nav-link">
-                      <router-link to="/">
+                      <router-link to="/homepage">
                         <span class= "material-icons">home</span>
                         Home
                       </router-link>
@@ -20,7 +20,9 @@
                       </router-link>
                     </a>
                     <a class="nav-item nav-link" href="#">
+                      <div>
                       <LanguageSwitcher />
+                      </div>
                     </a>
 
             </div>
@@ -61,9 +63,7 @@ a:link {
   text-decoration: none;
 }
 .nav-item.nav-link {
+  display: flex;
   font-size:90%;
 }
-
-
-
 </style>
