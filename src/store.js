@@ -23,91 +23,91 @@ const store = {
             },
             {
                 questionNumber: 3,
-                questionIcon: "engineering",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "My workload is manageable",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 5"
             },
             {
                 questionNumber: 4,
-                questionIcon: "psychology",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "The physical working conditions are good",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 4"
             },
             {
                 questionNumber: 5,
-                questionIcon: "health_and_safety",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I feel that my job is secure",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 6,
-                questionIcon: "monitor_heart",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I feel that my job is meaningful in my life",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 7,
-                questionIcon: "enhanced_encryption",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "My work environment is safe",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 8,
-                questionIcon: "groups",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I feel that I am part of a team",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 9,
-                questionIcon: "emoji_emotions",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I feel that I have a good work-life balance",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 10,
-                questionIcon: "star",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I understand what is expected from me at work",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 11,
-                questionIcon: "paid",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I receive a fair wage",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 12,
-                questionIcon: "school",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "At work, I have the opportunity to learn new skills",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 13,
-                questionIcon: "warning",
+                questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I have NEVER experienced abuse at work (e.g., being insulted or sexually harassed)",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 14,
-                questionIcon: "battery_charging_full",
+                questionIcon: "person",
                 questionCategory: "Work Engagement",
                 questionTitle: "At my work, I feel bursting with energy",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 15,
-                questionIcon: "moving",
+                questionIcon: "person",
                 questionCategory: "Work Engagement",
                 questionTitle: "I am enthusiastic about my job",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
@@ -128,35 +128,35 @@ const store = {
             },
             {
                 questionNumber: 18,
-                questionIcon: "restaurant_menu",
+                questionIcon: "wb_sunny",
                 questionCategory: "Multidimensional Poverty",
                 questionTitle: "I am able to eat healthy food at work",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 19,
-                questionIcon: "water_drop",
+                questionIcon: "wb_sunny",
                 questionCategory: "Multidimensional Poverty",
                 questionTitle: "I have access to clean and sufficient drinking water at work",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 20,
-                questionIcon: "apartment",
+                questionIcon: "wb_sunny",
                 questionCategory: "Multidimensional Poverty",
                 questionTitle: "I have good housing",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 21,
-                questionIcon: "wc",
+                questionIcon: "person_pin",
                 questionCategory: "General Information",
                 questionTitle: "What is your gender?",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
             },
             {
                 questionNumber: 22,
-                questionIcon: "date_range",
+                questionIcon: "person_pin",
                 questionCategory: "General Information",
                 questionTitle: "What is yor age?",
                 additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
