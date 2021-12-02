@@ -19,7 +19,10 @@
                       Complaint 
                       </router-link>
                     </a>
-                    <a class="nav-item nav-link" href="#"><span class= "material-icons">language</span>Language</a>
+                    <a class="nav-item nav-link">
+                      <span class= "material-icons">language</span>
+                      Language
+                    </a>
             </div>
     </nav>
 </template>
