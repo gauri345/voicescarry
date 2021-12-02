@@ -16,13 +16,44 @@
           </div> 
     </div>
   </div>
-
-  <div class="question-answers">
+   
+  <div v-if="questionNumber <= 20" class="question-answers">
     <span class="material-icons very_dissatisfied" @click="answer('very dissatisfied')">sentiment_very_dissatisfied</span>
     <span class="material-icons dissatisfied" @click="answer('dissatisfied')">sentiment_dissatisfied</span>
     <span class="material-icons neutral" @click="answer('neutral')">sentiment_neutral</span>
     <span class="material-icons satisfied" @click="answer('satisfied')">sentiment_satisfied</span>
     <span class="material-icons very_satisfied" @click="answer('very satisfied')">sentiment_very_satisfied</span>
+  </div>
+
+  <div v-else-if="questionNumber == 21" class="question-answers">
+     <select v-model="gender">
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+    </select>
+  </div>
+
+  <div v-else-if="questionNumber == 22" class="question-answers">
+    <select v-model="age">
+      <option value="twentyoryounger">20 or younger</option>
+      <option value="twentyonethirty">21 - 30</option>
+      <option value="thirtyonefourty">31 - 40</option>
+      <option value="fourtyonefifty">41 - 50</option>
+      <option value="fiftyonesixty">51 - 60</option>
+      <option value="sixtyoneseventy">61 - 70</option>
+      <option value="seventyorolder">71 or older</option>
+    </select>
+  </div>
+
+  <div v-else-if="questionNumber == 23" class="question-answers">
+    <select v-model="position">
+      <option value="worker">Worker</option>
+      <option value="manager">Manager</option>
+    </select>
+  </div>
+
+  <div v-else-if="questionNumber == 24" class="question-answers">
+    <textarea class="textfield">
+    </textarea>
   </div>
 
 </template>
@@ -37,6 +68,13 @@ export default {
     questionNumber: Number,
     questionContent: String,
     additionalInformation: String
+  },
+   data() {
+    return {
+      gender: 'female',
+      age: 'twentyoryounger',
+      position: 'worker',
+    }
   },
   components: {
     InformationModal
@@ -176,6 +214,27 @@ img{
   color: #F44209;
   margin-right: 2%;
   cursor: pointer;
+}
+select {
+  display: center;
+  height: 50px;
+  padding: 10px 6px;
+  width: 80%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+.textfield {
+    display: center;
+    padding: 10px 6px;  
+    width: 80%;
+    height: 100px;
+    font-size: 14px;
+    background: #FFFFFF;
+    border: 1px solid rgba(36, 54, 86, 0.3);
+    box-sizing: border-box;
+    border-radius: 20px;
 }
 
 </style>
