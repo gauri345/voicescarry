@@ -20,9 +20,9 @@
                       </router-link>
                     </a>
                     <a class="nav-item nav-link" href="#">
-                      <span class= "material-icons">language</span>
                       <LanguageSwitcher />
                     </a>
+
             </div>
     </nav>
 </template>
@@ -63,5 +63,7 @@ a:link {
 .nav-item.nav-link {
   font-size:90%;
 }
+
+
 
 </style>

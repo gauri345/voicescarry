@@ -1,7 +1,6 @@
 <template>
   <div class="landingpage">
 
-    <LanguageSwitcher/>
     <Header :HeaderText="$t('headerText')"/>
     <TextField/>
     <LandingFooter/>
@@ -10,7 +9,6 @@
 
 <script>
 
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import LandingFooter from "@/components/landingpage/LandingFooter.vue"
 import Header from "@/components/Header";
 import TextField from "@/components/landingpage/TextField"
@@ -20,8 +18,7 @@ export default {
   components: {
     LandingFooter,
     Header,
-    TextField,
-    LanguageSwitcher
+    TextField
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <a href="#" class="btn btn-outline-info lang-button" @click="changeLanguage">EN</a>
-    |
+    <span class="material-icons">language</span>
+    <a href="#" class="btn btn-outline-info lang-button lang-button-first" @click="changeLanguage">EN</a>
     <a class="btn btn-outline-info lang-button" @click="changeLanguage">VI</a>
   </div>
 </template>
@@ -42,4 +42,18 @@ export default {
 .btn-outline-info:hover {
   background: none;
 }
+
+.material-icons {
+  vertical-align: bottom;
+  padding-right: 5px;
+  color: #FFFFFF;
+}
+
+.lang-button-first{
+  border-right: 1px solid #FFFFFF;
+  border-radius: 0;
+  padding-right: 7px;
+  margin-right: 7px;
+}
+
 </style>
