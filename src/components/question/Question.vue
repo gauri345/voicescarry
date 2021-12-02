@@ -20,6 +20,12 @@
             </SurveyButton>
           </router-link>
         </div>
+        <div v-if="previousQuestion.questionNumber ==23" class="button-previous" data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
+            <FinishModal :additional-information="additionalInformation" 
+                                  :question-content="questionContent"/>
+            <SurveyButton text="Submit" class="submit"></SurveyButton>
+        </div>
+
         <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
           <router-link :to="'/question/' + nextQuestion.questionNumber">
             <SurveyButton text="Next" icon2="arrow_forwards">
@@ -42,7 +48,9 @@ import Content from "@/components/question/Content";
 import SurveyButton from "@/components/question/SurveyButton";
 import store from "@/store";
 import Footer from "@/components/Footer";
-import HeaderSurvey from "@/components/question/HeaderSurvey"
+import HeaderSurvey from "@/components/question/HeaderSurvey";
+import FinishModal from "@/components/question/FinishModal";
+
 
 export default {
   name: 'Question',
@@ -51,7 +59,8 @@ export default {
     SurveyButton,
     Progress,
     Footer,
-    HeaderSurvey
+    HeaderSurvey,
+    FinishModal
   },
 
   data: function () {
@@ -67,7 +76,7 @@ export default {
   beforeCreate: function () {
     store.clearSelectedQuestions();
     store.setQuestionsAction(parseInt(this.$route.params.number));
-  }
+  },
 }
 </script>
 
@@ -91,6 +100,12 @@ export default {
   display: inline-block;
   width: 40%;
   margin-left: 2%;
+}
+.submit {
+  display: inline-block;
+  width: 100%;
+  margin-left: 2%;
+  background: #4EB562;
 }
 
 </style>
