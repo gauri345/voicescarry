@@ -50,6 +50,8 @@ export default {
 .btn {
     background: #4EB562;
     border-color: #4EB562;
+    width: 150px;
+    height: 50px;
 }
 .close {
   border: none;
