@@ -38,7 +38,7 @@ font-size: 24px;
 }
 
 .material-icons {
-font-size: 4vw;
+font-size: 35px;
 vertical-align: text-bottom;
 }
   
