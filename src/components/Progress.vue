@@ -36,8 +36,7 @@ export default {
 <style scoped>
 
 .progress-container {
-  margin-top: 5%;
-  margin-bottom: 10%;
+  margin-bottom: 2%;
 }
 
 .current-page-number {
