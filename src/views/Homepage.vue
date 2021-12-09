@@ -75,6 +75,7 @@ export default {
 
 .audio {
   font-size: 33px;
+  cursor: pointer;
 }
 
 .img-top {
