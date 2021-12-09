@@ -50,7 +50,6 @@ export default {
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  padding: 0 5px;
   display: flex;
   height: 30px;
   width: 99%;
