@@ -173,7 +173,7 @@ img{
 }
 .material-icons{
   font-size:48px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255);
 }
 .question-content {
   margin-top: 2%;
@@ -189,7 +189,7 @@ img{
   position: relative;
   font-size: 120%;
   line-height: 28px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255);
 }
 .material-icons.very_satisfied {
   color: #1f7500;

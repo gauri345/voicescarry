@@ -27,7 +27,7 @@ export default {
   position: relative;
   vertical-align: top;
   padding: 15px;
-  margin: 20px 0;
+  margin-top: 15px;
   max-height:100%;
 }
 .speechbubble::before{

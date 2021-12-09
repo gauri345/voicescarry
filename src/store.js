@@ -95,7 +95,7 @@ const store = {
                 questionNumber: 13,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
-                questionTitle: "I have NEVER experienced abuse at work (e.g., being insulted or sexually harassed)",
+                questionTitle: "I have NEVER experienced abuse at work (e.g., being insulted)",
                 additionalInformation: "I feel emotionally and physically safe at work. No one makes me feel uncomfortable, yells at me, threatens me, or touches me in inappropriate ways."
             },
             {
