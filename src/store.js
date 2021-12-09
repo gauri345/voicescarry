@@ -12,168 +12,168 @@ const store = {
                 questionIcon: "self_improvement",
                 questionCategory: "Overall Wellbeing",
                 questionTitle: "I am doing well at work",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 1"
+                additionalInformation: "No explanation needed"
             },
             {
                 questionNumber: 2,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "My employer ist taking care of me",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "I feel that my employer treats me fairly. I feel supported by my supervisors and managers. There are protocols in place to keep me physically and mentally safe."
             },
             {
                 questionNumber: 3,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "My workload is manageable",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 5"
+                additionalInformation: "I have enough time to do my work properly, with a bearable level of stress and enough time to rest."
             },
             {
                 questionNumber: 4,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "The physical working conditions are good",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 4"
+                additionalInformation: "The temperature where I work is moderate — not overly hot or cold. My work space is well ventilated. It is not overly noisy (considering my job environment). I may sit, stand, or move in relatively comfortable ways in order to do my job."
             },
             {
                 questionNumber: 5,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I feel that my job is secure",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "I feel that my employment status is not in danger."
             },
             {
                 questionNumber: 6,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I feel that my job is meaningful in my life",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "I value having my job. It gives me a sense of accomplishment or satisfaction."
             },
             {
                 questionNumber: 7,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "My work environment is safe",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "Dangerous machines are checked for safety regularly. I have access to healthy food, drinking water, and medical care at my place of work. I have adequate protective equipment. My managers and colleagues follow Covid-19 safety regulations."
             },
             {
                 questionNumber: 8,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I feel that I am part of a team",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "I can count on my co-workers and supervisors to get the work done and manage stressful situations well."
             },
             {
                 questionNumber: 9,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I feel that I have a good work-life balance",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "It is easy to take time off from work for personal matters. Work does not disrupt my family time."
             },
             {
                 questionNumber: 10,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I understand what is expected from me at work",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "I have a sense of control over how I do my work and my job schedule."
             },
             {
                 questionNumber: 11,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I receive a fair wage",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "I feel that I receive a fair wage for my work and time. I am paid on time. No wages are kept from me. If I work overtime, I am paid for overtime."
             },
             {
                 questionNumber: 12,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "At work, I have the opportunity to learn new skills",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "My company offers me opportunities to develop and advance my career."
             },
             {
                 questionNumber: 13,
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "I have NEVER experienced abuse at work (e.g., being insulted or sexually harassed)",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "I feel emotionally and physically safe at work. No one makes me feel uncomfortable, yells at me, threatens me, or touches me in inappropriate ways."
             },
             {
                 questionNumber: 14,
                 questionIcon: "person",
                 questionCategory: "Work Engagement",
                 questionTitle: "At my work, I feel bursting with energy",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "I feel motivated by my work."
             },
             {
                 questionNumber: 15,
                 questionIcon: "person",
                 questionCategory: "Work Engagement",
                 questionTitle: "I am enthusiastic about my job",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "/"
             },
             {
                 questionNumber: 16,
                 questionIcon: "person",
                 questionCategory: "Work Engagement",
                 questionTitle: "I am proud of the work that I do",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "/"
             },
             {
                 questionNumber: 17,
                 questionIcon: "wb_sunny",
                 questionCategory: "Multidimensional Poverty",
                 questionTitle: "I feel healthy at work in general",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "/"
             },
             {
                 questionNumber: 18,
                 questionIcon: "wb_sunny",
                 questionCategory: "Multidimensional Poverty",
                 questionTitle: "I am able to eat healthy food at work",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "/"
             },
             {
                 questionNumber: 19,
                 questionIcon: "wb_sunny",
                 questionCategory: "Multidimensional Poverty",
                 questionTitle: "I have access to clean and sufficient drinking water at work",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "/"
             },
             {
                 questionNumber: 20,
                 questionIcon: "wb_sunny",
                 questionCategory: "Multidimensional Poverty",
                 questionTitle: "I have good housing",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "If my place of work provides housing, it is clean and comfortable. I am able to cook and socialize without too many regulations."
             },
             {
                 questionNumber: 21,
                 questionIcon: "person_pin",
                 questionCategory: "General Information",
                 questionTitle: "What is your gender?",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "/"
             },
             {
                 questionNumber: 22,
                 questionIcon: "person_pin",
                 questionCategory: "General Information",
                 questionTitle: "What is yor age?",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "/"
             },
             {
                 questionNumber: 23,
                 questionIcon: "person_pin",
                 questionCategory: "General Information",
                 questionTitle: "In which position are you working?",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                additionalInformation: "/"
             },
             {
                 questionNumber: 24,
                 questionIcon: "person_pin",
                 questionCategory: "General Information",
-                questionTitle: "Do you have any other feedback which you want to provide?",
-                additionalInformation: "This is the additional information that is to be displayed on the modal box for question 2"
+                questionTitle: "Please use this text box to explain any of your answers here. We would like to hear your feedback about how you feel at work.",
+                additionalInformation: "Please be aware that if you would like to make a complaint anonymously or raise a problem that you do not feel comfortable raising with a manager, you can do so by clicking here. This link will bring you to Vaude’s complaint mechanism system that can provide you with resources and options that can help."
             },
         ]
     }),
