@@ -1,9 +1,12 @@
 <template>
   <div class="landingpage">
-
     <Header :HeaderText="$t('headerText')"/>
+    <div id="body">
     <TextField/>
+    </div>
+    <div id="footer">
     <LandingFooter/>
+    </div>
   </div>
 </template>
 
@@ -26,5 +29,14 @@ export default {
 <style>
 .landingpage {
   overflow: hidden;
+}
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#body {
+   padding:10px;
+   padding-bottom:80px;   /* Height of the footer */
 }
 </style>
