@@ -36,8 +36,7 @@ export default {
 <style scoped>
 
 .progress-container {
-  margin-top: 5%;
-  margin-bottom: 10%;
+  margin-bottom: 2%;
 }
 
 .current-page-number {
@@ -51,7 +50,6 @@ export default {
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  padding: 0 5px;
   display: flex;
   height: 30px;
   width: 99%;
