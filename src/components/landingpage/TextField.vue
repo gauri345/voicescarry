@@ -92,9 +92,9 @@ form {
 }
 
 label {
-  color: #aaa;
+  color: black;
   display: inline-block;
-  font-size: 0.6em;
+  font-size: 0.8em;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;

@@ -35,7 +35,7 @@
       </div>
 
       <!-- The progress bar goes here -->
-      <Progress :current-page-number="currentQuestion.questionNumber"></Progress>
+      <Progress id="progressbar" :current-page-number="currentQuestion.questionNumber"></Progress>
 
     </div>
     <Footer/>
@@ -107,5 +107,7 @@ export default {
   margin-left: 2%;
   background: #4EB562;
 }
-
+#progressbar {
+   padding-bottom:20px;   /* Height of the footer */
+}
 </style>

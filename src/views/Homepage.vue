@@ -1,5 +1,5 @@
 <template>
-
+<div id="header">
   <Header>
     <div class="div-vertical">
       <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/homepagewoman.png"/></div>
@@ -10,7 +10,9 @@
       </div>
     </div>
   </Header>
+</div>
 
+<div id="body">
   <router-link to="/question/1">
     <div class="navigation-buttons">
       <GeneralButton icon="assignment" :text="$t('homepage_start_survey')"></GeneralButton>
@@ -22,9 +24,10 @@
       <GeneralButton icon="assignment_late" :text="$t('homepage_report_complaint')"></GeneralButton>
     </div>
   </router-link>
+</div>
 
   <!-- The Footer bar goes here -->
-  <div class="footer">
+  <div id="footer">
     <Footer/>
   </div>
 
@@ -76,4 +79,13 @@ export default {
   vertical-align: center;
 }
 
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#body {
+   padding:10px;
+   padding-bottom:80px;   /* Height of the footer */
+}
 </style>
