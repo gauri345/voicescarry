@@ -30,6 +30,9 @@ export default {
     width:80%;
     display: inline-block;
 }
+.btn {
+    height: fit-content;
+}
 
 </style>
 
