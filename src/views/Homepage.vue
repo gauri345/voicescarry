@@ -6,6 +6,7 @@
       <div class="div-top-txt">
         <br> {{ $t('homepage_entered_message') }} <br><br> {{ $t('homepage_info_message') }} <br><br>
         <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>
+        <span v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
         <InformationModal/>
       </div>
     </div>
@@ -37,6 +38,7 @@ import GeneralButton from "@/components/GeneralButton";
 import Footer from "@/components/Footer"
 import Header from "@/components/Header";
 import InformationModal from "@/components/question/InformationModal";
+import {textReader} from "@/util/Speech";
 
 export default {
   name: "Homepage",
@@ -45,11 +47,33 @@ export default {
     Header,
     Footer,
     InformationModal
+  },
+  data() {
+    return {
+      isReading: false
+    }
+  },
+  methods: {
+    readQuestionContent: function () {
+     const textToRead =
+         this.$i18n.t('homepage_entered_message').replace('!', '. ') +
+         this.$i18n.t('homepage_info_message');
+
+     console.log(this.$i18n.locale);
+
+     textReader(textToRead);
+
+    }
   }
 }
 </script>
 
 <style scoped>
+
+.audio {
+  font-size: 33px;
+}
+
 .img-top {
   width: 50%;
   shape-outside: circle(10%);

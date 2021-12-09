@@ -11,7 +11,7 @@
               <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>
                 <InformationModal :additional-information="additionalInformation" 
                                   :question-content="questionContent"/>
-              <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
+              <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
              </div>
           </div> 
     </div>
@@ -60,6 +60,7 @@
 
 <script>
 import InformationModal from "@/components/question/InformationModal";
+import {textReader} from "@/util/Speech";
 
 export default {
   name: 'Content',
@@ -84,25 +85,7 @@ export default {
       console.log(answer);
     },
     readQuestionContent: function () {
-      const synth = window.speechSynthesis;
-      const inputTxt = this.questionContent;
-
-      if (synth.speaking) {
-        console.error('speechSynthesis.speaking');
-        return;
-      }
-      if (inputTxt.value !== '') {
-        const utterThis = new SpeechSynthesisUtterance(inputTxt);
-        utterThis.onend = function () {
-          console.log('SpeechSynthesisUtterance.onend');
-        }
-        utterThis.onerror = function () {
-          console.error('SpeechSynthesisUtterance.onerror');
-        }
-        utterThis.pitch = 0.9;
-        utterThis.rate = 1;
-        synth.speak(utterThis);
-      }
+      textReader(this.questionContent)
     }
   }
 }
