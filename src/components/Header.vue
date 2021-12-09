@@ -32,7 +32,7 @@ margin-bottom: 2%;
 .HeaderText{
 width: 100%;
 text-align: center;
-color: rgba(255, 255, 255, 0.7);
+color: rgba(255, 255, 255);
 font-style: normal;
 font-size: 3vw;
 }

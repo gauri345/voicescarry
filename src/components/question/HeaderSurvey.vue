@@ -32,7 +32,7 @@ export default {
     bottom: 15px;
     text-align: center;
 
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255);
     font-style: normal;
     font-size: 25px;
     } 
