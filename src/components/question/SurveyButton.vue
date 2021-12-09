@@ -32,6 +32,7 @@ export default {
   position: relative;
   color: rgb(255, 255, 255);
   font-size: 16px;
+  font-weight: bold;
   border: 0;
   padding: 10px;
   width: 100%;

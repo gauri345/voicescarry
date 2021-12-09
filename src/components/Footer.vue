@@ -55,11 +55,11 @@ a {
 }
 
 a:visited {
-  color:rgba(255, 255, 255, 0.75);
+  color:rgba(255, 255, 255);
   text-decoration: none;
 }
 a:link {
-  color:rgba(255, 255, 255, 0.75);
+  color:rgba(255, 255, 255);
   text-decoration: none;
 }
 .nav-item.nav-link {

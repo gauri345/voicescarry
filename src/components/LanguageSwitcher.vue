@@ -26,8 +26,9 @@ export default {
   border: none;
   padding: 0;
   margin: 0;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255);
   font-size: 90%;
+  font-weight: bold;
 }
 
 .btn-outline-info {
