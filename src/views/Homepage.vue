@@ -6,7 +6,7 @@
       <div class="div-top-txt">
         <br> {{ $t('homepage_entered_message') }} <br><br> {{ $t('homepage_info_message') }} <br><br>
         <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>
-        <span v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
+        <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
         <InformationModal/>
       </div>
     </div>
@@ -112,5 +112,8 @@ body {
 #body {
    padding:10px;
    padding-bottom:80px;   /* Height of the footer */
+}
+#text {
+  padding-left: 10px;
 }
 </style>
