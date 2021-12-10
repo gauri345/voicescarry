@@ -5,34 +5,22 @@
         <a href="https://csr-report.vaude.com/gri-en/social/complaints-system.php">Fair Wear Complaint Helpline</a> 
     </p>
     <div class=buttonwrapper>
-      <GeneralButton onclick=" window.open('http://www.vaude.de','_blank')" text="Go to the Complaint System of Vaude"/>
+      <ComplaintButton onclick=" window.open('http://www.vaude.de','_blank')" text="Go to the Complaint System of Vaude"/>
     </div>
     <Footer/>
 </template>
 
 <script>
-import Footer from "@/components/Footer"
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import GeneralButton from "@/components/GeneralButton"
+import ComplaintButton from "@/components/complaint/ComplaintButton"
 
 export default {
   name: 'Complaint',
   components: {
       Header,
       Footer,
-      GeneralButton
+      ComplaintButton
       }
 }
 </script>
-
-<style scoped>
-.buttonwrapper {
-    width:80%;
-    display: inline-block;
-}
-.btn {
-    height: fit-content;
-}
-
-</style>
-
