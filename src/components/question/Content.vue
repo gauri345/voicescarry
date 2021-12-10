@@ -105,14 +105,14 @@ export default {
   display: flex;
 }
 .survey-persona-wrapper{
-  width: 50%;
+  width: 30%;
   height:100%;
 }
 img{
   max-height:300px;
 }
 .survey-question-wrapper{
-  width: 50%;
+  width: 70%;
   height:100%;
   
 }

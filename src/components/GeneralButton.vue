@@ -36,7 +36,7 @@ export default {
   border: 0;
   padding: 10px;
   width: 100%;
-  height: 43px;
+  height: fit-content;
   background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
   box-shadow: 0px 24px 48px -18px rgba(21, 70, 160, 0.5);
   border-radius: 20px;

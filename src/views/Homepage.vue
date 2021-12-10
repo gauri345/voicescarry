@@ -14,17 +14,21 @@
 </div>
 
 <div id="body">
-  <router-link to="/question/1">
+  
     <div class="navigation-buttons">
+      <router-link to="/question/1">
       <GeneralButton icon="assignment" :text="$t('homepage_start_survey')"></GeneralButton>
+      </router-link>
     </div>
-  </router-link>
+  
 
-  <router-link to="/complaint">
+  
     <div class="navigation-buttons">
+      <router-link to="/complaint">
       <GeneralButton icon="assignment_late" :text="$t('homepage_report_complaint')"></GeneralButton>
+      </router-link>
     </div>
-  </router-link>
+  
 </div>
 
   <!-- The Footer bar goes here -->
