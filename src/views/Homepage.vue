@@ -6,8 +6,8 @@
       <div class="div-top-txt">
         <br> {{ $t('homepage_entered_message') }} <br><br> {{ $t('homepage_info_message') }} <br><br>
         <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>
+        <HomepageModal/>
         <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
-        <InformationModal/>
       </div>
     </div>
   </Header>
@@ -44,7 +44,7 @@
 import GeneralButton from "@/components/GeneralButton";
 import Footer from "@/components/Footer"
 import Header from "@/components/Header";
-import InformationModal from "@/components/question/InformationModal";
+import HomepageModal from "@/components/HomepageModal";
 import {textReader} from "@/util/Speech";
 
 export default {
@@ -53,7 +53,7 @@ export default {
     GeneralButton,
     Header,
     Footer,
-    InformationModal
+    HomepageModal,
   },
   data() {
     return {
