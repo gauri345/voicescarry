@@ -9,8 +9,8 @@ const store = {
         allQuestions: [
             {
                 questionNumber: 1,
-                questionIcon: "self_improvement",
-                questionCategory: "Overall Wellbeing",
+                questionIcon: "spa",
+                questionCategory: "Wellbeing at Work",
                 questionTitle: "I am doing well at work",
             },
             {
@@ -129,26 +129,26 @@ const store = {
             },
             {
                 questionNumber: 21,
-                questionIcon: "person_pin",
-                questionCategory: "General Information",
+                questionIcon: "spa",
+                questionCategory: "Wellbeing at Work",
                 questionTitle: "What is your gender?",
             },
             {
                 questionNumber: 22,
-                questionIcon: "person_pin",
-                questionCategory: "General Information",
+                questionIcon: "spa",
+                questionCategory: "Wellbeing at Work",
                 questionTitle: "What is yor age?",
             },
             {
                 questionNumber: 23,
-                questionIcon: "person_pin",
-                questionCategory: "General Information",
+                questionIcon: "spa",
+                questionCategory: "Wellbeing at Work",
                 questionTitle: "In which position are you working?",
             },
             {
                 questionNumber: 24,
-                questionIcon: "person_pin",
-                questionCategory: "General Information",
+                questionIcon: "spa",
+                questionCategory: "Wellbeing at Work",
                 questionTitle: "Please use this text box to explain any of your answers here. We would like to hear your feedback about how you feel at work.",
                 additionalInformation: "Please be aware that if you would like to make a complaint anonymously or raise a problem that you do not feel comfortable raising with a manager, you can do so by clicking here. This link will bring you to Vaude’s complaint mechanism system that can provide you with resources and options that can help."
             },
