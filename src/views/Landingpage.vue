@@ -1,6 +1,6 @@
 <template>
   <div class="landingpage">
-    <Header :HeaderText="$t('headerText')"/>
+    <Header id="headerlanding" :HeaderText="$t('headerText')"/>
     <div id="body">
     <TextField/>
     </div>
@@ -38,5 +38,9 @@ body {
 #body {
    padding:10px;
    padding-bottom:80px;   /* Height of the footer */
+}
+#headerlanding {
+  height: 70px;
+  width: 100%;
 }
 </style>

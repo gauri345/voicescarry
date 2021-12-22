@@ -1,5 +1,5 @@
 <template>
-    <Header HeaderIcon="assignment_late" HeaderText="Complaint"/>
+    <Header id="headercomplaint" HeaderIcon="assignment_late" HeaderText="Complaint"/>
     <p> Click on the button to report a complaint directly to an independent partner of Vaude. 
         For more information, visit this link: 
         <a href="https://csr-report.vaude.com/gri-en/social/complaints-system.php">Fair Wear Complaint Helpline</a> 
@@ -24,3 +24,10 @@ export default {
       }
 }
 </script>
+
+<style scoped>
+#headercomplaint {
+  height: 70px;
+  width: 100%;
+}
+</style>
