@@ -8,7 +8,7 @@
                       </router-link>
                     </a>
                     <a class="nav-item nav-link">
-                      <router-link to="/question/1">
+                      <router-link to="/question/information">
                         <span class= "material-icons">assignment</span>
                         Survey
                       </router-link>

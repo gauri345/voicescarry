@@ -8,8 +8,10 @@
           <div class="survey-question-wrapper">
             <div class="speechbubble">
               <div class="question-title">{{ questionTitle }}</div>
+            </div>
+            <div class="audio-wrapper">
               <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
-             </div>
+            </div>
           </div> 
     </div>
   </div>
@@ -136,14 +138,9 @@ img{
   -o-transform: rotate(29deg) skew(-35deg);
   -webkit-transform: rotate(29deg) skew(-35deg);
 }
-.material-icons.audio {
-  font-size: 32px;
-  margin-left: 10px;
-  cursor: pointer;
-}
 .material-icons{
   font-size:48px;
-  color: rgba(255, 255, 255);
+  color:black;
 }
 .question-content {
   margin-top: 2%;
