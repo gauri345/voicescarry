@@ -7,5 +7,7 @@
   "homepage_entered_message": "Welcome to the survey on 'wellbeing at work'!",
   "homepage_info_message": "If you want to know more about the survey, please click on the info icon below.",
   "homepage_start_survey": "Start Survey",
-  "homepage_report_complaint": "Report a complaint"
+  "homepage_report_complaint": "Report a complaint",
+  "welcome_survey": "Welcome to the survey about wellbeing at work!",
+  "explain_survey": "We are a team from the University of Mannheim which wants to get deeper insights into the wellbeing of workers. It is important to mention that no personal data are stored or forwarded to your employer."
 }

@@ -16,12 +16,12 @@
 <div id="body">
   
     <div class="navigation-buttons">
-      <router-link to="/question/1">
+      <router-link to="/question/information">
       <GeneralButton icon="assignment" :text="$t('homepage_start_survey')"></GeneralButton>
       </router-link>
     </div>
   
-
+ <br>
   
     <div class="navigation-buttons">
       <router-link to="/complaint">
@@ -99,7 +99,8 @@ export default {
 
 .navigation-buttons {
   width: 80%;
-  display: inline-block;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .material-icons.info {
@@ -116,8 +117,5 @@ body {
 #body {
    padding:10px;
    padding-bottom:80px;   /* Height of the footer */
-}
-#text {
-  padding-left: 10px;
 }
 </style>
