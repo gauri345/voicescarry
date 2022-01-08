@@ -10,7 +10,6 @@ router.get('/question', (req, res) => {
         }
     ];
 
-
     return res.send(todo);
 
 });
