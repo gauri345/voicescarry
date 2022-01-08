@@ -2,19 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get('/todo', (req, res) => {
+router.get('/question', (req, res) => {
     const todo = [
         {
             "id": 1,
-            "todo": "Buy chicken"
-        },
-        {
-            "id": 2,
-            "todo": "Cook chicken"
-        },
-        {
-            "id": 3,
-            "todo": "Eat chicken"
+            "question": "I am doing well at work"
         }
     ];
 
