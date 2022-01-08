@@ -1,13 +1,27 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'TP-WorkerWellbeing' });
+
+router.get('/todo', (req, res) => {
+    const todo = [
+        {
+            "id": 1,
+            "todo": "Buy chicken"
+        },
+        {
+            "id": 2,
+            "todo": "Cook chicken"
+        },
+        {
+            "id": 3,
+            "todo": "Eat chicken"
+        }
+    ];
+
+
+    return res.send(todo);
+
 });
 
-router.get('/all_users', function (req, res, next) {
-
-});
 
 module.exports = router;

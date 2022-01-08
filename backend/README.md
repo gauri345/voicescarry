@@ -23,3 +23,7 @@ On Windows Command Prompt, use this command:
 
 Further documentation on running can be found here:
 https://expressjs.com/en/starter/generator.html
+
+Then load http://localhost:3000/ in your browser to access the app.
+
+Instructions on updating the swagger api documentation can be found here: https://www.section.io/engineering-education/documenting-node-js-rest-api-using-swagger/
