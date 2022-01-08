@@ -1,18 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const QuestionController = require('../controller/QuestionController');
 
-
-router.get('/question', (req, res) => {
-    const todo = [
-        {
-            "id": 1,
-            "question": "I am doing well at work"
-        }
-    ];
-
-    return res.send(todo);
-
-});
-
+router.route('/questions')
+    .get(QuestionController.index)
+    .post(QuestionController.new);
 
 module.exports = router;

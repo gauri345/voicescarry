@@ -13,16 +13,14 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // app configs.
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+
+
 app.use(morgan("dev"));
 app.use(cors());
-app.use(
-    bodyParser.urlencoded(
-        {extended: true}
-    )
-);
-app.use(bodyParser.json());
 
 
 mongoose.connect('mongodb://localhost/workers_wellbeing', {useNewUrlParser: true});
@@ -34,8 +32,11 @@ else
     console.log("Db connected successfully")
 
 
-app.use('/questions', routes);
+app.use('/api', routes);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docs));
+
+
+
 
 //initialize the app.
 async function initialize() {
