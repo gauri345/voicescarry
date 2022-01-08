@@ -37,6 +37,7 @@ export default {
 
 .progress-container {
   margin-bottom: 2%;
+  padding-left: 5px;
 }
 
 .current-page-number {

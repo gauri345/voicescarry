@@ -17,7 +17,7 @@ const store = {
             {
                 questionNumber: 2,
                 questionIcon: "spa",
-                questionCategory: "SHINE Dimensions",
+                questionCategory: "Wellbeing at Work",
                 questionTitle: "My employer ist taking care of me",
                 additionalInformation: "I feel that my employer treats me fairly. I feel supported by my supervisors and managers. There are protocols in place to keep me physically and mentally safe."
             },

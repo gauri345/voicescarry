@@ -45,4 +45,8 @@ export default {
   border: none;
   border-radius: 5px;
 }
+.btn {
+  width: 100px;
+  height: 40px;
+}
 </style>

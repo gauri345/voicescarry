@@ -6,7 +6,7 @@
       <div class="div-top-txt">
         <br> {{ $t('homepage_entered_message') }} <br><br> {{ $t('homepage_info_message') }} <br><br>
         <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>
-        <span v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
+        <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
         <InformationModal/>
       </div>
     </div>
@@ -14,17 +14,21 @@
 </div>
 
 <div id="body">
-  <router-link to="/question/1">
+  
     <div class="navigation-buttons">
+      <router-link to="/question/information">
       <GeneralButton icon="assignment" :text="$t('homepage_start_survey')"></GeneralButton>
+      </router-link>
     </div>
-  </router-link>
-
-  <router-link to="/complaint">
+  
+ <br>
+  
     <div class="navigation-buttons">
+      <router-link to="/complaint">
       <GeneralButton icon="assignment_late" :text="$t('homepage_report_complaint')"></GeneralButton>
+      </router-link>
     </div>
-  </router-link>
+  
 </div>
 
   <!-- The Footer bar goes here -->
@@ -75,6 +79,7 @@ export default {
 
 .audio {
   font-size: 33px;
+  cursor: pointer;
 }
 
 .img-top {
@@ -94,7 +99,8 @@ export default {
 
 .navigation-buttons {
   width: 80%;
-  display: inline-block;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .material-icons.info {
