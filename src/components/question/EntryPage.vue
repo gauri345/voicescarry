@@ -13,7 +13,7 @@
     </div>
     <div class=buttonwrapper>
         <router-link to="/question/1">
-        <GeneralButton id="startbutton" text="Start the Questionnaire!"/>
+        <ComplaintButton id="startbutton" text="Start the Questionnaire!"/>
         </router-link>
     </div>
     </div>
@@ -23,7 +23,7 @@
 <script>
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import GeneralButton from "@/components/complaint/ComplaintButton"
+import ComplaintButton from "@/components/complaint/ComplaintButton"
 import {textReader} from "@/util/Speech";
 
 export default {
@@ -31,7 +31,7 @@ export default {
   components: {
       Header,
       Footer,
-      GeneralButton
+    ComplaintButton
       },
 data() {
     return {

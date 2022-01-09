@@ -17,7 +17,7 @@
   
     <div class="navigation-buttons">
       <router-link to="/question/information">
-      <GeneralButton icon="assignment" :text="$t('homepage_start_survey')"></GeneralButton>
+      <Button icon="assignment" :text="$t('homepage_start_survey')"></Button>
       </router-link>
     </div>
   
@@ -25,7 +25,7 @@
   
     <div class="navigation-buttons">
       <router-link to="/complaint">
-      <GeneralButton icon="assignment_late" :text="$t('homepage_report_complaint')"></GeneralButton>
+      <Button icon="assignment_late" :text="$t('homepage_report_complaint')"></Button>
       </router-link>
     </div>
   
@@ -41,7 +41,7 @@
 
 
 <script>
-import GeneralButton from "@/components/GeneralButton";
+import Button from "@/components/utils/Button";
 import Footer from "@/components/Footer"
 import Header from "@/components/Header";
 import InformationModal from "@/components/question/InformationModal";
@@ -50,7 +50,7 @@ import {textReader} from "@/util/Speech";
 export default {
   name: "Homepage",
   components: {
-    GeneralButton,
+    Button,
     Header,
     Footer,
     InformationModal

@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Progress from "@/components/Progress";
+import Progress from "@/components/utils/Progress";
 import Content from "@/components/question/Content";
 import SurveyButton from "@/components/question/SurveyButton";
 import store from "@/store";

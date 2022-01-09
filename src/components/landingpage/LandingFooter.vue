@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import LanguageSwitcher from "../LanguageSwitcher";
+import LanguageSwitcher from "../utils/LanguageSwitcher";
 
 export default {
   name: 'LandingFooter',

@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'Button',
+  name: 'LandingButton',
   props: {
     text: String,
     color: String,

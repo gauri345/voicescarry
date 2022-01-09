@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'Button',
+  name: 'SurveyButton',
   props: {
     text: String,
     color: String,

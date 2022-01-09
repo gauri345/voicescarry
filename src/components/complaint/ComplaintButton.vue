@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'Button',
+  name: 'ComplaintButton',
   props: {
     text: String,
     color: String,

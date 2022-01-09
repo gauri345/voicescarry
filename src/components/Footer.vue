@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import LanguageSwitcher from "@/components/utils/LanguageSwitcher";
 
 export default {
   name: 'Footer',
