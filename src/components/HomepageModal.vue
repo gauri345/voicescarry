@@ -1,16 +1,16 @@
 <template>
-  <div aria-hidden="true" aria-labelledby="additionalInformationModal" class="modal fade bd-example-modal-sm" role="dialog"
+  <div aria-hidden="true" aria-labelledby="homepageModal" class="modal fade bd-example-modal-sm" id="homepageModal" role="dialog"
        tabindex="-1">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">{{ questionContent }}</h5>
-          <button aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h5 class="modal-title">Information on the project 'wellbeing at work'</h5>
+            <button aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         <div class="modal-body">
-          <p>{{ additionalInformation }}</p>
+          <p>Info needed</p>
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
@@ -22,11 +22,7 @@
 
 <script>
 export default {
-  name: 'InformationModal',
-  props: {
-    questionContent: String,
-    additionalInformation: String
-  }
+  name: 'HomepageModal',
 }
 </script>
 
@@ -41,12 +37,13 @@ export default {
   text-align: left;
   color: black;
 }
+.btn {
+    width: 150px;
+    height: 50px;
+}
 .close {
   border: none;
   border-radius: 5px;
 }
-.btn {
-  width: 100px;
-  height: 40px;
-}
+
 </style>

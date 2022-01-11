@@ -8,11 +8,10 @@
           <div class="survey-question-wrapper">
             <div class="speechbubble">
               <div class="question-title">{{ questionTitle }}</div>
-              <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>
-                <InformationModal :additional-information="additionalInformation" 
-                                  :question-content="questionContent"/>
+            </div>
+            <div class="audio-wrapper">
               <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
-             </div>
+            </div>
           </div> 
     </div>
   </div>
@@ -29,6 +28,7 @@
      <select v-model="gender">
       <option value="female">Female</option>
       <option value="male">Male</option>
+      <option value="diverse">Diverse</option>
     </select>
   </div>
 
@@ -59,7 +59,6 @@
 </template>
 
 <script>
-import InformationModal from "@/components/question/InformationModal";
 import {textReader} from "@/util/Speech";
 
 export default {
@@ -68,7 +67,6 @@ export default {
     questionTitle: String,
     questionNumber: Number,
     questionContent: String,
-    additionalInformation: String
   },
    data() {
     return {
@@ -76,9 +74,6 @@ export default {
       age: 'twentyoryounger',
       position: 'worker',
     }
-  },
-  components: {
-    InformationModal
   },
   methods: {
     answer: function (answer) {
@@ -143,20 +138,9 @@ img{
   -o-transform: rotate(29deg) skew(-35deg);
   -webkit-transform: rotate(29deg) skew(-35deg);
 }
-.material-icons.audio {
-  font-size: 32px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-.material-icons.info {
-  font-size: 32px;
-  margin-left: 10px;
-  cursor: pointer;
-
-}
 .material-icons{
   font-size:48px;
-  color: rgba(255, 255, 255);
+  color:black;
 }
 .question-content {
   margin-top: 2%;
