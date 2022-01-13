@@ -1,6 +1,5 @@
 const Question = require('../model/questionModel');
 
-// Handle index actions
 exports.index = function (req, res) {
     Question.get(function (err, questions) {
         if (err) {
@@ -11,40 +10,57 @@ exports.index = function (req, res) {
         }
         res.json({
             status: "success",
-            message: "Question retrieved successfully",
+            message: "Questions retrieved",
             data: questions
         });
     });
 };
 
+exports.post = async function (req, res) {
 
-// Handle create question actions
-exports.new = function (req, res) {
+    const question = req.body;
 
-    const question = new Question();
+    const filter = {number: question.number};
 
-    console.log("request", req.body);
+    const existingQuestion = await Question.findOne(filter);
 
-    question.title = req.body.title;
+    if (existingQuestion) {
+        res.json(
+            {
+                status: "success",
+                message: 'Question updated',
+                data: await Question.findOneAndUpdate(filter, question)
+            }
+        );
+    } else {
+        res.json(
+            {
+                status: "success",
+                message: 'question created!',
+                data: await Question.create(req.body)
+            }
+        );
+    }
+};
 
-    console.log("before storing: ", question);
+exports.delete = async function (req, res) {
+    const filter = {
+        number: req.query.number
+    };
 
-    question.save(function (err) {
-
-        if (err) res.json(err);
-
-        console.log("Question: ", question);
-
-        const response = {
-            message: 'New contact created!',
-            data: question
-        };
-
-        console.log("response: ", response);
-
-
-        console.log("response.question", response.question);
-
-        res.json(response);
+    Question.remove(filter, function (err, question) {
+        if (err)
+            return res.send(
+                {
+                    status: "error",
+                    message: err
+                }
+            );
+        res.json(
+            {
+                status: "success",
+                message: question.name + ' question deleted'
+            }
+        );
     });
 };

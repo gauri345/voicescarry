@@ -1,34 +1,35 @@
 <template>
   <div class="surveypage">
-      <HeaderSurvey :question-category="currentQuestion.questionCategory"
-                    :question-icon="currentQuestion.questionIcon">
-      </HeaderSurvey>
+    <HeaderSurvey :question-category="currentQuestion.questionCategory"
+                  :question-icon="currentQuestion.questionIcon">
+    </HeaderSurvey>
 
     <!-- Question Container including voting-->
-    <div class="question-container" >
-      <Content  :question-title="currentQuestion.questionTitle"
-                :additional-information="currentQuestion.additionalInformation"
-                :question-content="currentQuestion.questionTitle"
-                :question-number="currentQuestion.questionNumber">
+    <div class="question-container">
+      <Content :additional-information="currentQuestion.additionalInformation"
+               :question-content="currentQuestion.questionTitle"
+               :question-number="currentQuestion.questionNumber"
+               :question-title="currentQuestion.questionTitle">
       </Content>
 
       <!-- The button to navigate between questions goes here -->
       <div class="navigation-buttons">
         <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
           <router-link :to="'/question/' + previousQuestion.questionNumber">
-            <SurveyButton text="Previous" icon1="arrow_backwards">
+            <SurveyButton icon1="arrow_backwards" text="Previous">
             </SurveyButton>
           </router-link>
         </div>
-        <div v-if="previousQuestion.questionNumber ==23" class="button-previous" data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
-            <FinishModal :additional-information="additionalInformation" 
-                                  :question-content="questionContent"/>
-            <SurveyButton text="Submit" class="submit"></SurveyButton>
+        <div v-if="previousQuestion.questionNumber ==23" class="button-previous" data-bs-target=".bd-example-modal-pm"
+             data-bs-toggle="modal">
+          <FinishModal :additional-information="additionalInformation"
+                       :question-content="questionContent"/>
+          <SurveyButton class="submit" text="Submit"></SurveyButton>
         </div>
 
         <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
           <router-link :to="'/question/' + nextQuestion.questionNumber">
-            <SurveyButton text="Next" icon2="arrow_forwards">
+            <SurveyButton icon2="arrow_forwards" text="Next">
             </SurveyButton>
           </router-link>
         </div>
@@ -39,17 +40,18 @@
 
     </div>
     <Footer/>
-  </div>  
+  </div>
 </template>
 
 <script>
 import Progress from "@/components/utils/Progress";
 import Content from "@/components/question/Content";
 import SurveyButton from "@/components/question/SurveyButton";
-import store from "@/store";
+import storeOld from "@/store_old";
 import Footer from "@/components/Footer";
 import HeaderSurvey from "@/components/question/HeaderSurvey";
 import FinishModal from "@/components/question/FinishModal";
+import {mapActions} from "vuex";
 
 
 export default {
@@ -65,49 +67,61 @@ export default {
 
   data: function () {
     return {
-      currentQuestion: store.state.currentQuestion,
-      nextQuestion: store.state.nextQuestion,
-      previousQuestion: store.state.previousQuestion,
-      questionCategory: store.state.questionCategory,
-      questionIcon: store.state.questionIcon
+      currentQuestion: storeOld.state.currentQuestion,
+      nextQuestion: storeOld.state.nextQuestion,
+      previousQuestion: storeOld.state.previousQuestion,
+      questionCategory: storeOld.state.questionCategory,
+      questionIcon: storeOld.state.questionIcon
     }
   },
 
+  methods: {
+    ...mapActions(['fetchQuestionById'])
+  },
+
+  created() {
+    const questionNumber = this.$route.params.number;
+    console.log(this.fetchQuestionById(questionNumber));
+  },
+
   beforeCreate: function () {
-    store.clearSelectedQuestions();
-    store.setQuestionsAction(parseInt(this.$route.params.number));
+    storeOld.clearSelectedQuestions();
+    storeOld.setQuestionsAction(parseInt(this.$route.params.number));
   },
 }
 </script>
 
 <style scoped>
-.surveypage{
-  overflow:hidden;
+.surveypage {
+  overflow: hidden;
   display: block;
 }
 
-.navigation-buttons{
+.navigation-buttons {
   width: 90%;
   display: inline-block;
 }
+
 .button-previous {
   display: inline-block;
   width: 40%;
   margin-right: 2%;
 }
 
-.button-next{
+.button-next {
   display: inline-block;
   width: 40%;
   margin-left: 2%;
 }
+
 .submit {
   display: inline-block;
   width: 100%;
   margin-left: 2%;
   background: #4EB562;
 }
+
 #progressbar {
-   padding-bottom:20px;   /* Height of the footer */
+  padding-bottom: 20px; /* Height of the footer */
 }
 </style>

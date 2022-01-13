@@ -14,7 +14,7 @@
         <div class="modal-body">
           <p>What is the purpose of the survey?</p>
           <p>What are we doing with the data?</p>
-          <p>Do we store the data?</p>
+          <p>Do we store_old the data?</p>
         </div>
         <div class="modal-footer">
             <router-link :to="'/homepage'">

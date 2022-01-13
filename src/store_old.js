@@ -1,6 +1,6 @@
 import {reactive} from "vue";
 
-const store = {
+const storeOld = {
     debug: true,
     state: reactive({
         currentQuestion: {},
@@ -210,4 +210,4 @@ const store = {
     }
 }
 
-export default store;
+export default storeOld;

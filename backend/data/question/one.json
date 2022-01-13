@@ -1,0 +1,47 @@
+{
+  "id": 1,
+  "number": 1,
+  "slug": "are-you-happy",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I am doing well at work"
+    }
+  ],
+  "category": [
+    {
+      "slug": "overall-well-being",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "Overall Wellbeing"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "No explanation needed"
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

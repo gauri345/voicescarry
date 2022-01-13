@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import store from "@/store";
+import storeOld from "@/store_old";
 
 export default {
   name: 'Progress',
@@ -19,14 +19,14 @@ export default {
   },
   data: function () {
     return {
-      totalQuestions: store.totalAvailableQuestions(),
+      totalQuestions: storeOld.totalAvailableQuestions(),
       progressPercentage: this.calculateProgressPercentage()
     }
   },
 
   methods: {
     calculateProgressPercentage: function () {
-      return ((this.currentPageNumber / store.totalAvailableQuestions()) * 100) + "%";
+      return ((this.currentPageNumber / storeOld.totalAvailableQuestions()) * 100) + "%";
     }
   },
 

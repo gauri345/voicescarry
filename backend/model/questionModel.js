@@ -13,16 +13,12 @@ const localizedContentSchema = mongoose.Schema({
 });
 
 const categorySchema = mongoose.Schema({
-    id: {
-        type: String,
-        required: true
-    },
-    name: {
+    slug: {
         type: String,
         required: true
     },
 
-    title: [
+    titles: [
         {
             type: localizedContentSchema,
             required: true
@@ -31,34 +27,43 @@ const categorySchema = mongoose.Schema({
 });
 
 const questionSchema = mongoose.Schema({
-    id: {
+    slug: {
         type: String,
         required: true
     },
-    title: [
+    number: {
+        type: Number,
+        requireD: true
+    },
+    category: {
+        type: categorySchema,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    titles: [
         {
             type: localizedContentSchema,
             required: true
         }
     ],
-    category: [
+    additionalInformation: [
         {
-            type: categorySchema,
+            type: localizedContentSchema,
             required: true
         }
     ],
-    type: {
-        type: String,
-        required: true
-    },
-    additionalInformation: {
-        type: String,
-        required: true
-    },
-    answers: [String]
+    answers: [
+        {
+            type: localizedContentSchema,
+            required: true
+        }
+    ]
 });
 
-const Question = module.exports = mongoose.model('question', questionSchema);
+const Question = module.exports = mongoose.model('Question', questionSchema);
 
 module.exports.get = function (callback, limit) {
     Question.find(callback).limit(limit);
