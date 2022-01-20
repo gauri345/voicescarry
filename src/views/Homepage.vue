@@ -2,7 +2,7 @@
 <div id="header">
   <Header>
     <div class="div-vertical">
-      <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/homepagewoman.png"/></div>
+      <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/persona.png"/></div>
       <div class="div-top-txt">
         <br> {{ $t('homepage_entered_message') }} <br><br> {{ $t('homepage_info_message') }} <br><br>
         <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>

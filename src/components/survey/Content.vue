@@ -1,9 +1,9 @@
 <template>
   <!-- The content of the question goes here -->
-  <div class="survey-question-container">
+  <div v-if="questionNumber <24" class="survey-question-container">
     <div class="center">
           <div class="survey-persona-wrapper">
-            <img alt="Persona" src="../../assets/Woman.png"/>
+            <img alt="Persona" src="../../assets/fullbody-persona.png"/>
           </div>
           <div class="survey-question-wrapper">
             <div class="speechbubble">
@@ -15,13 +15,39 @@
           </div> 
     </div>
   </div>
+
+   <div v-if="questionNumber ==24" class="survey-question-container">
+    <div class="feedback-box-wrapper">
+            <div class="speechbubble">
+              <div class="question-title">{{ questionTitle }}</div>
+            </div>
+            <div class="audio-wrapper">
+              <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
+            </div>
+          </div> 
+    </div>
    
   <div v-if="questionNumber <= 20" class="question-answers">
-    <span class="material-icons very_dissatisfied" @click="answer('very dissatisfied')">sentiment_very_dissatisfied</span>
-    <span class="material-icons dissatisfied" @click="answer('dissatisfied')">sentiment_dissatisfied</span>
-    <span class="material-icons neutral" @click="answer('neutral')">sentiment_neutral</span>
-    <span class="material-icons satisfied" @click="answer('satisfied')">sentiment_satisfied</span>
-    <span class="material-icons very_satisfied" @click="answer('very satisfied')">sentiment_very_satisfied</span>
+     <span :class="{'outlined_vd':thema_vd ==='true'}"
+           class="material-icons very_dissatisfied"
+           @click="answer('very dissatisfied'); outlineIcon_vd()">sentiment_very_dissatisfied</span>
+
+     <span :class="{'outlined_d':thema_d ==='true'}"
+           class="material-icons dissatisfied"
+           @click="answer('dissatisfied'); outlineIcon_d()">sentiment_dissatisfied</span>
+
+     <span :class="{'outlined_n':thema_n ==='true'}"
+           class="material-icons neutral"
+           @click="answer('neutral'); outlineIcon_n()">sentiment_neutral</span>
+
+     <span :class="{'outlined_s':thema_s ==='true'}"
+           class="material-icons satisfied"
+           @click="answer('satisfied'); outlineIcon_s()">sentiment_satisfied</span>
+
+     <span :class="{'outlined_vs':thema_vs ==='true'}"
+           class="material-icons very_satisfied"
+           @click="answer('very satisfied'); outlineIcon_vs()">sentiment_very_satisfied</span>
+
   </div>
 
   <div v-else-if="questionNumber == 21" class="question-answers">
@@ -73,12 +99,76 @@ export default {
       gender: 'female',
       age: 'twentyoryounger',
       position: 'worker',
+      thema_vd: 'false',
+      thema_d: 'false',
+      thema_n: 'false',
+      thema_s: 'false',
+      thema_vs: 'false',
     }
   },
   methods: {
     answer: function (answer) {
       console.log(answer);
     },
+     outlineIcon_vd(){
+       if (this.thema_vd === 'true'){
+         this.thema_vd ='false'
+       } else {
+         this.thema_vd = 'true'
+         this.thema_d = 'false'
+         this.thema_n = 'false'
+         this.thema_s = 'false'
+         this.thema_vs = 'false'
+       }
+     },
+
+     outlineIcon_d(){
+       if (this.thema_d === 'true'){
+         this.thema_d ='false'
+       } else {
+         this.thema_d = 'true'
+         this.thema_vd = 'false'
+         this.thema_n = 'false'
+         this.thema_s = 'false'
+         this.thema_vs = 'false'
+       }
+     },
+
+     outlineIcon_n(){
+       if (this.thema_n === 'true'){
+         this.thema_n ='false'
+       } else {
+         this.thema_n = 'true'
+         this.thema_d = 'false'
+         this.thema_vd = 'false'
+         this.thema_s = 'false'
+         this.thema_vs = 'false'
+       }
+     },
+
+     outlineIcon_s(){
+       if (this.thema_s === 'true'){
+         this.thema_s ='false'
+       } else {
+         this.thema_s = 'true'
+         this.thema_d = 'false'
+         this.thema_n = 'false'
+         this.thema_vd = 'false'
+         this.thema_vs = 'false'
+       }
+     },
+
+     outlineIcon_vs(){
+       if (this.thema_vs === 'true'){
+         this.thema_vs ='false'
+       } else {
+         this.thema_vs = 'true'
+         this.thema_d = 'false'
+         this.thema_n = 'false'
+         this.thema_s = 'false'
+         this.thema_vd = 'false'
+       }
+     },
     readQuestionContent: function () {
       textReader(this.questionContent)
     }
@@ -111,7 +201,9 @@ img{
   height:100%;
   
 }
-
+.feedback-box-wrapper{
+  width: 100%;
+}
 .speechbubble{
   background: #1546A0;
   border-radius: 10px;
@@ -182,6 +274,31 @@ img{
   margin-right: 2%;
   cursor: pointer;
 }
+.outlined_vd{
+   border:2px solid 	#f4440979;
+   border-radius: 2px;
+   background: #f4440979;
+ }
+ .outlined_d{
+   border:2px solid 	#f0940980;
+   border-radius: 2px;
+   background: #f0940980;
+ }
+ .outlined_n{
+   border:2px solid 	#d8c30652;
+   border-radius: 2px;
+   background: #d8c30652;
+ }
+ .outlined_s{
+  border:2px solid 	#68da3e8a;
+  border-radius: 2px;
+   background: #68da3e8a;
+ }
+ .outlined_vs{
+  border:2px solid 	#1f75009d;
+  border-radius: 2px;
+  background: #1f75009d;
+ }
 select {
   display: center;
   height: 50px;
@@ -193,15 +310,15 @@ select {
   color: #555;
 }
 .textfield {
-    display: center;
-    padding: 10px 6px;  
-    width: 80%;
-    height: 100px;
-    font-size: 14px;
-    background: #FFFFFF;
-    border: 1px solid rgba(36, 54, 86, 0.3);
-    box-sizing: border-box;
-    border-radius: 20px;
+  display: center;
+  padding: 10px 6px;  
+  width: 80%;
+  height: 100px;
+  font-size: 14px;
+  background: #FFFFFF;
+  border: 1px solid rgba(36, 54, 86, 0.3);
+  box-sizing: border-box;
+  border-radius: 20px;
 }
 
 </style>

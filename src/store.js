@@ -149,8 +149,7 @@ const store = {
                 questionNumber: 24,
                 questionIcon: "spa",
                 questionCategory: "Wellbeing at Work",
-                questionTitle: "Please use this text box to explain any of your answers here. We would like to hear your feedback about how you feel at work.",
-                additionalInformation: "Please be aware that if you would like to make a complaint anonymously or raise a problem that you do not feel comfortable raising with a manager, you can do so by clicking here. This link will bring you to Vaude’s complaint mechanism system that can provide you with resources and options that can help."
+                questionTitle: "Please use this text box to explain any of your answers here. We would like to hear your feedback about how you feel at work. Please be aware that if you would like to make a complaint anonymously or raise a problem that you do not feel comfortable raising with a manager, you can do so by clicking here. This link will bring you to Vaude’s complaint mechanism system that can provide you with resources and options that can help."
             },
         ]
     }),
