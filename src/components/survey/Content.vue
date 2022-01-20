@@ -1,9 +1,9 @@
 <template>
   <!-- The content of the question goes here -->
   <div v-if="questionNumber <24" class="survey-question-container">
-    <div class="center">
+    <!-- <div class="center"> -->
           <div class="survey-persona-wrapper">
-            <img alt="Persona" src="../../assets/fullbody-persona.png"/>
+            <img alt="Persona" src="../../assets/persona.png"/>
           </div>
           <div class="survey-question-wrapper">
             <div class="speechbubble">
@@ -13,7 +13,7 @@
               <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
             </div>
           </div> 
-    </div>
+    <!-- </div> -->
   </div>
 
    <div v-if="questionNumber ==24" class="survey-question-container">
@@ -182,23 +182,31 @@ export default {
   width: 100%;
   height: 300px;
   margin-top: 2%;
-  display: inline-block;
+  /* display: inline-block; */
   overflow: hidden;
   background-image: url('../../assets/Background.png');
+
+  display:flex;
+  /* justify-content: center; */
+  align-items: center;
 }
-.center{
+/* .center{
   display: flex;
-}
+} */
 .survey-persona-wrapper{
   width: 30%;
-  height:100%;
+  /* height:100%; */
+  margin-left: 1em;
 }
 img{
-  max-height:300px;
+  /* max-height:300px; */
+  max-height:7em;
+  float: right;
 }
 .survey-question-wrapper{
   width: 70%;
-  height:100%;
+  /* height:100%; */
+  margin-right: 1em;
   
 }
 .feedback-box-wrapper{
@@ -319,6 +327,15 @@ select {
   border: 1px solid rgba(36, 54, 86, 0.3);
   box-sizing: border-box;
   border-radius: 20px;
+}
+
+/* For PC view */
+@media only screen and (min-width: 800px) {
+  img{
+  /* max-height:300px; */
+  max-height:10em;
+  float: right;
+}
 }
 
 </style>
