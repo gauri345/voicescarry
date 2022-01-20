@@ -2,7 +2,7 @@
   <section class="persona-container">
     <div class="center">
       <div class="image-wrapper">
-        <img alt="Persona" src="../../assets/Woman.png"/>
+        <img alt="Persona" src="../../assets/fullbody-persona.png"/>
       </div>
       <div class="speech-wrapper">
         <SpeechBubble :description=" $t('speechBubbleName') "/>

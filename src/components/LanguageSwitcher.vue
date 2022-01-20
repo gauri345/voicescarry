@@ -21,7 +21,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .lang-button {
   border: none;
   padding: 0;
