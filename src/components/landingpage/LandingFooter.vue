@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar fixed-bottom navbar-dark bg-primary">
     <div class="picture-wrapper">
-      <img alt="Uni Mannheim" src="../../assets/Logo_UMA_EN_Weiss.png" class="uni-logo"/>
-      <img alt="Vaude" src="../../assets/image-removebg-preview.png" class="vaude-logo"/>
+      <img alt="Uni Mannheim" src="../../assets/UMA-logo.png" class="uni-logo"/>
+      <img alt="Vaude" src="../../assets/vaude-logo.png" class="vaude-logo"/>
     </div>
 
     <div class="language-changer">

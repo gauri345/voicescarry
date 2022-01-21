@@ -27,9 +27,7 @@ export default {
 };
 </script>
 
-<style>
-
-
+<style scoped>
 .dropup .dropdown-toggle::after {
   margin-bottom: 1px;
   font-size: 25px;
