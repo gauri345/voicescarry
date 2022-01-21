@@ -24,10 +24,3 @@ export default {
       }
 }
 </script>
-
-<style scoped>
-#headercomplaint {
-  height: 70px;
-  width: 100%;
-}
-</style>

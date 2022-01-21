@@ -31,13 +31,10 @@ export default {
   overflow: hidden;
 }
 body {
-   margin:0;
-   padding:0;
    height:100%;
 }
 #body {
-   padding:10px;
-   padding-bottom:80px;   /* Height of the footer */
+  padding-bottom:80px;   /* Height of the footer */
 }
 #headerlanding {
   height: 70px;

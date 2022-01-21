@@ -31,7 +31,6 @@ export default {
     position: absolute;
     bottom: 15px;
     text-align: center;
-
     color: rgba(255, 255, 255);
     font-style: normal;
     font-size: 25px;

@@ -107,6 +107,6 @@ export default {
   background: #4EB562;
 }
 #progressbar {
-   padding-bottom:20px;   /* Height of the footer */
+  padding-bottom:20px;   /* Height of the footer */
 }
 </style>

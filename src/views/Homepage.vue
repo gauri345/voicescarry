@@ -1,7 +1,7 @@
 <template>
 <div id="header">
   <Header>
-    <div class="div-vertical">
+  <div class="div-vertical">
       <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/persona.png"/></div>
       <div class="div-top-txt">
         <br> {{ $t('homepage_entered_message') }} <br><br> {{ $t('homepage_info_message') }} <br><br>
@@ -83,10 +83,6 @@ export default {
 
 <style scoped>
 
-.audio {
-  font-size: 33px;
-  cursor: pointer;
-}
 .img-survey{
   width: 100%;
 }
@@ -104,7 +100,7 @@ export default {
    display: flex;
    align-items: center;
    justify-content:  center;
-   padding-top: 2em;
+   padding-top: 1em;
    flex-wrap: wrap;
  }
 
@@ -124,15 +120,7 @@ export default {
   display: inline-block;
 }
 
-.material-icons.info {
-  font-size: 32px;
-  cursor: pointer;
-  vertical-align: center;
-}
-
 body {
-   margin:0;
-   padding:0;
    height:100%;
 }
 .btn {
@@ -159,7 +147,6 @@ body {
  }
 
 #body {
-   padding:10px;
    padding-bottom:80px;   /* Height of the footer */
 }
 </style>

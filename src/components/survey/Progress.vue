@@ -39,13 +39,10 @@ export default {
   margin-bottom: 2%;
   padding-left: 5px;
 }
-
 .current-page-number {
-  margin: 0 0 20px 20px;
+  margin-left:20px;
   text-align: left;
 }
-
-
 .progress {
   background: #D8D8D8;
   justify-content: flex-start;
@@ -54,9 +51,8 @@ export default {
   display: flex;
   height: 30px;
   width: 99%;
-  margin-top: 20px;
+  margin-top: 10px;
 }
-
 .progress-value {
   animation: load 3s normal forwards;
   background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);;

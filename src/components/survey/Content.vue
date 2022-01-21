@@ -1,7 +1,6 @@
 <template>
   <!-- The content of the question goes here -->
   <div v-if="questionNumber <24" class="survey-question-container">
-    <!-- <div class="center"> -->
           <div class="survey-persona-wrapper">
             <img alt="Persona" src="../../assets/persona.png"/>
           </div>
@@ -13,10 +12,9 @@
               <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
             </div>
           </div> 
-    <!-- </div> -->
   </div>
 
-   <div v-if="questionNumber ==24" class="survey-question-container">
+   <div v-if="questionNumber ==24" class="survey-question-container final-question">
     <div class="feedback-box-wrapper">
             <div class="speechbubble">
               <div class="question-title">{{ questionTitle }}</div>
@@ -182,30 +180,25 @@ export default {
   width: 100%;
   height: 300px;
   margin-top: 2%;
-  /* display: inline-block; */
   overflow: hidden;
   background-image: url('../../assets/Background.png');
-
   display:flex;
-  /* justify-content: center; */
   align-items: center;
 }
-/* .center{
-  display: flex;
-} */
+.final-question{
+  display:inline-block !important; 
+  overflow-y:auto !important;
+}
 .survey-persona-wrapper{
   width: 30%;
-  /* height:100%; */
   margin-left: 1em;
 }
 img{
-  /* max-height:300px; */
   max-height:7em;
   float: right;
 }
 .survey-question-wrapper{
   width: 70%;
-  /* height:100%; */
   margin-right: 1em;
   
 }
@@ -240,7 +233,7 @@ img{
 }
 .material-icons{
   font-size:48px;
-  color:black;
+  color:#2c3e50;
 }
 .question-content {
   margin-top: 2%;
@@ -308,20 +301,16 @@ img{
   background: #1f75009d;
  }
 select {
-  display: center;
-  height: 50px;
-  padding: 10px 6px;
+  height: 55px;
   width: 80%;
-  box-sizing: border-box;
   border: none;
   border-bottom: 1px solid #ddd;
   color: #555;
 }
 .textfield {
-  display: center;
   padding: 10px 6px;  
   width: 80%;
-  height: 100px;
+  height: 80px;
   font-size: 14px;
   background: #FFFFFF;
   border: 1px solid rgba(36, 54, 86, 0.3);
