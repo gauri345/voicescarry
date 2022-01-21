@@ -137,7 +137,7 @@ const store = {
                 questionNumber: 22,
                 questionIcon: "spa",
                 questionCategory: "Wellbeing at Work",
-                questionTitle: "What is yor age?",
+                questionTitle: "What is your age?",
             },
             {
                 questionNumber: 23,
