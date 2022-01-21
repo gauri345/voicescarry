@@ -33,10 +33,4 @@ color: rgba(255, 255, 255);
 font-style: normal;
 font-size: 24px;
 }
-
-.material-icons {
-font-size: 35px;
-vertical-align: text-bottom;
-}
-  
 </style>

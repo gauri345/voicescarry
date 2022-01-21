@@ -24,10 +24,13 @@ export default {
 .navbar{
   background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
 }
+.material-icons {
+font-size: 35px;
+vertical-align: text-bottom;
+}
 *{
   box-sizing: border-box;
   padding:0;
   margin:0;
-
 }
 </style>

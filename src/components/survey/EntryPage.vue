@@ -70,7 +70,6 @@ img {
     padding-bottom: 80px;
 }
 .material-icons.audio {
-  font-size: 32px;
   cursor: pointer;
   color: #2c3e50;
   margin-bottom: 15px;

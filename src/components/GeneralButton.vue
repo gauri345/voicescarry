@@ -46,11 +46,6 @@ export default {
 .button-text-wrapper{
   display: inline-flex;
   text-align:center;
-}
-.material-icons.icon{
-  display: flex;
-  align-items: center;
-  width:24px;
-  padding-right: 30px;
+  align-items:center;
 }
 </style>
