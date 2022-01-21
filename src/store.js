@@ -97,7 +97,6 @@ const store = {
             },
             {
                 questionNumber: 23,
-    
                 questionTitle: "In which position are you working?",
             },
             {

@@ -2,7 +2,7 @@
   <div class="landingpage">
     <Header id="headerlanding" :HeaderText="$t('headerText')"/>
     <div id="body">
-    <TextField/>
+    <LandingContent/>
     </div>
     <div id="footer">
     <LandingFooter/>
@@ -14,14 +14,14 @@
 
 import LandingFooter from "@/components/landingpage/LandingFooter.vue"
 import Header from "@/components/Header";
-import TextField from "@/components/landingpage/TextField"
+import LandingContent from "@/components/landingpage/LandingContent"
 
 export default {
   name: "Landingpage",
   components: {
     LandingFooter,
     Header,
-    TextField
+    LandingContent
   }
 }
 </script>

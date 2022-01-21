@@ -4,10 +4,10 @@
 
     <!-- Question Container including voting-->
     <div class="question-container" >
-      <Content  :question-title="currentQuestion.questionTitle"
+      <SurveyContent  :question-title="currentQuestion.questionTitle"
                 :question-content="currentQuestion.questionTitle"
                 :question-number="currentQuestion.questionNumber">
-      </Content>
+      </SurveyContent>
 
       <!-- The button to navigate between questions goes here -->
       <div class="navigation-buttons">
@@ -41,7 +41,7 @@
 
 <script>
 import Progress from "@/components/survey/Progress";
-import Content from "@/components/survey/Content";
+import SurveyContent from "@/components/survey/SurveyContent";
 import SurveyButton from "@/components/survey/SurveyButton";
 import store from "@/store";
 import Footer from "@/components/Footer";
@@ -50,9 +50,9 @@ import FinishModal from "@/components/survey/FinishModal";
 
 
 export default {
-  name: 'Question',
+  name: 'SurveyPage',
   components: {
-    Content,
+    SurveyContent,
     SurveyButton,
     Progress,
     Footer,

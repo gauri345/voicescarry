@@ -6,14 +6,14 @@
     <p> {{ $t('welcome_survey') }} </p>
     </div>
     <div class="team-picture">
-        <img id="Team" alt="Team" src="../../assets/TeamPicture.jpg"/>
+        <img id="Team" alt="Team" src="../assets/TeamPicture.jpg"/>
     </div>
     <div class="text">
         <p> {{ $t('explain_survey') }} </p>
     </div>
     <div class=buttonwrapper>
         <router-link to="/question/1">
-        <GeneralButton id="startbutton" text="Start the Questionnaire!"/>
+        <GeneralButton id="startbutton" text="Start the Survey!"/>
         </router-link>
     </div>
     </div>
@@ -27,7 +27,7 @@ import GeneralButton from "@/components/complaint/ComplaintButton"
 import {textReader} from "@/util/Speech";
 
 export default {
-  name: 'EntryPage',
+  name: 'SurveyEntryPage',
   components: {
       Header,
       Footer,
@@ -72,6 +72,7 @@ img {
 .material-icons.audio {
   cursor: pointer;
   color: #2c3e50;
-  margin-bottom: 15px;
+  margin-top:0.2em;
+  margin-bottom: 0.2em;
 }
 </style>

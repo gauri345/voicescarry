@@ -86,7 +86,7 @@
 import {textReader} from "@/util/Speech";
 
 export default {
-  name: 'Content',
+  name: 'SurveyContent',
   props: {
     questionTitle: String,
     questionNumber: Number,

@@ -16,7 +16,7 @@ import Header from "@/components/Header";
 import ComplaintButton from "@/components/complaint/ComplaintButton"
 
 export default {
-  name: 'Complaint',
+  name: 'ComplaintPage',
   components: {
       Header,
       Footer,

@@ -30,15 +30,16 @@ import LandingButton from '../landingpage/LandingButton.vue'
 import SpeechBubble from '../landingpage/SpeechBubble.vue'
 
 export default {
+  name:"LandingContent",
+  components: {
+    LandingButton,
+    SpeechBubble
+  },
   data() {
     return {
       code: '',
       codeError: null,
     }
-  },
-  components: {
-    LandingButton,
-    SpeechBubble
   },
   methods: {
     handleSubmit() {
