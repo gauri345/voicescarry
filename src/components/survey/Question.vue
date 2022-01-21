@@ -1,8 +1,6 @@
 <template>
   <div class="surveypage">
-      <HeaderSurvey :question-category="currentQuestion.questionCategory"
-                    :question-icon="currentQuestion.questionIcon">
-      </HeaderSurvey>
+      <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
 
     <!-- Question Container including voting-->
     <div class="question-container" >
@@ -47,7 +45,7 @@ import Content from "@/components/survey/Content";
 import SurveyButton from "@/components/survey/SurveyButton";
 import store from "@/store";
 import Footer from "@/components/Footer";
-import HeaderSurvey from "@/components/survey/HeaderSurvey";
+import Header from "@/components/Header";
 import FinishModal from "@/components/survey/FinishModal";
 
 
@@ -58,7 +56,7 @@ export default {
     SurveyButton,
     Progress,
     Footer,
-    HeaderSurvey,
+    Header,
     FinishModal
   },
 
@@ -67,8 +65,6 @@ export default {
       currentQuestion: store.state.currentQuestion,
       nextQuestion: store.state.nextQuestion,
       previousQuestion: store.state.previousQuestion,
-      questionCategory: store.state.questionCategory,
-      questionIcon: store.state.questionIcon
     }
   },
 
