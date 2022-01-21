@@ -95,6 +95,12 @@ export default {
   border-radius: 10%;
   vertical-align: text-bottom;
 }
+.info{
+  margin-right:0.2em;
+}
+.audio{
+  margin-left:0.2em;
+}
 .div-vertical{
    margin: auto;
    display: flex;
@@ -103,7 +109,6 @@ export default {
    padding-top: 1em;
    flex-wrap: wrap;
  }
-
 .div-top-txt {
   display: inline-block;
 }
