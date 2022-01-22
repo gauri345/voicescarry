@@ -22,13 +22,9 @@ app.use(morgan("dev"));
 app.use(cors());
 
 
-mongoose.connect('mongodb://localhost/workers_wellbeing', {useNewUrlParser: true});
-const db = mongoose.connection;
-
-if (!db)
-    console.log("Error connecting db")
-else
-    console.log("Db connected successfully")
+mongoose.connect('mongodb://localhost/workers_wellbeing',  () => {
+    console.info("Connected to database.");
+});
 
 
 app.use('/api', routes);

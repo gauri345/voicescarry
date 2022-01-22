@@ -1,12 +1,12 @@
 module.exports = {
     get: {
-        tags: ["Question CRUD operations"],
-        description: "Get Questions",
-        operationId: "getQuestions",
+        tags: ["Manage Questions "],
+        description: "Fetch all questions",
+        operationId: "allQuestions",
         parameters: [],
         responses: {
             200: {
-                description: "Todos were obtained",
+                description: "List of all available questions",
                 content: {
                     "application/json": {
                         schema: {
