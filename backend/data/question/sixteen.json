@@ -2,7 +2,7 @@
   "id": 16,
   "number": 16,
   "slug": "proud-the-work-that-i-do",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

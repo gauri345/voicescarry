@@ -1,8 +1,7 @@
 {
-  "id": 3,
   "number": 3,
   "slug": "managable-workload",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

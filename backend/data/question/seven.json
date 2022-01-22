@@ -2,7 +2,7 @@
   "id": 7,
   "number": 7,
   "slug": "my-work-environment-is-safe",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

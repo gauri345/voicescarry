@@ -10,7 +10,7 @@ exports.index = function (req, res) {
         }
         res.json({
             status: "success",
-            message: "Questions retrieved",
+            message: `Total ${questions.length} questions retrieved`,
             data: questions
         });
     });

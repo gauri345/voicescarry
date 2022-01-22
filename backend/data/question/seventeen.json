@@ -2,7 +2,7 @@
   "id": 17,
   "number": 17,
   "slug": "feel-healthy-at-work",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

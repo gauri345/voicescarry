@@ -2,7 +2,7 @@
   "id": 18,
   "number": 18,
   "slug": "eat-healthy-food-at-work",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

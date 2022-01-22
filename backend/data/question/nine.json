@@ -2,7 +2,7 @@
   "id": 9,
   "number": 9,
   "slug": "good-work-life-balance",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

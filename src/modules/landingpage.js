@@ -18,9 +18,9 @@ export default {
             } else {
                 try {
                     await HttpClient.get(`factory/exists?code=${state.factoryCode}`);
-                    router.push({name: 'Homepage'});
+                    await router.push({name: 'Homepage'});
                 } catch (error) {
-                    commit("UPDATE_ERROR_MESSAGE", "Failed validating factory code. [Please re-enter a correct factory code.]");
+                    commit("UPDATE_ERROR_MESSAGE", "Provided factory code not found. [Please re-enter a correct factory code.]");
                 }
             }
         },

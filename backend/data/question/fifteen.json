@@ -2,7 +2,7 @@
   "id": 15,
   "number": 15,
   "slug": "enthusiastic-about-my-job",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

@@ -1,8 +1,7 @@
 {
-  "id": 2,
   "number": 2,
   "slug": "take-care-of-me ",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

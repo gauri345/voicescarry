@@ -2,7 +2,7 @@
   "id": 19,
   "number": 19,
   "slug": "access-to-clean-water",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

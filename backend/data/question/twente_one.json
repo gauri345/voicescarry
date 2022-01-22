@@ -2,7 +2,7 @@
   "id": 21,
   "number": 21,
   "slug": "i-have-good-housing",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

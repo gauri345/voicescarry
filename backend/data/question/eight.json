@@ -2,7 +2,7 @@
   "id": 8,
   "number": 8,
   "slug": "i-am-part-of-a-team",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

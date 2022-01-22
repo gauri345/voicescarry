@@ -2,7 +2,7 @@
   "id": 10,
   "number": 10,
   "slug": "expectation-at-work",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

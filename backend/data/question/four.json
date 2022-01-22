@@ -1,8 +1,7 @@
 {
-  "id": 4,
   "number": 4,
   "slug": "physical-working-condition",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

@@ -1,8 +1,7 @@
 {
-  "id": 1,
   "number": 1,
   "slug": "are-you-happy",
-  "type": "scale",
+  "questionType": "scale",
   "titles": [
     {
       "lang": "en",

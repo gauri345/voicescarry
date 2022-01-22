@@ -76,17 +76,17 @@ export default {
   },
 
   methods: {
-    ...mapActions(['fetchQuestionById'])
+    ...mapActions(['initializeQuestionState'])
   },
 
   created() {
-    const questionNumber = this.$route.params.number;
-    console.log(this.fetchQuestionById(questionNumber));
+    this.initializeQuestionState(parseInt(this.$route.params.number));
+
   },
 
   beforeCreate: function () {
     storeOld.clearSelectedQuestions();
-    storeOld.setQuestionsAction(parseInt(this.$route.params.number));
+    storeOld.setQuestionsAction();
   },
 }
 </script>

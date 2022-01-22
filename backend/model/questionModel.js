@@ -27,25 +27,27 @@ const categorySchema = mongoose.Schema({
 });
 
 const questionSchema = mongoose.Schema({
-    slug: {
-        type: String,
-        required: true
-    },
     number: {
         type: Number,
         requireD: true
     },
-    category: {
-        type: categorySchema,
+    slug: {
+        type: String,
         required: true
     },
-    type: {
+    questionType: {
         type: String,
         required: true
     },
     titles: [
         {
             type: localizedContentSchema,
+            required: true
+        }
+    ],
+    category: [
+        {
+            type: categorySchema,
             required: true
         }
     ],
