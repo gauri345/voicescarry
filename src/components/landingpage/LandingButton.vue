@@ -1,8 +1,6 @@
 <template>
-  <button @click="onClick()" :style="{ background: color }" class="btn">
-    <div class="button-text-wrapper">
-      {{ text }}
-    </div>
+  <button :style="{ background: color }" class="btn" @click="onClick()" type="button">
+    <span class="button-text-wrapper">{{ text }}</span>
   </button>
 </template>
 
@@ -34,14 +32,15 @@ export default {
   border: 0;
   padding: 10px;
   background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
-  box-shadow: 0px 24px 48px -18px rgba(21, 70, 160, 0.5);
+  box-shadow: 0 24px 48px -18px rgba(21, 70, 160, 0.5);
   border-radius: 20px;
-  text-align:center;
+  text-align: center;
   margin-top: 10px;
   height: fit-content;
-  width:80%;
+  width: 80%;
 }
-.button-text-wrapper{
+
+.button-text-wrapper {
   display: inline;
 }
 

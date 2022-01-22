@@ -36,7 +36,6 @@ body {
    height:100%;
 }
 #body {
-   padding:10px;
-   padding-bottom:80px;   /* Height of the footer */
+  padding: 10px 10px 80px;
 }
 </style>

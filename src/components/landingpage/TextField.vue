@@ -11,44 +11,50 @@
     </div>
   </section>
 
-  <section class="pageentry">
-    <form @submit.prevent="handleSubmit">
-      <label>{{$t('labelFactoryCode')}}</label>
-      <input v-model="code" required type="code">
-      <div v-if="codeError" class="error">{{ codeError }}</div>
+  <section class="page-entry">
+    <form>
+      <label>{{ $t('labelFactoryCode') }}</label>
+      <input v-model="factoryCode" required type="text" @click="handleInputClick">
+      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
       <div class="submit">
-        <router-link to="/homepage">
-          <LandingButton :text=" $t('generalButtonStartSurvey')"/>
-        </router-link>
+        <LandingButton :text=" $t('generalButtonStartSurvey')" @btnClick="handleSubmit"/>
       </div>
     </form>
   </section>
+
 </template>
 
 <script>
 import LandingButton from '../landingpage/LandingButton.vue'
 import SpeechBubble from '../landingpage/SpeechBubble.vue'
+import {mapActions, mapGetters} from "vuex";
 
 export default {
-  data() {
-    return {
-      code: '',
-      codeError: null,
-    }
-  },
   components: {
     LandingButton,
     SpeechBubble
   },
   methods: {
+    ...mapActions(["submitForm", "clearErrorMessage"]),
     handleSubmit() {
-      // validate factory code
-      this.codeError = this.code.length > 5 ?
-          '' : 'The factory code is numeric and has to be 6 characters long!'
-      if (!this.codeError) {
-        // make request to database to save user
-        console.log('code: ', this.code)
-      }
+      this.submitForm();
+    },
+    handleInputClick() {
+      this.clearErrorMessage();
+    }
+  },
+  computed: {
+    ...mapGetters(['getErrorMessage']),
+    errorMessage: function () {
+      return this.getErrorMessage;
+    },
+    factoryCode: {
+      get() {
+        return this.$store.state.factoryCode;
+      },
+      set(value) {
+        this.$store.commit('UPDATE_CODE', value);
+      },
     }
   }
 }
@@ -120,7 +126,6 @@ input {
 
 .error {
   color: #ff0062;
-  width: 60%;
   margin-top: 10px;
   font-size: 0.8em;
   font-weight: bold;

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const host = "http://localhost:4000/api/";
+const host = "http://localhost:4000/api";
 
 const url = (path) =>  `${host}/${path}`
 
@@ -16,7 +16,7 @@ const get = (path) => {
     return axios(config)
 };
 
-const patch = (path, token, data) => {
+const patch = (path, data) => {
     const config = {
         method: 'patch',
         url:  url(path),
@@ -30,7 +30,7 @@ const patch = (path, token, data) => {
 }
 
 
-const post = (path, token, data) => {
+const post = (path, data) => {
     const config = {
         method: 'post',
         url:  url(path),
@@ -42,7 +42,7 @@ const post = (path, token, data) => {
     return axios(config);
 }
 
-const doDelete = (path, token) => {
+const doDelete = (path) => {
     const config = {
         method: 'delete',
         url:  url(path)
