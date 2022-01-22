@@ -8,17 +8,15 @@
       "content": "I am doing well at work"
     }
   ],
-  "category": [
-    {
-      "slug": "overall-well-being",
-      "titles": [
-        {
-          "lang": "en",
-          "content": "Overall Wellbeing"
-        }
-      ]
-    }
-  ],
+  "category": {
+    "slug": "overall-well-being",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "Overall Wellbeing"
+      }
+    ]
+  },
   "additionalInformation": [
     {
       "lang": "en",

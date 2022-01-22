@@ -9,17 +9,15 @@
       "content": "I have NEVER experienced abuse at work (e.g., being insulted)"
     }
   ],
-  "category": [
-    {
-      "slug": "shine-dimension",
-      "titles": [
-        {
-          "lang": "en",
-          "content": "SHINE Dimensions"
-        }
-      ]
-    }
-  ],
+  "category": {
+    "slug": "shine-dimension",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "SHINE Dimensions"
+      }
+    ]
+  },
   "additionalInformation": [
     {
       "lang": "en",

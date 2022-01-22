@@ -9,17 +9,15 @@
       "content": "At work, I have the opportunity to learn new skills"
     }
   ],
-  "category": [
-    {
-      "slug": "shine-dimension",
-      "titles": [
-        {
-          "lang": "en",
-          "content": "SHINE Dimensions"
-        }
-      ]
-    }
-  ],
+  "category": {
+    "slug": "shine-dimension",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "SHINE Dimensions"
+      }
+    ]
+  },
   "additionalInformation": [
     {
       "lang": "en",

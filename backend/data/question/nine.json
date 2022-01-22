@@ -9,17 +9,15 @@
       "content": "I feel that I have a good work-life balance"
     }
   ],
-  "category": [
-    {
-      "slug": "shine-dimension",
-      "titles": [
-        {
-          "lang": "en",
-          "content": "SHINE Dimensions"
-        }
-      ]
-    }
-  ],
+  "category": {
+    "slug": "shine-dimension",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "SHINE Dimensions"
+      }
+    ]
+  },
   "additionalInformation": [
     {
       "lang": "en",

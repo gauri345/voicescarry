@@ -8,17 +8,15 @@
       "content": "The physical working conditions are good"
     }
   ],
-  "category": [
-    {
-      "slug": "shine-dimension",
-      "titles": [
-        {
-          "lang": "en",
-          "content": "SHINE Dimensions"
-        }
-      ]
-    }
-  ],
+  "category": {
+    "slug": "shine-dimension",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "SHINE Dimensions"
+      }
+    ]
+  },
   "additionalInformation": [
     {
       "lang": "en",

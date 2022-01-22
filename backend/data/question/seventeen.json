@@ -9,17 +9,15 @@
       "content": "I feel healthy at work in general"
     }
   ],
-  "category": [
-    {
-      "slug": "multidimensional-poverty",
-      "titles": [
-        {
-          "lang": "en",
-          "content": "Multidimensional Poverty"
-        }
-      ]
-    }
-  ],
+  "category": {
+    "slug": "multidimensional-poverty",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "Multidimensional Poverty"
+      }
+    ]
+  },
   "additionalInformation": [
     {
       "lang": "en",

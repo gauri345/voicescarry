@@ -9,17 +9,15 @@
       "content": "I am enthusiastic about my job"
     }
   ],
-  "category": [
-    {
-      "slug": "work-engagement",
-      "titles": [
-        {
-          "lang": "en",
-          "content": "Work Engagement"
-        }
-      ]
-    }
-  ],
+  "category": {
+    "slug": "work-engagement",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "Work Engagement"
+      }
+    ]
+  },
   "additionalInformation": [
     {
       "lang": "en",

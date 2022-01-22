@@ -45,12 +45,10 @@ const questionSchema = mongoose.Schema({
             required: true
         }
     ],
-    category: [
-        {
-            type: categorySchema,
-            required: true
-        }
-    ],
+    category: {
+        type: categorySchema,
+        required: true
+    },
     additionalInformation: [
         {
             type: localizedContentSchema,

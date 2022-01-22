@@ -8,17 +8,15 @@
       "content": "My employer is taking care of me"
     }
   ],
-  "category": [
-    {
-      "slug": "Wellbeing-at-Work",
-      "titles": [
-        {
-          "lang": "en",
-          "content": "Overall Wellbeing"
-        }
-      ]
-    }
-  ],
+  "category": {
+    "slug": "Wellbeing-at-Work",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "Overall Wellbeing"
+      }
+    ]
+  },
   "additionalInformation": [
     {
       "lang": "en",

@@ -8,17 +8,15 @@
       "content": "My workload is manageable"
     }
   ],
-  "category": [
-    {
-      "slug": "shine-dimensions",
-      "titles": [
-        {
-          "lang": "en",
-          "content": "SHINE Dimensions"
-        }
-      ]
-    }
-  ],
+  "category": {
+    "slug": "shine-dimensions",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "SHINE Dimensions"
+      }
+    ]
+  },
   "additionalInformation": [
     {
       "lang": "en",

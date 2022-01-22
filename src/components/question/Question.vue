@@ -1,5 +1,5 @@
 <template>
-  <div class="surveypage">
+  <div class="survey-page">
     <HeaderSurvey :question-category="currentQuestion.questionCategory"
                   :question-icon="currentQuestion.questionIcon">
     </HeaderSurvey>
@@ -20,7 +20,7 @@
             </SurveyButton>
           </router-link>
         </div>
-        <div v-if="previousQuestion.questionNumber ==23" class="button-previous" data-bs-target=".bd-example-modal-pm"
+        <div v-if="previousQuestion.questionNumber ===23" class="button-previous" data-bs-target=".bd-example-modal-pm"
              data-bs-toggle="modal">
           <FinishModal :additional-information="additionalInformation"
                        :question-content="questionContent"/>
@@ -47,11 +47,10 @@
 import Progress from "@/components/utils/Progress";
 import Content from "@/components/question/Content";
 import SurveyButton from "@/components/question/SurveyButton";
-import storeOld from "@/store_old";
 import Footer from "@/components/Footer";
 import HeaderSurvey from "@/components/question/HeaderSurvey";
 import FinishModal from "@/components/question/FinishModal";
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 
 export default {
@@ -65,34 +64,35 @@ export default {
     FinishModal
   },
 
-  data: function () {
-    return {
-      currentQuestion: storeOld.state.currentQuestion,
-      nextQuestion: storeOld.state.nextQuestion,
-      previousQuestion: storeOld.state.previousQuestion,
-      questionCategory: storeOld.state.questionCategory,
-      questionIcon: storeOld.state.questionIcon
-    }
-  },
-
   methods: {
     ...mapActions(['initializeQuestionState'])
   },
 
   created() {
-    this.initializeQuestionState(parseInt(this.$route.params.number));
-
+    const questionNumber = this.$route.params.number;
+    this.initializeQuestionState(parseInt(questionNumber));
   },
 
-  beforeCreate: function () {
-    storeOld.clearSelectedQuestions();
-    storeOld.setQuestionsAction();
-  },
+  computed: {
+    ...mapGetters(['getAllQuestions', 'getPreviousQuestion', 'getCurrentQuestion', 'getNextQuestion']),
+
+    currentQuestion() {
+      return this.getCurrentQuestion
+    },
+
+    previousQuestion() {
+      return this.getPreviousQuestion;
+    },
+
+    nextQuestion() {
+      return this.getNextQuestion;
+    }
+  }
 }
 </script>
 
 <style scoped>
-.surveypage {
+.survey-page {
   overflow: hidden;
   display: block;
 }
@@ -122,6 +122,6 @@ export default {
 }
 
 #progressbar {
-  padding-bottom: 20px; /* Height of the footer */
+  padding-bottom: 20px;
 }
 </style>

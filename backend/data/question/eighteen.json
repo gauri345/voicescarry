@@ -9,17 +9,15 @@
       "content": "I am able to eat healthy food at work"
     }
   ],
-  "category": [
-    {
-      "slug": "multidimensional-poverty",
-      "titles": [
-        {
-          "lang": "en",
-          "content": "Multidimensional Poverty"
-        }
-      ]
-    }
-  ],
+  "category": {
+    "slug": "multidimensional-poverty",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "Multidimensional Poverty"
+      }
+    ]
+  },
   "additionalInformation": [
     {
       "lang": "en",
