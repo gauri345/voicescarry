@@ -18,7 +18,7 @@
       <div v-if="codeError" class="error">{{ codeError }}</div>
       <div class="submit">
         <router-link to="/homepage">
-          <LandingButton :text=" $t('generalButtonStartSurvey')"/>
+          <GeneralButton :text=" $t('generalButtonStartSurvey')" style="align-items: stretch"/>
         </router-link>
       </div>
     </form>
@@ -26,13 +26,13 @@
 </template>
 
 <script>
-import LandingButton from '../landingpage/LandingButton.vue'
+import GeneralButton from '@/components/GeneralButton.vue'
 import SpeechBubble from '../landingpage/SpeechBubble.vue'
 
 export default {
   name:"LandingContent",
   components: {
-    LandingButton,
+    GeneralButton,
     SpeechBubble
   },
   data() {
@@ -113,10 +113,7 @@ input {
   border: 1px solid rgba(36, 54, 86, 0.3);
   box-sizing: border-box;
   border-radius: 20px;
-}
-
-.submit {
-  text-align: center;
+  margin-bottom: 1em;
 }
 
 .error {

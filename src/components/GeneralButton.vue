@@ -46,6 +46,6 @@ export default {
 .button-text-wrapper{
   display: inline-flex;
   text-align:center;
-  align-items:center;
+  align-items: inherit;
 }
 </style>

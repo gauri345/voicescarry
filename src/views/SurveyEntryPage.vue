@@ -13,7 +13,7 @@
     </div>
     <div class=buttonwrapper>
         <router-link to="/question/1">
-        <GeneralButton id="startbutton" text="Start the Survey!"/>
+        <GeneralButton style="align-items:stretch" id="surveystartbutton" text="Start the Survey!"/>
         </router-link>
     </div>
     </div>
@@ -23,7 +23,7 @@
 <script>
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import GeneralButton from "@/components/complaint/ComplaintButton"
+import GeneralButton from "@/components/GeneralButton"
 import {textReader} from "@/util/Speech";
 
 export default {
@@ -58,8 +58,9 @@ img {
     width: 80%;
     margin-bottom: 15px;
 }
-#startbutton {
+#surveystartbutton {
     width: 50%;
+    
 }
 .text {
     font-size: 20px;
