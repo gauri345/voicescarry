@@ -14,16 +14,18 @@
 
       <!-- The button to navigate between questions goes here -->
       <div class="navigation-buttons">
+
         <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
           <router-link :to="'/question/' + previousQuestion.questionNumber">
             <SurveyButton icon1="arrow_backwards" text="Previous">
             </SurveyButton>
           </router-link>
         </div>
+
         <div v-if="previousQuestion.questionNumber ===23" class="button-previous" data-bs-target=".bd-example-modal-pm"
              data-bs-toggle="modal">
-          <FinishModal :additional-information="additionalInformation"
-                       :question-content="questionContent"/>
+          <FinishModal :additional-information="currentQuestion.additionalInformation"
+                       :question-content="currentQuestion.questionContent"/>
           <SurveyButton class="submit" text="Submit"></SurveyButton>
         </div>
 
@@ -36,7 +38,7 @@
       </div>
 
       <!-- The progress bar goes here -->
-      <Progress id="progressbar" :current-page-number="currentQuestion.questionNumber"></Progress>
+      <Progress id="progressbar" :current-page-number="currentQuestion.questionNumber" :total-questions="totalQuestionCount"></Progress>
 
     </div>
     <Footer/>
@@ -65,16 +67,23 @@ export default {
   },
 
   methods: {
-    ...mapActions(['initializeQuestionState'])
+    ...mapActions(['initializeQuestionState', 'clearSelectedQuestions'])
   },
 
   created() {
     const questionNumber = this.$route.params.number;
+    this.clearSelectedQuestions();
     this.initializeQuestionState(parseInt(questionNumber));
   },
 
   computed: {
-    ...mapGetters(['getAllQuestions', 'getPreviousQuestion', 'getCurrentQuestion', 'getNextQuestion']),
+    ...mapGetters([
+        'getAllQuestions',
+      'getPreviousQuestion',
+      'getCurrentQuestion',
+      'getNextQuestion',
+      'getTotalQuestionCount'
+    ]),
 
     currentQuestion() {
       return this.getCurrentQuestion
@@ -86,8 +95,12 @@ export default {
 
     nextQuestion() {
       return this.getNextQuestion;
+    },
+
+    totalQuestionCount() {
+        return this.getTotalQuestionCount;
     }
-  }
+  },
 }
 </script>
 

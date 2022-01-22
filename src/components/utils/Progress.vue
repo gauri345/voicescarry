@@ -10,26 +10,23 @@
 </template>
 
 <script>
-import storeOld from "@/store_old";
-
 export default {
   name: 'Progress',
   props: {
     currentPageNumber: Number,
+    totalQuestions: Number
   },
   data: function () {
     return {
-      totalQuestions: storeOld.totalAvailableQuestions(),
       progressPercentage: this.calculateProgressPercentage()
     }
   },
 
   methods: {
     calculateProgressPercentage: function () {
-      return ((this.currentPageNumber / storeOld.totalAvailableQuestions()) * 100) + "%";
+      return (this.currentPageNumber / this.totalQuestions * 100) + "%";
     }
   },
-
 }
 </script>
 

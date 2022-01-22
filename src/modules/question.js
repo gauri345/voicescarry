@@ -12,7 +12,8 @@ export default {
         getAllQuestions: (state) => state.allQuestions,
         getPreviousQuestion: (state) => state.previousQuestion,
         getCurrentQuestion: (state) => state.currentQuestion,
-        getNextQuestion: (state) => state.nextQuestion
+        getNextQuestion: (state) => state.nextQuestion,
+        getTotalQuestionCount: (state) => state.allQuestions.length
     },
 
     actions: {
@@ -49,6 +50,12 @@ export default {
             if (nextQuestion.length > 0) {
                 commit('SET_NEXT_QUESTION', nextQuestion[0]);
             }
+        },
+
+        clearSelectedQuestions: ({commit}) =>{
+            commit('SET_PREVIOUS_QUESTION', {});
+            commit('SET_CURRENT_QUESTION', {});
+            commit('SET_NEXT_QUESTION', {});
         }
     },
 
