@@ -1,0 +1,47 @@
+{
+  "id": 16,
+  "number": 16,
+  "slug": "proud-the-work-that-i-do",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I am proud of the work that I do"
+    }
+  ],
+  "category": [
+    {
+      "slug": "work-engagement",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "Work Engagement"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "no additional information."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

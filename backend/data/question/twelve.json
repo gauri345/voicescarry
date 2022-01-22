@@ -1,0 +1,47 @@
+{
+  "id": 12,
+  "number": 12,
+  "slug": "opportunity-to-learn-new-skills",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "At work, I have the opportunity to learn new skills"
+    }
+  ],
+  "category": [
+    {
+      "slug": "shine-dimension",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "SHINE Dimensions"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "My company offers me opportunities to develop and advance my career."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

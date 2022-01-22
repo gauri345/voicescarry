@@ -1,0 +1,47 @@
+{
+  "id": 7,
+  "number": 7,
+  "slug": "my-work-environment-is-safe",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "My work environment is safe"
+    }
+  ],
+  "category": [
+    {
+      "slug": "shine-dimension",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "SHINE Dimensions"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "Dangerous machines are checked for safety regularly. I have access to healthy food, drinking water,and medical care at my place of work. I have adequate protective equipment.My managers and colleagues follow Covid-19 safety regulations."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

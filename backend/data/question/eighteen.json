@@ -1,0 +1,47 @@
+{
+  "id": 18,
+  "number": 18,
+  "slug": "eat-healthy-food-at-work",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I am able to eat healthy food at work"
+    }
+  ],
+  "category": [
+    {
+      "slug": "multidimensional-poverty",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "Multidimensional Poverty"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "no additional information."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

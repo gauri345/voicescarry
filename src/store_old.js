@@ -18,8 +18,9 @@ const storeOld = {
                 questionNumber: 2,
                 questionIcon: "spa",
                 questionCategory: "Wellbeing at Work",
-                questionTitle: "My employer ist taking care of me",
-                additionalInformation: "I feel that my employer treats me fairly. I feel supported by my supervisors and managers. There are protocols in place to keep me physically and mentally safe."
+                questionTitle: "My employer is taking care of me",
+                additionalInformation: "I feel that my employer treats me fairly. I feel supported by my supervisors and managers." +
+                    " There are protocols in place to keep me physically and mentally safe."
             },
             {
                 questionNumber: 3,
@@ -33,7 +34,9 @@ const storeOld = {
                 questionIcon: "spa",
                 questionCategory: "SHINE Dimensions",
                 questionTitle: "The physical working conditions are good",
-                additionalInformation: "The temperature where I work is moderate — not overly hot or cold. My work space is well ventilated. It is not overly noisy (considering my job environment). I may sit, stand, or move in relatively comfortable ways in order to do my job."
+                additionalInformation: "The temperature where I work is moderate — not overly hot or cold. My work space is well ventilated." +
+                    " It is not overly noisy (considering my job environment). I may sit, stand, or move in relatively comfortable ways " +
+                    "in order to do my job."
             },
             {
                 questionNumber: 5,
