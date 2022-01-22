@@ -1,0 +1,47 @@
+{
+  "id": 8,
+  "number": 8,
+  "slug": "i-am-part-of-a-team",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I feel that I am part of a team"
+    }
+  ],
+  "category": [
+    {
+      "slug": "shine-dimension",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "SHINE Dimensions"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "I can count on my co-workers and supervisors to get the work done and manage stressful situations well."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

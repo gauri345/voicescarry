@@ -1,0 +1,47 @@
+{
+  "id": 19,
+  "number": 19,
+  "slug": "access-to-clean-water",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I have access to clean and sufficient drinking water at work"
+    }
+  ],
+  "category": [
+    {
+      "slug": "multidimensional-poverty",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "Multidimensional Poverty"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "no additional information."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

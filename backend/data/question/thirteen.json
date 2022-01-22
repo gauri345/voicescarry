@@ -1,0 +1,47 @@
+{
+  "id": 13,
+  "number": 13,
+  "slug": "never-experienced-abuse-at-work",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I have NEVER experienced abuse at work (e.g., being insulted)"
+    }
+  ],
+  "category": [
+    {
+      "slug": "shine-dimension",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "SHINE Dimensions"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "I feel emotionally and physically safe at work. No one makes me feel uncomfortable,yells at me, threatens me, or touches me in inappropriate ways."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

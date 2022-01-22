@@ -1,0 +1,47 @@
+{
+  "id": 6,
+  "number": 6,
+  "slug": "my-job -is-meaningful",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I feel that my job is meaningful in my life"
+    }
+  ],
+  "category": [
+    {
+      "slug": "shine-dimension",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "SHINE Dimensions"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "I value having my job. It gives me a sense of accomplishment or satisfaction."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

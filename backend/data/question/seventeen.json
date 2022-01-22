@@ -1,0 +1,47 @@
+{
+  "id": 17,
+  "number": 17,
+  "slug": "feel-healthy-at-work",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I feel healthy at work in general"
+    }
+  ],
+  "category": [
+    {
+      "slug": "multidimensional-poverty",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "Multidimensional Poverty"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "no additional information."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

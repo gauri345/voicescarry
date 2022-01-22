@@ -1,0 +1,47 @@
+{
+  "id": 4,
+  "number": 4,
+  "slug": "physical-working-condition",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "The physical working conditions are good"
+    }
+  ],
+  "category": [
+    {
+      "slug": "shine-dimension",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "SHINE Dimensions"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "The temperature where I work is moderate — not overly hot or cold. My work space is well ventilated.It is not overly noisy (considering my job environment). I may sit, stand, or move in relatively comfortable ways  in order to do my job."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": 3,
+  "number": 3,
+  "slug": "managable-workload",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "My workload is manageable"
+    }
+  ],
+  "category": [
+    {
+      "slug": "shine-dimensions",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "SHINE Dimensions"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "I have enough time to do my work properly, with a bearable level of stress and enough time to rest."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}

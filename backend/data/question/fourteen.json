@@ -1,0 +1,47 @@
+{
+  "id": 14,
+  "number": 14,
+  "slug": "feel-bursting-with-energy",
+  "type": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "At my work, I feel bursting with energy"
+    }
+  ],
+  "category": [
+    {
+      "slug": "work-engagement",
+      "titles": [
+        {
+          "lang": "en",
+          "content": "Work Engagement"
+        }
+      ]
+    }
+  ],
+  "additionalInformation": [
+    {
+      "lang": "en",
+      "content": "I feel motivated by my work."
+    }
+  ],
+  "answers": [
+    {
+      "lang": "en",
+      "content": "1"
+    },
+    {
+      "lang": "en",
+      "content": "2"
+    },
+    {
+      "lang": "en",
+      "content": "3"
+    },
+    {
+      "lang": "en",
+      "content": "4"
+    }
+  ]
+}
