@@ -1,5 +1,4 @@
 {
-  "id": 13,
   "number": 13,
   "slug": "never-experienced-abuse-at-work",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "I feel emotionally and physically safe at work. No one makes me feel uncomfortable,yells at me, threatens me, or touches me in inappropriate ways."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

@@ -1,0 +1,30 @@
+{
+  "number": 23,
+  "slug": "position-at-work",
+  "questionType": "select",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "In which position are you working?"
+    }
+  ],
+  "category": {
+    "slug": "wellbeing-at-work",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "Wellbeing at Work"
+      }
+    ]
+  },
+  "answers": [
+    {
+      "lang": "en",
+      "content": "Worker"
+    },
+    {
+      "lang": "en",
+      "content": "Manger"
+    }
+  ]
+}

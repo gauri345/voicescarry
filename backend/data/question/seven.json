@@ -1,5 +1,4 @@
 {
-  "id": 7,
   "number": 7,
   "slug": "my-work-environment-is-safe",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "Dangerous machines are checked for safety regularly. I have access to healthy food, drinking water,and medical care at my place of work. I have adequate protective equipment.My managers and colleagues follow Covid-19 safety regulations."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

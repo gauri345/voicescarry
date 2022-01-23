@@ -1,5 +1,4 @@
 {
-  "id": 8,
   "number": 8,
   "slug": "i-am-part-of-a-team",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "I can count on my co-workers and supervisors to get the work done and manage stressful situations well."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

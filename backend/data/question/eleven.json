@@ -1,5 +1,4 @@
 {
-  "id": 11,
   "number": 11,
   "slug": "i-receive-a-fair-wage",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "I feel that I receive a fair wage for my work and time. I am paid on time. No wages are kept from me. If I work overtime, I am paid for overtime. "
-    }
-  ],
   "answers": [
     {
       "lang": "en",

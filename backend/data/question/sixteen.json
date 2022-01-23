@@ -1,5 +1,5 @@
 {
-  "id": 16,
+
   "number": 16,
   "slug": "proud-the-work-that-i-do",
   "questionType": "scale",
@@ -18,12 +18,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "no additional information."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

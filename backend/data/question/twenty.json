@@ -1,5 +1,4 @@
 {
-  "id": 20,
   "number": 20,
   "slug": "i-have-good-housing",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "If my place of work provides housing, it is clean and comfortable. I am able to cook and socialize without too many regulations."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

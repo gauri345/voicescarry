@@ -1,5 +1,4 @@
 {
-  "id": 17,
   "number": 17,
   "slug": "feel-healthy-at-work",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "no additional information."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

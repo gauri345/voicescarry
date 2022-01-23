@@ -1,5 +1,4 @@
 {
-  "id": 14,
   "number": 14,
   "slug": "feel-bursting-with-energy",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "I feel motivated by my work."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

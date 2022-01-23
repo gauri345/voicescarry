@@ -1,5 +1,4 @@
 {
-  "id": 9,
   "number": 9,
   "slug": "good-work-life-balance",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "It is easy to take time off from work for personal matters. Work does not disrupt my family time."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

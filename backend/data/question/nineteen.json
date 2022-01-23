@@ -1,5 +1,4 @@
 {
-  "id": 19,
   "number": 19,
   "slug": "access-to-clean-water",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "no additional information."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

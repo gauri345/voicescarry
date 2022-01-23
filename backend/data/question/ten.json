@@ -1,5 +1,4 @@
 {
-  "id": 10,
   "number": 10,
   "slug": "expectation-at-work",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "I have a sense of control over how I do my work and my job schedule."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

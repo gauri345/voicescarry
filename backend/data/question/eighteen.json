@@ -1,5 +1,4 @@
 {
-  "id": 18,
   "number": 18,
   "slug": "eat-healthy-food-at-work",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "no additional information."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

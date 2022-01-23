@@ -1,0 +1,34 @@
+{
+  "number": 21,
+  "slug": "what-is-your-gender",
+  "questionType": "select",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "What is your gender ?"
+    }
+  ],
+  "category": {
+    "slug": "wellbeing-at-work",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "Wellbeing at Work"
+      }
+    ]
+  },
+  "answers": [
+    {
+      "lang": "en",
+      "content": "female"
+    },
+    {
+      "lang": "en",
+      "content": "male"
+    },
+    {
+      "lang": "en",
+      "content": "diverse"
+    }
+  ]
+}

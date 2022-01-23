@@ -1,5 +1,4 @@
 {
-  "id": 12,
   "number": 12,
   "slug": "opportunity-to-learn-new-skills",
   "questionType": "scale",
@@ -18,12 +17,6 @@
       }
     ]
   },
-  "additionalInformation": [
-    {
-      "lang": "en",
-      "content": "My company offers me opportunities to develop and advance my career."
-    }
-  ],
   "answers": [
     {
       "lang": "en",

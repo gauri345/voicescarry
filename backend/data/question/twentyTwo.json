@@ -1,0 +1,50 @@
+{
+  "number": 22,
+  "slug": "what-is-your-age?",
+  "questionType": "select",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "What is your age?"
+    }
+  ],
+  "category": {
+    "slug": "wellbeing-at-work",
+    "titles": [
+      {
+        "lang": "en",
+        "content": "Wellbeing at Work"
+      }
+    ]
+  },
+  "answers": [
+    {
+      "lang": "en",
+      "content": "20 or younger"
+    },
+    {
+      "lang": "en",
+      "content": "21-30"
+    },
+    {
+      "lang": "en",
+      "content": "31-40"
+    },
+    {
+      "lang": "en",
+      "content": "41-50"
+    },
+    {
+      "lang": "en",
+      "content": "51-60"
+    },
+    {
+      "lang": "en",
+      "content": "61-70"
+    },
+    {
+      "lang": "en",
+      "content": "71 or older"
+    }
+  ]
+}
