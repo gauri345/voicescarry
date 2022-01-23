@@ -7,7 +7,6 @@
     <!-- Question Container including voting-->
     <div class="question-container" >
       <Content  :question-title="currentQuestion.questionTitle"
-                :additional-information="currentQuestion.additionalInformation"
                 :question-content="currentQuestion.questionTitle"
                 :question-number="currentQuestion.questionNumber">
       </Content>
@@ -43,13 +42,13 @@
 </template>
 
 <script>
-import Progress from "@/components/Progress";
-import Content from "@/components/question/Content";
-import SurveyButton from "@/components/question/SurveyButton";
+import Progress from "@/components/survey/Progress";
+import Content from "@/components/survey/Content";
+import SurveyButton from "@/components/survey/SurveyButton";
 import store from "@/store";
 import Footer from "@/components/Footer";
-import HeaderSurvey from "@/components/question/HeaderSurvey";
-import FinishModal from "@/components/question/FinishModal";
+import HeaderSurvey from "@/components/survey/HeaderSurvey";
+import FinishModal from "@/components/survey/FinishModal";
 
 
 export default {

@@ -1,10 +1,10 @@
 {
-  "headerText": "Measuring Worker Wellbeing",
+  "headerText": "Wellbeing at Work",
   "speechBubbleName": "Hi! My name is... I will help you.",
   "speechBubbleQR": "To enter, please type your factory code or access via QR code.",
   "labelFactoryCode": "Factory code:",
   "generalButtonStartSurvey": "Enter the survey",
-  "homepage_entered_message": "Welcome to the survey on worker-wellbeing!",
+  "homepage_entered_message": "Welcome to the survey on 'wellbeing at work'!",
   "homepage_info_message": "If you want to know more about the survey, please click on the info icon below.",
   "homepage_start_survey": "Start Survey",
   "homepage_report_complaint": "Report a complaint",

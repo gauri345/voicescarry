@@ -2,9 +2,9 @@ import {createRouter, createWebHistory} from 'vue-router'
 
 import LandingPage from '@/views/Landingpage';
 import HomePage from "@/views/Homepage";
-import Question from "@/components/question/Question";
+import Question from "@/components/survey/Question";
 import Complaint from "@/components/complaint/Complaint";
-import EntryPage from "@/components/question/EntryPage";
+import EntryPage from "@/components/survey/EntryPage";
 
 import i18n from '../lang';
 
