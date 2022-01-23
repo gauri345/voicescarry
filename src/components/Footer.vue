@@ -4,19 +4,16 @@
                     <a class="nav-item nav-link">
                       <router-link to="/homepage">
                         <span class= "material-icons">home</span>
-                        Home
                       </router-link>
                     </a>
                     <a class="nav-item nav-link">
                       <router-link to="/question/information">
                         <span class= "material-icons">assignment</span>
-                        Survey
                       </router-link>
                     </a>
                     <a class="nav-item nav-link">
                       <router-link to="/complaint">
                       <span class= "material-icons">assignment_late</span>
-                      Complaint
                       </router-link>
                     </a>
                     <a class="nav-item nav-link" href="#">
@@ -43,7 +40,6 @@ export default {
 
 <style scoped>
 nav {
-    background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
     margin-top: 10px;
     height: 43px;
     width: 100%;
@@ -61,9 +57,5 @@ a:visited {
 a:link {
   color:rgba(255, 255, 255);
   text-decoration: none;
-}
-.nav-item.nav-link {
-  display: flex;
-  font-size:90%;
 }
 </style>

@@ -6,7 +6,7 @@
 
     <ul class="dropdown-menu">
      <li><a href="#" class="lang-button" @click="changeLanguage">EN</a></li>
-     <li> <a class="lang-button" @click="changeLanguage">VI</a></li>
+     <li><a href="#" class="lang-button" @click="changeLanguage">VI&nbsp;</a></li>
     </ul>
 
   </div>
@@ -38,40 +38,30 @@ export default {
   margin-bottom: 0.4rem;
 
 }
-
 button {
   border: none;
   color: #fff;
 }
-
 .dropdown-toggle {
   background: transparent;
   border-radius: 5px;
   max-height: 30px;
+  display:flex;
+  align-items: center;
 }
-
 .dropdown-menu {
   margin: 0;
   padding: 0;
   min-width: 20px;
 }
-
 .dropdown-menu li{
   border-bottom: 2px solid #d6d6d7;
 }
-
 .lang-button {
   padding: 10px;
   text-decoration: none;
 }
-
 .lang-button:hover {
   text-decoration: none;
 }
-
-.material-icons {
-  font-size: 22px;
-}
-
-
 </style>

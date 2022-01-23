@@ -44,6 +44,9 @@ export default {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+.material-icons{
+  font-size:24px;
+}
 .material-icons.back-arrow{
   float:left;
   width:24px;

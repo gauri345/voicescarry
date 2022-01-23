@@ -1,7 +1,7 @@
 <template>
 <div id="header">
   <Header>
-    <div class="div-vertical">
+  <div class="div-vertical">
       <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/persona.png"/></div>
       <div class="div-top-txt">
         <br> {{ $t('homepage_entered_message') }} <br><br> {{ $t('homepage_info_message') }} <br><br>
@@ -19,7 +19,7 @@
      <div class="navigation-buttons">
        <div class="btn">
         <router-link to="/question/information">
-          <GeneralButton icon="assignment" :text="$t('homepage_start_survey')"></GeneralButton>
+          <GeneralButton style="align-items:center !important;" icon="assignment" :text="$t('homepage_start_survey')"></GeneralButton>
           <div class="img-pc-view"><img class="img-survey" src="@/assets/btn_survey.png"/></div>
         </router-link>
       </div>
@@ -28,7 +28,7 @@
      <div class="navigation-buttons">
        <div class="btn">
         <router-link to="/complaint">
-          <GeneralButton icon="assignment_late" :text="$t('homepage_report_complaint')"></GeneralButton>
+          <GeneralButton style="align-items:center !important;" icon="assignment_late" :text="$t('homepage_report_complaint')"></GeneralButton>
           <div class="img-pc-view"><img class="img-complaint" src="@/assets/btn_complaint.png"/></div>
         </router-link>
       </div>
@@ -83,10 +83,6 @@ export default {
 
 <style scoped>
 
-.audio {
-  font-size: 33px;
-  cursor: pointer;
-}
 .img-survey{
   width: 100%;
 }
@@ -99,15 +95,20 @@ export default {
   border-radius: 10%;
   vertical-align: text-bottom;
 }
+.info{
+  margin-right:0.2em;
+}
+.audio{
+  margin-left:0.2em;
+}
 .div-vertical{
    margin: auto;
    display: flex;
    align-items: center;
    justify-content:  center;
-   padding-top: 2em;
+   padding-top: 1em;
    flex-wrap: wrap;
  }
-
 .div-top-txt {
   display: inline-block;
 }
@@ -124,42 +125,36 @@ export default {
   display: inline-block;
 }
 
-.material-icons.info {
-  font-size: 32px;
-  cursor: pointer;
-  vertical-align: center;
-}
-
 body {
-   margin:0;
-   padding:0;
-   height:100%;
+  height:100%;
 }
 .btn {
-   cursor: pointer;
-   display: inline-block;
-   vertical-align: middle;
-   position: relative;
-   color: rgb(255, 255, 255);
-   font-size: 16px;
-   font-weight: bold;
-   border: 0;
-   width: 100%;
-   height: fit-content;
-   background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
-   box-shadow: 0px 24px 48px -18px rgba(21, 70, 160, 0.5);
-   text-align:center;
-   padding-top: 0.8em;
-   padding-bottom: 1em;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: bold;
+  border: 0;
+  width: 100%;
+  height: fit-content;
+  background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
+  box-shadow: 0px 24px 48px -18px rgba(21, 70, 160, 0.5);
+  text-align:center;
+  padding-top: 0.8em;
+  padding-bottom: 1em;
  }
 
  .btn:hover {
      transform: translateY(-3px);
      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
  }
+/*.align-center{
+  special styling was added in template line 22 and 31
+}*/
 
 #body {
-   padding:10px;
    padding-bottom:80px;   /* Height of the footer */
 }
 </style>

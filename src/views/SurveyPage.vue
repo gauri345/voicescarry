@@ -1,15 +1,13 @@
 <template>
   <div class="surveypage">
-      <HeaderSurvey :question-category="currentQuestion.questionCategory"
-                    :question-icon="currentQuestion.questionIcon">
-      </HeaderSurvey>
+      <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
 
     <!-- Question Container including voting-->
     <div class="question-container" >
-      <Content  :question-title="currentQuestion.questionTitle"
+      <SurveyContent  :question-title="currentQuestion.questionTitle"
                 :question-content="currentQuestion.questionTitle"
                 :question-number="currentQuestion.questionNumber">
-      </Content>
+      </SurveyContent>
 
       <!-- The button to navigate between questions goes here -->
       <div class="navigation-buttons">
@@ -43,22 +41,22 @@
 
 <script>
 import Progress from "@/components/survey/Progress";
-import Content from "@/components/survey/Content";
+import SurveyContent from "@/components/survey/SurveyContent";
 import SurveyButton from "@/components/survey/SurveyButton";
 import store from "@/store";
 import Footer from "@/components/Footer";
-import HeaderSurvey from "@/components/survey/HeaderSurvey";
+import Header from "@/components/Header";
 import FinishModal from "@/components/survey/FinishModal";
 
 
 export default {
-  name: 'Question',
+  name: 'SurveyPage',
   components: {
-    Content,
+    SurveyContent,
     SurveyButton,
     Progress,
     Footer,
-    HeaderSurvey,
+    Header,
     FinishModal
   },
 
@@ -67,8 +65,6 @@ export default {
       currentQuestion: store.state.currentQuestion,
       nextQuestion: store.state.nextQuestion,
       previousQuestion: store.state.previousQuestion,
-      questionCategory: store.state.questionCategory,
-      questionIcon: store.state.questionIcon
     }
   },
 
@@ -107,6 +103,6 @@ export default {
   background: #4EB562;
 }
 #progressbar {
-   padding-bottom:20px;   /* Height of the footer */
+  padding-bottom:20px;   /* Height of the footer */
 }
 </style>
