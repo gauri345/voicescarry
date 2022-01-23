@@ -1,12 +1,12 @@
 <template>
   <div class="dropup">
     <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="material-icons">language</span>
+      <span class="material-icons language-icon">language</span>
     </button>
 
     <ul class="dropdown-menu">
      <li><a href="#" class="lang-button" @click="changeLanguage">EN</a></li>
-     <li> <a class="lang-button" @click="changeLanguage">VI</a></li>
+     <li> <a href="#" class="lang-button" @click="changeLanguage">VI&nbsp;</a></li>
     </ul>
 
   </div>
@@ -39,21 +39,22 @@ export default {
 
 }
 
-button {
-  border: none;
-  color: #fff;
+.dropup button {
+  background: white;
+  border: 1px solid #bbc3d1;
+  color: #114EA5;
 }
 
 .dropdown-toggle {
   background: transparent;
   border-radius: 5px;
-  max-height: 30px;
 }
 
 .dropdown-menu {
   margin: 0;
   padding: 0;
-  min-width: 20px;
+  max-width: 100%;
+  min-width: unset;
 }
 
 .dropdown-menu li{
@@ -69,8 +70,17 @@ button {
   text-decoration: none;
 }
 
-.material-icons {
-  font-size: 22px;
+.language-icon {
+  font-size: 100%;
+  position: absolute;
+  left: 8%;
+  top: 20%;
+}
+
+.dropup .dropdown-toggle::after {
+  margin-bottom: -5px;
+  font-size: 25px;
+  margin-left: 16px;
 }
 
 
