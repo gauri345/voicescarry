@@ -6,7 +6,7 @@
 
     <ul class="dropdown-menu">
      <li><a href="#" class="lang-button" @click="changeLanguage">EN</a></li>
-     <li> <a class="lang-button" @click="changeLanguage">VI</a></li>
+     <li><a href="#" class="lang-button" @click="changeLanguage">VI&nbsp;</a></li>
     </ul>
 
   </div>
