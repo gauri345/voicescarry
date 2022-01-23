@@ -312,7 +312,7 @@ select {
 .textfield {
   padding: 10px 6px;  
   width: 80%;
-  height: 80px;
+  height: 100%; /* makes fiels size the same size as smileys and form*/
   font-size: 14px;
   background: #FFFFFF;
   border: 1px solid rgba(36, 54, 86, 0.3);
