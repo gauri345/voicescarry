@@ -3,17 +3,17 @@
     <div id="body">
     <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
     <div class="text">
-    <p> {{ $t('welcome_survey') }} </p>
+    <p> {{ $t('intro_explanation') }} </p>
     </div>
-    <div class="team-picture">
-        <img id="Team" alt="Team" src="../assets/TeamPicture.jpg"/>
+    <div class="rating-picture">
+        <img id="rating" alt="rating" src="../assets/rating.png"/>
     </div>
     <div class="text">
-        <p> {{ $t('explain_survey') }} </p>
+        <p> {{ $t('explain_rating') }} </p>
     </div>
     <div class=buttonwrapper>
-        <router-link to="/question/explanation">
-        <SurveyButton id="nextbutton" icon2="arrow_forward" text="Next"/>
+        <router-link to="/question/1">
+        <GeneralButton style="align-items:stretch" id="surveystartbutton" text="Start the Survey!"/>
         </router-link>
     </div>
     </div>
@@ -23,15 +23,15 @@
 <script>
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import SurveyButton from "@/components/survey/SurveyButton"
+import GeneralButton from "@/components/GeneralButton"
 import {textReader} from "@/util/Speech";
 
 export default {
-  name: 'SurveyEntryPage',
+  name: 'SurveyExplanationPage',
   components: {
       Header,
       Footer,
-      SurveyButton
+      GeneralButton
       },
 data() {
     return {
@@ -41,8 +41,8 @@ data() {
   methods: {
     readQuestionContent: function () {
         const textToRead =
-            this.$i18n.t('welcome_survey').replace('!', '. ') +
-            this.$i18n.t('explain_survey').replace('!', '. ');
+            this.$i18n.t('intro_explanation').replace('!', '. ') +
+            this.$i18n.t('explain_rating').replace('!', '. ');
 
         console.log(this.$i18n.locale);
 
@@ -58,13 +58,14 @@ img {
     width: 80%;
     margin-bottom: 15px;
 }
+#surveystartbutton {
+    width: 50%;
+    margin:0;
+}
 .text {
     font-size: 20px;
     margin-left: 10%;
     margin-right: 10%;
-}
-#nextbutton{
-    width:50%;
 }
 #body {
     padding-bottom: 80px;
