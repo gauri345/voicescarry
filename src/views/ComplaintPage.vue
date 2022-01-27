@@ -5,7 +5,7 @@
         <a href="https://csr-report.vaude.com/gri-en/social/complaints-system.php">Fair Wear Complaint Helpline</a> 
     </p>
     <div class=buttonwrapper>
-      <GeneralButton style="align-items: stretch" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintbutton" text="Go to the Complaint System of Vaude"/>
+      <GeneralButton style="align-items: baseline" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintbutton" text="Go to the Complaint System of Vaude"/>
     </div>
     <Footer/>
 </template>

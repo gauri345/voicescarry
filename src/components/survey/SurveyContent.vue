@@ -249,7 +249,7 @@ img{
 }
 .question-title {
   position: relative;
-  font-size: 120%;
+  font-size: 20px;
   line-height: 28px;
   color: rgba(255, 255, 255);
 }

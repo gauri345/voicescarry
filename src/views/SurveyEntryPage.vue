@@ -64,7 +64,7 @@ img {
     margin-right: 10%;
 }
 #nextbutton{
-    width:50%;
+    width:60%;
 }
 #body {
     padding-bottom: 80px;

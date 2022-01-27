@@ -24,6 +24,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   font-weight: bold;
+  font-size: 20px;
   color: #2c3e50;
 }
 /* gives all headers and footers the same background color*/

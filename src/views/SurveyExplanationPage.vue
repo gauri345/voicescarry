@@ -13,7 +13,7 @@
     </div>
     <div class=buttonwrapper>
         <router-link to="/question/1">
-        <GeneralButton style="align-items:stretch" id="surveystartbutton" text="Start the Survey!"/>
+        <GeneralButton style="align-items:baseline" id="surveystartbutton" text="Start the Survey!"/>
         </router-link>
     </div>
     </div>
@@ -59,7 +59,7 @@ img {
     margin-bottom: 15px;
 }
 #surveystartbutton {
-    width: 50%;
+    width: 60%;
     margin:0;
 }
 .text {

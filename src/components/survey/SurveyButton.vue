@@ -31,7 +31,7 @@ export default {
   vertical-align: top;
   position: relative;
   color: rgb(255, 255, 255);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   border: 0;
   padding: 10px;
