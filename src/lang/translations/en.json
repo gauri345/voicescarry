@@ -1,7 +1,7 @@
 {
   "headerText": "Wellbeing at Work",
   "speechBubbleName": "Hi! I will guide you through this app.",
-  "speechBubbleQR": "To enter, please type your factory code or access via QR code.",
+  "speechBubbleQR": "To enter, please type your factory code.",
   "labelFactoryCode": "Factory code:",
   "generalButtonStartSurvey": "Enter the survey",
   "homepage_entered_message": "Welcome to the survey on 'wellbeing at work'!",

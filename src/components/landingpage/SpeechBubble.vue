@@ -26,8 +26,8 @@ export default {
   color: rgb(255, 255, 255);
   position: relative;
   vertical-align: top;
-  padding: 15px;
-  margin-top: 15px;
+  padding: 0.5em;
+  margin-top: 0.5em;
   max-height:100%;
 }
 .speechbubble::before{

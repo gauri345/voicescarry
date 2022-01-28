@@ -191,16 +191,14 @@ export default {
 }
 .survey-persona-wrapper{
   width: 30%;
-  margin-left: 1em;
+  margin-left: 2em;
 }
 img{
   max-height:7em;
   float: right;
 }
 .survey-question-wrapper{
-  width: 70%;
-  margin-right: 1em;
-  
+  width: 70%;  
 }
 .feedback-box-wrapper{
   width: 100%;
