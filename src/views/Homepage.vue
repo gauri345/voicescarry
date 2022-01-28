@@ -4,7 +4,7 @@
   <div class="div-vertical">
       <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/persona.png"/></div>
       <div class="div-top-txt">
-        <br> {{ $t('homepage_entered_message') }} <br><br> {{ $t('homepage_info_message') }} <br><br>
+        <br> {{ $t('homepage_entered_message') }} <br><br> {{ $t('homepage_info_message') }} <br>
         <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>
         <HomepageModal/>
         <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
@@ -15,7 +15,7 @@
 
 <div id="body">
   
-  <div class="div-vertical">
+  <div class="button-wrapper">
      <div class="navigation-buttons">
        <div class="btn">
         <router-link to="/question/information">
@@ -106,17 +106,24 @@ export default {
    display: flex;
    align-items: center;
    justify-content:  center;
-   padding-top: 1em;
    flex-wrap: wrap;
  }
 .div-top-txt {
   display: inline-block;
+  font-size:20px;
 }
 
 .div-top-img {
   display: inline-block;
 }
-
+.button-wrapper{
+   margin: auto;
+   display: flex;
+   align-items: center;
+   justify-content:  center;
+   padding-top: 1em;
+   flex-wrap: wrap;
+ }
 .navigation-buttons {
   width: 20em;
   margin-left: 2em;
@@ -128,13 +135,14 @@ export default {
 body {
   height:100%;
 }
+
 .btn {
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
   position: relative;
   color: rgb(255, 255, 255);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   border: 0;
   width: 100%;
@@ -155,6 +163,6 @@ body {
 }*/
 
 #body {
-   padding-bottom:80px;   /* Height of the footer */
+  padding-bottom:80px;   /* Height of the footer */
 }
 </style>

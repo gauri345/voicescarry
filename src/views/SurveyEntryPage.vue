@@ -1,7 +1,7 @@
 <template>
     <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
     <div id="body">
-    <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
+    <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
     <div class="text">
     <p> {{ $t('welcome_survey') }} </p>
     </div>
@@ -64,7 +64,7 @@ img {
     margin-right: 10%;
 }
 #nextbutton{
-    width:50%;
+    width:60%;
 }
 #body {
     padding-bottom: 80px;

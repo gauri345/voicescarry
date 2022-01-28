@@ -1,19 +1,42 @@
 <template>
     <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
     <div id="body">
-    <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
+        <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
     <div class="text">
-    <p> {{ $t('intro_explanation') }} </p>
+        <p> {{ $t('intro_explanation') }} </p>
     </div>
-    <div class="rating-picture">
-        <img id="rating" alt="rating" src="../assets/rating.png"/>
+    <div class="answertypes">
+        <div class="text-center" style="font-size:16px">
+            <span class="material-icons vd">sentiment_very_dissatisfied</span>
+            <span> Strongly Disagree </span>
+        </div>
+        <div class="text-center" style="font-size:16px">
+            <span class="material-icons d">sentiment_dissatisfied</span>
+            <span> Disagree </span>
+            <br>
+        </div>
+        <div class="text-center" style="font-size:16px">
+            <span class="material-icons n">sentiment_neutral</span>
+            <span> Neutral </span>
+            <br>
+        </div>
+        <div class="text-center" style="font-size:16px">
+            <span class="material-icons s">sentiment_satisfied</span>
+            <span> Agree </span>
+            <br>
+        </div>
+        <div class="text-center" style="font-size:16px">
+            <span class="material-icons vs">sentiment_very_satisfied</span>
+            <span> Strongly Agree </span>
+        </div>
     </div>
+
     <div class="text">
         <p> {{ $t('explain_rating') }} </p>
     </div>
     <div class=buttonwrapper>
         <router-link to="/question/1">
-        <GeneralButton style="align-items:stretch" id="surveystartbutton" text="Start the Survey!"/>
+        <GeneralButton style="align-items:baseline" id="surveystartbutton" text="Start the Survey!"/>
         </router-link>
     </div>
     </div>
@@ -54,12 +77,41 @@ data() {
 </script>
 
 <style scoped>
-img {
-    width: 80%;
-    margin-bottom: 15px;
+.material-icons{
+  font-size:48px;
+}
+.material-icons.audio{
+    font-size:35px;
+}
+.answertypes{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0.2em;
+  margin-right:0.2em;
+  display: flex;
+}
+.text-center{
+    vertical-align: middle;
+    display:inline-grid;
+    width:20%;
+}
+.material-icons.vs {
+  color: #1f7500;
+}
+.material-icons.s {
+  color: #68da3e;
+}
+.material-icons.n {
+  color: #F4DD09;
+}
+.material-icons.d {
+  color: #f09309;
+}
+.material-icons.vd {
+  color: #F44209;
 }
 #surveystartbutton {
-    width: 50%;
+    width: 60%;
     margin:0;
 }
 .text {

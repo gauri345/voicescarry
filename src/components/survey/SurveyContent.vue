@@ -14,8 +14,8 @@
           </div> 
   </div>
 
-   <div v-if="questionNumber ==24" class="survey-question-container final-question">
-    <div class="feedback-box-wrapper">
+   <div v-if="questionNumber >23" class="survey-question-container final-question">
+   <div class="feedback-box-wrapper">
             <div class="speechbubble">
               <div class="question-title">{{ questionTitle }}</div>
             </div>
@@ -70,12 +70,17 @@
 
   <div v-else-if="questionNumber == 23" class="question-answers">
     <select v-model="position">
-      <option value="worker">Worker</option>
+      <option value="employee">Employee</option>
       <option value="manager">Manager</option>
     </select>
   </div>
-
   <div v-else-if="questionNumber == 24" class="question-answers">
+      <router-link to="/complaint">
+        <GeneralButton style="align-items:center !important;" icon="assignment_late" text="Report a complaint" id="complaintbtn"></GeneralButton>
+      </router-link>
+  </div>
+
+  <div v-else-if="questionNumber == 25" class="question-answers">
     <textarea class="textfield">
     </textarea>
   </div>
@@ -84,19 +89,24 @@
 
 <script>
 import {textReader} from "@/util/Speech";
+import GeneralButton from "@/components/GeneralButton";
 
 export default {
   name: 'SurveyContent',
+  components: {
+     GeneralButton,
+  },
   props: {
     questionTitle: String,
     questionNumber: Number,
     questionContent: String,
+   
   },
    data() {
     return {
       gender: 'female',
       age: 'twentyoryounger',
-      position: 'worker',
+      position: 'employee',
       thema_vd: 'false',
       thema_d: 'false',
       thema_n: 'false',
@@ -191,16 +201,14 @@ export default {
 }
 .survey-persona-wrapper{
   width: 30%;
-  margin-left: 1em;
+  margin-left: 2em;
 }
 img{
   max-height:7em;
   float: right;
 }
 .survey-question-wrapper{
-  width: 70%;
-  margin-right: 1em;
-  
+  width: 70%;  
 }
 .feedback-box-wrapper{
   width: 100%;
@@ -249,7 +257,7 @@ img{
 }
 .question-title {
   position: relative;
-  font-size: 120%;
+  font-size: 20px;
   line-height: 28px;
   color: rgba(255, 255, 255);
 }
@@ -318,6 +326,10 @@ select {
   border: 1px solid rgba(36, 54, 86, 0.3);
   box-sizing: border-box;
   border-radius: 20px;
+}
+#complaintbtn{
+  width:76%;
+  background:red;
 }
 
 /* For PC view */
