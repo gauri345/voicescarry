@@ -31,7 +31,7 @@ export default {
   vertical-align: top;
   position: relative;
   color: rgb(255, 255, 255);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   border: 0;
   padding: 10px;
@@ -45,14 +45,14 @@ export default {
   margin-top: 10px;
 }
 .material-icons{
-  font-size:24px;
+  font-size:28px;
 }
 .material-icons.back-arrow{
   float:left;
-  width:24px;
+  width:28px;
 }
 .material-icons.next-arrow{
   float:right;
-  width:24px;
+  width:28px;
 }
 </style>
