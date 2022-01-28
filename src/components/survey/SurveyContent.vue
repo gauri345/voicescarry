@@ -70,7 +70,7 @@
 
   <div v-else-if="questionNumber == 23" class="question-answers">
     <select v-model="position">
-      <option value="worker">Worker</option>
+      <option value="employee">Employee</option>
       <option value="manager">Manager</option>
     </select>
   </div>
@@ -96,7 +96,7 @@ export default {
     return {
       gender: 'female',
       age: 'twentyoryounger',
-      position: 'worker',
+      position: 'employee',
       thema_vd: 'false',
       thema_d: 'false',
       thema_n: 'false',
