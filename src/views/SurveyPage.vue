@@ -17,7 +17,7 @@
             </SurveyButton>
           </router-link>
         </div>
-        <div v-if="previousQuestion.questionNumber ==23" class="button-previous" data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
+        <div v-if="previousQuestion.questionNumber ==24" class="button-previous" data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
             <FinishModal :additional-information="additionalInformation" 
                                   :question-content="questionContent"/>
             <SurveyButton text="Submit" class="submit"></SurveyButton>

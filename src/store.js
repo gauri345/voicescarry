@@ -101,7 +101,11 @@ const store = {
             },
             {
                 questionNumber: 24,
-                questionTitle: "Please use this text box to explain any of your answers here. We would like to hear your feedback about how you feel at work. Please be aware that if you would like to make a complaint anonymously or raise a problem that you do not feel comfortable raising with a manager, you can do so by clicking here. This link will bring you to Vaude’s complaint mechanism system that can provide you with resources and options that can help."
+                questionTitle: "Thank you for completing the survey. If you feel uncomfortable and want to report a complaint, click on the button below."
+            },
+            {
+                questionNumber: 25,
+                questionTitle: "We want your feedback! You can provide any general feedback to the app or related to your survey answers."
             },
         ]
     }),
