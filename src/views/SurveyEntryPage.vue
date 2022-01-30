@@ -1,19 +1,19 @@
 <template>
     <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
     <div id="body">
-    <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
+    <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
     <div class="text">
     <p> {{ $t('welcome_survey') }} </p>
     </div>
     <div class="team-picture">
-        <img id="Team" alt="Team" src="../../assets/TeamPicture.jpg"/>
+        <img id="Team" alt="Team" src="../assets/TeamPicture.jpg"/>
     </div>
     <div class="text">
         <p> {{ $t('explain_survey') }} </p>
     </div>
     <div class=buttonwrapper>
-        <router-link to="/question/1">
-        <GeneralButton id="startbutton" text="Start the Questionnaire!"/>
+        <router-link to="/question/explanation">
+        <SurveyButton id="nextbutton" icon2="arrow_forward" text="Next"/>
         </router-link>
     </div>
     </div>
@@ -23,15 +23,15 @@
 <script>
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import GeneralButton from "@/components/complaint/ComplaintButton"
+import SurveyButton from "@/components/survey/SurveyButton"
 import {textReader} from "@/util/Speech";
 
 export default {
-  name: 'EntryPage',
+  name: 'SurveyEntryPage',
   components: {
       Header,
       Footer,
-      GeneralButton
+      SurveyButton
       },
 data() {
     return {
@@ -58,21 +58,21 @@ img {
     width: 80%;
     margin-bottom: 15px;
 }
-#startbutton {
-    width: 50%;
-}
 .text {
     font-size: 20px;
     margin-left: 10%;
     margin-right: 10%;
 }
+#nextbutton{
+    width:60%;
+}
 #body {
     padding-bottom: 80px;
 }
 .material-icons.audio {
-  font-size: 32px;
   cursor: pointer;
   color: #2c3e50;
-  margin-bottom: 15px;
+  margin-top:0.2em;
+  margin-bottom: 0.2em;
 }
 </style>

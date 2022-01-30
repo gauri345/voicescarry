@@ -1,7 +1,6 @@
 <template>
   <!-- The content of the question goes here -->
   <div v-if="questionNumber <24" class="survey-question-container">
-    <!-- <div class="center"> -->
           <div class="survey-persona-wrapper">
             <img alt="Persona" src="../../assets/persona.png"/>
           </div>
@@ -13,11 +12,10 @@
               <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
             </div>
           </div> 
-    <!-- </div> -->
   </div>
 
-   <div v-if="questionNumber ==24" class="survey-question-container">
-    <div class="feedback-box-wrapper">
+   <div v-if="questionNumber >23" class="survey-question-container final-question">
+   <div class="feedback-box-wrapper">
             <div class="speechbubble">
               <div class="question-title">{{ questionTitle }}</div>
             </div>
@@ -72,12 +70,17 @@
 
   <div v-else-if="questionNumber == 23" class="question-answers">
     <select v-model="position">
-      <option value="worker">Worker</option>
+      <option value="employee">Employee</option>
       <option value="manager">Manager</option>
     </select>
   </div>
-
   <div v-else-if="questionNumber == 24" class="question-answers">
+      <router-link to="/complaint">
+        <GeneralButton style="align-items:center !important;" icon="assignment_late" text="Report a complaint" id="complaintbtn"></GeneralButton>
+      </router-link>
+  </div>
+
+  <div v-else-if="questionNumber == 25" class="question-answers">
     <textarea class="textfield">
     </textarea>
   </div>
@@ -86,19 +89,24 @@
 
 <script>
 import {textReader} from "@/util/Speech";
+import GeneralButton from "@/components/GeneralButton";
 
 export default {
-  name: 'Content',
+  name: 'SurveyContent',
+  components: {
+     GeneralButton,
+  },
   props: {
     questionTitle: String,
     questionNumber: Number,
     questionContent: String,
+   
   },
    data() {
     return {
       gender: 'female',
       age: 'twentyoryounger',
-      position: 'worker',
+      position: 'employee',
       thema_vd: 'false',
       thema_d: 'false',
       thema_n: 'false',
@@ -182,32 +190,25 @@ export default {
   width: 100%;
   height: 300px;
   margin-top: 2%;
-  /* display: inline-block; */
   overflow: hidden;
   background-image: url('../../assets/Background.png');
-
   display:flex;
-  /* justify-content: center; */
   align-items: center;
 }
-/* .center{
-  display: flex;
-} */
+.final-question{
+  display:inline-block !important; 
+  overflow-y:auto !important;
+}
 .survey-persona-wrapper{
   width: 30%;
-  /* height:100%; */
-  margin-left: 1em;
+  margin-left: 2em;
 }
 img{
-  /* max-height:300px; */
   max-height:7em;
   float: right;
 }
 .survey-question-wrapper{
-  width: 70%;
-  /* height:100%; */
-  margin-right: 1em;
-  
+  width: 70%;  
 }
 .feedback-box-wrapper{
   width: 100%;
@@ -240,7 +241,7 @@ img{
 }
 .material-icons{
   font-size:48px;
-  color:black;
+  color:#2c3e50;
 }
 .question-content {
   margin-top: 2%;
@@ -250,11 +251,13 @@ img{
   margin-top: 2%;
   margin-bottom: 2%;
   width: 100%;
+  height: 54px; /* hard coded size so that smileys dont move*/
   justify-content: space-evenly;
+  align-items: center;
 }
 .question-title {
   position: relative;
-  font-size: 120%;
+  font-size: 20px;
   line-height: 28px;
   color: rgba(255, 255, 255);
 }
@@ -283,50 +286,50 @@ img{
   cursor: pointer;
 }
 .outlined_vd{
-   border:2px solid 	#f4440979;
+   /* border:2px solid 	#f4440979; */
    border-radius: 2px;
    background: #f4440979;
  }
  .outlined_d{
-   border:2px solid 	#f0940980;
+   /* border:2px solid 	#f0940980; */
    border-radius: 2px;
    background: #f0940980;
  }
  .outlined_n{
-   border:2px solid 	#d8c30652;
+   /* border:2px solid 	#d8c30652; */
    border-radius: 2px;
    background: #d8c30652;
  }
  .outlined_s{
-  border:2px solid 	#68da3e8a;
+  /* border:2px solid 	#68da3e8a; */
   border-radius: 2px;
    background: #68da3e8a;
  }
  .outlined_vs{
-  border:2px solid 	#1f75009d;
+  /* border:2px solid 	#1f75009d; */
   border-radius: 2px;
   background: #1f75009d;
  }
 select {
-  display: center;
-  height: 50px;
-  padding: 10px 6px;
+  height: 55px;
   width: 80%;
-  box-sizing: border-box;
   border: none;
   border-bottom: 1px solid #ddd;
   color: #555;
 }
 .textfield {
-  display: center;
   padding: 10px 6px;  
   width: 80%;
-  height: 100px;
+  height: 100%; /* makes fiels size the same size as smileys and form*/
   font-size: 14px;
   background: #FFFFFF;
   border: 1px solid rgba(36, 54, 86, 0.3);
   box-sizing: border-box;
   border-radius: 20px;
+}
+#complaintbtn{
+  width:76%;
+  background:red;
 }
 
 /* For PC view */

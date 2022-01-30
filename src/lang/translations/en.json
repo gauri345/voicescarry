@@ -1,7 +1,7 @@
 {
   "headerText": "Wellbeing at Work",
-  "speechBubbleName": "Hi! My name is... I will help you.",
-  "speechBubbleQR": "To enter, please type your factory code or access via QR code.",
+  "speechBubbleName": "Hi! I will guide you through this app.",
+  "speechBubbleQR": "To enter, please type your factory code.",
   "labelFactoryCode": "Factory code:",
   "generalButtonStartSurvey": "Enter the survey",
   "homepage_entered_message": "Welcome to the survey on 'wellbeing at work'!",
@@ -9,5 +9,7 @@
   "homepage_start_survey": "Start Survey",
   "homepage_report_complaint": "Report a complaint",
   "welcome_survey": "Welcome to the survey about wellbeing at work!",
-  "explain_survey": "We are a team from the University of Mannheim which wants to get deeper insights into the wellbeing of workers. It is important to mention that no personal data are stored or forwarded to your employer."
+  "explain_survey": "We are a team from the University of Mannheim which wants to get deeper insights into the wellbeing of workers. It is important to mention that no personal data are stored or forwarded to your employer.",
+  "intro_explanation": "To answer the survey questions, please click on the face that represents your level of agreement with the statement:",
+  "explain_rating": "All of your answers are anonymous. Thank you for participating!"
 }

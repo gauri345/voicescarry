@@ -5,7 +5,7 @@
         <a href="https://csr-report.vaude.com/gri-en/social/complaints-system.php">Fair Wear Complaint Helpline</a> 
     </p>
     <div class=buttonwrapper>
-      <ComplaintButton onclick=" window.open('http://www.vaude.de','_blank')" text="Go to the Complaint System of Vaude"/>
+      <GeneralButton style="align-items: baseline" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintbutton" text="Go to the Complaint System of Vaude"/>
     </div>
     <Footer/>
 </template>
@@ -13,21 +13,20 @@
 <script>
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import ComplaintButton from "@/components/complaint/ComplaintButton"
+import GeneralButton from "@/components/GeneralButton"
 
 export default {
-  name: 'Complaint',
+  name: 'ComplaintPage',
   components: {
       Header,
       Footer,
-      ComplaintButton
+      GeneralButton
       }
 }
 </script>
 
-<style scoped>
-#headercomplaint {
-  height: 70px;
-  width: 100%;
+<style>
+#complaintbutton{
+  width:80%;
 }
 </style>
