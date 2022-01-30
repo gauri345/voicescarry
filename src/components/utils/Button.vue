@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick()" :style="{ background: color }" class="btn">
+  <button @click="onClick()" :style="{ background: color }" class="btn" type="button">
     <div class="button-text-wrapper">
       <span class="material-icons icon">{{ icon }}</span>
       {{ text }}
@@ -31,7 +31,7 @@ export default {
   vertical-align: middle;
   position: relative;
   color: rgb(255, 255, 255);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   border: 0;
   width: 100%;
@@ -46,11 +46,6 @@ export default {
 .button-text-wrapper{
   display: inline-flex;
   text-align:center;
-}
-.material-icons.icon{
-  display: flex;
-  align-items: center;
-  width:24px;
-  padding-right: 30px;
+  align-items: inherit;
 }
 </style>

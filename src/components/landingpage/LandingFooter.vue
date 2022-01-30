@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar fixed-bottom navbar-dark bg-primary">
     <div class="picture-wrapper">
-      <img alt="Uni Mannheim" src="../../assets/Logo_UMA_EN_Weiss.png" class="uni-logo"/>
-      <img alt="Vaude" src="../../assets/image-removebg-preview.png" class="vaude-logo"/>
+      <img alt="Uni Mannheim" src="../../assets/UMA-logo.png" class="uni-logo"/>
+      <img alt="Vaude" src="../../assets/vaude-logo.png" class="vaude-logo"/>
     </div>
 
     <div class="language-changer">
@@ -23,21 +23,11 @@ export default {
 </script>
 
 <style scoped>
-nav {
-  background: radial-gradient(122.27% 198.92% at -22.27% -27.38%, #0070BA 0%, #1546A0 100%);
-  margin-top: 2%;
-}
-
-img {
-  height: 30px;
-}
-
 .uni-logo {
   height: 30px;
   border-right: 1px solid #FFFFFF;
   padding-right: 10px;
   vertical-align: center;
-
 }
 
 .vaude-logo {
@@ -45,7 +35,6 @@ img {
   padding-left: 10px;
   vertical-align: center;
   bottom: -20px;
-
 }
 
 .language-changer {

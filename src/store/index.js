@@ -1,5 +1,5 @@
 import {createStore} from "vuex";
-import Question from "@/modules/operations";
+import Question from "@/modules/question";
 import Landingpage from "@/modules/landingpage";
 
 const store = createStore({

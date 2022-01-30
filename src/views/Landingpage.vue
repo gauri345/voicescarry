@@ -1,8 +1,8 @@
 <template>
   <div class="landingpage">
-    <Header :HeaderText="$t('headerText')"/>
+    <Header id="headerLanding" :HeaderText="$t('headerText')"/>
     <div id="body">
-    <TextField/>
+    <LandingContent/>
     </div>
     <div id="footer">
     <LandingFooter/>
@@ -14,14 +14,14 @@
 
 import LandingFooter from "@/components/landingpage/LandingFooter.vue"
 import Header from "@/components/Header";
-import TextField from "@/components/landingpage/TextField"
+import LandingContent from "@/components/landingpage/LandingContent"
 
 export default {
   name: "Landingpage",
   components: {
     LandingFooter,
     Header,
-    TextField
+    LandingContent
   }
 }
 </script>
@@ -31,11 +31,13 @@ export default {
   overflow: hidden;
 }
 body {
-   margin:0;
-   padding:0;
    height:100%;
 }
 #body {
-  padding: 10px 10px 80px;
+  padding-bottom:80px;   /* Height of the footer */
+}
+#headerLanding {
+  height: 70px;
+  width: 100%;
 }
 </style>

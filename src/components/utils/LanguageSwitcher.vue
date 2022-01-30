@@ -1,8 +1,14 @@
 <template>
-  <div>
-    <span class="material-icons">language</span>
-    <a href="#" class="btn btn-outline-info lang-button lang-button-first" @click="changeLanguage">EN</a>
-    <a class="btn btn-outline-info lang-button" @click="changeLanguage">VI</a>
+  <div class="dropup">
+    <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <span class="material-icons">language</span>
+    </button>
+
+    <ul class="dropdown-menu">
+     <li><a href="#" class="lang-button" @click="changeLanguage">EN</a></li>
+     <li><a href="#" class="lang-button" @click="changeLanguage">VI&nbsp;</a></li>
+    </ul>
+
   </div>
 </template>
 <script>
@@ -21,40 +27,41 @@ export default {
 };
 </script>
 
-<style>
-.lang-button {
+<style scoped>
+.dropup .dropdown-toggle::after {
+  margin-bottom: 1px;
+  font-size: 25px;
+}
+.dropup .dropdown-menu{
+  top: auto;
+  bottom: 100%;
+  margin-bottom: 0.4rem;
+
+}
+button {
   border: none;
-  padding: 0;
+  color: #fff;
+}
+.dropdown-toggle {
+  background: transparent;
+  border-radius: 5px;
+  max-height: 30px;
+  display:flex;
+  align-items: center;
+}
+.dropdown-menu {
   margin: 0;
-  color: rgba(255, 255, 255);
-  font-size: 90%;
-  font-weight: bold;
-}
-
-.btn-outline-info {
   padding: 0;
-  margin: 0;
+  min-width: 20px;
 }
-
-.btn {
-  padding: 0;
+.dropdown-menu li{
+  border-bottom: 2px solid #d6d6d7;
 }
-
-.btn-outline-info:hover {
-  background: none;
+.lang-button {
+  padding: 10px;
+  text-decoration: none;
 }
-
-.material-icons {
-  vertical-align: bottom;
-  padding-right: 5px;
-  color: #FFFFFF;
+.lang-button:hover {
+  text-decoration: none;
 }
-
-.lang-button-first{
-  border-right: 1px solid #FFFFFF;
-  border-radius: 0;
-  padding-right: 7px;
-  margin-right: 7px;
-}
-
 </style>

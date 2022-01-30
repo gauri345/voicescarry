@@ -2,7 +2,7 @@
   <section class="persona-container">
     <div class="center">
       <div class="image-wrapper">
-        <img alt="Persona" src="../../assets/Woman.png"/>
+        <img alt="Persona" src="../../assets/fullbody-persona.png"/>
       </div>
       <div class="speech-wrapper">
         <SpeechBubble :description=" $t('speechBubbleName') "/>
@@ -17,7 +17,7 @@
       <input v-model="factoryCode" required type="text" @click="handleInputClick">
       <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
       <div class="submit">
-        <LandingButton :text=" $t('generalButtonStartSurvey')" @btnClick="handleSubmit"/>
+        <Button :text=" $t('generalButtonStartSurvey')" @btnClick="handleSubmit" style="align-items: stretch"/>
       </div>
     </form>
   </section>
@@ -25,13 +25,14 @@
 </template>
 
 <script>
-import LandingButton from '../landingpage/LandingButton.vue'
-import SpeechBubble from '../landingpage/SpeechBubble.vue'
+import Button from '@/components/utils/Button'
+import SpeechBubble from '../landingpage/SpeechBubble'
 import {mapActions, mapGetters} from "vuex";
 
 export default {
+  name:"LandingContent",
   components: {
-    LandingButton,
+    Button,
     SpeechBubble
   },
   methods: {
@@ -118,10 +119,7 @@ input {
   border: 1px solid rgba(36, 54, 86, 0.3);
   box-sizing: border-box;
   border-radius: 20px;
-}
-
-.submit {
-  text-align: center;
+  margin-bottom: 1em;
 }
 
 .error {

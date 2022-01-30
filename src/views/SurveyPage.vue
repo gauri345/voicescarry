@@ -1,16 +1,13 @@
 <template>
-  <div class="survey-page">
-    <HeaderSurvey :question-category="currentQuestion.questionCategory"
-                  :question-icon="currentQuestion.questionIcon">
-    </HeaderSurvey>
+  <div class="surveypage">
+      <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
 
     <!-- Question Container including voting-->
-    <div class="question-container">
-      <Content :additional-information="currentQuestion.additionalInformation"
-               :question-content="currentQuestion.questionTitle"
-               :question-number="currentQuestion.questionNumber"
-               :question-title="currentQuestion.questionTitle">
-      </Content>
+    <div class="question-container" >
+      <SurveyContent  :question-title="currentQuestion.questionTitle"
+                :question-content="currentQuestion.questionTitle"
+                :question-number="currentQuestion.questionNumber">
+      </SurveyContent>
 
       <!-- The button to navigate between questions goes here -->
       <div class="navigation-buttons">
@@ -21,12 +18,10 @@
             </SurveyButton>
           </router-link>
         </div>
-
-        <div v-if="previousQuestion.questionNumber ===23" class="button-previous" data-bs-target=".bd-example-modal-pm"
-             data-bs-toggle="modal">
-          <FinishModal :additional-information="currentQuestion.additionalInformation"
-                       :question-content="currentQuestion.questionContent"/>
-          <SurveyButton class="submit" text="Submit"></SurveyButton>
+        <div v-if="previousQuestion.questionNumber ==24" class="button-previous" data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
+            <FinishModal :additional-information="additionalInformation" 
+                                  :question-content="questionContent"/>
+            <SurveyButton text="Submit" class="submit"></SurveyButton>
         </div>
 
         <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
@@ -46,23 +41,23 @@
 </template>
 
 <script>
+import SurveyContent from "@/components/survey/SurveyContent";
+import SurveyButton from "@/components/survey/SurveyButton";
 import Progress from "@/components/utils/Progress";
-import Content from "@/components/operations/Content";
-import SurveyButton from "@/components/operations/SurveyButton";
 import Footer from "@/components/Footer";
-import HeaderSurvey from "@/components/operations/HeaderSurvey";
-import FinishModal from "@/components/operations/FinishModal";
+import Header from "@/components/Header";
+import FinishModal from "@/components/survey/FinishModal";
 import {mapActions, mapGetters} from "vuex";
 
 
 export default {
-  name: 'Question',
+  name: 'SurveyPage',
   components: {
-    Content,
+    SurveyContent,
     SurveyButton,
     Progress,
     Footer,
-    HeaderSurvey,
+    Header,
     FinishModal
   },
 
@@ -135,6 +130,6 @@ export default {
 }
 
 #progressbar {
-  padding-bottom: 20px;
+  padding-bottom:20px;   /* Height of the footer */
 }
 </style>

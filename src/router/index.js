@@ -2,37 +2,43 @@ import {createRouter, createWebHistory} from 'vue-router'
 
 import LandingPage from '@/views/Landingpage';
 import HomePage from "@/views/Homepage";
-import Question from "@/components/operations/Question";
-import Complaint from "@/components/complaint/Complaint";
-import EntryPage from "@/components/operations/EntryPage";
+import SurveyPage from "@/views/SurveyPage";
+import ComplaintPage from "@/views/ComplaintPage";
+import SurveyEntryPage from "@/views/SurveyEntryPage";
+import SurveyExplanationPage from "@/views/SurveyExplanationPage";
 
 import i18n from '../lang';
 
 const routes = [
     {
         path: "/",
-        name: 'Landingpage',
+        name: "LandingPage",
         component: LandingPage
     },
     {
         path: "/homepage",
-        name: 'Homepage',
+        name: "HomePage",
         component: HomePage
     },
     {
-        path: "/operations/information",
-        name: "EntryPage",
-        component: EntryPage
+        path: "/question/information",
+        name: "SurveyEntryPage",
+        component: SurveyEntryPage
     },
     {
-        path: "/operations/:number",
-        name: "Question",
-        component: Question
+        path: "/question/explanation",
+        name: "SurveyExplanationPage",
+        component: SurveyExplanationPage
+    },
+    {
+        path: "/question/:number",
+        name: "SurveyPage",
+        component: SurveyPage
     },
     {
         path: "/complaint",
-        name: "Complaint",
-        component: Complaint
+        name: "ComplaintPage",
+        component: ComplaintPage
     }
 ];
 
