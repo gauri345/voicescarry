@@ -1,4 +1,5 @@
 const factory = require('./models/factory');
+const question = require("./models/question");
 
 const getAllFactoriesResponse = {
     type: "object",
@@ -19,5 +20,22 @@ const getAllFactoriesResponse = {
         }
     }
 };
+const addFactoryResponse = {
+    type: "object",
+    properties: {
+        status: {
+            type: "string",
+            description: "Status of the request",
+            example: "success"
+        },
+        message: {
+            type: "string",
+            description: "Message describing the response",
+            example: "Factory added"
+        },
+        data: question
+    }
+};
 
-module.exports = [getAllFactoriesResponse];
+
+module.exports = {getAllFactoriesResponse, addFactoryResponse};
