@@ -1,7 +1,7 @@
 const basicInfo = require('./basicInfo');
 const servers = require('./server')
 const tags = require('./tags');
-const components = require('./components');
+const components = require('./components/components');
 const operations = require('./operations/');
 
 module.exports = {

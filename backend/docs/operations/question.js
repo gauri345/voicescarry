@@ -37,38 +37,38 @@ module.exports = {
             },
         },
     },
-        '/question/{questionNumber}': {
-            delete: {
-                tags: ["Manage Questions"],
-                summary: "Delete a requested question",
-                description: " ",
-                operationId: "DeleteQuestion",
-                produces: [
-                    "application/json"
-                ],
-                parameters: [{
+    "/question/{questionNumber}": {
+        delete: {
+            tags: ["Manage Questions"],
+            summary: "Delete a requested question",
+            description: " ",
+            operationId: "DeleteQuestion",
+            produces: ["application/json"],
+            parameters: [
+                {
                     name: "questionNumber",
                     description: "delete a enter question number",
                     required: true,
                     type: "integer",
                     format: "int64",
-                }],
-                responses: {
-                    "200":{
-                        description: "successfully deleted question",
-                        content:{
-                            "application/json":{
-                                schema:{
-                                    $ref:  "#/components/schemas/DeleteQuestion",
-                                }
-
+                }
+            ],
+            responses: {
+                "200": {
+                    description: "deleted question",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                $ref: "#/components/schemas/DeleteQuestion",
                             }
+
                         }
-                    },
-                    "404": {
-                        description: "Question number did not find",
-                    },
+                    }
                 },
-            }
+                "404": {
+                    description: "Question number did not find",
+                },
+            },
+        }
     }
 }
