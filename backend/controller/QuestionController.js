@@ -36,7 +36,7 @@ exports.post = async function (req, res) {
         res.json(
             {
                 status: "success",
-                message: 'question created!',
+                message: 'operations created!',
                 data: await Question.create(req.body)
             }
         );
@@ -59,7 +59,7 @@ exports.delete = async function (req, res) {
         res.json(
             {
                 status: "success",
-                message: question.name + ' question deleted'
+                message: question.name + ' operations deleted'
             }
         );
     });

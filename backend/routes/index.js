@@ -7,7 +7,7 @@ router.route('/question')
     .get(QuestionController.index)
     .post(QuestionController.post);
 
-router.route('/question/:number')
+router.route('/operations/:number')
     .delete(QuestionController.delete);
 
 router.route('/factory')

@@ -44,7 +44,7 @@
 import Button from "@/components/utils/Button";
 import Footer from "@/components/Footer"
 import Header from "@/components/Header";
-import InformationModal from "@/components/question/InformationModal";
+import InformationModal from "@/components/operations/InformationModal";
 import {textReader} from "@/util/Speech";
 
 export default {

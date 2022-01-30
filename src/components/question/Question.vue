@@ -16,7 +16,7 @@
       <div class="navigation-buttons">
 
         <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
-          <router-link :to="'/question/' + previousQuestion.questionNumber">
+          <router-link :to="'/operations/' + previousQuestion.questionNumber">
             <SurveyButton icon1="arrow_backwards" text="Previous">
             </SurveyButton>
           </router-link>
@@ -30,7 +30,7 @@
         </div>
 
         <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
-          <router-link :to="'/question/' + nextQuestion.questionNumber">
+          <router-link :to="'/operations/' + nextQuestion.questionNumber">
             <SurveyButton icon2="arrow_forwards" text="Next">
             </SurveyButton>
           </router-link>
@@ -47,11 +47,11 @@
 
 <script>
 import Progress from "@/components/utils/Progress";
-import Content from "@/components/question/Content";
-import SurveyButton from "@/components/question/SurveyButton";
+import Content from "@/components/operations/Content";
+import SurveyButton from "@/components/operations/SurveyButton";
 import Footer from "@/components/Footer";
-import HeaderSurvey from "@/components/question/HeaderSurvey";
-import FinishModal from "@/components/question/FinishModal";
+import HeaderSurvey from "@/components/operations/HeaderSurvey";
+import FinishModal from "@/components/operations/FinishModal";
 import {mapActions, mapGetters} from "vuex";
 
 

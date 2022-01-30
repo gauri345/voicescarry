@@ -2,12 +2,12 @@ const basicInfo = require('./basicInfo');
 const servers = require('./server')
 const tags = require('./tags');
 const components = require('./components');
-const question = require('./question/')
+const operations = require('./operations/');
 
 module.exports = {
     ...basicInfo,
     ...servers,
     ...tags,
     ...components,
-    ...question
+    ...operations
 };

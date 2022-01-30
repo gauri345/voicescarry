@@ -1,5 +1,5 @@
 <template>
-  <!-- The content of the question goes here -->
+  <!-- The content of the operations goes here -->
   <div class="survey-question-container">
     <div class="center">
           <div class="survey-persona-wrapper">
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import InformationModal from "@/components/question/InformationModal";
+import InformationModal from "@/components/operations/InformationModal";
 import {textReader} from "@/util/Speech";
 
 export default {

@@ -2,9 +2,9 @@ import {createRouter, createWebHistory} from 'vue-router'
 
 import LandingPage from '@/views/Landingpage';
 import HomePage from "@/views/Homepage";
-import Question from "@/components/question/Question";
+import Question from "@/components/operations/Question";
 import Complaint from "@/components/complaint/Complaint";
-import EntryPage from "@/components/question/EntryPage";
+import EntryPage from "@/components/operations/EntryPage";
 
 import i18n from '../lang';
 
@@ -20,12 +20,12 @@ const routes = [
         component: HomePage
     },
     {
-        path: "/question/information",
+        path: "/operations/information",
         name: "EntryPage",
         component: EntryPage
     },
     {
-        path: "/question/:number",
+        path: "/operations/:number",
         name: "Question",
         component: Question
     },

@@ -61,12 +61,13 @@ export default {
 
     mutations: {
         SET_ALL_QUESTIONS: (state, questions) => {
-
             const localized = (contentList) => {
                 const lang = localStorage.getItem('language');
                 const language = (null === lang) ? 'en' : lang;
-                
-                return contentList.filter(content => content.lang === language)[0].content;
+
+                if (contentList.length > 0) {
+                    return contentList.filter(content => content.lang === language)[0].content;
+                }
             };
 
             state.allQuestions = questions.map(question => {
