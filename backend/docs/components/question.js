@@ -1,72 +1,57 @@
-const localizedContent = require('./localizedContent');
-const category= require('./category');
+const question = require('./models/question');
 
-module.exports = {
+const getAllQuestionsResponse = {
     type: "object",
     properties: {
-        _id: {
+        status: {
             type: "string",
-            description: "Question identification number",
-            example: "61e34633384df7782b1dafc0",
+            description: "Status of the request",
+            example: "success"
         },
-        number: {
-            type: "number",
-            description: "Question Number",
-            example: "1",
-        },
-        titles: {
-            type: "array",
-            items: localizedContent,
-            description: "The title of questions in multiple languages",
-            example: [
-                {
-                    "lang": "en",
-                    "content": "I am doing well at work"
-                },
-                {
-                    "lang": "vi",
-                    "content": "something else"
-                }
-            ]
-
-        },
-        answerType: {
-            type: "scale",
-            description: "multiple choice of answer",
-            example: "happy, sad, moderate",
-        },
-        slug: {
+        message: {
             type: "string",
-            description: "machine readable questions",
-            example: "are-you-happy",
+            description: "Message describing the response",
+            example: "Questions retrieved"
         },
-        category: {
+        data: {
             type: "array",
-            description: "multiple choice of answer",
-            items: category
-        },
-        additionalInformation: {
-            type: "array",
-            description: "additional information of operations",
-            items: localizedContent,
-            example: [
-                {
-                    "lang": "en",
-                    "content": "No explanation needed"
-                }
-            ]
-
-        },
-        answers: {
-            type: "array",
-            items: localizedContent,
-            description: "type of answer",
-            example: [
-                {
-                    "lang": "en",
-                    "content": "1"
-                }
-            ]
+            items: question
         }
     }
 };
+
+const addQuestionResponse = {
+    type: "object",
+    properties: {
+        status: {
+            type: "string",
+            description: "Status of the request",
+            example: "success"
+        },
+        message: {
+            type: "string",
+            description: "Message describing the response",
+            example: "Questions added"
+        },
+        data: question
+    }
+};
+
+const deleteQuestionResponse = {
+    type: "object",
+    properties: {
+        status: {
+            type: "string",
+            description: "Status of the request",
+            example: "success"
+        },
+        message: {
+            type: "string",
+            description: "Message describing the response",
+            example: "Question deleted"
+        }
+    }
+};
+
+
+module.exports = {getAllQuestionsResponse, addQuestionResponse, deleteQuestionResponse};

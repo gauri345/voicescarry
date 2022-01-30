@@ -11,7 +11,7 @@ module.exports = {
                     content: {
                         "application/json": {
                             schema: {
-                                $ref: "#/components/schemas/QuestionResponse",
+                                $ref: "#/components/schemas/GetAllQuestionsResponse",
                             },
                         },
                     },
@@ -29,7 +29,7 @@ module.exports = {
                     content: {
                         "application/json": {
                             schema: {
-                                $ref: "#/components/schemas/AddQuestion",
+                                $ref: "#/components/schemas/AddQuestionResponse",
                             },
                         },
                     },
@@ -59,7 +59,7 @@ module.exports = {
                     content: {
                         "application/json": {
                             schema: {
-                                $ref: "#/components/schemas/DeleteQuestion",
+                                $ref: "#/components/schemas/DeleteQuestionResponse",
                             }
 
                         }
