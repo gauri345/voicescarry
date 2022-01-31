@@ -1,4 +1,4 @@
-const factory = require('./models/factory');
+const factory = require('./models/factory.js');
 const question = require("./models/question");
 
 const getAllFactoriesResponse = {

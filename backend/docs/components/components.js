@@ -1,5 +1,5 @@
 const {getAllQuestionsResponse, addQuestionResponse, deleteQuestionResponse} = require('./question');
-const {getAllFactoriesResponse} = require('./factory');
+const {getAllFactoriesResponse, addFactoryResponse} = require('./factory');
 
 
 module.exports = {
@@ -8,7 +8,8 @@ module.exports = {
             GetAllQuestionsResponse: getAllQuestionsResponse,
             AddQuestionResponse: addQuestionResponse,
             DeleteQuestionResponse: deleteQuestionResponse,
-            GetAllFactoriesResponse: getAllFactoriesResponse
+            GetAllFactoriesResponse: getAllFactoriesResponse,
+            AddFactoryResponse: addFactoryResponse,
         }
     }
 };
