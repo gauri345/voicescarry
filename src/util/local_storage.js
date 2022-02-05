@@ -37,7 +37,7 @@ const set = (keyName, keyValue, ttl) => {
 }
 
 /**
- * Removes ite from local storage
+ * Removes item from local storage
  *
  * @param {string} keyName
  */
