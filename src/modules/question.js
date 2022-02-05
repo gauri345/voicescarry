@@ -1,4 +1,4 @@
-import HttpClient from "@/util/HttpClient";
+import HttpClient from "@/util/http_client";
 
 export default {
     state: {

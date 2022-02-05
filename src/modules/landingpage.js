@@ -1,5 +1,8 @@
-import HttpClient from "@/util/HttpClient";
+import HttpClient from "@/util/http_client";
 import router from '@/router'
+import LocalStorage from "@/util/local_storage";
+
+const SURVEY_SESSION_TTL_SECONDS = 10000;
 
 export default {
     state: {
@@ -17,8 +20,15 @@ export default {
                 commit("UPDATE_ERROR_MESSAGE", "Invalid factory code [must contain more than 5 characters.]")
             } else {
                 try {
-                    await HttpClient.get(`factory/exists?code=${state.factoryCode}`);
-                    await router.push({name: 'Homepage'});
+                    const response = await HttpClient.get(`survey/start/${state.factoryCode}`);
+
+                    const survey = response.data.data;
+
+                    LocalStorage.set("survey", survey, SURVEY_SESSION_TTL_SECONDS);
+
+                    commit('UPDATE_SURVEY', survey, {root: true});
+
+                    await router.push({name: 'HomePage'});
                 } catch (error) {
                     commit("UPDATE_ERROR_MESSAGE", "Provided factory code not found. [Please re-enter a correct factory code.]");
                 }

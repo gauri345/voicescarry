@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import {textReader} from "@/util/Speech";
+import {textReader} from "@/util/speech";
 import Button from "@/components/utils/Button";
 
 export default {

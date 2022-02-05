@@ -47,7 +47,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Button from "@/components/utils/Button"
-import {textReader} from "@/util/Speech";
+import {textReader} from "@/util/speech";
 
 export default {
   name: 'SurveyExplanationPage',

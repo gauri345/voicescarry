@@ -51,7 +51,7 @@ import Button from "@/components/utils/Button";
 import Footer from "@/components/Footer"
 import Header from "@/components/Header";
 import HomepageModal from "@/components/HomepageModal";
-import {textReader} from "@/util/Speech";
+import {textReader} from "@/util/speech";
 
 export default {
   name: "Homepage",

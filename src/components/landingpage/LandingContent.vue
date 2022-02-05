@@ -12,14 +12,14 @@
   </section>
 
   <section class="page-entry">
-    <form>
+    <div class="form" @submit="handleSubmit">
       <label>{{ $t('labelFactoryCode') }}</label>
-      <input v-model="factoryCode" required type="text" @click="handleInputClick">
+      <input v-model="factoryCode" required type="text" @click="handleInputClick" autofocus>
       <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
       <div class="submit">
         <Button :text=" $t('generalButtonStartSurvey')" @btnClick="handleSubmit" style="align-items: stretch"/>
       </div>
-    </form>
+    </div>
   </section>
 
 </template>
@@ -89,7 +89,7 @@ img {
   max-height: 320px;
 }
 
-form {
+.form {
   width: 80%;
   margin-top: 2%;
   background: white;
