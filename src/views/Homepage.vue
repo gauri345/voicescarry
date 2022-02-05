@@ -72,8 +72,6 @@ export default {
          this.$i18n.t('homepage_entered_message').replace('!', '. ') +
          this.$i18n.t('homepage_info_message');
 
-     console.log(this.$i18n.locale);
-
      textReader(textToRead);
 
     }
