@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
-import LandingPage from '@/views/Landingpage';
-import HomePage from "@/views/Homepage";
+import LandingPage from '@/views/LandingPage';
+import HomePage from "@/views/HomePage";
 import SurveyPage from "@/views/SurveyPage";
 import ComplaintPage from "@/views/ComplaintPage";
 import SurveyEntryPage from "@/views/SurveyEntryPage";
