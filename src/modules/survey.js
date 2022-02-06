@@ -1,5 +1,6 @@
 import HttpClient from "@/util/http_client";
 import LocalStorage from "@/util/local_storage";
+import router from "@/router";
 
 export default {
     state: {
@@ -13,7 +14,10 @@ export default {
         getAllQuestions: (state) => state.allQuestions,
         getPreviousQuestion: (state) => state.previousQuestion,
         getCurrentQuestion: (state) => state.currentQuestion,
-        getNextQuestion: (state) => state.nextQuestion,
+        getNextQuestion: (state) => {
+            console.log(state);
+            return state.nextQuestion;
+        },
         getTotalQuestionCount: (state) => state.allQuestions.length
     },
 
@@ -80,6 +84,10 @@ export default {
                 filtered.push(answerToStore);
                 LocalStorage.setWithoutTtl("answer", filtered);
             }
+        },
+
+        navigateToNextQuestion: ({state}) => {
+            router.push({name: 'SurveyPage', params: {number: state.nextQuestion.questionNumber}});
         }
     },
 

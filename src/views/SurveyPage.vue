@@ -17,25 +17,26 @@
         </div>
 
         <div v-if="getNextQuestion.questionNumber !== undefined" class="button-next">
-          <router-link :to="'/question/' + getNextQuestion.questionNumber">
-            <SurveyButton icon2="arrow_forwards" text="Next" @btnClick="handleNextButton"/>
-          </router-link>
+          <SurveyButton icon2="arrow_forwards" text="Next" @btnClick="handleNextButton"/>
         </div>
-        <div v-else class="button-previous">
-          <FinishModal/>
-        </div>
-      </div>
 
-      <!-- The progress bar goes here -->
-      <Progress id="progressbar" :current-page-number="getCurrentQuestion.questionNumber"
-                :total-questions="getTotalQuestionCount"></Progress>
+        <div v-if="getCurrentQuestion.questionNumber ===22" class="button-previous"
+             data-bs-target=".bd-example-modal-pm"
+             data-bs-toggle="modal">
+          <FinishModal/>
+          <SurveyButton class="submit" text="Submit"></SurveyButton>
+        </div>
+
+        <!-- The progress bar goes here -->
+        <Progress id="progressbar" :current-page-number="getCurrentQuestion.questionNumber"
+                  :total-questions="getTotalQuestionCount"></Progress>
+      </div>
+      <Footer/>
     </div>
-    <Footer/>
   </div>
 </template>
 
 <script>
-import SurveyContent from "@/components/survey/SurveyContent";
 import SurveyButton from "@/components/survey/SurveyButton";
 import Progress from "@/components/utils/Progress";
 import Footer from "@/components/Footer";
@@ -47,7 +48,6 @@ import {mapActions, mapGetters} from "vuex";
 export default {
   name: 'SurveyPage',
   components: {
-    SurveyContent,
     SurveyButton,
     SurveyAnswers,
     Progress,
@@ -57,14 +57,25 @@ export default {
   },
 
   methods: {
-    ...mapActions(['initializeQuestionState', 'clearSelectedQuestions', 'storeAnswerInLocalStorage']),
+    ...mapActions(
+        [
+          'initializeQuestionState',
+          'clearSelectedQuestions',
+          'storeAnswerInLocalStorage',
+          'navigateToNextQuestion'
+        ]
+    ),
 
     answered: function (answer) {
       this.storeAnswerInLocalStorage(answer);
     },
 
     handleNextButton() {
-      console.log("next");
+      this.navigateToNextQuestion();
+    },
+
+    nextQuestion() {
+      return this.getNextQuestion();
     }
   },
 

@@ -1,13 +1,15 @@
 <template>
-    <Header id="headerComplaint" HeaderIcon="assignment_late" HeaderText="Complaint"/>
-    <p> Click on the button to report a complaint directly to an independent partner of Vaude. 
-        For more information, visit this link: 
-        <a href="https://csr-report.vaude.com/gri-en/social/complaints-system.php">Fair Wear Complaint Helpline</a> 
-    </p>
-    <div class="buttonWrapper">
-      <Button style="align-items: baseline" onclick=" window.open('https://www.vaude.de','_blank')" id="complaintButton" text="Go to the Complaint System of Vaude"/>
-    </div>
-    <Footer/>
+  <Header class="header-complaint" header-icon="assignment_late" header-text="Complaint"/>
+  <p>If you have a concern or complaint, please first raise it with your supervisor or management team.
+    You can learn about your options here (button that will go to future video)</p>
+  <Button class="complaint-video-button" onclick=" window.open('http://www.vaude.de','_blank')"
+          style="align-items: baseline" text="Learn more about your options"/>
+  <p>If you don't feel comfortable raising a complaint internally, you have options to file a complaint here (links to
+    complaint mechanism).</p>
+  <Button class="complaint-button" onclick=" window.open('http://www.vaude.de','_blank')"
+          style="align-items: baseline" text="Go to the Complaint System"/>
+  <p>Thank you for participating!</p>
+  <Footer/>
 </template>
 
 <script>
@@ -18,15 +20,19 @@ import Button from "@/components/utils/Button"
 export default {
   name: 'ComplaintPage',
   components: {
-      Header,
-      Footer,
-      Button
-      }
+    Header,
+    Footer,
+    Button
+  }
 }
 </script>
 
 <style>
-#complaintButton{
-  width:80%;
+.complaint-video-button {
+  width: 60%;
+}
+
+.complaint-button {
+  width: 60%;
 }
 </style>

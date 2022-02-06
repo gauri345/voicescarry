@@ -57,7 +57,7 @@ const storeOld = {
             },
             {
                 questionNumber: 13,
-                questionTitle: "I have NEVER experienced abuse at work (e.g., being insulted)",
+                questionTitle: "I am treated with respect at work. My gender, age, ethnicity, country of origin, sexuality, and religion are all respected.",
             },
             {
                 questionNumber: 14,
@@ -89,7 +89,7 @@ const storeOld = {
             },
             {
                 questionNumber: 21,
-                questionTitle: "What is your gender?",
+                questionTitle: "Gender Identity: I identify as...",
             },
             {
                 questionNumber: 22,
@@ -98,14 +98,6 @@ const storeOld = {
             {
                 questionNumber: 23,
                 questionTitle: "In which position are you working?",
-            },
-            {
-                questionNumber: 24,
-                questionTitle: "Thank you for completing the survey. If you feel uncomfortable and want to report a complaint, click on the button below."
-            },
-            {
-                questionNumber: 25,
-                questionTitle: "We want your feedback! You can provide any general feedback to the app or related to your survey answers."
             },
         ]
     }),
