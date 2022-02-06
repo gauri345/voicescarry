@@ -7,21 +7,17 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Thank you for participating in the survey!</h5>
-                  <router-link :to="'/homepage'">
-                    <button aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
+                    <button aria-label="Close" class="close" type="button" @click="hideModal">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                  </router-link>
                 </div>
                 <div class="modal-body">
                   <p>What is the purpose of the survey?</p>
                   <p>What are we doing with the data?</p>
-                  <p>Do we store_old the data?</p>
+                  <p>Do we store the data?</p>
                 </div>
                 <div class="modal-footer">
-                  <router-link :to="'/homepage'">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Finish the survey</button>
-                  </router-link>
+                    <button class="btn btn-secondary" type="button" @click="hideModal">Finish the survey</button>
                 </div>
               </div>
             </div>
@@ -48,6 +44,9 @@ export default {
     }
   },
   methods: {
+    hideModal() {
+      this.showModal = false;
+    },
     submitSurvey() {
 
       console.log("submitting");

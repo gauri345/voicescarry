@@ -73,7 +73,9 @@ export default {
             if (!existing) {
                 LocalStorage.setWithoutTtl("answer", [answerToStore]);
             } else {
-                const filtered = existing.filter(storedAnswer => (storedAnswer.questionId !== state.currentQuestion.questionId));
+                const filtered = existing.filter(storedAnswer => {
+                    return storedAnswer.questionId !== state.currentQuestion.questionId;
+                });
 
                 filtered.push(answerToStore);
                 LocalStorage.setWithoutTtl("answer", filtered);
@@ -97,7 +99,6 @@ export default {
                     questionId: question._id,
                     questionNumber: question.number,
                     questionIcon: "self_improvement",
-                    questionCategory: localized(question.category.titles),
                     questionTitle: localized(question.titles),
                     additionalInformation: localized(question.additionalInformation),
                 };

@@ -8,43 +8,69 @@
       "content": "What is your age?"
     }
   ],
-  "category": {
-    "slug": "wellbeing-at-work",
-    "titles": [
-      {
-        "lang": "en",
-        "content": "Wellbeing at Work"
-      }
-    ]
-  },
   "answers": [
     {
-      "lang": "en",
-      "content": "20 or younger"
+      "value": "twenty-or-younger",
+      "items": [
+        {
+          "lang": "en",
+          "content": "20 or younger"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "21-30"
+      "value": "twenty-one-to-thirty",
+      "items": [
+        {
+          "lang": "en",
+          "content": "21 - 30"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "31-40"
+      "value": "thirty-one-to-forty",
+      "items": [
+        {
+          "lang": "en",
+          "content": "31 - 40"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "41-50"
+      "value": "forty-one-to-fifty",
+      "items": [
+        {
+          "lang": "en",
+          "content": "41 - 50"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "51-60"
+      "value": "fifty-one-to-sixty",
+      "items": [
+        {
+          "lang": "en",
+          "content": "51 - 60"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "61-70"
+      "value": "sixty-one-to-seventy",
+      "items": [
+        {
+          "lang": "en",
+          "content": "61 - 70"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "71 or older"
+      "value": "seventy-or-older",
+      "items": [
+        {
+          "lang": "en",
+          "content": "71 or older"
+        }
+      ]
     }
   ]
 }

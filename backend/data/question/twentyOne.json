@@ -5,30 +5,45 @@
   "titles": [
     {
       "lang": "en",
-      "content": "What is your gender ?"
+      "content": "Gender Identity: I identify as..."
     }
   ],
-  "category": {
-    "slug": "wellbeing-at-work",
-    "titles": [
-      {
-        "lang": "en",
-        "content": "Wellbeing at Work"
-      }
-    ]
-  },
   "answers": [
     {
-      "lang": "en",
-      "content": "female"
+      "value": "woman",
+      "items": [
+        {
+          "lang": "en",
+          "content": "a woman"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "male"
+      "value": "man",
+      "items": [
+        {
+          "lang": "en",
+          "content": "a man"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "diverse"
+      "value": "not-saying",
+      "items": [
+        {
+          "lang": "en",
+          "content": "prefer not to say"
+        }
+      ]
+    },
+    {
+      "value": "self-describe",
+      "items": [
+        {
+          "lang": "en",
+          "content": "prefer to self-describe"
+        }
+      ]
     }
   ]
 }
