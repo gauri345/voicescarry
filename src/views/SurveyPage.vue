@@ -1,40 +1,34 @@
 <template>
-  <div class="surveypage">
-      <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
+  <div class="survey-page">
+    <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
 
     <!-- Question Container including voting-->
-    <div class="question-container" >
-      <SurveyContent  :question-title="currentQuestion.questionTitle"
-                :question-content="currentQuestion.questionTitle"
-                :question-number="currentQuestion.questionNumber">
-      </SurveyContent>
+    <div class="question-container">
+      <SurveyAnswers :question-title="getCurrentQuestion.questionTitle" @answered="answered"/>
 
       <!-- The button to navigate between questions goes here -->
       <div class="navigation-buttons">
 
-        <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
-          <router-link :to="'/question/' + previousQuestion.questionNumber">
+        <div v-if="getPreviousQuestion.questionNumber !== undefined" class="button-previous">
+          <router-link :to="'/question/' + getPreviousQuestion.questionNumber">
             <SurveyButton icon1="arrow_backwards" text="Previous">
             </SurveyButton>
           </router-link>
         </div>
-        <div v-if="previousQuestion.questionNumber ==24" class="button-previous" data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
-            <FinishModal :additional-information="additionalInformation" 
-                                  :question-content="questionContent"/>
-            <SurveyButton text="Submit" class="submit"></SurveyButton>
-        </div>
 
-        <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
-          <router-link :to="'/question/' + nextQuestion.questionNumber">
-            <SurveyButton icon2="arrow_forwards" text="Next">
-            </SurveyButton>
+        <div v-if="getNextQuestion.questionNumber !== undefined" class="button-next">
+          <router-link :to="'/question/' + getNextQuestion.questionNumber">
+            <SurveyButton icon2="arrow_forwards" text="Next" @btnClick="handleNextButton"/>
           </router-link>
+        </div>
+        <div v-else class="button-previous">
+          <FinishModal/>
         </div>
       </div>
 
       <!-- The progress bar goes here -->
-      <Progress id="progressbar" :current-page-number="currentQuestion.questionNumber" :total-questions="totalQuestionCount"></Progress>
-
+      <Progress id="progressbar" :current-page-number="getCurrentQuestion.questionNumber"
+                :total-questions="getTotalQuestionCount"></Progress>
     </div>
     <Footer/>
   </div>
@@ -47,14 +41,15 @@ import Progress from "@/components/utils/Progress";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import FinishModal from "@/components/survey/FinishModal";
+import SurveyAnswers from "@/components/survey/SurveyAnswers";
 import {mapActions, mapGetters} from "vuex";
-
 
 export default {
   name: 'SurveyPage',
   components: {
     SurveyContent,
     SurveyButton,
+    SurveyAnswers,
     Progress,
     Footer,
     Header,
@@ -62,7 +57,15 @@ export default {
   },
 
   methods: {
-    ...mapActions(['initializeQuestionState', 'clearSelectedQuestions'])
+    ...mapActions(['initializeQuestionState', 'clearSelectedQuestions', 'storeAnswerInLocalStorage']),
+
+    answered: function (answer) {
+      this.storeAnswerInLocalStorage(answer);
+    },
+
+    handleNextButton() {
+      console.log("next");
+    }
   },
 
   created() {
@@ -73,28 +76,12 @@ export default {
 
   computed: {
     ...mapGetters([
-        'getAllQuestions',
+      'getAllQuestions',
       'getPreviousQuestion',
       'getCurrentQuestion',
       'getNextQuestion',
       'getTotalQuestionCount'
-    ]),
-
-    currentQuestion() {
-      return this.getCurrentQuestion
-    },
-
-    previousQuestion() {
-      return this.getPreviousQuestion;
-    },
-
-    nextQuestion() {
-      return this.getNextQuestion;
-    },
-
-    totalQuestionCount() {
-        return this.getTotalQuestionCount;
-    }
+    ])
   },
 }
 </script>
@@ -130,6 +117,6 @@ export default {
 }
 
 #progressbar {
-  padding-bottom:20px;   /* Height of the footer */
+  padding-bottom: 20px; /* Height of the footer */
 }
 </style>

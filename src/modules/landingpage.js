@@ -1,8 +1,7 @@
 import HttpClient from "@/util/http_client";
 import router from '@/router'
 import LocalStorage from "@/util/local_storage";
-
-const SURVEY_SESSION_TTL_SECONDS = 10000;
+import {SURVEY_SESSION_TTL_SECONDS} from "@/config";
 
 export default {
     state: {

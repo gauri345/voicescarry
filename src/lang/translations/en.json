@@ -11,5 +11,6 @@
   "welcome_survey": "Welcome to the survey about wellbeing at work!",
   "explain_survey": "We are a team from the University of Mannheim which wants to get deeper insights into the wellbeing of workers. It is important to mention that no personal data are stored or forwarded to your employer.",
   "intro_explanation": "To answer the survey questions, please click on the face that represents your level of agreement with the statement:",
-  "explain_rating": "All of your answers are anonymous. Thank you for participating!"
+  "explain_rating": "All of your answers are anonymous. Thank you for participating!",
+  "thank_you_message": "Thank you for completing the survey. If you feel uncomfortable and want to report a complaint, click on the button below."
 }
