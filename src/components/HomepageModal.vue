@@ -10,7 +10,14 @@
             </button>
         </div>
         <div class="modal-body">
-          <p>Info needed</p>
+          <p>We want to understand how employees are doing at work. 
+            We want to provide you with the opportunity to let us know how you are feel when you are working (Do you feel safe? comfortable?). 
+            <br><br>This is important to research, because when we feel uncomfortable at work, this can have a big impact on our overall lives and those around us. 
+            Everyone deserves a respectful workplace. 
+            <br><br>This survey will help create a baseline understanding of how employees in the textile industry feel and if they are doing well. 
+            The data will help us understand the larger picture regarding the current needs of employees, current areas in which employers are doing well, and points where they can improve. 
+            We at the University of Mannheim can then provide general positive feedback and constructive criticism through scientific research. 
+            <br><br>This is why we need your input. Thank you for participating!</p>
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
@@ -31,9 +38,10 @@ export default {
   font-weight: bold;
   text-align: left;
   color:black;
+  font-size: 26px;
 }
 .modal-content {
-  font-weight: normal;
+  font-weight: bold;
   text-align: left;
   color: black;
 }
