@@ -14,10 +14,7 @@ export default {
         getAllQuestions: (state) => state.allQuestions,
         getPreviousQuestion: (state) => state.previousQuestion,
         getCurrentQuestion: (state) => state.currentQuestion,
-        getNextQuestion: (state) => {
-            console.log(state);
-            return state.nextQuestion;
-        },
+        getNextQuestion: (state) =>  state.nextQuestion,
         getTotalQuestionCount: (state) => state.allQuestions.length
     },
 
@@ -106,9 +103,14 @@ export default {
                 return {
                     questionId: question._id,
                     questionNumber: question.number,
-                    questionIcon: "self_improvement",
+                    questionType: question.questionType,
                     questionTitle: localized(question.titles),
-                    additionalInformation: localized(question.additionalInformation),
+                    answers: question.answers.map(answer => {
+                        return {
+                            value: answer.value,
+                            text: localized(answer.items)
+                        };
+                    })
                 };
             });
         },

@@ -14,23 +14,21 @@
     </div>
   </div>
 
-  <div class="question-answers">
-    <span class="material-icons very_dissatisfied"
-          @click="answer('very dissatisfied', 5); ">sentiment_very_dissatisfied</span>
-
-    <span class="material-icons dissatisfied" @click="answer('dissatisfied', 4)">sentiment_dissatisfied</span>
-
-    <span class="material-icons neutral" @click="answer('neutral', 3)">sentiment_neutral</span>
-
-    <span class="material-icons satisfied" @click="answer('satisfied', 2)">sentiment_satisfied</span>
-
-    <span class="material-icons very_satisfied" @click="answer('very satisfied', 1)">sentiment_very_satisfied</span>
+  <div v-if="'scale' === getQuestionType" class="question-answers">
+      <span v-for="answer in getAnswers" :key="answer.value" :class="answer.iconClass"
+            @click="answer(answer.value)">{{ answer.text }}</span>
   </div>
 
+  <div v-if="'select' === getQuestionType" class="question-answers">
+    <select>
+      <option v-for="answer in getAnswers" :key="answer.value" :value="answer.value">{{ answer.text }}</option>
+    </select>
+  </div>
 </template>
 
 <script>
 import {textReader} from "@/util/speech";
+import {mapGetters} from "vuex";
 
 export default {
   name: "SurveyAnswers",
@@ -42,9 +40,12 @@ export default {
     readQuestionContent: function () {
       textReader(this.questionTitle)
     },
-    answer: function (answerText, answerValue) {
-      this.$emit('answered', {text: answerText, value: answerValue});
+    answer: function (answerValue) {
+      //this.$emit('answered', {text: answerText, value: answerValue});
     }
+  },
+  computed: {
+    ...mapGetters(['getAnswers', 'getQuestionType'])
   }
 }
 </script>
