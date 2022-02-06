@@ -13,7 +13,7 @@
       <div class="navigation-buttons">
 
         <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
-          <router-link :to="'/operations/' + previousQuestion.questionNumber">
+          <router-link :to="'/question/' + previousQuestion.questionNumber">
             <SurveyButton icon1="arrow_backwards" text="Previous">
             </SurveyButton>
           </router-link>
@@ -25,7 +25,7 @@
         </div>
 
         <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
-          <router-link :to="'/operations/' + nextQuestion.questionNumber">
+          <router-link :to="'/question/' + nextQuestion.questionNumber">
             <SurveyButton icon2="arrow_forwards" text="Next">
             </SurveyButton>
           </router-link>

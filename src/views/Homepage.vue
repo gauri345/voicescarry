@@ -51,7 +51,7 @@ import Button from "@/components/utils/Button";
 import Footer from "@/components/Footer"
 import Header from "@/components/Header";
 import HomepageModal from "@/components/HomepageModal";
-import {textReader} from "@/util/Speech";
+import {textReader} from "@/util/speech";
 
 export default {
   name: "Homepage",
@@ -71,8 +71,6 @@ export default {
      const textToRead =
          this.$i18n.t('homepage_entered_message').replace('!', '. ') +
          this.$i18n.t('homepage_info_message');
-
-     console.log(this.$i18n.locale);
 
      textReader(textToRead);
 

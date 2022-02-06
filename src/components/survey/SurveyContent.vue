@@ -5,7 +5,7 @@
             <img alt="Persona" src="../../assets/persona.png"/>
           </div>
           <div class="survey-question-wrapper">
-            <div class="speechbubble">
+            <div class="speech-bubble">
               <div class="question-title">{{ questionTitle }}</div>
             </div>
             <div class="audio-wrapper">
@@ -16,7 +16,7 @@
 
    <div v-if="questionNumber >23" class="survey-question-container final-question">
    <div class="feedback-box-wrapper">
-            <div class="speechbubble">
+            <div class="speech-bubble">
               <div class="question-title">{{ questionTitle }}</div>
             </div>
             <div class="audio-wrapper">
@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import {textReader} from "@/util/Speech";
+import {textReader} from "@/util/speech";
 import Button from "@/components/utils/Button";
 
 export default {
@@ -213,7 +213,7 @@ img{
 .feedback-box-wrapper{
   width: 100%;
 }
-.speechbubble{
+.speech-bubble{
   background: #1546A0;
   border-radius: 10px;
   display:inline-block;
@@ -224,7 +224,7 @@ img{
   padding: 15px;
   margin-top: 15px;
 }
-.speechbubble::before{
+.speech-bubble::before{
   background-color: #1546A0;
   content: "\00a0";
   display: block;

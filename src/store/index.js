@@ -1,10 +1,12 @@
 import {createStore} from "vuex";
-import Question from "@/modules/question";
+import Survey from "@/modules/survey";
 import Landingpage from "@/modules/landingpage";
+import Application from "@/modules/application";
 
 const store = createStore({
     modules: {
-        question: Question,
+        application: Application,
+        survey: Survey,
         landingpage: Landingpage
     }
 });

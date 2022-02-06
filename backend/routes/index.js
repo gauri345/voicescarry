@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const QuestionController = require('../controller/QuestionController');
+const SurveyController = require('../controller/SurveyController');
 const FactoryController = require('../controller/FactoryController');
 
 router.route('/question')
@@ -16,5 +17,7 @@ router.route('/factory')
 
 router.route('/factory/exists')
     .get(FactoryController.checkIfExists);
+
+router.route('/survey/start/:factoryCode').get(SurveyController.createSurvey)
 
 module.exports = router;

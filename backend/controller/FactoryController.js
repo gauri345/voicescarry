@@ -22,9 +22,9 @@ exports.post = async function (req, res) {
 
     const filter = {name: factory.name};
 
-    const existingQuestion = await Factory.findOne(filter);
+    const existingFactory = await Factory.findOne(filter);
 
-    if (existingQuestion) {
+    if (existingFactory) {
         res.json(
             {
                 status: "success",
