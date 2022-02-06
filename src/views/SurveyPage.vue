@@ -10,21 +10,15 @@
       <div class="navigation-buttons">
 
         <div v-if="getPreviousQuestion.questionNumber !== undefined" class="button-previous">
-          <router-link :to="'/question/' + getPreviousQuestion.questionNumber">
-            <SurveyButton icon1="arrow_backwards" text="Previous">
-            </SurveyButton>
-          </router-link>
+            <SurveyButton icon1="arrow_backwards" text="Previous" @btnClick="previousQuestion"/>
         </div>
 
         <div v-if="getNextQuestion.questionNumber !== undefined" class="button-next">
           <SurveyButton icon2="arrow_forwards" text="Next" @btnClick="handleNextButton"/>
         </div>
 
-        <div v-if="getCurrentQuestion.questionNumber ===22" class="button-previous"
-             data-bs-target=".bd-example-modal-pm"
-             data-bs-toggle="modal">
+        <div v-if="getNextQuestion.questionNumber === undefined" class="button-next">
           <FinishModal/>
-          <SurveyButton class="submit" text="Submit"></SurveyButton>
         </div>
 
         <!-- The progress bar goes here -->
@@ -62,7 +56,8 @@ export default {
           'initializeQuestionState',
           'clearSelectedQuestions',
           'storeAnswerInLocalStorage',
-          'navigateToNextQuestion'
+          'navigateToNextQuestion',
+          'navigateToPreviousQuestion'
         ]
     ),
 
@@ -75,7 +70,11 @@ export default {
     },
 
     nextQuestion() {
-      return this.getNextQuestion();
+      return this.navigateToNextQuestion();
+    },
+
+    previousQuestion() {
+      return this.navigateToPreviousQuestion();
     }
   },
 

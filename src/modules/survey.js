@@ -85,6 +85,10 @@ export default {
 
         navigateToNextQuestion: ({state}) => {
             router.push({name: 'SurveyPage', params: {number: state.nextQuestion.questionNumber}});
+        },
+
+        navigateToPreviousQuestion: ({state}) => {
+            router.push({name: 'SurveyPage', params: {number: state.previousQuestion.questionNumber}});
         }
     },
 
