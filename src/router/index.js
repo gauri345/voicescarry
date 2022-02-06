@@ -6,6 +6,7 @@ import SurveyPage from "@/views/SurveyPage";
 import ComplaintPage from "@/views/ComplaintPage";
 import SurveyEntryPage from "@/views/SurveyEntryPage";
 import SurveyExplanationPage from "@/views/SurveyExplanationPage";
+import SurveyEndingPage from "@/views/SurveyEndingPage";
 
 import i18n from '../lang';
 
@@ -34,6 +35,11 @@ const routes = [
         path: "/question/:number",
         name: "SurveyPage",
         component: SurveyPage
+    },
+    {
+        path: "/question/ending",
+        name: "SurveyEndingPage",
+        component: SurveyEndingPage
     },
     {
         path: "/complaint",

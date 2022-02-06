@@ -13,9 +13,9 @@
             </div>
           </div> 
   </div>
-
-   <div v-if="questionNumber >23" class="survey-question-container final-question">
-   <div class="feedback-box-wrapper">
+<!-- 
+  <div v-if="questionNumber >23" class="survey-question-container final-question">
+  <div class="feedback-box-wrapper">
             <div class="speechbubble">
               <div class="question-title">{{ questionTitle }}</div>
             </div>
@@ -23,8 +23,7 @@
               <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
             </div>
           </div> 
-    </div>
-   
+    </div> -->
   <div v-if="questionNumber <= 20" class="question-answers">
      <span :class="{'outlined_vd':thema_vd ==='true'}"
            class="material-icons very_dissatisfied"
@@ -49,10 +48,11 @@
   </div>
 
   <div v-else-if="questionNumber == 21" class="question-answers">
-     <select v-model="gender">
-      <option value="female">Female</option>
-      <option value="male">Male</option>
-      <option value="diverse">Diverse</option>
+      <select v-model="gender">
+      <option value="woman">a woman</option>
+      <option value="man">a man</option>
+      <option value="notsaying">prefer not to say</option>
+      <option value="self-describe">prefer to self-describe</option>
     </select>
   </div>
 
@@ -74,16 +74,6 @@
       <option value="manager">Manager</option>
     </select>
   </div>
-  <div v-else-if="questionNumber == 24" class="question-answers">
-      <router-link to="/complaint">
-        <GeneralButton style="align-items:center !important;" icon="assignment_late" text="Report a complaint" id="complaintbtn"></GeneralButton>
-      </router-link>
-  </div>
-
-  <div v-else-if="questionNumber == 25" class="question-answers">
-    <textarea class="textfield">
-    </textarea>
-  </div>
 
 </template>
 
@@ -94,17 +84,16 @@ import GeneralButton from "@/components/GeneralButton";
 export default {
   name: 'SurveyContent',
   components: {
-     GeneralButton,
+    GeneralButton,
   },
   props: {
     questionTitle: String,
     questionNumber: Number,
     questionContent: String,
-   
   },
-   data() {
+  data() {
     return {
-      gender: 'female',
+      gender: 'woman',
       age: 'twentyoryounger',
       position: 'employee',
       thema_vd: 'false',
@@ -188,7 +177,7 @@ export default {
 
 .survey-question-container{
   width: 100%;
-  height: 300px;
+  height: 310px;
   margin-top: 2%;
   overflow: hidden;
   background-image: url('../../assets/Background.png');

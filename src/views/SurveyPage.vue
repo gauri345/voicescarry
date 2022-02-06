@@ -17,9 +17,9 @@
             </SurveyButton>
           </router-link>
         </div>
-        <div v-if="previousQuestion.questionNumber ==24" class="button-previous" data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
+        <div v-if="previousQuestion.questionNumber ==22" class="button-previous" data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
             <FinishModal :additional-information="additionalInformation" 
-                                  :question-content="questionContent"/>
+                        :question-content="questionContent"/>
             <SurveyButton text="Submit" class="submit"></SurveyButton>
         </div>
 
@@ -60,13 +60,13 @@ export default {
     FinishModal
   },
 
-  data: function () {
-    return {
-      currentQuestion: store.state.currentQuestion,
-      nextQuestion: store.state.nextQuestion,
-      previousQuestion: store.state.previousQuestion,
-    }
-  },
+data: function () {
+  return {
+    currentQuestion: store.state.currentQuestion,
+    nextQuestion: store.state.nextQuestion,
+    previousQuestion: store.state.previousQuestion,
+  }
+},
 
   beforeCreate: function () {
     store.clearSelectedQuestions();
