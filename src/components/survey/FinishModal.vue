@@ -40,6 +40,7 @@
 <script>
 import SurveyButton from "@/components/survey/SurveyButton";
 import router from "@/router";
+import {mapActions} from "vuex";
 
 export default {
   name: 'FinishModal',
@@ -47,8 +48,9 @@ export default {
     SurveyButton
   },
   methods: {
+    ...mapActions(['storeSurvey']),
     submitSurvey() {
-      console.log(localStorage.getItem('answer'));
+      this.storeSurvey();
     },
 
     completeSurvey() {

@@ -3,6 +3,7 @@ const router = express.Router();
 const QuestionController = require('../controller/QuestionController');
 const SurveyController = require('../controller/SurveyController');
 const FactoryController = require('../controller/FactoryController');
+const AnswerController = require('../controller/AnswerController');
 
 router.route('/question')
     .get(QuestionController.index)
@@ -19,5 +20,9 @@ router.route('/factory/exists')
     .get(FactoryController.checkIfExists);
 
 router.route('/survey/start/:factoryCode').get(SurveyController.createSurvey)
+
+router.route('/answer/storeBulk/')
+    .get(AnswerController.index)
+    .post(AnswerController.insertBulk)
 
 module.exports = router;
