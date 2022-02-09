@@ -10,15 +10,10 @@
                 <SurveyFeedbackModal/>
                 <GeneralButton style="align-items:baseline" text="Submit feedback" id="submitbutton"/>
             </div>
-<!--     
-                <router-link to="/homepage">
-                <GeneralButton style="align-items:baseline" id="submitbutton" text="Submit Feedback"/>
-                </router-link> -->
             <p>If you feel uncomfortable and want to learn more about how to report a complaint, click on the button below.</p>
         <div class=buttonwrapper>
             <router-link to="/complaint">
             <GeneralButton style="align-items:center !important;" id="complaintbutton" icon="assignment_late" :text="$t('homepage_report_complaint')"></GeneralButton>
-            <!-- <GeneralButton style="align-items:baseline" id="homepagebutton" text="Report a complaint"/> -->
             </router-link>
         </div>
     </div>
@@ -64,17 +59,21 @@ methods: {
 
 #submitbutton{
     width:100%;
-    /* display: inline-block; */
     background: #4EB562;
+    margin: 0.5em 0 0.5em 0;
 }
 #complaintbutton{
     width:100%;
+    margin: 0.5em 0 0.5em 0;
 }
 #body {
     padding-bottom: 80px;
     font-size: 20px;
     margin-left: 10%;
     margin-right: 10%;
+}
+.buttonwrapper{
+    margin: 1em 0 1em 0;
 }
 .buttonwrapper{
     margin: 1em 0 1em 0;
@@ -92,5 +91,6 @@ methods: {
     background: #FFFFFF;
     border: 1px solid rgba(36, 54, 86, 0.3);
     border-radius: 20px;
+    margin: 0.5em 0 0.5em 0;
 }
 </style>
