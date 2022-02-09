@@ -16,7 +16,7 @@
 
   <div v-if="'scale' === getQuestionType" class="question-answers">
       <span v-for="answer in getAnswers" :key="answer.value" :class="answer.iconClass"
-            @click="answer(answer.value)">{{ answer.text }}</span>
+            @click="handleAnswered(answer.value, answer.text)">{{ answer.text }}</span>
   </div>
 
   <div v-if="'select' === getQuestionType" class="question-answers">
@@ -40,8 +40,8 @@ export default {
     readQuestionContent: function () {
       textReader(this.questionTitle)
     },
-    answer: function (answerValue) {
-      //this.$emit('answered', {text: answerText, value: answerValue});
+    handleAnswered: function (answerValue, answerText) {
+      this.$emit('answered', {text: answerText, value: answerValue});
     }
   },
   computed: {

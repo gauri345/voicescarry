@@ -38,7 +38,7 @@ const routes = [
         component: SurveyPage
     },
     {
-        path: "/question/ending",
+        path: "/question/end",
         name: "SurveyEndingPage",
         component: SurveyEndingPage
     },
