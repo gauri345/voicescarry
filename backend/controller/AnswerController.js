@@ -17,10 +17,12 @@ exports.index = function (req, res) {
 };
 
 exports.insertBulk = async function (req, res) {
-    res.json(
+    res
+        .status(201)
+        .json(
         {
             status: "success",
-            message: 'answer updated',
+            message: 'answers stored',
             data: AnswerModel.insertMany(req.body)
         }
     );
