@@ -19,8 +19,9 @@
             @click="handleAnswered(answer.value, answer.text)">{{ answer.text }}</span>
   </div>
 
-  <div v-if="'select' === getQuestionType" class="question-answers">
+  <div v-if="'select' === getQuestionType" class="question-answers" @change="onChangeMethod($event)">
     <select>
+      <option :value="selectedOptionText.text">{{ selectedOptionText.text }}</option>
       <option v-for="answer in getAnswers" :key="answer.value" :value="answer.value">{{ answer.text }}</option>
     </select>
   </div>
@@ -36,16 +37,37 @@ export default {
   props: {
     questionTitle: String
   },
+  data() {
+    return {}
+  },
   methods: {
     readQuestionContent: function () {
       textReader(this.questionTitle)
     },
     handleAnswered: function (answerValue, answerText) {
       this.$emit('answered', {text: answerText, value: answerValue});
+    },
+
+    onChangeMethod(event) {
+      this.handleAnswered(
+          event.target.value,
+          event.target.options[event.target.options.selectedIndex].text
+      );
     }
   },
   computed: {
-    ...mapGetters(['getAnswers', 'getQuestionType'])
+    ...mapGetters(['getAnswers', 'getQuestionType']),
+    selectedOptionText() {
+      const firstOption = this.getAnswers.shift();
+
+      this.handleAnswered(firstOption.value, firstOption.text);
+
+      return {
+        value: firstOption.value,
+        text: firstOption.text
+      };
+
+    }
   }
 }
 </script>
