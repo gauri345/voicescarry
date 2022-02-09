@@ -5,7 +5,7 @@
     <p> Thank you for completing the survey.
       We want your feedback!
       You can provide any general feedback to the app or related to your survey answers.</p>
-    <textarea class="text-field"/>
+    <textarea class="text-field" placeholder="Optional"/>
     <div class=feedback-button-wrapper data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
       <SurveyFeedbackModal/>
       <Button class="submit-button" style="align-items:baseline" text="Submit feedback"/>
@@ -26,7 +26,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Button from "@/components/utils/Button";
-import SurveyFeedbackModal from "@/components/SurveyFeedbackModal";
+import SurveyFeedbackModal from "@/components/survey/SurveyFeedbackModal";
 import {textReader} from "@/util/speech";
 
 export default {
@@ -58,16 +58,6 @@ export default {
 </script>
 
 <style scoped>
-
-.submit-button {
-  width: 100%;
-  background: #4EB562;
-}
-
-.complaint-button {
-  width: 100%;
-}
-
 .body {
   padding-bottom: 80px;
   font-size: 20px;
@@ -75,8 +65,8 @@ export default {
   margin-right: 10%;
 }
 
-.button-wrapper {
-  margin: 1em 0 1em 0;
+.button-wrapper{
+    margin: 1em 0 1em 0;
 }
 
 .material-icons.audio {
@@ -85,7 +75,6 @@ export default {
   margin-top: 0.2em;
   margin-bottom: 0.2em;
 }
-
 .text-field {
   padding: 10px 6px;
   width: 100%;
@@ -93,5 +82,6 @@ export default {
   background: #FFFFFF;
   border: 1px solid rgba(36, 54, 86, 0.3);
   border-radius: 20px;
+  margin: 0.5em 0 0.5em 0;
 }
 </style>

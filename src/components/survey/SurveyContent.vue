@@ -49,10 +49,10 @@
   </div>
 
   <div v-else-if="questionNumber == 21" class="question-answers">
-     <select v-model="gender">
-      <option value="female">Female</option>
-      <option value="male">Male</option>
-      <option value="diverse">Diverse</option>
+      <select v-model="gender">
+      <option value="woman">a woman</option>
+      <option value="man">a man</option>
+      <option value="notsaying">prefer not to say</option>
     </select>
   </div>
 
@@ -65,6 +65,7 @@
       <option value="fiftyonesixty">51 - 60</option>
       <option value="sixtyoneseventy">61 - 70</option>
       <option value="seventyorolder">71 or older</option>
+      <option value="notsaying">prefer not to say</option>
     </select>
   </div>
 
@@ -72,6 +73,7 @@
     <select v-model="position">
       <option value="employee">Employee</option>
       <option value="manager">Manager</option>
+      <option value="notsaying">prefer not to say</option>
     </select>
   </div>
   <div v-else-if="questionNumber == 24" class="question-answers">

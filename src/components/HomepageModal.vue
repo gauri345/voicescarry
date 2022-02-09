@@ -38,16 +38,16 @@ export default {
   font-weight: bold;
   text-align: left;
   color:black;
-  font-size: 26px;
+  font-size: 24px;
 }
 .modal-content {
-  font-weight: bold;
+  font-weight: normal;
   text-align: left;
   color: black;
 }
 .btn {
-    width: 150px;
-    height: 50px;
+  font-size:20px;
+  font-weight: bold;
 }
 .close {
   border: none;

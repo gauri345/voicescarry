@@ -18,12 +18,9 @@ export default {
 
             try {
                 const response = await HttpClient.post('answer/storeBulk', answers);
-                console.log(response);
-
                 if ("success" === response.data.status) {
                     LocalStorage.remove('answer');
                 }
-
             } catch (error) {
                 console.log(error);
             }
