@@ -5,7 +5,7 @@
             <p> Thank you for completing the survey. 
                 We want your feedback! 
                 You can provide any general feedback to the app or related to your survey answers.</p>
-            <textarea class="textfield"/>
+            <textarea placeholder="Optional" class="textfield"/>
             <div class=feedbackbuttonwrapper data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
                 <SurveyFeedbackModal/>
                 <GeneralButton style="align-items:baseline" text="Submit feedback" id="submitbutton"/>
@@ -29,7 +29,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import GeneralButton from "@/components/GeneralButton";
-import SurveyFeedbackModal from "@/components/SurveyFeedbackModal";
+import SurveyFeedbackModal from "@/components/survey/SurveyFeedbackModal";
 import {textReader} from "@/util/Speech";
 
 export default {
