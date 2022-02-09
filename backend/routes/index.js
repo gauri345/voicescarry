@@ -9,7 +9,7 @@ router.route('/question')
     .get(QuestionController.index)
     .post(QuestionController.post);
 
-router.route('/operations/:number')
+router.route('/question/:number')
     .delete(QuestionController.delete);
 
 router.route('/factory')
@@ -19,7 +19,8 @@ router.route('/factory')
 router.route('/factory/exists')
     .get(FactoryController.checkIfExists);
 
-router.route('/survey/start/:factoryCode').get(SurveyController.createSurvey)
+router.route('/survey/start/:factoryCode')
+    .get(SurveyController.createSurvey)
 
 router.route('/answer/storeBulk/')
     .get(AnswerController.index)
