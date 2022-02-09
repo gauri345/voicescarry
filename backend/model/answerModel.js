@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const answerModel = mongoose.Schema({
     questionId: {
@@ -6,18 +6,31 @@ const answerModel = mongoose.Schema({
         required: true
     },
 
-    language: {
+    questionNumber: {
         type: String,
-        default: 'en',
         required: true
     },
 
-    answer: {
+    answerValue: {
+        type: String,
+        required: true
+    },
+
+    answerText: {
+        type: String,
+        required: true
+    },
+
+    factoryCode: {
+        type: String,
+        required: true
+    },
+
+    surveyCode: {
         type: String,
         required: true
     }
 });
-
 
 const Answer = module.exports = mongoose.model('Answer', answerModel);
 

@@ -1,7 +1,7 @@
-const Factory = require("../model/answerModel");
+const AnswerModel = require("../model/answerModel");
 
 exports.index = function (req, res) {
-    Factory.get(function (err, questions) {
+    AnswerModel.get(function (err, questions) {
         if (err) {
             res.json({
                 status: "error",
@@ -16,30 +16,14 @@ exports.index = function (req, res) {
     });
 };
 
-
-exports.post = async function (req, res) {
-
-    const answer = req.body;
-
-    const filter = {name: answer.name};
-
-    const existingQuestion = await Factory.findOne(filter);
-
-    if (existingQuestion) {
-        res.json(
-            {
-                status: "success",
-                message: 'answer updated',
-                data: await Factory.findOneAndUpdate(filter, factory)
-            }
-        );
-    } else {
-        res.json(
-            {
-                status: "success",
-                message: 'answer added',
-                data: await Factory.create(req.body)
-            }
-        );
-    }
+exports.insertBulk = async function (req, res) {
+    res
+        .status(201)
+        .json(
+        {
+            status: "success",
+            message: 'answers stored',
+            data: AnswerModel.insertMany(req.body)
+        }
+    );
 };

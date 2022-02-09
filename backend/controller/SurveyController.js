@@ -30,3 +30,8 @@ exports.createSurvey = async function (req, res) {
         }
     );
 };
+
+
+exports.storeSurvey = function (request, response) {
+
+}
