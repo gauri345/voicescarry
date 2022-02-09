@@ -5,26 +5,26 @@
             <img alt="Persona" src="../../assets/persona.png"/>
           </div>
           <div class="survey-question-wrapper">
-            <div class="speech-bubble">
+            <div class="speechbubble">
               <div class="question-title">{{ questionTitle }}</div>
             </div>
             <div class="audio-wrapper">
               <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
             </div>
-          </div> 
+          </div>
   </div>
 
    <div v-if="questionNumber >23" class="survey-question-container final-question">
    <div class="feedback-box-wrapper">
-            <div class="speech-bubble">
+            <div class="speechbubble">
               <div class="question-title">{{ questionTitle }}</div>
             </div>
             <div class="audio-wrapper">
               <span  v-if="'en' === $i18n.locale" class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
             </div>
-          </div> 
+          </div>
     </div>
-   
+
   <div v-if="questionNumber <= 20" class="question-answers">
      <span :class="{'outlined_vd':thema_vd ==='true'}"
            class="material-icons very_dissatisfied"
@@ -76,7 +76,7 @@
   </div>
   <div v-else-if="questionNumber == 24" class="question-answers">
       <router-link to="/complaint">
-        <Button style="align-items:center !important;" icon="assignment_late" text="Report a complaint" id="complaintbtn"></Button>
+        <GeneralButton style="align-items:center !important;" icon="assignment_late" text="Report a complaint" id="complaintbtn"></GeneralButton>
       </router-link>
   </div>
 
@@ -88,19 +88,19 @@
 </template>
 
 <script>
-import {textReader} from "@/util/speech";
-import Button from "@/components/utils/Button";
+import {textReader} from "@/util/Speech";
+import GeneralButton from "@/components/GeneralButton";
 
 export default {
   name: 'SurveyContent',
   components: {
-    Button,
+     GeneralButton,
   },
   props: {
     questionTitle: String,
     questionNumber: Number,
     questionContent: String,
-   
+
   },
    data() {
     return {
@@ -196,7 +196,7 @@ export default {
   align-items: center;
 }
 .final-question{
-  display:inline-block !important; 
+  display:inline-block !important;
   overflow-y:auto !important;
 }
 .survey-persona-wrapper{
@@ -208,12 +208,12 @@ img{
   float: right;
 }
 .survey-question-wrapper{
-  width: 70%;  
+  width: 70%;
 }
 .feedback-box-wrapper{
   width: 100%;
 }
-.speech-bubble{
+.speechbubble{
   background: #1546A0;
   border-radius: 10px;
   display:inline-block;
@@ -224,7 +224,7 @@ img{
   padding: 15px;
   margin-top: 15px;
 }
-.speech-bubble::before{
+.speechbubble::before{
   background-color: #1546A0;
   content: "\00a0";
   display: block;
@@ -318,7 +318,7 @@ select {
   color: #555;
 }
 .textfield {
-  padding: 10px 6px;  
+  padding: 10px 6px;
   width: 80%;
   height: 100%; /* makes fiels size the same size as smileys and form*/
   font-size: 14px;

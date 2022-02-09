@@ -19,12 +19,22 @@
   },
   "answers": [
     {
-      "lang": "en",
-      "content": "Worker"
+      "value": "employee",
+      "items": [
+        {
+          "lang": "en",
+          "content": "Employee"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "Manger"
+      "value": "manager",
+      "items": [
+        {
+          "lang": "en",
+          "content": "Manager"
+        }
+      ]
     }
   ]
 }

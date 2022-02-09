@@ -1,4 +1,6 @@
 import HttpClient from "@/util/http_client";
+import LocalStorage from "@/util/local_storage";
+import router from "@/router";
 
 export default {
     state: {
@@ -12,7 +14,7 @@ export default {
         getAllQuestions: (state) => state.allQuestions,
         getPreviousQuestion: (state) => state.previousQuestion,
         getCurrentQuestion: (state) => state.currentQuestion,
-        getNextQuestion: (state) => state.nextQuestion,
+        getNextQuestion: (state) =>  state.nextQuestion,
         getTotalQuestionCount: (state) => state.allQuestions.length
     },
 
@@ -52,17 +54,44 @@ export default {
             }
         },
 
-        clearSelectedQuestions: ({commit}) =>{
+        clearSelectedQuestions: ({commit}) => {
             commit('SET_PREVIOUS_QUESTION', {});
             commit('SET_CURRENT_QUESTION', {});
             commit('SET_NEXT_QUESTION', {});
+        },
+
+        storeAnswerInLocalStorage: ({commit, state}, answer) => {
+            const answerToStore = {
+                answerText: answer.text,
+                answerValue: answer.value,
+                questionId: state.currentQuestion.questionId,
+                questionNumber: state.currentQuestion.questionNumber,
+                survey: LocalStorage.get('survey')
+            };
+
+            const existing = LocalStorage.get("answer");
+
+            if (!existing) {
+                LocalStorage.setWithoutTtl("answer", [answerToStore]);
+            } else {
+                const filtered = existing.filter(storedAnswer => {
+                    return storedAnswer.questionId !== state.currentQuestion.questionId;
+                });
+
+                filtered.push(answerToStore);
+                LocalStorage.setWithoutTtl("answer", filtered);
+            }
+        },
+
+        navigateToNextQuestion: ({state}) => {
+            router.push({name: 'SurveyPage', params: {number: state.nextQuestion.questionNumber}});
         }
     },
 
     mutations: {
         SET_ALL_QUESTIONS: (state, questions) => {
             const localized = (contentList) => {
-                const lang = localStorage.getItem('language');
+                const lang = LocalStorage.get('language');
                 const language = (null === lang) ? 'en' : lang;
 
                 if (contentList.length > 0) {
@@ -72,11 +101,16 @@ export default {
 
             state.allQuestions = questions.map(question => {
                 return {
+                    questionId: question._id,
                     questionNumber: question.number,
-                    questionIcon: "self_improvement",
-                    questionCategory: localized(question.category.titles),
+                    questionType: question.questionType,
                     questionTitle: localized(question.titles),
-                    additionalInformation: localized(question.additionalInformation),
+                    answers: question.answers.map(answer => {
+                        return {
+                            value: answer.value,
+                            text: localized(answer.items)
+                        };
+                    })
                 };
             });
         },

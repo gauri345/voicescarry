@@ -37,6 +37,16 @@ const set = (keyName, keyValue, ttl) => {
 }
 
 /**
+ * sets item to local storage.
+ *
+ * @param {string} keyName - A key to identify the value.
+ * @param {any} value - A value associated with the key.
+ */
+const setWithoutTtl = (keyName, value) => {
+    localStorage.setItem(keyName, JSON.stringify({value: value}));
+}
+
+/**
  * Removes item from local storage
  *
  * @param {string} keyName
@@ -45,8 +55,9 @@ const remove = (keyName) => {
     localStorage.removeItem(keyName);
 }
 
-export default  {
+export default {
     set,
+    setWithoutTtl,
     get,
     remove
 }

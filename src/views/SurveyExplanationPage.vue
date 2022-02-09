@@ -1,6 +1,6 @@
 <template>
   <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
-  <div id="body">
+  <div class="body">
     <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
     <div class="text">
       <p> {{ $t('intro_explanation') }} </p>
@@ -34,7 +34,7 @@
     <div class="text">
       <p> {{ $t('explain_rating') }} </p>
     </div>
-    <div class="button-wrapper">
+    <div class=button-wrapper>
       <router-link to="/question/1">
         <Button id="surveyStartButton" style="align-items:baseline" text="Start the Survey!"/>
       </router-link>
@@ -77,64 +77,52 @@ export default {
 </script>
 
 <style scoped>
-.material-icons {
-  font-size: 48px;
+.material-icons{
+  font-size:48px;
 }
-
-.material-icons.audio {
-  font-size: 35px;
+.material-icons.audio{
+  font-size:35px;
 }
-
-.answer-types {
+.answer-types{
   margin: 1em 0.2em;
   display: flex;
 }
-
-.text-center {
+.text-center{
   vertical-align: middle;
-  display: inline-grid;
-  width: 20%;
+  display:inline-grid;
+  width:20%;
 }
-
 .material-icons.vs {
   color: #1f7500;
 }
-
 .material-icons.s {
   color: #68da3e;
 }
-
 .material-icons.n {
   color: #F4DD09;
 }
-
 .material-icons.d {
   color: #f09309;
 }
-
 .material-icons.vd {
   color: #F44209;
 }
-
-#surveyStartButton {
+.survey-start-button {
   width: 60%;
-  margin: 0;
+  margin:0;
 }
-
 .text {
   font-size: 20px;
   margin-left: 10%;
   margin-right: 10%;
 }
-
-#body {
+.body {
   padding-bottom: 80px;
 }
-
 .material-icons.audio {
   cursor: pointer;
   color: #2c3e50;
-  margin-top: 0.2em;
+  margin-top:0.2em;
   margin-bottom: 0.2em;
 }
 </style>

@@ -12,13 +12,12 @@ const localizedContentSchema = mongoose.Schema({
     }
 });
 
-const categorySchema = mongoose.Schema({
-    slug: {
+const answer = mongoose.Schema({
+    value: {
         type: String,
         required: true
     },
-
-    titles: [
+    items: [
         {
             type: localizedContentSchema,
             required: true
@@ -45,10 +44,6 @@ const questionSchema = mongoose.Schema({
             required: true
         }
     ],
-    category: {
-        type: categorySchema,
-        required: true
-    },
     additionalInformation: [
         {
             type: localizedContentSchema,
@@ -57,7 +52,7 @@ const questionSchema = mongoose.Schema({
     ],
     answers: [
         {
-            type: localizedContentSchema,
+            type: answer,
             required: true
         }
     ]
