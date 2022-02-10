@@ -45,14 +45,15 @@ export default {
       textReader(this.questionTitle)
     },
     handleAnswered: function (answer) {
+      if ('scale' === this.getQuestionType) {
+        const scaleAnswers = document.getElementById('scaleAnswers').children;
 
-      const scaleAnswers = document.getElementById('scaleAnswers').children;
+        for (let i = 0; i < scaleAnswers.length; i++) {
+          document.getElementById('scaleAnswers').children.item(i).classList.remove('active-answer');
+        }
 
-      for (let i = 0; i < scaleAnswers.length; i++) {
-        document.getElementById('scaleAnswers').children.item(i).classList.remove('active-answer');
+        document.getElementById(answer.text).classList.toggle("active-answer");
       }
-
-      document.getElementById(answer.text).classList.toggle("active-answer");
 
       this.$emit('answered', {text: answer.text, value: answer.value});
     },
@@ -71,7 +72,8 @@ export default {
 
       if ('select' === this.getQuestionType) {
         const firstOption = answers.shift();
-        this.handleAnswered(firstOption.value, firstOption.text);
+
+        this.handleAnswered(firstOption);
 
         return {
           value: firstOption.value,
