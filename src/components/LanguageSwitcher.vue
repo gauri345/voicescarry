@@ -3,16 +3,13 @@
     <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       <span class="material-icons">language</span>
     </button>
-
     <ul class="dropdown-menu">
-     <li><a href="#" class="lang-button" @click="changeLanguage">EN</a></li>
-     <li><a href="#" class="lang-button" @click="changeLanguage">VI&nbsp;</a></li>
+      <li><a href="#" class="lang-button" @click="changeLanguage">EN</a></li>
+      <li><a href="#" class="lang-button" @click="changeLanguage">VI&nbsp;</a></li>
     </ul>
-
   </div>
 </template>
 <script>
-
 
 export default {
   name: 'LanguageSwitcher',

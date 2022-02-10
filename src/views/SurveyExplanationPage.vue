@@ -1,46 +1,45 @@
 <template>
-    <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
-    <div id="body">
-        <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
+  <Header HeaderIcon="spa" :HeaderText="$t('headerText')"/>
+  <div id="body">
+    <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
     <div class="text">
-        <p> {{ $t('intro_explanation') }} </p>
+      <p> {{ $t('survey_explanation_intro') }} </p>
     </div>
     <div class="answertypes">
-        <div class="text-center" style="font-size:16px">
-            <span class="material-icons vd">sentiment_very_dissatisfied</span>
-            <span> Strongly Disagree </span>
-        </div>
-        <div class="text-center" style="font-size:16px">
-            <span class="material-icons d">sentiment_dissatisfied</span>
-            <span> Disagree </span>
-            <br>
-        </div>
-        <div class="text-center" style="font-size:16px">
-            <span class="material-icons n">sentiment_neutral</span>
-            <span> Neutral </span>
-            <br>
-        </div>
-        <div class="text-center" style="font-size:16px">
-            <span class="material-icons s">sentiment_satisfied</span>
-            <span> Agree </span>
-            <br>
-        </div>
-        <div class="text-center" style="font-size:16px">
-            <span class="material-icons vs">sentiment_very_satisfied</span>
-            <span> Strongly Agree </span>
-        </div>
+      <div class="text-center" style="font-size:16px">
+        <span class="material-icons vd">sentiment_very_dissatisfied</span>
+        <span> {{ $t('survey_sentiment_vd') }} </span>
+      </div>
+      <div class="text-center" style="font-size:16px">
+        <span class="material-icons d">sentiment_dissatisfied</span>
+        <span> {{ $t('survey_sentiment_d') }}  </span>
+        <br>
+      </div>
+      <div class="text-center" style="font-size:16px">
+        <span class="material-icons n">sentiment_neutral</span>
+        <span> {{ $t('survey_sentiment_n') }} </span>
+        <br>
+      </div>
+      <div class="text-center" style="font-size:16px">
+        <span class="material-icons s">sentiment_satisfied</span>
+        <span> {{ $t('survey_sentiment_s') }} </span>
+        <br>
+      </div>
+      <div class="text-center" style="font-size:16px">
+        <span class="material-icons vs">sentiment_very_satisfied</span>
+        <span>{{ $t('survey_sentiment_vs') }}</span>
+      </div>
     </div>
-
     <div class="text">
-        <p> {{ $t('explain_rating') }} </p>
+      <p> {{ $t('survey_explanation_rating') }} </p>
     </div>
     <div class=buttonwrapper>
-        <router-link to="/question/1">
-        <GeneralButton style="align-items:baseline" id="surveystartbutton" text="Start the Survey!"/>
-        </router-link>
+      <router-link to="/question/1">
+      <GeneralButton style="align-items:baseline" id="surveystartbutton" :text="$t('button_start_survey')"/>
+      </router-link>
     </div>
-    </div>
-    <Footer/>
+  </div>
+  <Footer/>
 </template>
 
 <script>
@@ -52,11 +51,11 @@ import {textReader} from "@/util/Speech";
 export default {
   name: 'SurveyExplanationPage',
   components: {
-      Header,
-      Footer,
-      GeneralButton
-      },
-data() {
+    Header,
+    Footer,
+    GeneralButton
+    },
+  data() {
     return {
       isReading: false
     }
@@ -64,14 +63,11 @@ data() {
   methods: {
     readQuestionContent: function () {
         const textToRead =
-            this.$i18n.t('intro_explanation').replace('!', '. ') +
-            this.$i18n.t('explain_rating').replace('!', '. ');
-
+          this.$i18n.t('survey_explanation_intro').replace(':', '. ') +
+          this.$i18n.t('survey_explanation_rating').replace('!', '. ');
         console.log(this.$i18n.locale);
-
         textReader(textToRead);
-
-        }
+    }
   }
 }
 </script>
@@ -81,7 +77,7 @@ data() {
   font-size:48px;
 }
 .material-icons.audio{
-    font-size:35px;
+  font-size:35px;
 }
 .answertypes{
   margin-top: 1em;
@@ -91,9 +87,9 @@ data() {
   display: flex;
 }
 .text-center{
-    vertical-align: middle;
-    display:inline-grid;
-    width:20%;
+  vertical-align: middle;
+  display:inline-grid;
+  width:20%;
 }
 .material-icons.vs {
   color: #1f7500;
@@ -111,16 +107,16 @@ data() {
   color: #F44209;
 }
 #surveystartbutton {
-    width: 60%;
-    margin:0;
+  width: 60%;
+  margin:0;
 }
 .text {
-    font-size: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
+  font-size: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 #body {
-    padding-bottom: 80px;
+  padding-bottom: 80px;
 }
 .material-icons.audio {
   cursor: pointer;

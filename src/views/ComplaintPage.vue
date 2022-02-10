@@ -1,22 +1,24 @@
 <template>
-  <Header id="headercomplaint" HeaderIcon="assignment_late" HeaderText="Complaint"/>
-  <p>If you have a concern or complaint, please first raise it with your supervisor or management team. 
-    You can learn about your options here (button that will go to future video)</p>
+  <Header id="headercomplaint" HeaderIcon="assignment_late" :HeaderText="$t('headerTextComplaint')"/>
+  <div id="body">
+    <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
+    <p> {{ $t('complaint_intro') }}</p>
+      <div class=buttonwrapper>
+      <GeneralButton style="align-items: baseline" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintvideobutton" :text="$t('button_complaint_video')"/>
+    </div>
+    <p> {{ $t('complaint_button_intro') }}</p>
     <div class=buttonwrapper>
-    <GeneralButton style="align-items: baseline" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintvideobutton" text="Learn more about your options"/>
+      <GeneralButton style="align-items: baseline" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintbutton" :text="$t('button_report_complaint')"/>
+    </div>
   </div>
-  <p>If you don't feel comfortable raising a complaint internally, you have options to file a complaint here (links to complaint mechanism).</p>
-  <div class=buttonwrapper>
-    <GeneralButton style="align-items: baseline" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintbutton" text="Go to the Complaint System"/>
-  </div>
-  <p>Thank you for participating!</p>
   <Footer/>
 </template>
 
 <script>
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import GeneralButton from "@/components/GeneralButton"
+import GeneralButton from "@/components/GeneralButton";
+import {textReader} from "@/util/Speech";
 
 export default {
   name: 'ComplaintPage',
@@ -24,15 +26,44 @@ export default {
       Header,
       Footer,
       GeneralButton
-      }
+      },
+  data() {
+    return {
+    isReading: false
+    }
+  },
+  methods: {
+    readPageContent: function () {
+      const textToRead =
+        this.$i18n.t('complaint_intro') +
+        this.$i18n.t('complaint_button_intro');
+      console.log(this.$i18n.locale);
+      textReader(textToRead);
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped>
+#body {
+  padding-bottom: 80px;
+  font-size: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 #complaintvideobutton{
-  width:60%;
+  width: 80%;
 }
 #complaintbutton{
-  width:60%;
+  width: 80%;
+}
+.buttonwrapper{
+  margin: 0.5em 0 0.5em 0;
+}
+.material-icons.audio {
+  cursor: pointer;
+  color: #2c3e50;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 </style>
