@@ -5,34 +5,54 @@
   "titles": [
     {
       "lang": "en",
-      "content": "I have NEVER experienced abuse at work (e.g., being insulted)"
+      "content": "I have never experienced abuse at work (e.g., being insulted)"
     }
   ],
-  "category": {
-    "slug": "shine-dimension",
-    "titles": [
-      {
-        "lang": "en",
-        "content": "SHINE Dimensions"
-      }
-    ]
-  },
   "answers": [
     {
-      "lang": "en",
-      "content": "1"
+      "value": "strongly_disagree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "5"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "2"
+      "value": "disagree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "4"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "3"
+      "value": "neutral",
+      "items": [
+        {
+          "lang": "en",
+          "content": "3"
+        }
+      ]
     },
     {
-      "lang": "en",
-      "content": "4"
+      "value": "agree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "2"
+        }
+      ]
+    },
+    {
+      "value": "stronglyAgree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "1"
+        }
+      ]
     }
   ]
 }

@@ -8,15 +8,6 @@
       "content": "In which position are you working?"
     }
   ],
-  "category": {
-    "slug": "wellbeing-at-work",
-    "titles": [
-      {
-        "lang": "en",
-        "content": "Wellbeing at Work"
-      }
-    ]
-  },
   "answers": [
     {
       "value": "employee",

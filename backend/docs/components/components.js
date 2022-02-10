@@ -1,6 +1,7 @@
 const {getAllQuestionsResponse, addQuestionResponse, deleteQuestionResponse} = require('./question');
 const {getAllFactoriesResponse, addFactoryResponse, deleteFactoryResponse} = require('./factory');
 const {getAllSurveyResponse} = require('./survey');
+const {getAllAnswerResponse} = require('./answer');
 
 
 module.exports = {
@@ -13,6 +14,7 @@ module.exports = {
             AddFactoryResponse: addFactoryResponse,
             DeleteFactoryResponse: deleteFactoryResponse,
             GetAllSurveyResponse: getAllSurveyResponse,
+            GetAllAnswerResponse: getAllAnswerResponse,
 
         }
     }

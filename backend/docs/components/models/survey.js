@@ -14,7 +14,7 @@ module.exports =  {
         surveyCode: {
             type: "string",
             description: "survey related code",
-            example: "1234",
+            example: " ",
         }
     }
 };
