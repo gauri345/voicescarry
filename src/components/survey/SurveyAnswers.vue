@@ -111,6 +111,10 @@ export default {
   margin-left: 2em;
 }
 
+.dissatisfied {
+  cursor: pointer;
+}
+
 img {
   max-height: 7em;
   float: right;
