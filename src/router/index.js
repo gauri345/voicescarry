@@ -56,7 +56,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     i18n.locale = LocalStorage.get('language') || 'en'
 
-    const nonSurveyPages = ['SurveyPage', 'HomePage', 'ComplaintPage', 'SurveyExplanationPage', 'SurveyEntryPage'];
+    const nonSurveyPages = ['SurveyPage', 'HomePage', 'ComplaintPage', 'SurveyExplanationPage', 'SurveyEntryPage', 'SurveyEndingPage'];
 
     if (nonSurveyPages.includes(to.name) && null === LocalStorage.get('survey')) {
         return next({name: 'LandingPage'});

@@ -8,6 +8,10 @@ const surveySchema = mongoose.Schema({
     surveyCode: {
         type: String,
         required: true
+    },
+    surveyDate: {
+        type: Date,
+        required: true
     }
 });
 

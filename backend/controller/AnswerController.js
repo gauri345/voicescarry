@@ -17,13 +17,17 @@ exports.index = function (req, res) {
 };
 
 exports.insertBulk = async function (req, res) {
-    res
-        .status(201)
-        .json(
-        {
-            status: "success",
-            message: 'answers stored',
-            data: AnswerModel.insertMany(req.body)
-        }
-    );
+    try {
+        res
+            .status(201)
+            .json(
+                {
+                    status: "success",
+                    message: 'answers stored',
+                    data: AnswerModel.insertMany(req.body)
+                }
+            )
+    } catch (error) {
+        res.sendStatus(500)
+    }
 };

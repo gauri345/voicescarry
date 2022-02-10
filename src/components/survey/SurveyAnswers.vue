@@ -55,7 +55,9 @@ export default {
         document.getElementById(answer.text).classList.toggle("active-answer");
       }
 
-      this.$emit('answered', {text: answer.text, value: answer.value});
+      if (answer) {
+        this.$emit('answered', {text: answer.text, value: answer.value});
+      }
     },
 
     onChangeMethod(event) {
@@ -75,10 +77,18 @@ export default {
 
         this.handleAnswered(firstOption);
 
-        return {
-          value: firstOption.value,
-          text: firstOption.text
-        };
+        if (firstOption) {
+          return {
+            value: firstOption.value,
+            text: firstOption.text
+          };
+        } else {
+          return {
+            value: '',
+            text: ''
+          }
+        }
+
       }
     },
 

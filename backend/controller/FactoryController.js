@@ -48,20 +48,24 @@ exports.checkIfExists = async function (req, res) {
 
     const filter = {code: factoryCode};
 
-    return Factory.exists(filter, function (err, doc) {
-        if (err) {
-            console.log(err);
-            return res.sendStatus(404);
-        } else if (!doc) {
-            return res.sendStatus(404);
-        } else {
-            res.json(
-                {
-                    status: "success",
-                    message: 'factory exists',
-                    data: filter
-                }
-            );
-        }
-    });
+    try {
+        return Factory.exists(filter, function (err, doc) {
+            if (err) {
+                console.log(err);
+                return res.sendStatus(404);
+            } else if (!doc) {
+                return res.sendStatus(404);
+            } else {
+                res.json(
+                    {
+                        status: "success",
+                        message: 'factory exists',
+                        data: filter
+                    }
+                );
+            }
+        });
+    } catch (error) {
+        res.sendStatus(500)
+    }
 }

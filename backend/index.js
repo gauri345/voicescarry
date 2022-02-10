@@ -31,14 +31,9 @@ app.use('/api', routes);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docs));
 
 
-
-
 //initialize the app.
 async function initialize() {
     app.listen(PORT);
 }
 
-initialize()
-    .finally(
-        () => console.log(`app started on port:${PORT}`)
-    );
+initialize().finally(() => console.log(`app started on port:${PORT}`));

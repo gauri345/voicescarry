@@ -9,8 +9,8 @@ export default {
                     return {
                         questionId: storedQuestion.questionId,
                         questionNumber: storedQuestion.questionNumber,
-                        answerValue: storedQuestion.answerValue,
-                        answerText: storedQuestion.answerText,
+                        answerValue: storedQuestion.answerValue ? storedQuestion.answerValue : '',
+                        answerText: storedQuestion.answerText ? storedQuestion.answerText : '',
                         factoryCode: storedQuestion.survey.factoryCode,
                         surveyCode: storedQuestion.survey.surveyCode
                     };

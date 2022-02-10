@@ -1,6 +1,6 @@
 <template>
   <div class="landingpage">
-    <Header id="headerLanding" :HeaderText="$t('headerText')"/>
+    <Header id="headerLanding" :HeaderText="$t('headerText')" HeaderIcon="spa" />
     <div id="body">
     <LandingContent/>
     </div>

@@ -17,29 +17,33 @@ exports.index = function (req, res) {
 };
 
 exports.post = async function (req, res) {
+    try {
 
-    const question = req.body;
+        const question = req.body;
 
-    const filter = {number: question.number};
+        const filter = {number: question.number};
 
-    const existingQuestion = await Question.findOne(filter);
+        const existingQuestion = await Question.findOne(filter);
 
-    if (existingQuestion) {
-        res.json(
-            {
-                status: "success",
-                message: 'Question updated',
-                data: await Question.findOneAndUpdate(filter, question)
-            }
-        );
-    } else {
-        res.json(
-            {
-                status: "success",
-                message: 'operations created!',
-                data: await Question.create(req.body)
-            }
-        );
+        if (existingQuestion) {
+            res.json(
+                {
+                    status: "success",
+                    message: 'Question updated',
+                    data: await Question.findOneAndUpdate(filter, question)
+                }
+            );
+        } else {
+            res.json(
+                {
+                    status: "success",
+                    message: 'operations created!',
+                    data: await Question.create(req.body)
+                }
+            );
+        }
+    } catch (error) {
+        res.sendStatus(500)
     }
 };
 
@@ -48,19 +52,23 @@ exports.delete = async function (req, res) {
         number: req.query.number
     };
 
-    Question.remove(filter, function (err, question) {
-        if (err)
-            return res.send(
+    try {
+        Question.remove(filter, function (err, question) {
+            if (err)
+                return res.send(
+                    {
+                        status: "error",
+                        message: err
+                    }
+                );
+            res.json(
                 {
-                    status: "error",
-                    message: err
+                    status: "success",
+                    message: question.name + ' operations deleted'
                 }
             );
-        res.json(
-            {
-                status: "success",
-                message: question.name + ' operations deleted'
-            }
-        );
-    });
+        });
+    } catch (error) {
+        res.sendStatus(500)
+    }
 };
