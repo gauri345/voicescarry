@@ -31,7 +31,7 @@ export default {
   overflow: hidden;
 }
 body {
-   height:100%;
+  height:100%;
 }
 #body {
   padding-bottom:80px;   /* Height of the footer */
