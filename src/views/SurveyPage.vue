@@ -97,36 +97,33 @@ export default {
 </script>
 
 <style scoped>
-.survey-page {
-  overflow: hidden;
+.survey-page{
+  overflow:hidden;
   display: block;
 }
 
-.navigation-buttons {
+.navigation-buttons{
   width: 90%;
   display: inline-block;
 }
-
 .button-previous {
   display: inline-block;
   width: 40%;
   margin-right: 2%;
 }
 
-.button-next {
+.button-next{
   display: inline-block;
   width: 40%;
   margin-left: 2%;
 }
-
 .submit {
   display: inline-block;
   width: 100%;
   margin-left: 2%;
   background: #4EB562;
 }
-
 #progressbar {
-  padding-bottom: 20px; /* Height of the footer */
+  padding-bottom:20px;   /* Height of the footer */
 }
 </style>

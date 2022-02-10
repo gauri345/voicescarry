@@ -2,8 +2,8 @@
     <nav class="navbar relative-top navbar-dark bg-primary">
         <slot></slot>
         <div class="HeaderText">
-          <span class="material-icons">{{ headerIcon }}</span>
-          {{ headerText }}
+          <span class="material-icons">{{ HeaderIcon }}</span>
+          {{ HeaderText }}
         </div>
     </nav>
 </template>
@@ -12,8 +12,8 @@
 export default {
   name: 'Header',
   props:{
-    headerText:String,
-    headerIcon:String,
+    HeaderText:String,
+    HeaderIcon:String,
     }
   ,
 }

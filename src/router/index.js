@@ -2,7 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 import LocalStorage from "@/util/local_storage";
 
 import LandingPage from '@/views/Landingpage';
-import HomePage from "@/views/Homepage";
+import Homepage from "@/views/Homepage";
 import SurveyPage from "@/views/SurveyPage";
 import ComplaintPage from "@/views/ComplaintPage";
 import SurveyEntryPage from "@/views/SurveyEntryPage";
@@ -20,7 +20,7 @@ const routes = [
     {
         path: "/homepage",
         name: "HomePage",
-        component: HomePage
+        component: Homepage
     },
     {
         path: "/question/information",
@@ -56,7 +56,9 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     i18n.locale = LocalStorage.get('language') || 'en'
 
-    if ("SurveyPage" === to.name && null === LocalStorage.get('survey')) {
+    const nonSurveyPages = ['SurveyPage', 'HomePage', 'ComplaintPage', 'SurveyExplanationPage', 'SurveyEntryPage'];
+
+    if (nonSurveyPages.includes(to.name) && null === LocalStorage.get('survey')) {
         return next({name: 'LandingPage'});
     }
 
