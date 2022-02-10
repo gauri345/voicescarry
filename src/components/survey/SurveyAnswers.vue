@@ -14,9 +14,9 @@
     </div>
   </div>
 
-  <div v-if="'scale' === getQuestionType" class="question-answers">
-      <span v-for="answer in getAnswers" :key="answer.value" :class="answer.iconClass"
-            @click="handleAnswered(answer.value, answer.text)">{{ answer.text }}</span>
+  <div v-if="'scale' === getQuestionType" class="question-answers" id="scaleAnswers">
+      <span v-for="answer in getAnswers" :key="answer.value" :class="answer.iconClass" :id="answer.text"
+            @click="handleAnswered(answer)">{{ answer.text }}</span>
   </div>
 
   <div v-if="'select' === getQuestionType" class="question-answers" @change="onChangeMethod($event)">
@@ -44,8 +44,17 @@ export default {
     readQuestionContent: function () {
       textReader(this.questionTitle)
     },
-    handleAnswered: function (answerValue, answerText) {
-      this.$emit('answered', {text: answerText, value: answerValue});
+    handleAnswered: function (answer) {
+
+      const scaleAnswers = document.getElementById('scaleAnswers').children;
+
+      for (let i = 0; i < scaleAnswers.length; i++) {
+        document.getElementById('scaleAnswers').children.item(i).classList.remove('active-answer');
+      }
+
+      document.getElementById(answer.text).classList.toggle("active-answer");
+
+      this.$emit('answered', {text: answer.text, value: answer.value});
     },
 
     onChangeMethod(event) {
@@ -58,15 +67,23 @@ export default {
   computed: {
     ...mapGetters(['getAnswers', 'getQuestionType']),
     selectedOptionText() {
-      const firstOption = this.getAnswers.shift();
+      const answers = this.getAnswers;
 
-      this.handleAnswered(firstOption.value, firstOption.text);
+      if ('select' === this.getQuestionType) {
+        const firstOption = answers.shift();
+        this.handleAnswered(firstOption.value, firstOption.text);
 
+        return {
+          value: firstOption.value,
+          text: firstOption.text
+        };
+      }
+    },
+
+    answerClass(iconClass) {
       return {
-        value: firstOption.value,
-        text: firstOption.text
-      };
-
+        iconClass: true
+      }
     }
   }
 }
@@ -81,6 +98,12 @@ export default {
   background-image: url('../../assets/Background.png');
   display: flex;
   align-items: center;
+}
+
+.active-answer {
+  border: 1px solid;
+  border-radius: 25px;
+  background-color: #ccc8c8;
 }
 
 .survey-persona-wrapper {
