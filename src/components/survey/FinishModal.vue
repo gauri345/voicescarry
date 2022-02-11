@@ -1,14 +1,12 @@
 <template>
-  <div aria-hidden="true" aria-labelledby="finalInformationModal" class="modal fade bd-example-modal-pm" role="dialog" tabindex="-1">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade" id="completeSurvey" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"> {{ $t('survey_finish_modal_title') }} </h5>
-          <router-link :to="'/question/ending'">
-            <button aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close" @click="completeSurvey">
               <span aria-hidden="true">&times;</span>
             </button>
-          </router-link>
         </div>
         <div class="modal-body">
           <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
@@ -32,16 +30,14 @@
       </div>
     </div>
   </div>
-
   <SurveyButton class="submit" text="Submit" data-bs-toggle="modal" data-bs-target="#completeSurvey"  @btn-click="submitSurvey"/>
-
 </template>
 
 <script>
 import SurveyButton from "@/components/survey/SurveyButton";
 import router from "@/router";
 import {mapActions} from "vuex";
-import {textReader} from "@/util/Speech";
+import {textReader} from "@/util/speech";
 
 export default {
   name: 'FinishModal',

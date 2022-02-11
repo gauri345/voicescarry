@@ -17,7 +17,7 @@
       <div class="navigation-buttons">
         <div class="btn">
           <router-link to="/question/information">
-            <GeneralButton style="align-items:center !important;" icon="assignment" :text="$t('button_start_survey')"></GeneralButton>
+            <Button style="align-items:center !important;" icon="assignment" :text="$t('button_start_survey')"></Button>
             <div class="img-pc-view"><img class="img-survey" src="@/assets/btn_survey.png"/></div>
           </router-link>
         </div>
@@ -25,7 +25,7 @@
       <div class="navigation-buttons">
         <div class="btn">
           <router-link to="/complaint">
-            <GeneralButton style="align-items:center !important;" icon="assignment_late" :text="$t('button_report_complaint')"></GeneralButton>
+            <Button style="align-items:center !important;" icon="assignment_late" :text="$t('button_report_complaint')"></Button>
             <div class="img-pc-view"><img class="img-complaint" src="@/assets/btn_complaint.png"/></div>
           </router-link>
         </div>

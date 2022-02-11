@@ -1,5 +1,5 @@
 const Factory = require("../model/factoryModel");
-const Survey = require("../model/surveryModel");
+const Survey = require("../model/surveyModel");
 const {randomUUID} = require('crypto');
 
 exports.createSurvey = async function (req, res) {

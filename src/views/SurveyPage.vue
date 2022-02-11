@@ -8,7 +8,7 @@
 
       <!-- The button to navigate between questions goes here -->
       <div class="navigation-buttons">
-        <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
+        <div v-if="getPreviousQuestion.questionNumber !== undefined" class="button-previous">
           <SurveyButton icon1="arrow_backwards" :text="$t('button_previous')" @btnClick="previousQuestion"/>
         </div>
         <div v-if="getNextQuestion.questionNumber !== undefined" class="button-next">
@@ -16,7 +16,6 @@
         </div>
         <div v-if="getNextQuestion.questionNumber === undefined" class="button-next">
           <FinishModal/>
-          <SurveyButton :text="$t('button_submit')" class="submit"></SurveyButton>
         </div>
       </div>
         <!-- The progress bar goes here -->

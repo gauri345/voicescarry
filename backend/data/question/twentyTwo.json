@@ -71,6 +71,15 @@
           "content": "71 or older"
         }
       ]
+    },
+    {
+      "value": "not-saying",
+      "items": [
+        {
+          "lang": "en",
+          "content": "prefer not to say"
+        }
+      ]
     }
   ]
 }

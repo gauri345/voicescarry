@@ -12,15 +12,14 @@
   </section>
 
   <section class="pageentry">
-    <form @submit.prevent="handleSubmit">
+    <div class="form" @submit="handleSubmit">
       <label>{{$t('label_FactoryCode')}}</label>
-      <input v-model="code" required type="code">
-      <div v-if="codeError" class="error">{{ codeError }}</div>
+      <input v-model="factoryCode" required type="text" @click="handleInputClick" autofocus>
+      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
       <div class="submit">
-        <router-link to="/homepage">
-          <GeneralButton :text=" $t('button_landingpage')" style="align-items: stretch"/>
-        </router-link>
+        <Button :text=" $t('button_landingpage')" @btnClick="handleSubmit" style="align-items: stretch"/>
       </div>
+    </div>
   </section>
 
 </template>

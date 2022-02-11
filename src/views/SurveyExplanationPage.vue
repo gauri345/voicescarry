@@ -35,7 +35,7 @@
     </div>
     <div class=buttonwrapper>
       <router-link to="/question/1">
-      <GeneralButton style="align-items:baseline" id="surveystartbutton" :text="$t('button_start_survey')"/>
+      <Button style="align-items:baseline" id="surveystartbutton" :text="$t('button_start_survey')"/>
       </router-link>
     </div>
   </div>
@@ -53,7 +53,7 @@ export default {
   components: {
     Header,
     Footer,
-    GeneralButton
+    Button
     },
   data() {
     return {

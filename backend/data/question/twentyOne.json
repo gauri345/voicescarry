@@ -35,15 +35,6 @@
           "content": "prefer not to say"
         }
       ]
-    },
-    {
-      "value": "self-describe",
-      "items": [
-        {
-          "lang": "en",
-          "content": "prefer to self-describe"
-        }
-      ]
     }
   ]
 }
