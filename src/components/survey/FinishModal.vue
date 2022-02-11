@@ -1,33 +1,33 @@
 <template>
-  <div class="modal fade" id="completeSurvey" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+  <div aria-hidden="true" aria-labelledby="finalInformationModal" class="modal fade bd-example-modal-pm" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Thank you for participating in the survey!</h5>
-          <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close" @click="completeSurvey" ></button>
+          <h5 class="modal-title"> {{ $t('survey_finish_modal_title') }} </h5>
+          <router-link :to="'/question/ending'">
+            <button aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </router-link>
         </div>
         <div class="modal-body">
-          <p>What is the purpose of this survey? <br><br>
-            We want to understand how employees are doing at work.
-            When we feel uncomfortable at work, this can have a big impact on our overall lives and those around us. 
-            This survey provides us with a baseline understanding of how employees feel and if they are doing well. 
-            The data will help us understand the larger picture and provide general positive feedback and constructive criticism to employers. 
-            We also want to better understand differences in wellbeing at work across different countries.
+          <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
+          <p> 
+            {{ $t('survey_finish_modal_question_one') }}
             <br><br>
-            What are we doing with the data?
+            {{ $t('survey_finish_modal_answer_one') }}
             <br><br>
-            We are analysing the data for larger trends in wellbeing in the textile industry.
-            None of the data can be traced to any individual, so your answers are completely confidential. 
-            Answers from employees working in different locations will be compared and scientifically analysed. 
-            After data collection, we hope to publish results in the near future that we can share with you here. 
-            We also take your feedback into consideration in updating this survey and website.
+            {{ $t('survey_finish_modal_question_two') }}
             <br><br>
-            Do we store the data?
+            {{ $t('survey_finish_modal_answer_two') }}
             <br><br>
-            The University of Mannheim does store the data, but all answers are anonymous.</p>
+            {{ $t('survey_finish_modal_question_three') }}
+            <br><br>
+            {{ $t('survey_finish_modal_answer_three') }}
+          </p>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-secondary" data-bs-dismiss="modal" type="button" @click="completeSurvey">Finish the survey</button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal" type="button" @click="completeSurvey">{{ $t('button_finish_survey') }}</button>
         </div>
       </div>
     </div>
@@ -41,20 +41,36 @@
 import SurveyButton from "@/components/survey/SurveyButton";
 import router from "@/router";
 import {mapActions} from "vuex";
+import {textReader} from "@/util/Speech";
 
 export default {
   name: 'FinishModal',
   components: {
     SurveyButton
   },
+  data() {
+    return {
+      isReading: false
+    }
+  },
   methods: {
     ...mapActions(['storeSurvey']),
     submitSurvey() {
       this.storeSurvey();
     },
-
     completeSurvey() {
       router.push({name: 'SurveyEndingPage'})
+    },
+    readPageContent: function () {
+    const textToRead =
+        this.$i18n.t('survey_finish_modal_question_one') +
+        this.$i18n.t('survey_finish_modal_answer_one') +
+        this.$i18n.t('survey_finish_modal_question_two') +
+        this.$i18n.t('survey_finish_modal_answer_two') +
+        this.$i18n.t('survey_finish_modal_question_three') +
+        this.$i18n.t('survey_finish_modal_answer_three');
+    console.log(this.$i18n.locale);
+    textReader(textToRead);
     }
   }
 }
@@ -71,6 +87,12 @@ export default {
   font-weight: normal;
   text-align: left;
   color: black;
+}
+.material-icons.audio {
+  cursor: pointer;
+  color: #2c3e50;
+  margin-top:0.2em;
+  margin-bottom: 0.2em;
 }
 .btn {
   background: #4EB562;

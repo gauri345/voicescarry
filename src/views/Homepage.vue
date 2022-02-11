@@ -1,48 +1,41 @@
 <template>
-<div id="header">
-  <Header>
-  <div class="div-vertical">
-      <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/persona.png"/></div>
-      <div class="div-top-txt">
-        <br> {{ $t('homepage_entered_message') }} <br><br> {{ $t('homepage_info_message') }} <br>
-        <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>
-        <HomepageModal/>
-        <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
+  <div id="header">
+    <Header>
+    <div class="div-vertical">
+        <div class="div-top-img"><img class="img-top" alt="top image" src="@/assets/persona.png"/></div>
+        <div class="div-top-txt">
+          <br> {{ $t('homepage_welcome_message') }} <br><br> {{ $t('homepage_info_message') }} <br>
+          <span class="material-icons info" data-bs-target=".bd-example-modal-sm" data-bs-toggle="modal">info</span>
+          <HomepageModal/>
+          <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
+        </div>
       </div>
-    </div>
-  </Header>
-</div>
-
-<div id="body">
-  
-  <div class="button-wrapper">
-     <div class="navigation-buttons">
-       <div class="btn">
-        <router-link to="/question/information">
-          <Button style="align-items:center !important;" icon="assignment" :text="$t('homepage_start_survey')"></Button>
-          <div class="img-pc-view"><img class="img-survey" src="@/assets/btn_survey.png"/></div>
-        </router-link>
+    </Header>
+  </div>
+  <div id="body">
+    <div class="button-wrapper">
+      <div class="navigation-buttons">
+        <div class="btn">
+          <router-link to="/question/information">
+            <GeneralButton style="align-items:center !important;" icon="assignment" :text="$t('button_start_survey')"></GeneralButton>
+            <div class="img-pc-view"><img class="img-survey" src="@/assets/btn_survey.png"/></div>
+          </router-link>
+        </div>
       </div>
-     </div>
-
-     <div class="navigation-buttons">
-       <div class="btn">
-        <router-link to="/complaint">
-          <Button style="align-items:center !important;" icon="assignment_late" :text="$t('homepage_report_complaint')"></Button>
-          <div class="img-pc-view"><img class="img-complaint" src="@/assets/btn_complaint.png"/></div>
-        </router-link>
+      <div class="navigation-buttons">
+        <div class="btn">
+          <router-link to="/complaint">
+            <GeneralButton style="align-items:center !important;" icon="assignment_late" :text="$t('button_report_complaint')"></GeneralButton>
+            <div class="img-pc-view"><img class="img-complaint" src="@/assets/btn_complaint.png"/></div>
+          </router-link>
+        </div>
       </div>
-     </div>
-    </div>
-
-</div>
-
+    </div> 
+  </div>
   <!-- The Footer bar goes here -->
   <div id="footer">
     <Footer/>
   </div>
-
-
 </template>
 
 
@@ -67,13 +60,12 @@ export default {
     }
   },
   methods: {
-    readQuestionContent: function () {
-     const textToRead =
-         this.$i18n.t('homepage_entered_message').replace('!', '. ') +
-         this.$i18n.t('homepage_info_message');
-
-     textReader(textToRead);
-
+    readPageContent: function () {
+    const textToRead =
+        this.$i18n.t('homepage_welcome_message').replace('!', '. ') +
+        this.$i18n.t('homepage_info_message');
+    console.log(this.$i18n.locale);
+    textReader(textToRead);
     }
   }
 }
@@ -100,28 +92,27 @@ export default {
   margin-left:0.2em;
 }
 .div-vertical{
-   margin: auto;
-   display: flex;
-   align-items: center;
-   justify-content:  center;
-   flex-wrap: wrap;
- }
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content:  center;
+  flex-wrap: wrap;
+}
 .div-top-txt {
   display: inline-block;
   font-size:20px;
 }
-
 .div-top-img {
   display: inline-block;
 }
 .button-wrapper{
-   margin: auto;
-   display: flex;
-   align-items: center;
-   justify-content:  center;
-   padding-top: 1em;
-   flex-wrap: wrap;
- }
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content:  center;
+  padding-top: 1em;
+  flex-wrap: wrap;
+}
 .navigation-buttons {
   width: 20em;
   margin-left: 2em;
@@ -129,11 +120,9 @@ export default {
   margin-bottom: 2em;
   display: inline-block;
 }
-
 body {
   height:100%;
 }
-
 .btn {
   cursor: pointer;
   display: inline-block;
@@ -150,12 +139,11 @@ body {
   text-align:center;
   padding-top: 0.8em;
   padding-bottom: 1em;
- }
-
- .btn:hover {
-     transform: translateY(-3px);
-     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
- }
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 /*.align-center{
   special styling was added in template line 22 and 31
 }*/

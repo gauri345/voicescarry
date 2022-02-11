@@ -1,42 +1,41 @@
 <template>
-  <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
-  <div class="body">
+  <Header HeaderIcon="spa" :HeaderText="$t('headerText')"/>
+  <div id="body">
     <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
     <div class="text">
-      <p> {{ $t('intro_explanation') }} </p>
+      <p> {{ $t('survey_explanation_intro') }} </p>
     </div>
-    <div class="answer-types">
+    <div class="answertypes">
       <div class="text-center" style="font-size:16px">
         <span class="material-icons vd">sentiment_very_dissatisfied</span>
-        <span> Strongly Disagree </span>
+        <span> {{ $t('survey_sentiment_vd') }} </span>
       </div>
       <div class="text-center" style="font-size:16px">
         <span class="material-icons d">sentiment_dissatisfied</span>
-        <span> Disagree </span>
+        <span> {{ $t('survey_sentiment_d') }}  </span>
         <br>
       </div>
       <div class="text-center" style="font-size:16px">
         <span class="material-icons n">sentiment_neutral</span>
-        <span> Neutral </span>
+        <span> {{ $t('survey_sentiment_n') }} </span>
         <br>
       </div>
       <div class="text-center" style="font-size:16px">
         <span class="material-icons s">sentiment_satisfied</span>
-        <span> Agree </span>
+        <span> {{ $t('survey_sentiment_s') }} </span>
         <br>
       </div>
       <div class="text-center" style="font-size:16px">
         <span class="material-icons vs">sentiment_very_satisfied</span>
-        <span> Strongly Agree </span>
+        <span>{{ $t('survey_sentiment_vs') }}</span>
       </div>
     </div>
-
     <div class="text">
-      <p> {{ $t('explain_rating') }} </p>
+      <p> {{ $t('survey_explanation_rating') }} </p>
     </div>
-    <div class=button-wrapper>
+    <div class=buttonwrapper>
       <router-link to="/question/1">
-        <Button id="surveyStartButton" style="align-items:baseline" text="Start the Survey!"/>
+      <GeneralButton style="align-items:baseline" id="surveystartbutton" :text="$t('button_start_survey')"/>
       </router-link>
     </div>
   </div>
@@ -54,8 +53,8 @@ export default {
   components: {
     Header,
     Footer,
-    Button
-  },
+    GeneralButton
+    },
   data() {
     return {
       isReading: false
@@ -63,14 +62,11 @@ export default {
   },
   methods: {
     readQuestionContent: function () {
-      const textToRead =
-          this.$i18n.t('intro_explanation').replace('!', '. ') +
-          this.$i18n.t('explain_rating').replace('!', '. ');
-
-      console.log(this.$i18n.locale);
-
-      textReader(textToRead);
-
+        const textToRead =
+          this.$i18n.t('survey_explanation_intro').replace(':', '. ') +
+          this.$i18n.t('survey_explanation_rating').replace('!', '. ');
+        console.log(this.$i18n.locale);
+        textReader(textToRead);
     }
   }
 }
@@ -107,7 +103,7 @@ export default {
 .material-icons.vd {
   color: #F44209;
 }
-.survey-start-button {
+#surveystartbutton {
   width: 60%;
   margin:0;
 }
@@ -116,7 +112,7 @@ export default {
   margin-left: 10%;
   margin-right: 10%;
 }
-.body {
+#body {
   padding-bottom: 80px;
 }
 .material-icons.audio {

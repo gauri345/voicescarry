@@ -1,24 +1,20 @@
 <template>
-  <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
-  <div class="body">
-    <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
-    <p> Thank you for completing the survey.
-      We want your feedback!
-      You can provide any general feedback to the app or related to your survey answers.</p>
-    <textarea class="text-field" placeholder="Optional"/>
-    <div class=feedback-button-wrapper data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
-      <SurveyFeedbackModal/>
-      <Button class="submit-button" style="align-items:baseline" text="Submit feedback"/>
+    <Header HeaderIcon="spa" :HeaderText="$t('headerText')"/>
+    <div id="body">
+        <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
+            <p> {{ $t('survey_ending_feedback') }} </p>
+            <textarea :placeholder="$t('survey_ending_textbox')" class="textbox"/>
+            <div class=feedbackbuttonwrapper data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
+                <SurveyFeedbackModal/>
+                <GeneralButton style="align-items:baseline" :text="$t('button_submit')" id="submitbutton"/>
+            </div>
+            <p> {{ $t('survey_ending_complaint') }} </p>
+        <div class=buttonwrapper>
+            <router-link to="/complaint">
+            <GeneralButton style="align-items:center !important;" id="complaintbutton" icon="assignment_late" :text="$t('button_report_complaint')"></GeneralButton>
+            </router-link>
+        </div>
     </div>
-
-    <p>If you feel uncomfortable and want to learn more about how to report a complaint, click on the button below.</p>
-    <div class=button-wrapper>
-      <router-link to="/complaint">
-        <Button :text="$t('homepage_report_complaint')" class="complaint-button" icon="assignment_late"
-                style="align-items:center !important;"></Button>
-      </router-link>
-    </div>
-  </div>
   <Footer/>
 </template>
 
@@ -43,15 +39,12 @@ export default {
     }
   },
   methods: {
-    readQuestionContent: function () {
+    readPageContent: function () {
       const textToRead =
-          this.$i18n.t('welcome_survey').replace('!', '. ') +
-          this.$i18n.t('explain_survey').replace('!', '. ');
-
+        this.$i18n.t('survey_ending_feedback').replace('!', '. ') +
+        this.$i18n.t('survey_ending_complaint');
       console.log(this.$i18n.locale);
-
       textReader(textToRead);
-
     }
   }
 }
@@ -65,7 +58,7 @@ export default {
   margin-right: 10%;
 }
 
-.button-wrapper{
+.buttonwrapper{
     margin: 1em 0 1em 0;
 }
 
@@ -75,13 +68,13 @@ export default {
   margin-top: 0.2em;
   margin-bottom: 0.2em;
 }
-.text-field {
-  padding: 10px 6px;
-  width: 100%;
-  height: 100%;
-  background: #FFFFFF;
-  border: 1px solid rgba(36, 54, 86, 0.3);
-  border-radius: 20px;
-  margin: 0.5em 0 0.5em 0;
+.textbox {
+    padding: 10px 6px;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border: 1px solid rgba(36, 54, 86, 0.3);
+    border-radius: 20px;
+    margin: 0.5em 0 0.5em 0;
 }
 </style>

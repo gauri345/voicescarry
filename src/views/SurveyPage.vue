@@ -8,26 +8,24 @@
 
       <!-- The button to navigate between questions goes here -->
       <div class="navigation-buttons">
-
-        <div v-if="getPreviousQuestion.questionNumber !== undefined" class="button-previous">
-            <SurveyButton icon1="arrow_backwards" text="Previous" @btnClick="previousQuestion"/>
+        <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
+          <SurveyButton icon1="arrow_backwards" :text="$t('button_previous')" @btnClick="previousQuestion"/>
         </div>
-
         <div v-if="getNextQuestion.questionNumber !== undefined" class="button-next">
-          <SurveyButton icon2="arrow_forwards" text="Next" @btnClick="handleNextButton"/>
+          <SurveyButton icon2="arrow_forwards" :text="$t('button_next')" @btnClick="handleNextButton"/>
         </div>
-
         <div v-if="getNextQuestion.questionNumber === undefined" class="button-next">
           <FinishModal/>
+          <SurveyButton :text="$t('button_submit')" class="submit"></SurveyButton>
         </div>
-
+      </div>
         <!-- The progress bar goes here -->
         <Progress id="progressbar" :current-page-number="getCurrentQuestion.questionNumber"
                   :total-questions="getTotalQuestionCount"></Progress>
-      </div>
-      <Footer/>
+      
     </div>
   </div>
+  <Footer/>
 </template>
 
 <script>
@@ -101,7 +99,6 @@ export default {
   overflow:hidden;
   display: block;
 }
-
 .navigation-buttons{
   width: 90%;
   display: inline-block;
@@ -111,7 +108,6 @@ export default {
   width: 40%;
   margin-right: 2%;
 }
-
 .button-next{
   display: inline-block;
   width: 40%;

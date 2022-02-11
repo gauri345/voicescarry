@@ -5,21 +5,22 @@
         <img alt="Persona" src="../../assets/fullbody-persona.png"/>
       </div>
       <div class="speech-wrapper">
-        <SpeechBubble :description=" $t('speechBubbleName') "/>
-        <SpeechBubble :description=" $t('speechBubbleQR') "/>
+        <SpeechBubble :description=" $t('landing_Intro') "/>
+        <SpeechBubble :description=" $t('landing_QR') "/>
       </div>
     </div>
   </section>
 
-  <section class="page-entry">
-    <div class="form" @submit="handleSubmit">
-      <label>{{ $t('labelFactoryCode') }}</label>
-      <input v-model="factoryCode" required type="text" @click="handleInputClick" autofocus>
-      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
+  <section class="pageentry">
+    <form @submit.prevent="handleSubmit">
+      <label>{{$t('label_FactoryCode')}}</label>
+      <input v-model="code" required type="code">
+      <div v-if="codeError" class="error">{{ codeError }}</div>
       <div class="submit">
-        <Button :text=" $t('generalButtonStartSurvey')" @btnClick="handleSubmit" style="align-items: stretch"/>
+        <router-link to="/homepage">
+          <GeneralButton :text=" $t('button_landingpage')" style="align-items: stretch"/>
+        </router-link>
       </div>
-    </div>
   </section>
 
 </template>

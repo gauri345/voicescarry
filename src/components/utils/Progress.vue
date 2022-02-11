@@ -1,7 +1,7 @@
 <template>
   <div class="progress-container">
     <div class="current-page-number">
-      Page {{ currentPageNumber }} of {{ totalQuestions }}
+      {{ $t('survey_progress_one') }} {{ currentPageNumber }} {{ $t('survey_progress_two') }} {{ totalQuestions }}
     </div>
     <div class="progress">
       <div class="progress-value"></div>
