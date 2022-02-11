@@ -18,16 +18,18 @@ exports.index = function (req, res) {
 
 exports.insertBulk = async function (req, res) {
     try {
+        const inserted = await  AnswerModel.insertMany(req.body);
         res
             .status(201)
             .json(
                 {
                     status: "success",
                     message: 'answers stored',
-                    data: AnswerModel.insertMany(req.body)
+                    data: inserted
                 }
             )
     } catch (error) {
+        console.log(error)
         res.sendStatus(500)
     }
 };

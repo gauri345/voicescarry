@@ -12,7 +12,8 @@ export default {
                         answerValue: storedQuestion.answerValue ? storedQuestion.answerValue : '',
                         answerText: storedQuestion.answerText ? storedQuestion.answerText : '',
                         factoryCode: storedQuestion.survey.factoryCode,
-                        surveyCode: storedQuestion.survey.surveyCode
+                        surveyCode: storedQuestion.survey.surveyCode,
+                        surveyDate: storedQuestion.survey.surveyDate
                     };
                 });
 

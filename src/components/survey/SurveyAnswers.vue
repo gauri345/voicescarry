@@ -57,13 +57,17 @@ export default {
 
       if (answer) {
         this.$emit('answered', {text: answer.text, value: answer.value});
+      } else {
+        this.$emit('answered', {text: '', value: ''});
       }
     },
 
     onChangeMethod(event) {
-      this.handleAnswered(
-          event.target.value,
-          event.target.options[event.target.options.selectedIndex].text
+      console.log(event.target.value);
+      this.handleAnswered({
+            value: event.target.value,
+            text: event.target.options[event.target.options.selectedIndex].text
+          }
       );
     }
   },
