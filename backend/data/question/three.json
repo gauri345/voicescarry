@@ -1,0 +1,58 @@
+{
+  "number": 3,
+  "slug": "managable-workload",
+  "questionType": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "My workload is manageable"
+    }
+  ],
+  "answers": [
+    {
+      "value": "strongly_disagree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "5"
+        }
+      ]
+    },
+    {
+      "value": "disagree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "4"
+        }
+      ]
+    },
+    {
+      "value": "neutral",
+      "items": [
+        {
+          "lang": "en",
+          "content": "3"
+        }
+      ]
+    },
+    {
+      "value": "agree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "2"
+        }
+      ]
+    },
+    {
+      "value": "stronglyAgree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "1"
+        }
+      ]
+    }
+  ]
+}

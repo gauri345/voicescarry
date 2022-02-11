@@ -1,0 +1,60 @@
+{
+  "id": 6,
+  "number": 6,
+  "slug": "my-job -is-meaningful",
+  "questionType": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I feel that my job is meaningful in my life"
+    }
+  ],
+
+  "answers": [
+    {
+      "value": "strongly_disagree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "5"
+        }
+      ]
+    },
+    {
+      "value": "disagree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "4"
+        }
+      ]
+    },
+    {
+      "value": "neutral",
+      "items": [
+        {
+          "lang": "en",
+          "content": "3"
+        }
+      ]
+    },
+    {
+      "value": "agree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "2"
+        }
+      ]
+    },
+    {
+      "value": "stronglyAgree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "1"
+        }
+      ]
+    }
+  ]
+}

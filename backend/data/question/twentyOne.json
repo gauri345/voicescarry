@@ -1,0 +1,40 @@
+{
+  "number": 21,
+  "slug": "what-is-your-gender",
+  "questionType": "select",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "Gender Identity: I identify as..."
+    }
+  ],
+  "answers": [
+    {
+      "value": "woman",
+      "items": [
+        {
+          "lang": "en",
+          "content": "a woman"
+        }
+      ]
+    },
+    {
+      "value": "man",
+      "items": [
+        {
+          "lang": "en",
+          "content": "a man"
+        }
+      ]
+    },
+    {
+      "value": "not-saying",
+      "items": [
+        {
+          "lang": "en",
+          "content": "prefer not to say"
+        }
+      ]
+    }
+  ]
+}

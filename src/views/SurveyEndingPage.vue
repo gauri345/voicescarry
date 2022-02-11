@@ -4,80 +4,74 @@
         <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
             <p> {{ $t('survey_ending_feedback') }} </p>
             <textarea :placeholder="$t('survey_ending_textbox')" class="textbox"/>
-            <div class=feedbackbuttonwrapper data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
+            <div class=buttonwrapper data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
                 <SurveyFeedbackModal/>
-                <GeneralButton style="align-items:baseline" :text="$t('button_submit')" id="submitbutton"/>
+                <Button style="align-items:baseline" :text="$t('button_submit')" id="submitbutton"/>
             </div>
             <p> {{ $t('survey_ending_complaint') }} </p>
         <div class=buttonwrapper>
             <router-link to="/complaint">
-            <GeneralButton style="align-items:center !important;" id="complaintbutton" icon="assignment_late" :text="$t('button_report_complaint')"></GeneralButton>
+            <Button style="align-items:center !important;" id="complaintbutton" icon="assignment_late" :text="$t('button_report_complaint')"/>
             </router-link>
         </div>
     </div>
-    <Footer/>
+  <Footer/>
 </template>
 
 <script>
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import GeneralButton from "@/components/GeneralButton";
+import Button from "@/components/utils/Button";
 import SurveyFeedbackModal from "@/components/survey/SurveyFeedbackModal";
-import {textReader} from "@/util/Speech";
+import {textReader} from "@/util/speech";
 
 export default {
-name: 'SurveyEndingPage',
-components: {
+  name: 'SurveyEndingPage',
+  components: {
     Header,
     Footer,
-    GeneralButton,
+    Button,
     SurveyFeedbackModal
-    },
-data() {
+  },
+  data() {
     return {
-    isReading: false
+      isReading: false
     }
-},
-methods: {
+  },
+  methods: {
     readPageContent: function () {
-        const textToRead =
-            this.$i18n.t('survey_ending_feedback').replace('!', '. ') +
-            this.$i18n.t('survey_ending_complaint');
-        console.log(this.$i18n.locale);
-        textReader(textToRead);
-        }
+      const textToRead =
+        this.$i18n.t('survey_ending_feedback').replace('!', '. ') +
+        this.$i18n.t('survey_ending_complaint');
+      console.log(this.$i18n.locale);
+      textReader(textToRead);
     }
+  }
 }
 </script>
 
 <style scoped>
-
-#submitbutton{
-    width:100%;
-    background: #4EB562;
-    margin: 0.5em 0 0.5em 0;
-}
-#complaintbutton{
-    width:100%;
-    margin: 0.5em 0 0.5em 0;
-}
 #body {
-    padding-bottom: 80px;
-    font-size: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
+  padding-bottom: 80px;
+  font-size: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
+
 .buttonwrapper{
     margin: 1em 0 1em 0;
 }
-.buttonwrapper{
-    margin: 1em 0 1em 0;
+
+#submitbutton {
+  display: inline-block;
+  width: 100%;
+  background: #4EB562;
 }
 .material-icons.audio {
-    cursor: pointer;
-    color: #2c3e50;
-    margin-top:0.2em;
-    margin-bottom: 0.2em;
+  cursor: pointer;
+  color: #2c3e50;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 .textbox {
     padding: 10px 6px;

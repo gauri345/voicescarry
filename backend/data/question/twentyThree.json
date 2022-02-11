@@ -1,0 +1,40 @@
+{
+  "number": 23,
+  "slug": "position-at-work",
+  "questionType": "select",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "In which position are you working?"
+    }
+  ],
+  "answers": [
+    {
+      "value": "employee",
+      "items": [
+        {
+          "lang": "en",
+          "content": "Employee"
+        }
+      ]
+    },
+    {
+      "value": "manager",
+      "items": [
+        {
+          "lang": "en",
+          "content": "Manager"
+        }
+      ]
+    },
+    {
+      "value": "not-saying",
+      "items": [
+        {
+          "lang": "en",
+          "content": "prefer not to say"
+        }
+      ]
+    }
+  ]
+}

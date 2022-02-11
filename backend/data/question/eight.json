@@ -1,0 +1,59 @@
+{
+  "number": 8,
+  "slug": "i-am-part-of-a-team",
+  "questionType": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I feel that I am part of a team"
+    }
+  ],
+  "answers": [
+    {
+      "value": "strongly_disagree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "5"
+        }
+      ]
+    },
+    {
+      "value": "disagree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "4"
+        }
+      ]
+    },
+    {
+      "value": "neutral",
+      "items": [
+        {
+          "lang": "en",
+          "content": "3"
+        }
+      ]
+    },
+    {
+      "value": "agree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "2"
+        }
+      ]
+    },
+    {
+      "value": "stronglyAgree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "1"
+        }
+      ]
+    }
+  ]
+}
+

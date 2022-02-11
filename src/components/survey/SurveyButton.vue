@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick()" :style="{ background: color }" class="btn">
+  <button @click="onClick()" :style="{ background: color }" class="btn" >
     <span class="material-icons back-arrow">{{ icon1 }}</span>
     {{ text }}
     <span class="material-icons next-arrow">{{ icon2 }}</span>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'Button',
+  name: 'SurveyButton',
   props: {
     text: String,
     color: String,

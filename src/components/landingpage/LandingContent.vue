@@ -12,44 +12,50 @@
   </section>
 
   <section class="pageentry">
-    <form @submit.prevent="handleSubmit">
+    <div class="form" @submit="handleSubmit">
       <label>{{$t('label_FactoryCode')}}</label>
-      <input v-model="code" required type="code">
-      <div v-if="codeError" class="error">{{ codeError }}</div>
+      <input v-model="factoryCode" required type="text" @click="handleInputClick" autofocus>
+      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
       <div class="submit">
-        <router-link to="/homepage">
-          <GeneralButton :text=" $t('button_landingpage')" style="align-items: stretch"/>
-        </router-link>
+        <Button :text=" $t('button_landingpage')" @btnClick="handleSubmit" style="align-items: stretch"/>
       </div>
-    </form>
+    </div>
   </section>
+
 </template>
 
 <script>
-import GeneralButton from '@/components/GeneralButton.vue'
-import SpeechBubble from '../landingpage/SpeechBubble.vue'
+import Button from '@/components/utils/Button'
+import SpeechBubble from '../landingpage/SpeechBubble'
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name:"LandingContent",
   components: {
-    GeneralButton,
+    Button,
     SpeechBubble
   },
-  data() {
-    return {
-      code: '',
-      codeError: null,
+  methods: {
+    ...mapActions(["submitForm", "clearErrorMessage"]),
+    handleSubmit() {
+      this.submitForm();
+    },
+    handleInputClick() {
+      this.clearErrorMessage();
     }
   },
-  methods: {
-    handleSubmit() {
-      // validate factory code
-      this.codeError = this.code.length > 5 ?
-          '' : 'The factory code is numeric and has to be 6 characters long!'
-      if (!this.codeError) {
-        // make request to database to save user
-        console.log('code: ', this.code)
-      }
+  computed: {
+    ...mapGetters(['getErrorMessage']),
+    errorMessage: function () {
+      return this.getErrorMessage;
+    },
+    factoryCode: {
+      get() {
+        return this.$store.state.factoryCode;
+      },
+      set(value) {
+        this.$store.commit('UPDATE_CODE', value);
+      },
     }
   }
 }
@@ -83,7 +89,7 @@ img {
   max-height: 320px;
 }
 
-form {
+.form {
   width: 80%;
   margin-top: 2%;
   background: white;
@@ -118,7 +124,6 @@ input {
 
 .error {
   color: #ff0062;
-  width: 60%;
   margin-top: 10px;
   font-size: 0.8em;
   font-weight: bold;

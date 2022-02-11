@@ -4,11 +4,11 @@
     <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
     <p> {{ $t('complaint_intro') }}</p>
       <div class=buttonwrapper>
-      <GeneralButton style="align-items: baseline" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintvideobutton" :text="$t('button_complaint_video')"/>
+      <Button style="align-items: baseline" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintvideobutton" :text="$t('button_complaint_video')"/>
     </div>
     <p> {{ $t('complaint_button_intro') }}</p>
     <div class=buttonwrapper>
-      <GeneralButton style="align-items: baseline" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintbutton" :text="$t('button_report_complaint')"/>
+      <Button style="align-items: baseline" onclick=" window.open('http://www.vaude.de','_blank')" id="complaintbutton" :text="$t('button_report_complaint')"/>
     </div>
   </div>
   <Footer/>
@@ -17,15 +17,15 @@
 <script>
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import GeneralButton from "@/components/GeneralButton";
-import {textReader} from "@/util/Speech";
+import Button from "@/components/utils/Button";
+import {textReader} from "@/util/speech";
 
 export default {
   name: 'ComplaintPage',
   components: {
       Header,
       Footer,
-      GeneralButton
+      Button
       },
   data() {
     return {

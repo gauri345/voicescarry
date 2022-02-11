@@ -1,0 +1,85 @@
+{
+  "number": 22,
+  "slug": "what-is-your-age?",
+  "questionType": "select",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "What is your age?"
+    }
+  ],
+  "answers": [
+    {
+      "value": "twenty-or-younger",
+      "items": [
+        {
+          "lang": "en",
+          "content": "20 or younger"
+        }
+      ]
+    },
+    {
+      "value": "twenty-one-to-thirty",
+      "items": [
+        {
+          "lang": "en",
+          "content": "21 - 30"
+        }
+      ]
+    },
+    {
+      "value": "thirty-one-to-forty",
+      "items": [
+        {
+          "lang": "en",
+          "content": "31 - 40"
+        }
+      ]
+    },
+    {
+      "value": "forty-one-to-fifty",
+      "items": [
+        {
+          "lang": "en",
+          "content": "41 - 50"
+        }
+      ]
+    },
+    {
+      "value": "fifty-one-to-sixty",
+      "items": [
+        {
+          "lang": "en",
+          "content": "51 - 60"
+        }
+      ]
+    },
+    {
+      "value": "sixty-one-to-seventy",
+      "items": [
+        {
+          "lang": "en",
+          "content": "61 - 70"
+        }
+      ]
+    },
+    {
+      "value": "seventy-or-older",
+      "items": [
+        {
+          "lang": "en",
+          "content": "71 or older"
+        }
+      ]
+    },
+    {
+      "value": "not-saying",
+      "items": [
+        {
+          "lang": "en",
+          "content": "prefer not to say"
+        }
+      ]
+    }
+  ]
+}

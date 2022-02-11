@@ -35,7 +35,7 @@
     </div>
     <div class=buttonwrapper>
       <router-link to="/question/1">
-      <GeneralButton style="align-items:baseline" id="surveystartbutton" :text="$t('button_start_survey')"/>
+      <Button style="align-items:baseline" id="surveystartbutton" :text="$t('button_start_survey')"/>
       </router-link>
     </div>
   </div>
@@ -45,15 +45,15 @@
 <script>
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import GeneralButton from "@/components/GeneralButton"
-import {textReader} from "@/util/Speech";
+import Button from "@/components/utils/Button"
+import {textReader} from "@/util/speech";
 
 export default {
   name: 'SurveyExplanationPage',
   components: {
     Header,
     Footer,
-    GeneralButton
+    Button
     },
   data() {
     return {
@@ -79,11 +79,8 @@ export default {
 .material-icons.audio{
   font-size:35px;
 }
-.answertypes{
-  margin-top: 1em;
-  margin-bottom: 1em;
-  margin-left: 0.2em;
-  margin-right:0.2em;
+.answer-types{
+  margin: 1em 0.2em;
   display: flex;
 }
 .text-center{

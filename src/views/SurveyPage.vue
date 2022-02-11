@@ -1,77 +1,100 @@
 <template>
-  <div class="surveypage">
+  <div class="survey-page">
     <Header HeaderIcon="spa" HeaderText="Wellbeing at Work"/>
+
     <!-- Question Container including voting-->
-    <div class="question-container" >
-      <SurveyContent  :question-title="currentQuestion.questionTitle"
-                :question-content="currentQuestion.questionTitle"
-                :question-number="currentQuestion.questionNumber">
-      </SurveyContent>
+    <div class="question-container">
+      <SurveyAnswers :question-title="getCurrentQuestion.questionTitle" @answered="answered"/>
+
       <!-- The button to navigate between questions goes here -->
       <div class="navigation-buttons">
-        <div v-if="previousQuestion.questionNumber !== undefined" class="button-previous">
-          <router-link :to="'/question/' + previousQuestion.questionNumber">
-            <SurveyButton :text="$t('button_previous')" icon1="arrow_backwards">
-            </SurveyButton>
-          </router-link>
+        <div v-if="getPreviousQuestion.questionNumber !== undefined" class="button-previous">
+          <SurveyButton icon1="arrow_backwards" :text="$t('button_previous')" @btnClick="previousQuestion"/>
         </div>
-        <div v-if="previousQuestion.questionNumber ==22" class="button-previous" data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
-            <FinishModal :additional-information="additionalInformation" 
-                        :question-content="questionContent"/>
-            <SurveyButton :text="$t('button_submit')" class="submit"></SurveyButton>
+        <div v-if="getNextQuestion.questionNumber !== undefined" class="button-next">
+          <SurveyButton icon2="arrow_forwards" :text="$t('button_next')" @btnClick="handleNextButton"/>
         </div>
-        <div v-if="nextQuestion.questionNumber !== undefined" class="button-next">
-          <router-link :to="'/question/' + nextQuestion.questionNumber">
-            <SurveyButton :text="$t('button_next')" icon2="arrow_forwards">
-            </SurveyButton>
-          </router-link>
+        <div v-if="getNextQuestion.questionNumber === undefined" class="button-next">
+          <FinishModal/>
         </div>
       </div>
-      <!-- The progress bar goes here -->
-      <Progress id="progressbar" :current-page-number="currentQuestion.questionNumber"></Progress>
+        <!-- The progress bar goes here -->
+        <Progress id="progressbar" :current-page-number="getCurrentQuestion.questionNumber"
+                  :total-questions="getTotalQuestionCount"></Progress>
+      
     </div>
-    <Footer/>
-  </div>  
+  </div>
+  <Footer/>
 </template>
 
 <script>
-import Progress from "@/components/survey/Progress";
-import SurveyContent from "@/components/survey/SurveyContent";
 import SurveyButton from "@/components/survey/SurveyButton";
-import store from "@/store";
+import Progress from "@/components/utils/Progress";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import FinishModal from "@/components/survey/FinishModal";
-
+import SurveyAnswers from "@/components/survey/SurveyAnswers";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: 'SurveyPage',
   components: {
-    SurveyContent,
     SurveyButton,
+    SurveyAnswers,
     Progress,
     Footer,
     Header,
     FinishModal
   },
 
-data: function () {
-  return {
-    currentQuestion: store.state.currentQuestion,
-    nextQuestion: store.state.nextQuestion,
-    previousQuestion: store.state.previousQuestion,
-  }
-},
+  methods: {
+    ...mapActions(
+        [
+          'initializeQuestionState',
+          'clearSelectedQuestions',
+          'storeAnswerInLocalStorage',
+          'navigateToNextQuestion',
+          'navigateToPreviousQuestion'
+        ]
+    ),
 
-  beforeCreate: function () {
-    store.clearSelectedQuestions();
-    store.setQuestionsAction(parseInt(this.$route.params.number));
+    answered: function (answer) {
+      this.storeAnswerInLocalStorage(answer);
+    },
+
+    handleNextButton() {
+      this.navigateToNextQuestion();
+    },
+
+    nextQuestion() {
+      return this.navigateToNextQuestion();
+    },
+
+    previousQuestion() {
+      return this.navigateToPreviousQuestion();
+    }
+  },
+
+  created() {
+    const questionNumber = this.$route.params.number;
+    this.clearSelectedQuestions();
+    this.initializeQuestionState(parseInt(questionNumber));
+  },
+
+  computed: {
+    ...mapGetters([
+      'getAllQuestions',
+      'getPreviousQuestion',
+      'getCurrentQuestion',
+      'getNextQuestion',
+      'getTotalQuestionCount'
+    ])
   },
 }
 </script>
 
 <style scoped>
-.surveypage{
+.survey-page{
   overflow:hidden;
   display: block;
 }

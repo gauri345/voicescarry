@@ -24,7 +24,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import SurveyButton from "@/components/survey/SurveyButton";
-import {textReader} from "@/util/Speech";
+import {textReader} from "@/util/speech";
 
 export default {
     name: 'SurveyEntryPage',

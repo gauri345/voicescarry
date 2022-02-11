@@ -1,6 +1,6 @@
 <template>
   <div class="landingpage">
-    <Header id="headerlanding" :HeaderText="$t('headerText')"/>
+    <Header id="headerLanding" :HeaderText="$t('headerText')" HeaderIcon="spa" />
     <div id="body">
     <LandingContent/>
     </div>
@@ -36,7 +36,7 @@ body {
 #body {
   padding-bottom:80px;   /* Height of the footer */
 }
-#headerlanding {
+#headerLanding {
   height: 70px;
   width: 100%;
 }

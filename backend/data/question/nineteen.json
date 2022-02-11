@@ -1,0 +1,58 @@
+{
+  "number": 19,
+  "slug": "access-to-clean-water",
+  "questionType": "scale",
+  "titles": [
+    {
+      "lang": "en",
+      "content": "I have access to clean and sufficient drinking water at work"
+    }
+  ],
+  "answers": [
+    {
+      "value": "strongly_disagree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "5"
+        }
+      ]
+    },
+    {
+      "value": "disagree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "4"
+        }
+      ]
+    },
+    {
+      "value": "neutral",
+      "items": [
+        {
+          "lang": "en",
+          "content": "3"
+        }
+      ]
+    },
+    {
+      "value": "agree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "2"
+        }
+      ]
+    },
+    {
+      "value": "stronglyAgree",
+      "items": [
+        {
+          "lang": "en",
+          "content": "1"
+        }
+      ]
+    }
+  ]
+}
