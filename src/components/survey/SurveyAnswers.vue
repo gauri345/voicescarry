@@ -214,7 +214,7 @@ img {
 .material-icons.dissatisfied {
   color: #f09309;
   margin-right: 2%;
-  cursor: *-pointer;
+  cursor: pointer;
 }
 
 .material-icons.very_dissatisfied {
@@ -229,12 +229,6 @@ select {
   border: none;
   border-bottom: 1px solid #ddd;
   color: #555;
-}
-
-
-.complaint-btn {
-  width: 76%;
-  background: red;
 }
 
 /* For PC view */
