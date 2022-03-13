@@ -1,19 +1,17 @@
 <template>
-  <main class="form-sign-in">
-    <form>
+  <main class="form-sign-in ">
+    <form :class="validationClass" novalidate>
      <h1 class="h3">Please sign in</h1>
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="email address">
-        <label for="floatingInput">Email address</label>
+        <input type="email" v-model="emailAddress" class="form-control" id="email" placeholder="email address" required>
+        <label for="email">Email address</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="password">
-        <label for="floatingPassword">password</label>
+        <input type="password" v-model="password" class="form-control" id="password" placeholder="password" required>
+        <label for="password">password</label>
       </div>
       <div class="sign-in">
-          <router-link to="/dashboardPage">
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-          </router-link>
+          <button class="w-100 btn btn-lg btn-primary" type="submit" @click="handleSubmit">Sign in</button>
       </div>
     </form>
   </main>
@@ -21,7 +19,42 @@
 
 <script>
 export default {
-  name: "LoginForm"
+  name: "LoginForm",
+  data(){
+    return{
+      formValid: false,
+      validationClass: 'needs-validation',
+      emailAddress:'',
+      password:'',
+    }
+  },
+ methods:{
+    handleSubmit(event){
+      event.preventDefault();
+
+
+
+
+      this.validationClass = 'was-validated'
+
+
+      const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+      };
+
+      console.log(validateEmail(this.emailAddress))
+
+      if (validateEmail(this.emailAddress) && this.password != '') this.formValid = true;
+
+      if (this.formValid){
+        this.$router.push('dashboardPage')
+      }
+    }
+ }
 }
 </script>
 
