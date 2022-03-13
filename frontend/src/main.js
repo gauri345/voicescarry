@@ -9,8 +9,6 @@ import store from "@/store";
 
 import i18n from './lang';
 
-
-
 createApp(App)
     .use(router)
     .use(store)
