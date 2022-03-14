@@ -17,6 +17,8 @@
   </main>
 </template>
 <script>
+import {mapActions} from "vuex";
+
 export default {
   name: "LoginForm",
   data() {
@@ -28,6 +30,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['loginAction']),
     handleSubmit(event) {
       event.preventDefault();
       this.validationClass = 'was-validated'
@@ -37,8 +40,17 @@ export default {
             .match(
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
       };
-      if (validateEmail(this.emailAddress) && this.password !== '') this.formValid = true;
+      if (validateEmail(this.emailAddress) && this.password !== '') {
+        this.formValid = true;
+      }
       if (this.formValid) {
+        this.loginAction(
+            {
+              email: this.emailAddress,
+              password: this.password
+            }
+        );
+
         this.$router.push('dashboardPage')
       }
     }
