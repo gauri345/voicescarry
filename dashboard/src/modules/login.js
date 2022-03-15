@@ -1,3 +1,6 @@
+var axios = require('axios');
+import router from '../routes';
+
 export default {
     state: {
         errorMessage: ''
@@ -8,11 +11,28 @@ export default {
         }
     },
     actions: {
-        loginAction({commit}) {
-            commit('UPDATE_ERROR_MESSAGE',  "invalid user");
+        async loginAction({commit}, payload) {
+
+            const data = JSON.stringify(payload);
+
+            const config = {
+                method: 'post',
+                url: 'http://localhost:4000/api/security/login',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: data
+            };
+            try {
+                const response = await axios(config);
+                console.log(response)
+                router.push('dashboardPage');
+            } catch (error) {
+                commit('UPDATE_ERROR_MESSAGE', error.response.data.message);
+            }
         },
-        disableErrorMessage({commit}){
-           commit('UPDATE_ERROR_MESSAGE', "");
+        clearErrorMessage({commit}) {
+            commit('UPDATE_ERROR_MESSAGE', "");
         }
     },
     getters: {

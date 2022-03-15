@@ -8,24 +8,24 @@ exports.login = async function (request, response) {
     if (email === '' || password === '') {
         response.status(400).json({
             status: "failed",
-            message: 'email or password is empty.',
+            message: 'Email or password is empty.',
         });
     } else {
         const existingUser = await User.findOne({email: email});
 
         if (!existingUser) {
-            response.status(400).json({
+            response.status(401).json({
                 status: "failed",
-                message: 'provided email does not exists.',
+                message: 'Provided email does not exists.',
             });
         } else {
             if(existingUser.password === password){
-                response.sendStatus(200);
+                response.status(200).json({token: 'some_token'});
             }
             else{
                 response.status(400).json({
                     status:'failed',
-                    message:'password doesnot match'
+                    message:'Password does not match'
 
                 })
             }
