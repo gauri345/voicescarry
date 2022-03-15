@@ -3,13 +3,18 @@
     <form :class="validationClass" novalidate>
       <h1 class="h3">Please sign in</h1>
       <div class="form-floating">
-        <input id="email" v-model="emailAddress" class="form-control" placeholder="email address" required type="email">
+        <input id="email" v-model="emailAddress" class="form-control" placeholder="email address" required type="email"
+               @focus="disableErrorMessage()">
         <label for="email">Email address</label>
       </div>
       <div class="form-floating">
-        <input id="password" v-model="password" class="form-control" placeholder="password" required type="password">
+        <input id="password" v-model="password" class="form-control" placeholder="password" required type="password"
+               @focus="clearPassword()">
         <label for="password">password</label>
       </div>
+
+      <div v-if="errorMessage" class="alert alert-danger" role="alert">{{ errorMessage }}</div>
+
       <div class="sign-in">
         <button class="w-100 btn btn-lg btn-primary" type="submit" @click="handleSubmit">Sign in</button>
       </div>
@@ -17,7 +22,7 @@
   </main>
 </template>
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "LoginForm",
@@ -29,8 +34,16 @@ export default {
       password: '',
     }
   },
+  computed: {
+    ...mapGetters(['errorMessage'])
+  },
   methods: {
-    ...mapActions(['loginAction']),
+    ...mapActions(['loginAction', 'disableErrorMessage']),
+
+    clearPassword() {
+      this.disableErrorMessage();
+      this.password = '';
+    },
     handleSubmit(event) {
       event.preventDefault();
       this.validationClass = 'was-validated'
@@ -51,10 +64,11 @@ export default {
             }
         );
 
-        this.$router.push('dashboardPage')
+        //this.$router.push('dashboardPage')
       }
     }
   }
+
 }
 </script>
 <style scoped>
