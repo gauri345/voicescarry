@@ -1,4 +1,4 @@
-var axios = require('axios');
+const axios = require('axios');
 import router from '../routes';
 
 export default {

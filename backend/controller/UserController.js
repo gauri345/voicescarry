@@ -1,5 +1,5 @@
-
 const User = require("../model/userModel");
+const jwt = require("jsonwebtoken");
 
 exports.login = async function (request, response) {
     const email = request.body.email;
@@ -20,7 +20,11 @@ exports.login = async function (request, response) {
             });
         } else {
             if(existingUser.password === password){
-                response.status(200).json({token: 'some_token'});
+                jwt.sign({user: existingUser}, 'secretkey', (err, token) => {
+                    response.status(200).json({
+                        token
+                    });
+                });
             }
             else{
                 response.status(400).json({
