@@ -14,9 +14,12 @@
 
       <div v-if="errorMessage" class="alert alert-danger" role="alert">{{ errorMessage }}</div>
 
-      <div class="sign-in">
+      <div class="sign-in button">
         <button class="w-100 btn btn-lg btn-primary" type="submit" @click="handleSubmit">Sign in</button>
       </div>
+      <router-link to="/registerForm">
+        <button class="w-100 btn btn-lg btn-primary button">Register form</button>
+      </router-link>
     </form>
   </main>
 </template>
@@ -45,7 +48,6 @@ export default {
     handleSubmit(event) {
       event.preventDefault();
       this.validationClass = 'was-validated';
-
       const validateEmail = (email) => {
         return String(email)
             .toLowerCase()
@@ -94,7 +96,7 @@ body {
   background-color: #f5f5f5;
 }
 
-.sign-in {
+.button {
   margin-top: 1rem;
 }
 

@@ -1,5 +1,7 @@
 const User = require("../model/userModel");
 const jwt = require("jsonwebtoken");
+const CryptoJS = require("crypto-js")
+
 
 exports.login = async function (request, response) {
     const email = request.body.email;
