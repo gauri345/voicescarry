@@ -59,8 +59,7 @@ export default {
             {
               email: this.emailAddress,
               password: this.password
-            }
-        );
+            });
       }
     }
   }

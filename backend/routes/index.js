@@ -4,10 +4,14 @@ const QuestionController = require('../controller/QuestionController');
 const SurveyController = require('../controller/SurveyController');
 const FactoryController = require('../controller/FactoryController');
 const AnswerController = require('../controller/AnswerController');
-const UserController = require('../controller/UserController');
+const SecurityController = require('../controller/SecurityController');
+const RegistrationController = require('../controller/RegistrationController');
+
+router.route('/registration')
+        .post(RegistrationController.registerUser);
 
 router.route('/security/login')
-    .post(UserController.login);
+    .post(SecurityController.login);
 
 router.route('/question')
     .get(QuestionController.index)

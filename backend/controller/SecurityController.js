@@ -1,7 +1,5 @@
 const User = require("../model/userModel");
 const jwt = require("jsonwebtoken");
-const CryptoJS = require("crypto-js")
-
 
 exports.login = async function (request, response) {
     const email = request.body.email;
@@ -13,7 +11,7 @@ exports.login = async function (request, response) {
             message: 'Email or password is empty.',
         });
     } else {
-        const existingUser = await User.findOne({email: email});
+        const existingUser = await User.findOne({email:  request.body.email});
 
         if (!existingUser) {
             response.status(401).json({

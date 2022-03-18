@@ -59,8 +59,10 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from "vuex";
+
 export default {
-  name: "registerForm",
+  name: "RegisterForm",
   data(){
     return{
       validationClass:'needs-validation',
@@ -73,15 +75,30 @@ export default {
       errMessage: ''
     }
   },
+  computed:{
+
+  },
   methods:{
+    ...mapActions(['registerAction']),
+
     handleRegister(event){
       event.preventDefault();
       this.validationClass = 'was-validated';
-      if(this.password!== this.repeatPassword){
-        // form is not valid
-        this.errMessage = 'password did not match'
-      }else{
-        this.errMessage = ''
+      const emailValidation = (email) =>{
+        return String(email)
+        .toLowerCase()
+        .match(  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+      };
+      if (emailValidation(this.fullName) && this.address && this.email && this.password && this.repeatPassword !== '' && this.password === this.repeatPassword) {
+        this.registerAction(
+            {
+              fullName: this.fullName,
+              address: this.address,
+              telephone: this.telephone,
+              email: this.email,
+              password: this.password,
+              repeatPassword: this.repeatPassword
+            });
       }
     },
   }

@@ -1,7 +1,7 @@
 import {createRouter, createWebHashHistory} from 'vue-router';
 import LoginForm from "@/components/LoginForm";
 import DashboardPage from "@/components/DashboardPage";
-import RegisterForm from "@/components/registerForm";
+import RegisterForm from "@/components/RegisterForm";
 
 
 
