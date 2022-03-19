@@ -10,7 +10,7 @@ export default {
     },
 
     getters: {
-        getErrorMessage: (state) => state.errorMessage
+        getErrorMessage: (state) => state.error
     },
 
     actions: {
@@ -40,6 +40,6 @@ export default {
 
     mutations: {
         UPDATE_CODE: (state, code) => state.factoryCode = code,
-        UPDATE_ERROR_MESSAGE: (state, message) => state.errorMessage = message
+        UPDATE_ERROR_MESSAGE: (state, message) => state.error = message
     }
 }

@@ -4,24 +4,29 @@ import DashboardPage from "@/components/DashboardPage";
 import RegisterForm from "@/components/RegisterForm";
 
 
-
 const routes = [
     {
-     path: '/',
-     component: LoginForm
+        path: '/',
+        name: 'home',
+        component: LoginForm
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: LoginForm
     },
     {
         path: '/dashboardPage',
+        name: 'dashboard',
         component: DashboardPage
     },
     {
         path: '/registerForm',
+        name: 'registration',
         component: RegisterForm
     }
 
 ];
-
-
 
 
 const router = createRouter({

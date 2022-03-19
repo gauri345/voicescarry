@@ -6,27 +6,27 @@
           <label class="col-form-label" for=fullName>Full Name:</label>
         </div>
         <div class="col-auto">
-          <input id="fullName" class="form-control" required type="text">
+          <input id="fullName" class="form-control" required type="text" v-model="fullName">
         </div>
 
         <div class="col-sm-4">
           <label class="col-form-label" for="address">Address:</label>
         </div>
         <div class="col-auto">
-          <input id="address" class="form-control" required type="text">
+          <input id="address" class="form-control" required type="text" v-model="address">
         </div>
         <div class="col-sm-4">
           <label class="col-form-label" for="password">Telephone:</label>
         </div>
         <div class="col-auto">
-          <input id="telephone" class="form-control" type="number">
+          <input id="telephone" class="form-control" type="number" v-model="telephone">
         </div>
 
         <div class="col-sm-4">
           <label class="col-form-label" for="email">Email:</label>
         </div>
         <div class="col-auto">
-          <input id="email" class="form-control" required type="email">
+          <input id="email" class="form-control" required type="email" v-model="email">
         </div>
 
         <div class="col-sm-4">
@@ -42,9 +42,10 @@
           <input id="repeatPassword" v-model="repeatPassword" class="form-control" required type="password">
         </div>
         <div>
-          <button class="w-100 btn btn-lg btn-primary" @click="handleRegister">register</button>
+          <button class="w-50 btn btn-lg btn-primary" @click="handleRegister">register</button>
         </div>
-        <div v-if="errMessage" class="alert alert-danger" role="alert">{{ errMessage }}</div>
+        <div v-if="error" class="alert alert-danger" role="alert">{{ error }}</div>
+        <div v-if="userRegistrationErrorMessage" class="alert alert-danger" role="alert">{{ userRegistrationErrorMessage }}</div>
       </div>
     </form>
   </main>
@@ -54,7 +55,8 @@
   </router-link>
 </template>
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
+import FormValidation from "@/util/FormValidation";
 
 export default {
   name: "RegisterForm",
@@ -67,30 +69,48 @@ export default {
       email: '',
       password: '',
       repeatPassword: '',
-      errMessage: ''
+      error: ''
     }
+  },
+  computed: {
+    ...mapGetters(['userRegistrationErrorMessage'])
   },
   methods: {
     ...mapActions(['registerAction']),
 
     handleRegister(event) {
+
       event.preventDefault();
+
+
+    const isUserInformationValid = FormValidation.confirmUserInformation(this.fullName, this.address);
+    if(!isUserInformationValid){
+      this.error = 'User information is not provided.';
       this.validationClass = 'was-validated';
-      const emailValidation = (email) => {
-        return String(email)
-            .toLowerCase()
-            .match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-      };
-      if (emailValidation(this.fullName) && this.address && this.email && this.password && this.repeatPassword !== '' && this.password === this.repeatPassword) {
-        this.registerAction(
+    }
+      const isEmailValid = FormValidation.validateEmail(this.email);
+      if (!isEmailValid) {
+        this.error = "Email is not valid.";
+        this.validationClass = 'was-validated';
+      }
+
+      const isPasswordConfirmValid = FormValidation.confirmPasswordValid(this.password, this.repeatPassword);
+      if (!isPasswordConfirmValid) {
+        this.error = "Passwords do not match.";
+        this.validationClass = 'was-validated';
+      }
+
+
+      if (isEmailValid && isPasswordConfirmValid && isUserInformationValid) {
+            this.registerAction(
             {
               fullName: this.fullName,
               address: this.address,
               telephone: this.telephone,
               email: this.email,
-              password: this.password,
-              repeatPassword: this.repeatPassword
-            });
+              password: this.password
+            }
+            );
       }
     },
   }
@@ -101,8 +121,8 @@ export default {
 
 .form-register {
   width: 100%;
-  max-width: 400px;
-  padding: 20px;
+  max-width: 500px;
+  padding: 10px;
   margin: auto;
   border: 1px solid #eee;
   border-radius: 10px;
@@ -114,4 +134,5 @@ html,
 body {
   height: 100%;
 }
+
 </style>

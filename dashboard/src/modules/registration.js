@@ -1,12 +1,13 @@
 const axios = require('axios');
 import router from '../routes';
+
 export default {
     state: {
-        errorMessage: ''
+        userRegistrationErrorMessage: ''
     },
     mutations: {
         UPDATE_ERROR_MESSAGE: function (state, message) {
-            state.errorMessage = message;
+            state.userRegistrationErrorMessage = message;
         }
     },
     actions: {
@@ -22,22 +23,24 @@ export default {
                 },
                 data: data
             };
-
             try {
                 const response = await axios(config);
                 console.log(response)
-                await router.push('registerForm');
+                await router.push('RegisterForm');
+                commit('UPDATE_ERROR_MESSAGE', response.data.message);
             } catch (error) {
+                console.log(error.response)
                 commit('UPDATE_ERROR_MESSAGE', error.response.data.message);
             }
         },
         clearErrorMessage({commit}) {
             commit('UPDATE_ERROR_MESSAGE', "");
+
         }
     },
     getters: {
-        errorMessage: function (state) {
-            return state.errorMessage;
+        userRegistrationErrorMessage: function (state) {
+            return state.userRegistrationErrorMessage;
         }
     }
 };

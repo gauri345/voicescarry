@@ -60,7 +60,7 @@ exports.registerUser = async function (request, response) {
 
                 response.status(201).json({
                     status: "created",
-                    message: savedUser
+                    message: "successfully register"
                 });
             }
         } catch (error) {

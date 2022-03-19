@@ -25,6 +25,7 @@
 </template>
 <script>
 import {mapActions, mapGetters} from "vuex";
+import FormValidation from "@/util/FormValidation";
 
 export default {
   name: "LoginForm",
@@ -48,13 +49,7 @@ export default {
     handleSubmit(event) {
       event.preventDefault();
       this.validationClass = 'was-validated';
-      const validateEmail = (email) => {
-        return String(email)
-            .toLowerCase()
-            .match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-      };
-      if (validateEmail(this.emailAddress) && this.password !== '') {
+      if (FormValidation.validateEmail(this.emailAddress) && this.password !== '') {
         this.loginAction(
             {
               email: this.emailAddress,
