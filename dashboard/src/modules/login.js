@@ -26,7 +26,7 @@ export default {
             try {
                 const response = await axios(config);
                 console.log(response)
-                router.push('dashboardPage');
+                await router.push('dashboardPage');
             } catch (error) {
                 commit('UPDATE_ERROR_MESSAGE', error.response.data.message);
             }

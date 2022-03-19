@@ -11,7 +11,6 @@ class UserRegistration {
             password: request.body.password
         });
     }
-
     async createHash(rawPassword) {
         try {
             const salt = await bcrypt.genSalt(10);
@@ -42,22 +41,21 @@ class UserRegistration {
         if (existing) {
             throw new Error("User already exists.");
         }
-
         return true;
     }
 }
 
 exports.registerUser = async function (request, response) {
     const userRegistration = new UserRegistration();
-    const user = userRegistration.createModel(request);
-    const userValid = userRegistration.validateUser(user);
+    const userModel = userRegistration.createModel(request);
+    const userValid = userRegistration.validateUser(userModel);
 
     if (userValid) {
         try {
-            const userDoesNotExists = await userRegistration.userDoesNotExists(user);
+            const userDoesNotExists = await userRegistration.userDoesNotExists(userModel);
 
             if (userDoesNotExists) {
-                const savedUser = await userRegistration.saveUser(user);
+                const savedUser = await userRegistration.saveUser(userModel);
                 savedUser.password = '';
 
                 response.status(201).json({

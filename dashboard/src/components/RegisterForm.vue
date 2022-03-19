@@ -1,93 +1,85 @@
 <template>
-<main class="form-register">
-  <form :class="validationClass" novalidate>
-  <div class="row g-3">
-    <div class="col-sm-4">
-      <label for=fullName class="col-form-label">Full Name:</label>
-    </div>
-    <div class="col-auto">
-      <input type="text" id="fullName" class="form-control" required>
-    </div>
+  <main class="form-register">
+    <form :class="validationClass" novalidate>
+      <div class="row g-3">
+        <div class="col-sm-4">
+          <label class="col-form-label" for=fullName>Full Name:</label>
+        </div>
+        <div class="col-auto">
+          <input id="fullName" class="form-control" required type="text">
+        </div>
 
-    <div class="col-sm-4">
-      <label for="address" class="col-form-label">Address:</label>
-    </div>
-    <div class="col-auto">
-      <input type="text" id="address" class="form-control" required>
-    </div>
-    <div class="col-sm-4">
-      <label for="password" class="col-form-label">Telephone:</label>
-    </div>
-    <div class="col-auto">
-      <input type="number" id="telephone" class="form-control">
-    </div>
+        <div class="col-sm-4">
+          <label class="col-form-label" for="address">Address:</label>
+        </div>
+        <div class="col-auto">
+          <input id="address" class="form-control" required type="text">
+        </div>
+        <div class="col-sm-4">
+          <label class="col-form-label" for="password">Telephone:</label>
+        </div>
+        <div class="col-auto">
+          <input id="telephone" class="form-control" type="number">
+        </div>
 
-    <div class="col-sm-4">
-      <label for="email" class="col-form-label">Email:</label>
-    </div>
-    <div class="col-auto">
-      <input type="email" id="email" class="form-control" required>
-    </div>
+        <div class="col-sm-4">
+          <label class="col-form-label" for="email">Email:</label>
+        </div>
+        <div class="col-auto">
+          <input id="email" class="form-control" required type="email">
+        </div>
 
-    <div class="col-sm-4">
-      <label for="password" class="col-form-label">Password:</label>
-    </div>
-    <div class="col-auto">
-      <input type="password" id="password" class="form-control" v-model="password" required>
-    </div>
-
-    <div class="col-sm-4">
-      <label for="repeatPassword" class="col-form-label">Repeat Password:</label>
-    </div>
-    <div class="col-auto">
-      <input type="password" id="repeatPassword" v-model="repeatPassword" class="form-control" required>
-    </div>
-
-    <div>
-      <button class="w-100 btn btn-lg btn-primary" @click="handleRegister">register</button>
-    </div>
-
-    <div v-if="errMessage" class="alert alert-danger" role="alert">{{ errMessage }}</div>
-
-  </div>
-  </form>
-</main>
+        <div class="col-sm-4">
+          <label class="col-form-label" for="password">Password:</label>
+        </div>
+        <div class="col-auto">
+          <input id="password" v-model="password" class="form-control" required type="password">
+        </div>
+        <div class="col-sm-4">
+          <label class="col-form-label" for="repeatPassword">Repeat Password:</label>
+        </div>
+        <div class="col-auto">
+          <input id="repeatPassword" v-model="repeatPassword" class="form-control" required type="password">
+        </div>
+        <div>
+          <button class="w-100 btn btn-lg btn-primary" @click="handleRegister">register</button>
+        </div>
+        <div v-if="errMessage" class="alert alert-danger" role="alert">{{ errMessage }}</div>
+      </div>
+    </form>
+  </main>
 
   <router-link to="/">
     <button class="btn btn-lg btn-primary button">go to homepage</button>
   </router-link>
 </template>
-
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions} from "vuex";
 
 export default {
   name: "RegisterForm",
-  data(){
-    return{
-      validationClass:'needs-validation',
-      fullName:'',
-      address:'',
-      telephone:'',
-      email:'',
-      password:'',
-      repeatPassword:'',
+  data() {
+    return {
+      validationClass: 'needs-validation',
+      fullName: '',
+      address: '',
+      telephone: '',
+      email: '',
+      password: '',
+      repeatPassword: '',
       errMessage: ''
     }
   },
-  computed:{
-
-  },
-  methods:{
+  methods: {
     ...mapActions(['registerAction']),
 
-    handleRegister(event){
+    handleRegister(event) {
       event.preventDefault();
       this.validationClass = 'was-validated';
-      const emailValidation = (email) =>{
+      const emailValidation = (email) => {
         return String(email)
-        .toLowerCase()
-        .match(  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+            .toLowerCase()
+            .match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
       };
       if (emailValidation(this.fullName) && this.address && this.email && this.password && this.repeatPassword !== '' && this.password === this.repeatPassword) {
         this.registerAction(
@@ -117,6 +109,7 @@ export default {
   background-color: #efeff5;
   margin-top: 5%;
 }
+
 html,
 body {
   height: 100%;
