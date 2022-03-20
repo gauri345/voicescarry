@@ -9,17 +9,14 @@
 
         <div class="form-container">
           <div class="login-form">
-            <form>
-
-              <div class="mb-3">
-                <input v-model="email" :class="emailClass" placeholder="Email" type="email"
-                       @input="emailChange"/>
-              </div>
-              <div class="mb-3">
-                <button class="btn btn-info login-button">Reset</button>
-                <router-link class="btn btn-info login-button" to="/landingPage">Back</router-link>
-              </div>
-            </form>
+            <div class="mb-3">
+              <input v-model="email" :class="emailClass" placeholder="Email" type="email"
+                     @input="emailChange"/>
+            </div>
+            <div class="mb-3">
+              <button class="btn btn-info login-button">Reset</button>
+              <a class="btn btn-info login-button" @click="$router.go(-1)">Back</a>
+            </div>
           </div>
         </div>
 
@@ -30,11 +27,11 @@
 </template>
 
 <script>
-import '../assets/login.css';
+import '../../assets/login.css';
 import FormValidation from "@/util/FormValidation";
 
 export default {
-  name: "ForgetPasswordForm",
+  name: "ForgetPassword",
   data() {
     return {
       formValidated: false,
@@ -62,7 +59,7 @@ export default {
       }
     },
   }
-  }
+}
 
 </script>
 

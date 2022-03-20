@@ -1,10 +1,10 @@
 <template>
   <div>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-      <router-link class="navbar-brand px-3" to="/dashboardPage">Company name</router-link>
+      <router-link class="navbar-brand px-3" to="/">CLOVER</router-link>
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" href="#">Sign out</a>
+          <router-link class="nav-link px-3" to="/user/login">Sign out</router-link>
         </div>
         <button aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler d-md-none collapsed" data-bs-target="#sidebarMenu" data-bs-toggle="collapse"
@@ -25,15 +25,13 @@
       </div>
     </nav>
 
-    <router-link class="btn btn-outline-secondary" to="/">go to homepage</router-link>
   </div>
 
 </template>
 
-
 <script>
 export default {
-  name: "DashboardPage"
+  name: "DashboardHome"
 }
 </script>
 

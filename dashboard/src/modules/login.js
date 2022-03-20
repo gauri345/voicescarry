@@ -26,7 +26,7 @@ export default {
             try {
                 const response = await axios(config);
                 console.log(response)
-                await router.push('dashboardPage');
+                await router.push({name: 'userRegistration'});
             } catch (error) {
                 commit('UPDATE_ERROR_MESSAGE', error.response.data.message);
             }

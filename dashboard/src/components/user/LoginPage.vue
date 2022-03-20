@@ -12,14 +12,17 @@
             <form>
 
               <div class="mb-3">
-                <input v-model="email" :class="emailClass" placeholder="Email" type="email"
+                <input v-model="email" :class="userInputClasses(this.emailValid)" placeholder="Email" type="email"
                        @input="emailChange"/>
               </div>
 
               <div class="mb-3">
-                <input v-model="password" :class="passwordClass" placeholder="Password" type="password"
+                <input v-model="password" :class="userInputClasses(this.passwordValid)" placeholder="Password"
+                       type="password"
                        @input="passwordChange"/>
               </div>
+
+              <div v-if="errorMessage" class="alert alert-danger" role="alert">{{ errorMessage }}</div>
 
               <div class="mb-3">
                 <input id="flexCheckDefault" class="form-check-input m-1" type="checkbox" value="">
@@ -29,16 +32,16 @@
               </div>
 
               <div class="mb-3">
-                <button class="btn btn-info login-button">Login</button>
+                <button class="btn btn-info login-button" @click="loginConfirm">Login</button>
               </div>
             </form>
           </div>
         </div>
 
         <div class="form-register footer mt-auto">
-          <router-link class="footer-link" to="/forget-password">Forgot Password</router-link>
+          <router-link class="footer-link" to="/user/forget-password">Forgot Password</router-link>
           |
-          <router-link class="footer-link" to="/userRegistration">Please register</router-link>
+          <router-link class="footer-link" to="/user/register">Please register</router-link>
         </div>
 
       </div>
@@ -50,53 +53,57 @@
 <script>
 import FormValidation from "@/util/FormValidation";
 import '@/assets/login.css';
+import {mapActions, mapGetters} from "vuex";
 
 export default {
-  name: "landingPage",
+  name: "LoginPage",
   data() {
     return {
       formValidated: false,
-      email: '',
+
       emailValid: false,
-      password: '',
-      passwordValid: false
+      passwordValid: false,
+
+      email: '',
+      password: ''
     }
   },
-
   computed: {
-    emailClass: function () {
-      return {
-        'form-control': true,
-        'is-valid': this.emailValid && this.formValidated,
-        'is-invalid': !this.emailValid && this.formValidated
-      }
-    },
-    passwordClass: function () {
-      return {
-        'form-control': true,
-        'is-valid': this.passwordValid && this.formValidated,
-        'is-invalid': !this.passwordValid && this.formValidated,
-      }
-    }
+    ...mapGetters(['errorMessage']),
   },
   methods: {
+    ...mapActions(['loginAction']),
+
+    userInputClasses: function (input) {
+      return {
+        'form-control': true,
+        'is-valid': input && this.formValidated,
+        'is-invalid': !input && this.formValidated,
+      }
+    },
+
     emailChange() {
       this.formValidated = true;
       if (FormValidation.validateEmail(this.email)) {
-        this.emailValid = true;
-      } else {
-        this.emailValid = false;
+        this.emailValid = FormValidation.validateEmail(this.email);
       }
     },
-    passwordChange(){
+    passwordChange() {
       this.formValidated = true;
-      if (this.password !== ''){
-        this.passwordValid = true;
-      }else{
-        this.passwordValid = false;
+      this.passwordValid = this.password !== '';
+    },
+    loginConfirm() {
+      this.formValidated = true;
+      if (this.emailValid && this.passwordValid) {
+        this.loginAction(
+            {
+              email: this.email,
+              password: this.password
+            });
       }
     }
   }
+
 }
 </script>
 

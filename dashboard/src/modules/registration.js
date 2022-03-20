@@ -25,7 +25,7 @@ export default {
             };
             try {
                 await axios(config);
-                await router.push('/registrationComplete');
+                await router.push({name:'userRegistrationSuccess'});
             } catch (error) {
                 console.log(error.response)
                 commit('UPDATE_ERROR_MESSAGE', error.response.data.message);

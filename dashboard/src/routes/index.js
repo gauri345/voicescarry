@@ -1,56 +1,44 @@
 import {createRouter, createWebHashHistory} from 'vue-router';
-import LoginForm from "@/components/LoginForm";
-import DashboardPage from "@/components/DashboardPage";
-import RegisterForm from "@/components/OldRegisterForm";
-import LandingPage from "@/components/LandingPage";
-import ForgetPasswordForm from "@/components/ForgetPasswordForm";
-import UserRegistrationForm from "@/components/UserRegistrationForm";
-import RegistrationSuccess from "@/components/RegistrationSuccess";
+import UserLoginPage from "@/components/user/LoginPage";
+import UserForgetPassword from "@/components/user/ForgetPassword";
+import UserRegistrationPage from "@/components/user/RegistrationPage";
+import UserRegistrationSuccess from "@/components/user/RegistrationSuccess";
+import DashboardHome from "@/components/DashboardHome";
+import UserIndex from "@/components/UserIndex";
 
 const routes = [
-
     {
         path: '/',
         name: 'home',
-        component: LoginForm
-    },
-
-    {
-        path: '/landingPage',
-        name: 'landingPage',
-        component: LandingPage
+        component: DashboardHome
     },
     {
-        path: '/login',
-        name: 'login',
-        component: LoginForm
-    },
-    {
-        path: '/forget-password',
-        name: 'forget_password',
-        component: ForgetPasswordForm
-    },
-    {
-        path: '/dashboardPage',
-        name: 'dashboard',
-        component: DashboardPage
-    },
-    {
-        path: '/registerForm',
-        name: 'registration',
-        component: RegisterForm
-    },
-    {
-        path: '/userRegistration',
-        name: 'UserRegistrationForm',
-        component: UserRegistrationForm
-    },
-    {
-        path: '/registrationComplete',
-        name: 'RegistrationSuccess',
-        component: RegistrationSuccess
+        path: '/user',
+        name: 'users',
+        component: UserIndex,
+        children: [
+            {
+                path: 'login',
+                name: 'userLoginPage',
+                component: UserLoginPage
+            },
+            {
+                path: 'forget-password',
+                name: 'userForgetPassword',
+                component: UserForgetPassword
+            },
+            {
+                path: 'register',
+                name: 'userRegistrationPage',
+                component: UserRegistrationPage
+            },
+            {
+                path: '/registration-success',
+                name: 'userRegistrationSuccess',
+                component: UserRegistrationSuccess
+            }
+        ],
     }
-
 ];
 
 

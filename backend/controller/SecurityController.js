@@ -31,7 +31,7 @@ exports.login = async function (request, response) {
                 } else {
                     response.status(400).json({
                         status: 'failed',
-                        message: 'Password does not match'
+                        message: 'Invalid password'
                     });
                 }
             } catch (error) {

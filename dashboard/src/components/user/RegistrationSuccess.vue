@@ -8,7 +8,7 @@
           <p class="message">
             Your request has been successfully completed. Please check you email for the confirmation link.
           </p>
-          <router-link to="/landingPage" class="btn btn-info login-button">Login</router-link>
+          <router-link to="/user/login" class="btn btn-info login-button">Login</router-link>
         </div>
 
       </div>

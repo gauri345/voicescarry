@@ -49,7 +49,7 @@
 
               <div class="mb-3">
                 <button class="btn btn-info login-button" @click="registerConfirmChange">Register</button>
-                <router-link class="btn btn-info login-button" to="/landingPage">Login</router-link>
+                <router-link class="btn btn-info login-button" to="/user/login">Back</router-link>
               </div>
             </form>
           </div>
@@ -67,7 +67,7 @@ import FormValidation from "@/util/FormValidation";
 import {mapActions, mapGetters} from "vuex";
 
 export default {
-  name: "UserRegistrationForm",
+  name: "RegistrationPage",
   data() {
     return {
       formValidated: false,
