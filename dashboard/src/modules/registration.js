@@ -24,10 +24,8 @@ export default {
                 data: data
             };
             try {
-                const response = await axios(config);
-                console.log(response)
-                await router.push('RegisterForm');
-                commit('UPDATE_ERROR_MESSAGE', response.data.message);
+                await axios(config);
+                await router.push('/registrationComplete');
             } catch (error) {
                 console.log(error.response)
                 commit('UPDATE_ERROR_MESSAGE', error.response.data.message);

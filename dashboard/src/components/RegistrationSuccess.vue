@@ -1,0 +1,28 @@
+<template>
+  <div class="login-form-container">
+    <div class="card bg-transparent border-0">
+      <div class="card-body">
+
+        <div class="form-greetings py-3">
+          <h3 class="h3">Thank you very much.</h3>
+          <p class="message">
+            Your request has been successfully completed. Please check you email for the confirmation link.
+          </p>
+          <router-link to="/landingPage" class="btn btn-info login-button">Login</router-link>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import '@/assets/login.css';
+export default {
+  name: "RegistrationSuccess"
+}
+</script>
+
+<style scoped>
+
+</style>

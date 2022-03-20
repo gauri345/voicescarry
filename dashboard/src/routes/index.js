@@ -5,6 +5,7 @@ import RegisterForm from "@/components/OldRegisterForm";
 import LandingPage from "@/components/LandingPage";
 import ForgetPasswordForm from "@/components/ForgetPasswordForm";
 import UserRegistrationForm from "@/components/UserRegistrationForm";
+import RegistrationSuccess from "@/components/RegistrationSuccess";
 
 const routes = [
 
@@ -43,6 +44,11 @@ const routes = [
         path: '/userRegistration',
         name: 'UserRegistrationForm',
         component: UserRegistrationForm
+    },
+    {
+        path: '/registrationComplete',
+        name: 'RegistrationSuccess',
+        component: RegistrationSuccess
     }
 
 ];

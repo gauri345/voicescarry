@@ -81,8 +81,6 @@ export default {
     handleRegister(event) {
 
       event.preventDefault();
-
-
     const isUserInformationValid = FormValidation.confirmUserInformation(this.fullName, this.address);
     if(!isUserInformationValid){
       this.error = 'User information is not provided.';
@@ -109,8 +107,7 @@ export default {
               telephone: this.telephone,
               email: this.email,
               password: this.password
-            }
-            );
+            });
       }
     },
   }
