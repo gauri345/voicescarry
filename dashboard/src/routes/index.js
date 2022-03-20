@@ -4,7 +4,7 @@ import DashboardPage from "@/components/DashboardPage";
 import RegisterForm from "@/components/OldRegisterForm";
 import LandingPage from "@/components/LandingPage";
 import ForgetPasswordForm from "@/components/ForgetPasswordForm";
-
+import UserRegistrationForm from "@/components/UserRegistrationForm";
 
 const routes = [
 
@@ -13,6 +13,7 @@ const routes = [
         name: 'home',
         component: LoginForm
     },
+
     {
         path: '/landingPage',
         name: 'landingPage',
@@ -37,6 +38,11 @@ const routes = [
         path: '/registerForm',
         name: 'registration',
         component: RegisterForm
+    },
+    {
+        path: '/userRegistration',
+        name: 'UserRegistrationForm',
+        component: UserRegistrationForm
     }
 
 ];
