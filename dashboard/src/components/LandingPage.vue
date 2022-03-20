@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="login-form-container">
     <div class="card bg-transparent border-0">
       <div class="card-body">
 
@@ -36,7 +36,7 @@
         </div>
 
         <div class="form-register footer mt-auto">
-          <router-link class="footer-link" to="/">Forgot Password</router-link>
+          <router-link class="footer-link" to="/forget-password">Forgot Password</router-link>
           |
           <router-link class="footer-link" to="/">Please register</router-link>
         </div>
@@ -49,6 +49,7 @@
 
 <script>
 import FormValidation from "@/util/FormValidation";
+import '@/assets/login.css';
 
 export default {
   name: "landingPage",
@@ -100,48 +101,4 @@ export default {
 </script>
 
 <style scoped>
-
-.login-button {
-  min-width: 50%;
-}
-
-.container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 430px;
-  background: rgba(0, 0, 0, .3)
-}
-
-.card-body {
-  padding: 0;
-}
-
-.form-container {
-  flex: 1 1 auto;
-  padding: 1rem 1rem;
-  text-align: center;
-}
-
-.form-register {
-  padding-bottom: 1em;
-}
-
-.form-control {
-  background-color: #d4dce3;
-}
-
-.footer-link {
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: .8rem;
-  color: #b5d1ed;
-  font-weight: 500;
-}
-
-.footer-link:hover {
-  color: #d6dce0;
-}
 </style>
