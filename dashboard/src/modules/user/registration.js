@@ -1,5 +1,5 @@
 const axios = require('axios');
-import router from '../routes';
+import router from '../../routes';
 
 export default {
     state: {

@@ -10,7 +10,8 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: DashboardHome
+        component: DashboardHome,
+        meta: {requiresAuth: true}
     },
     {
         path: '/user',
@@ -41,10 +42,19 @@ const routes = [
     }
 ];
 
-
 const router = createRouter({
     history: createWebHashHistory(),
     routes
-})
+});
+
+router.beforeEach((to, from, next) => {
+    const session = localStorage.getItem('session');
+    if (to.meta.requiresAuth && !session) {
+        return next({name: 'userLoginPage'});
+    }
+
+    return next();
+});
+
 
 export default router;

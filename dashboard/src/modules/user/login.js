@@ -1,5 +1,5 @@
 const axios = require('axios');
-import router from '../routes';
+import router from '../../routes';
 
 export default {
     state: {
@@ -25,8 +25,15 @@ export default {
             };
             try {
                 const response = await axios(config);
-                console.log(response)
-                await router.push({name: 'userRegistration'});
+
+                const sessionData =  {
+                    token: response.data.token,
+                    email: payload.email
+                };
+
+                localStorage.setItem("session", JSON.stringify(sessionData));
+
+                await router.push({name: 'home'});
             } catch (error) {
                 commit('UPDATE_ERROR_MESSAGE', error.response.data.message);
             }

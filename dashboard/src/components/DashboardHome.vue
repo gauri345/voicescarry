@@ -4,7 +4,7 @@
       <router-link class="navbar-brand px-3" to="/">CLOVER</router-link>
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-          <router-link class="nav-link px-3" to="/user/login">Sign out</router-link>
+          <a class="nav-link px-3" href="javascript:void(0);" @click="signOut">Sign out</a>
         </div>
         <button aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler d-md-none collapsed" data-bs-target="#sidebarMenu" data-bs-toggle="collapse"
@@ -14,24 +14,31 @@
 
       </div>
     </header>
-
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-      <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active">Dashboard</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+    <h1>Welcome {{userEmail}}</h1>
   </div>
 
 </template>
 
 <script>
 export default {
-  name: "DashboardHome"
+  name: "DashboardHome",
+  data() {
+    return {
+      userEmail: ''
+    }
+  },
+
+  methods: {
+    signOut: function () {
+      localStorage.removeItem("session");
+      this.$router.push({name: 'userLoginPage'});
+    }
+  },
+
+  created() {
+    const session = JSON.parse(localStorage.getItem("session"));
+    this.userEmail = session.email;
+  }
 }
 </script>
 

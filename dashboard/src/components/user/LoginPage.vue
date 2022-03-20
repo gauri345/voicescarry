@@ -9,32 +9,29 @@
 
         <div class="form-container">
           <div class="login-form">
-            <form>
+            <div class="mb-3">
+              <input v-model="email" :class="userInputClasses(this.emailValid)" placeholder="Email" type="email"
+                     @input="emailChange"/>
+            </div>
 
-              <div class="mb-3">
-                <input v-model="email" :class="userInputClasses(this.emailValid)" placeholder="Email" type="email"
-                       @input="emailChange"/>
-              </div>
+            <div class="mb-3">
+              <input v-model="password" :class="userInputClasses(this.passwordValid)" placeholder="Password"
+                     type="password"
+                     @input="passwordChange"/>
+            </div>
 
-              <div class="mb-3">
-                <input v-model="password" :class="userInputClasses(this.passwordValid)" placeholder="Password"
-                       type="password"
-                       @input="passwordChange"/>
-              </div>
+            <div v-if="errorMessage" class="alert alert-danger" role="alert">{{ errorMessage }}</div>
 
-              <div v-if="errorMessage" class="alert alert-danger" role="alert">{{ errorMessage }}</div>
+            <div class="mb-3">
+              <input id="flexCheckDefault" class="form-check-input m-1" type="checkbox" value="">
+              <label class="form-check-label" for="flexCheckDefault">
+                Remember Me
+              </label>
+            </div>
 
-              <div class="mb-3">
-                <input id="flexCheckDefault" class="form-check-input m-1" type="checkbox" value="">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Remember Me
-                </label>
-              </div>
-
-              <div class="mb-3">
-                <button class="btn btn-info login-button" @click="loginConfirm">Login</button>
-              </div>
-            </form>
+            <div class="mb-3">
+              <button class="btn btn-info login-button" @click="loginConfirm">Login</button>
+            </div>
           </div>
         </div>
 
@@ -103,7 +100,6 @@ export default {
       }
     }
   }
-
 }
 </script>
 

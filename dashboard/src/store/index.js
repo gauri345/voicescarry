@@ -1,7 +1,7 @@
 import {createStore} from 'vuex'
 
-import login from '../modules/login';
-import registration from "@/modules/registration";
+import login from '../modules/user/login';
+import registration from "@/modules/user/registration";
 
 
 export default createStore({
