@@ -19,6 +19,7 @@
       </div>
       <router-link to="/registerForm">
         <button class="w-100 btn btn-lg btn-primary button">Register form</button>
+        <router-link class="btn btn-outline-secondary" to="/landingPage">go to landing page</router-link>
       </router-link>
     </form>
   </main>
@@ -71,10 +72,9 @@ export default {
   width: 100%;
   max-width: 330px;
   padding: 15px;
-  margin: auto;
   border: 1px solid #eee;
   border-radius: 10px;
-  margin-top: 10%;
+  margin: 10% auto auto;
   background-color: #efeff5;
 }
 

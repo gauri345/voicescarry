@@ -2,14 +2,23 @@ import {createRouter, createWebHashHistory} from 'vue-router';
 import LoginForm from "@/components/LoginForm";
 import DashboardPage from "@/components/DashboardPage";
 import RegisterForm from "@/components/RegisterForm";
+import LandingPage from "@/components/LandingPage";
 
 
 const routes = [
+
     {
         path: '/',
         name: 'home',
         component: LoginForm
     },
+    {
+        path: '/landingPage',
+        name: 'landingPage',
+        component: LandingPage
+    },
+
+
     {
         path: '/login',
         name: 'login',
