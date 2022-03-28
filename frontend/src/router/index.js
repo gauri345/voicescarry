@@ -2,10 +2,10 @@ import {createRouter, createWebHistory} from 'vue-router'
 import LocalStorage from "@/util/local_storage";
 
 import LandingPage from '@/views/Landingpage';
-Updated upstream:frontend/src/router/index.js
+//Updated upstream:frontend/src/router/index.js;
 import Homepage from "@/views/Homepage";
 import HomePage from "@/views/Homepage";
-Stashed changes:src/router/index.js
+//Stashed changes:src/router/index.js;
 import SurveyPage from "@/views/SurveyPage";
 import ComplaintPage from "@/views/ComplaintPage";
 import SurveyEntryPage from "@/views/SurveyEntryPage";

@@ -1,7 +1,7 @@
 <template>
   <div class="login-form-container">
     <div class="card bg-transparent border-0">
-      <div class="card-body">
+      <form class="card-body">
 
         <div class="form-greetings py-3">
           <h3 class="h3">WELCOME</h3>
@@ -10,7 +10,7 @@
         <div class="form-container">
           <div class="login-form">
             <div class="mb-3">
-              <input v-model="email" :class="userInputClasses(this.emailValid)" placeholder="Email" type="email"
+              <input v-model="email" autocomplete="on" :class="userInputClasses(this.emailValid)" placeholder="Email" type="email"
                      @input="emailChange"/>
             </div>
 
@@ -23,10 +23,9 @@
             <div v-if="errorMessage" class="alert alert-danger" role="alert">{{ errorMessage }}</div>
 
             <div class="mb-3">
-              <input id="flexCheckDefault" class="form-check-input m-1" type="checkbox" value="">
-              <label class="form-check-label" for="flexCheckDefault">
-                Remember Me
-              </label>
+              <input id="rememberMe" class="form-check-input m-1" type="checkbox" value="" v-model="rememberMe" aria-labelledby="rememberMeLabel">
+              <label class="form-check-label" for="rememberMe" id="rememberMeLabel">
+            Remember me</label>
             </div>
 
             <div class="mb-3">
@@ -38,10 +37,10 @@
         <div class="form-register footer mt-auto">
           <router-link class="footer-link" to="/user/forget-password">Forgot Password</router-link>
           |
-          <router-link class="footer-link" to="/user/register">Please register</router-link>
+          <router-link class="footer-link" to="/user/register">Register</router-link>
         </div>
 
-      </div>
+      </form>
     </div>
   </div>
 
@@ -51,7 +50,7 @@
 import FormValidation from "@/util/FormValidation";
 import '@/assets/login.css';
 import {mapActions, mapGetters} from "vuex";
-
+import CryptoJS from 'crypto-js';
 export default {
   name: "LoginPage",
   data() {
@@ -62,7 +61,8 @@ export default {
       passwordValid: false,
 
       email: '',
-      password: ''
+      password: '',
+      rememberMe: false
     }
   },
   computed: {
@@ -89,15 +89,47 @@ export default {
       this.formValidated = true;
       this.passwordValid = this.password !== '';
     },
+
+
+    encryptPassword(password){
+      return CryptoJS.AES.encrypt(password, 'test').toString();
+    },
+
     loginConfirm() {
       this.formValidated = true;
       if (this.emailValid && this.passwordValid) {
+        if(this.rememberMe===true){
+          const rememberMe = {
+            email: this.email,
+            password: this.encryptPassword(this.password)
+          };
+          localStorage.removeItem("remember_me");
+          localStorage.setItem("remember_me", JSON.stringify(rememberMe));
+        } else {
+          localStorage.removeItem("remember_me");
+        }
+
         this.loginAction(
             {
               email: this.email,
               password: this.password
             });
       }
+    }
+  },
+
+  created() {
+    const kando = JSON.parse(localStorage.getItem('remember_me' ));
+    if (kando) {
+      const bytes = CryptoJS.AES.decrypt(kando.password, 'test');
+      const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
+      this.password = originalPassword
+      this.email = kando.email;
+      this.passwordValid = true;
+      this.emailValid = true;
+
+      console.log(this.email, this.password);
+      this.rememberMe = true
     }
   }
 }

@@ -6,7 +6,11 @@ import UserRegistrationSuccess from "@/components/user/RegistrationSuccess";
 import DashboardHome from "@/components/DashboardHome";
 import UserIndex from "@/components/UserIndex";
 
+
+
+
 const routes = [
+
     {
         path: '/',
         name: 'home',
