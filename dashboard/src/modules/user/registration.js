@@ -34,7 +34,7 @@ export default {
         clearErrorMessage({commit}) {
             commit('UPDATE_ERROR_MESSAGE', "");
 
-        }
+        },
     },
     getters: {
         userRegistrationErrorMessage: function (state) {

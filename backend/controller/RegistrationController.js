@@ -1,5 +1,6 @@
 const User = require("../model/userModel");
 const bcrypt = require("bcrypt");
+const Factory = require("../model/factoryModel");
 
 class UserRegistration {
     createModel(request) {
@@ -76,3 +77,20 @@ exports.registerUser = async function (request, response) {
         });
     }
 }
+
+exports.index = function (req, res) {
+    Factory.get(function (err, questions) {
+        if (err) {
+            res.json({
+                status: "error",
+                message: err,
+            });
+        }
+        res.json({
+            status: "success",
+            message: "factories retrieved",
+            data: questions
+        });
+    });
+};
+
