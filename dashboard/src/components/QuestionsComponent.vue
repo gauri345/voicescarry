@@ -1,0 +1,30 @@
+<template>
+  <HeaderMenu/>
+  <div class="container-fluid">
+    <div class="row">
+      <SidebarMenu/>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Questions</h1>
+        </div>
+      </main>
+    </div>
+  </div>
+</template>
+
+<script>
+import SidebarMenu from "@/components/SidebarMenu";
+import HeaderMenu from "@/components/HeaderMenu";
+
+export default {
+  name: "QuestionsComponent",
+  components:{
+    SidebarMenu, HeaderMenu
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

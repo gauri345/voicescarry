@@ -17,22 +17,13 @@
 <script>
 export default {
   name: "HeaderMenu",
-  data() {
-    return {
-      userEmail: ''
-    }
-  },
+
 
   methods: {
     signOut: function () {
       localStorage.removeItem("session");
       this.$router.push({name: 'userLoginPage'});
     }
-  },
-
-  created() {
-    const session = JSON.parse(localStorage.getItem("session"));
-    this.userEmail = session.email;
   }
 }
 </script>

@@ -7,7 +7,17 @@
 
 <script>
 export default {
-  name: "WelcomeComponent"
+  name: "WelcomeComponent",
+  data() {
+    return {
+      userEmail: ''
+    }
+  },
+
+  created() {
+    const session = JSON.parse(localStorage.getItem("session"));
+    this.userEmail = session.email;
+  }
 }
 </script>
 

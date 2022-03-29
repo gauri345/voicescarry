@@ -1,0 +1,13 @@
+<template>
+<h1>homepage </h1>
+</template>
+
+<script>
+export default {
+  name: "HomeComponent"
+}
+</script>
+
+<style scoped>
+
+</style>

@@ -8,22 +8,22 @@
         </li>
 
         <li class="nav-item">
-          <router-link class="nav-link" to="/user-list">
+          <router-link class="nav-link" to="/users/component">
             <span class="material-icons-outlined">people_outline</span>  Users
           </router-link>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span class="material-icons-outlined">quiz</span>Questions</a>
+          <router-link class="nav-link" to="/questions">
+            <span class="material-icons-outlined">quiz</span>Questions</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span class="material-icons-outlined">poll</span>Surveys</a>
+          <router-link class="nav-link" to="/surveys">
+            <span class="material-icons-outlined">poll</span>Surveys</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span class="material-icons-outlined">reviews</span>Feedbacks</a>
+          <router-link class="nav-link" to="/feedbacks">
+          <span class="material-icons-outlined">reviews</span>Feedbacks</router-link>
         </li>
       </ul>
     </div>

@@ -5,8 +5,10 @@ import UserRegistrationPage from "@/components/user/RegistrationPage";
 import UserRegistrationSuccess from "@/components/user/RegistrationSuccess";
 import DashboardHome from "@/components/DashboardHome";
 import UserIndex from "@/components/UserIndex";
-
-
+import UsersComponent from "@/components/UsersComponent";
+import SurveysComponent from "@/components/SurveysComponent";
+import QuestionsComponent from "@/components/QuestionsComponent";
+import FeedbacksComponent from "@/components/FeedbacksComponent";
 
 
 const routes = [
@@ -17,6 +19,30 @@ const routes = [
         component: DashboardHome,
         meta: {requiresAuth: true}
     },
+    {
+        path: '/users/component',
+        name: 'UsersComponent',
+        component: UsersComponent
+    },
+    {
+        path: '/surveys',
+        name: 'SurveysComponent',
+        component: SurveysComponent
+    },
+
+    {
+        path: '/questions',
+        name: 'QuestionsComponent',
+        component: QuestionsComponent
+    },
+
+    {
+        path: '/feedbacks',
+        name: 'FeedbacksComponent',
+        component: FeedbacksComponent
+    },
+
+
     {
         path: '/user',
         name: 'users',
