@@ -29,7 +29,7 @@
                   title="Activate User">highlight_off</span></a>
             </td>
             <td>
-              <a href="#"> <span class="material-icons-outlined text-danger" title="Delete User">delete</span></a>
+              <a href="javascript:void(0);"> <span class="material-icons-outlined text-danger" title="Delete User" data-bs-toggle="modal" data-bs-target="#deleteUser">delete</span></a>
             </td>
           </tr>
           </tbody>
@@ -39,20 +39,21 @@
   </div>
 
   <ActivateUserModal />
+  <DeleteConfirmationModel />
 
 </template>
 
 <script>
 import HeaderMenu from "@/components/HeaderMenu";
 import SidebarMenu from "@/components/SidebarMenu";
-
-import bootstrap from 'bootstrap/dist/js/bootstrap';
 import ActivateUserModal from "@/components/ActivateUserModal";
 import ComponentHeader from "@/components/ComponentHeader";
+import DeleteConfirmationModel from "@/components/DeleteConfirmationModel";
 
 export default {
   name: "UsersComponent",
   components: {
+    DeleteConfirmationModel,
     ComponentHeader,
     ActivateUserModal,
     SidebarMenu, HeaderMenu
@@ -92,11 +93,6 @@ export default {
           .map(role => role.toLowerCase())
           .join(', ');
     },
-
-    activateUser(user) {
-      new bootstrap.Modal(document.getElementById('myModal'), {});
-      console.log(user);
-    }
   }
 }
 </script>
