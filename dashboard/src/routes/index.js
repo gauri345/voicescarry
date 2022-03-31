@@ -7,7 +7,7 @@ import DashboardHome from "@/components/DashboardHome";
 import UserIndex from "@/components/UserIndex";
 import UsersComponent from "@/components/UsersComponent";
 import SurveysComponent from "@/components/SurveysComponent";
-import QuestionsComponent from "@/components/QuestionsComponent";
+import QuestionComponent from "@/components/QuestionComponent";
 import FeedbacksComponent from "@/components/FeedbacksComponent";
 
 
@@ -32,8 +32,8 @@ const routes = [
 
     {
         path: '/questions',
-        name: 'QuestionsComponent',
-        component: QuestionsComponent
+        name: 'QuestionComponent',
+        component: QuestionComponent
     },
 
     {

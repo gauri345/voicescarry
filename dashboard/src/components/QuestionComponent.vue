@@ -1,10 +1,11 @@
 <template>
-  <HeaderMenu/>
+<HeaderMenu/>
   <div class="container-fluid">
     <div class="row">
-      <SidebarMenu/>
+    <SidebarMenu/>
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <component-header text = "Surveys" />
+        <component-header text = "Questions" />
+        <QuestionCard></QuestionCard>
       </main>
     </div>
   </div>
@@ -13,13 +14,15 @@
 <script>
 import HeaderMenu from "@/components/HeaderMenu";
 import SidebarMenu from "@/components/SidebarMenu";
-import ComponentHeader from "@/components/ComponentHeader";
+import componentHeader from "@/components/ComponentHeader";
+import QuestionCard from "@/components/QuestionCard";
 export default {
-  name: "SurveysComponent",
+name: "QuestionComponent",
   components:{
-    ComponentHeader,
-    SidebarMenu, HeaderMenu
-  }
+    QuestionCard,
+    SidebarMenu, HeaderMenu, componentHeader
+  },
+
 }
 </script>
 
