@@ -15,7 +15,7 @@
 import HeaderMenu from "@/components/HeaderMenu";
 import SidebarMenu from "@/components/SidebarMenu";
 import componentHeader from "@/components/ComponentHeader";
-import QuestionCard from "@/components/QuestionCard";
+import QuestionCard from "@/components/question/QuestionCard";
 export default {
 name: "QuestionComponent",
   components:{

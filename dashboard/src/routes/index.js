@@ -4,11 +4,12 @@ import UserForgetPassword from "@/components/user/ForgetPassword";
 import UserRegistrationPage from "@/components/user/RegistrationPage";
 import UserRegistrationSuccess from "@/components/user/RegistrationSuccess";
 import DashboardHome from "@/components/DashboardHome";
-import UserIndex from "@/components/UserIndex";
-import UsersComponent from "@/components/UsersComponent";
-import SurveysComponent from "@/components/SurveysComponent";
-import QuestionComponent from "@/components/QuestionComponent";
-import FeedbacksComponent from "@/components/FeedbacksComponent";
+import UserIndex from "@/components/user/UserIndex";
+import UsersComponent from "@/components/user/UsersComponent";
+import SurveysComponent from "@/components/survey/SurveysComponent";
+import QuestionComponent from "@/components/question/QuestionComponent";
+import FeedbacksComponent from "@/components/feedback/FeedbacksComponent";
+import LanguageForm from "@/components/language/LanguageForm";
 
 
 const routes = [
@@ -41,7 +42,11 @@ const routes = [
         name: 'FeedbacksComponent',
         component: FeedbacksComponent
     },
-
+    {
+        path:'/language/form',
+        name:'languageForm',
+        component: LanguageForm
+    },
 
     {
         path: '/user',

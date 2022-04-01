@@ -12,7 +12,7 @@
               <label class="col-form-label">ENG</label>
             </div>
             <div class="col-auto">
-              <img  alt="england flag" :src="require('../assets/england.jpg')"/>
+              <img :src="require('../assets/england.jpg')" alt="england flag"/>
             </div>
           </div>
 
@@ -21,13 +21,10 @@
               <label class="col-form-label">VIE</label>
             </div>
             <div class="col-auto">
-              <img alt="england flag" :src="require('../assets/vietnam.png')"/>
+              <img :src="require('../assets/vietnam.png')" alt="england flag"/>
             </div>
-
           </div>
-
-
-          <button class="btn btn-primary">Add new language</button>
+          <router-link to="/language/form" class="btn btn-outline-secondary float-end">Add new language</router-link>
         </div>
       </div>
     </div>
@@ -35,7 +32,7 @@
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body bg-dark">
-          <p>Hello from flag</p>
+          <img :src="require('../assets/chart.png')" alt="england flag"/>
         </div>
       </div>
     </div>
@@ -59,5 +56,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

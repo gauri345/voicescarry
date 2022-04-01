@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "DeleteConfirmationModel"
+  name: "DeleteUserConfirmationModel"
 }
 </script>
 

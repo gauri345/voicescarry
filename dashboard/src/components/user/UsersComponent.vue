@@ -46,9 +46,9 @@
 <script>
 import HeaderMenu from "@/components/HeaderMenu";
 import SidebarMenu from "@/components/SidebarMenu";
-import ActivateUserModal from "@/components/ActivateUserModal";
+import ActivateUserModal from "@/components/user/ActivateUserModal";
 import ComponentHeader from "@/components/ComponentHeader";
-import DeleteConfirmationModel from "@/components/DeleteConfirmationModel";
+import DeleteConfirmationModel from "@/components/user/DeleteUserConfirmationModel";
 
 export default {
   name: "UsersComponent",
