@@ -1,10 +1,10 @@
 <template>
-<h1>homepage </h1>
+  <router-view></router-view>
 </template>
 
 <script>
 export default {
-  name: "HomeComponent"
+  name: "LanguageIndex"
 }
 </script>
 

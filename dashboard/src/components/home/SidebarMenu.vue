@@ -8,7 +8,7 @@
         </li>
 
         <li class="nav-item">
-          <router-link class="nav-link text-info" to="/users/component">
+          <router-link class="nav-link text-info" to="/users">
             <span class="material-icons-outlined">people_outline</span>  Users
           </router-link>
         </li>

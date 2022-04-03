@@ -3,25 +3,46 @@ import UserLoginPage from "@/components/user/LoginPage";
 import UserForgetPassword from "@/components/user/ForgetPassword";
 import UserRegistrationPage from "@/components/user/RegistrationPage";
 import UserRegistrationSuccess from "@/components/user/RegistrationSuccess";
-import DashboardHome from "@/components/DashboardHome";
+import DashboardHome from "@/components/home/DashboardHome";
 import UserIndex from "@/components/user/UserIndex";
 import UsersComponent from "@/components/user/UsersComponent";
 import SurveysComponent from "@/components/survey/SurveysComponent";
 import QuestionComponent from "@/components/question/QuestionComponent";
 import FeedbacksComponent from "@/components/feedback/FeedbacksComponent";
 import LanguageForm from "@/components/language/LanguageForm";
+import LanguageIndex from "@/components/language/LanguageIndex";
+import LanguageList from "@/components/language/LanguageList";
 
 
 const routes = [
-
     {
         path: '/',
         name: 'home',
         component: DashboardHome,
-        meta: {requiresAuth: true}
+        meta: {requiresAuth: true},
+        children: [
+            {
+                path: '',
+                name: 'languageList',
+                component: LanguageIndex,
+                children: [
+                    {
+                        path: '',
+                        name: 'languageList',
+                        component: LanguageList
+                    },
+                    {
+                        path: 'language/form',
+                        name: 'language_form',
+                        component: LanguageForm
+                    }
+                ]
+            }
+        ]
     },
+
     {
-        path: '/users/component',
+        path: '/users/',
         name: 'UsersComponent',
         component: UsersComponent
     },
@@ -42,12 +63,6 @@ const routes = [
         name: 'FeedbacksComponent',
         component: FeedbacksComponent
     },
-    {
-        path:'/language/form',
-        name:'languageForm',
-        component: LanguageForm
-    },
-
     {
         path: '/user',
         name: 'users',

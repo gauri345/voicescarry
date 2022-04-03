@@ -1,26 +1,18 @@
 <template>
-<HeaderMenu/>
-  <div class="container-fluid">
-    <div class="row">
-    <SidebarMenu/>
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <component-header text = "Questions" />
-        <QuestionCard></QuestionCard>
-      </main>
-    </div>
-  </div>
+  <ComponentHeader text="Questions"/>
+  <QuestionCard></QuestionCard>
+
 </template>
 
 <script>
-import HeaderMenu from "@/components/HeaderMenu";
-import SidebarMenu from "@/components/SidebarMenu";
-import componentHeader from "@/components/ComponentHeader";
+import ComponentHeader from "@/components/ComponentHeader";
 import QuestionCard from "@/components/question/QuestionCard";
+
 export default {
-name: "QuestionComponent",
-  components:{
+  name: "QuestionComponent",
+  components: {
     QuestionCard,
-    SidebarMenu, HeaderMenu, componentHeader
+    ComponentHeader
   },
 
 }

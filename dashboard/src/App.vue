@@ -1,8 +1,9 @@
 <script setup>
+import ApplicationIndex from "@/components/ApplicationIndex";
 </script>
 
 <template>
-  <router-view></router-view>
+  <ApplicationIndex />
 </template>
 
 <style>
