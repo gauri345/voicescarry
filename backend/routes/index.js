@@ -4,6 +4,14 @@ const QuestionController = require('../controller/QuestionController');
 const SurveyController = require('../controller/SurveyController');
 const FactoryController = require('../controller/FactoryController');
 const AnswerController = require('../controller/AnswerController');
+const SecurityController = require('../controller/SecurityController');
+const RegistrationController = require('../controller/RegistrationController');
+
+router.route('/registration')
+        .post(RegistrationController.registerUser);
+
+router.route('/security/login')
+    .post(SecurityController.login);
 
 router.route('/question')
     .get(QuestionController.index)
@@ -24,6 +32,6 @@ router.route('/survey/start/:factoryCode')
 
 router.route('/answer/storeBulk/')
     .get(AnswerController.index)
-    .post(AnswerController.insertBulk)
+    .post(AnswerController.insertBulk);
 
 module.exports = router;
