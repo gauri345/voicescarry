@@ -1,20 +1,21 @@
 <template>
-    <Header HeaderIcon="spa" :HeaderText="$t('headerText')"/>
-    <div id="body">
-        <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
-            <p> {{ $t('survey_ending_feedback') }} </p>
-            <textarea :placeholder="$t('survey_ending_textbox')" class="textbox" v-model="content"/>
-            <div class=buttonwrapper data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
-                <SurveyFeedbackModal/>
-                <Button style="align-items:baseline" :text="$t('button_submit')" id="submitbutton" @click="storeFeedback"/>
-            </div>
-            <p> {{ $t('survey_ending_complaint') }} </p>
-        <div class=buttonwrapper>
-            <router-link to="/complaint">
-            <Button style="align-items:center !important;" id="complaintbutton" icon="assignment_late" :text="$t('button_report_complaint')"/>
-            </router-link>
-        </div>
+  <Header HeaderIcon="spa" :HeaderText="$t('headerText')"/>
+  <div id="body">
+    <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
+    <p> {{ $t('survey_ending_feedback') }} </p>
+    <textarea :placeholder="$t('survey_ending_textbox')" class="textbox" v-model="content"/>
+    <div class=button-wrapper data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
+      <SurveyFeedbackModal/>
+      <Button style="align-items:baseline" :text="$t('button_submit')" id="submitbutton" @click="storeFeedback"/>
     </div>
+    <p> {{ $t('survey_ending_complaint') }} </p>
+    <div class=button-wrapper>
+      <router-link to="/complaint">
+        <Button style="align-items:center !important;" id="complaintbutton" icon="assignment_late"
+                :text="$t('button_report_complaint')"/>
+      </router-link>
+    </div>
+  </div>
   <Footer/>
 </template>
 
@@ -25,6 +26,7 @@ import Button from "@/components/utils/Button";
 import SurveyFeedbackModal from "@/components/survey/SurveyFeedbackModal";
 import {textReader} from "@/util/speech";
 import LocalStorage from "@/util/local_storage";
+import HttpClient from "@/util/http_client";
 
 export default {
   name: 'SurveyEndingPage',
@@ -43,42 +45,25 @@ export default {
   methods: {
     readPageContent: function () {
       const textToRead =
-        this.$i18n.t('survey_ending_feedback').replace('!', '. ') +
-        this.$i18n.t('survey_ending_complaint');
-      console.log(this.$i18n.locale);
+          this.$i18n.t('survey_ending_feedback').replace('!', '. ') +
+          this.$i18n.t('survey_ending_complaint');
+
       textReader(textToRead);
     },
-    storeFeedback: function (event){
+    storeFeedback: async function (event) {
       event.preventDefault();
 
-      let axios = require('axios');
-     const dataFromLocalStorage = LocalStorage.get('survey');
-     const surveyCode = dataFromLocalStorage.surveyCode;
-     const factoryCode = dataFromLocalStorage.factoryCode;
-      let data = JSON.stringify({
-        "factoryCode": surveyCode,
-        "surveyCode": factoryCode,
-        "content": this.content,
-      });
-      console.log('test', data);
+      const dataFromLocalStorage = LocalStorage.get('survey');
 
-
-      var config = {
-        method: 'post',
-        url: 'http://localhost:4000/api/feedback',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data : data
-      };
-
-      axios(config)
-          .then(function (response) {
-            console.log(JSON.stringify(response.data));
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+      try {
+        await HttpClient.post('/feedback', {
+          "factoryCode": dataFromLocalStorage.factoryCode,
+          "surveyCode": dataFromLocalStorage.surveyCode,
+          "content": this.content,
+        });
+      } catch (error) {
+        console.log("Failed storing feedback", error);
+      }
     }
   }
 }
@@ -92,8 +77,8 @@ export default {
   margin-right: 10%;
 }
 
-.buttonwrapper{
-    margin: 1em 0 1em 0;
+.button-wrapper {
+  margin: 1em 0 1em 0;
 }
 
 #submitbutton {
@@ -101,19 +86,21 @@ export default {
   width: 100%;
   background: #4EB562;
 }
+
 .material-icons.audio {
   cursor: pointer;
   color: #2c3e50;
   margin-top: 0.2em;
   margin-bottom: 0.2em;
 }
+
 .textbox {
-    padding: 10px 6px;
-    width: 100%;
-    height: 100%;
-    background: #FFFFFF;
-    border: 1px solid rgba(36, 54, 86, 0.3);
-    border-radius: 20px;
-    margin: 0.5em 0 0.5em 0;
+  padding: 10px 6px;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border: 1px solid rgba(36, 54, 86, 0.3);
+  border-radius: 20px;
+  margin: 0.5em 0 0.5em 0;
 }
 </style>

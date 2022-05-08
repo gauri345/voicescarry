@@ -10,14 +10,13 @@
     </tr>
     </thead>
     <tbody class="table-bordered">
-    <tr>
-      <td>xxx</td>
-      <td>yyyy</td>
-      <td class="roles-td">cccc</td>
+    <tr v-for="feedback in allFeedbacks" :key="feedback.id">
+      <td>{{ feedback.factoryCode }}</td>
+      <td>{{feedback.surveyCode}}</td>
+      <td class="roles-td">{{feedback.content}}</td>
       <td>
         <a href="javascript:void(0);">
-          <span class="material-icons-outlined text-danger"
-                title="Delete User">delete</span>
+          <span class="material-icons-outlined text-danger" title="Delete User">delete</span>
         </a>
       </td>
     </tr>
@@ -27,11 +26,22 @@
 
 <script>
 import ComponentHeader from "@/components/ComponentHeader";
-
+import {mapActions, mapGetters} from "vuex";
 export default {
   name: "FeedbacksComponent",
   components: {
     ComponentHeader
+  },
+  methods: {
+    ...mapActions(['fetchFeedback'])
+  },
+  mounted() {
+    console.log('component mounted')
+    this.fetchFeedback();
+  },
+
+  computed: {
+    ...mapGetters(['allFeedbacks'])
   }
 }
 </script>
