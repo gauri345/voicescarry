@@ -3,17 +3,17 @@
             <div class="navbar-nav">
                     <a class="nav-item nav-link">
                       <router-link to="/homepage">
-                        <span class= "material-icons">home</span>
+                        <span class= "material-icons" title="Home">home</span>
                       </router-link>
                     </a>
                     <a class="nav-item nav-link">
                       <router-link to="/question/information">
-                        <span class= "material-icons">assignment</span>
+                        <span class= "material-icons" title="Information">assignment</span>
                       </router-link>
                     </a>
                     <a class="nav-item nav-link">
                       <router-link to="/complaint">
-                      <span class= "material-icons">assignment_late</span>
+                      <span class= "material-icons" title="Complaint">assignment_late</span>
                       </router-link>
                     </a>
                     <a class="nav-item nav-link" href="#">

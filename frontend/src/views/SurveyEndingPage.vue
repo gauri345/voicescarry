@@ -3,10 +3,10 @@
     <div id="body">
         <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
             <p> {{ $t('survey_ending_feedback') }} </p>
-            <textarea :placeholder="$t('survey_ending_textbox')" class="textbox"/>
+            <textarea :placeholder="$t('survey_ending_textbox')" class="textbox" v-model="content"/>
             <div class=buttonwrapper data-bs-target=".bd-example-modal-pm" data-bs-toggle="modal">
                 <SurveyFeedbackModal/>
-                <Button style="align-items:baseline" :text="$t('button_submit')" id="submitbutton"/>
+                <Button style="align-items:baseline" :text="$t('button_submit')" id="submitbutton" @click="storeFeedback"/>
             </div>
             <p> {{ $t('survey_ending_complaint') }} </p>
         <div class=buttonwrapper>
@@ -24,6 +24,7 @@ import Header from "@/components/Header";
 import Button from "@/components/utils/Button";
 import SurveyFeedbackModal from "@/components/survey/SurveyFeedbackModal";
 import {textReader} from "@/util/speech";
+import LocalStorage from "@/util/local_storage";
 
 export default {
   name: 'SurveyEndingPage',
@@ -35,7 +36,8 @@ export default {
   },
   data() {
     return {
-      isReading: false
+      isReading: false,
+      content: ''
     }
   },
   methods: {
@@ -45,6 +47,41 @@ export default {
         this.$i18n.t('survey_ending_complaint');
       console.log(this.$i18n.locale);
       textReader(textToRead);
+    },
+    storeFeedback: function (event){
+      event.preventDefault();
+
+      let axios = require('axios');
+     const dataFromLocalStorage = LocalStorage.get('survey');
+     console.log('check', dataFromLocalStorage);
+     const surveyCode = dataFromLocalStorage.surveyCode;
+     const factoryCode = dataFromLocalStorage.factoryCode;
+     console.log('factory', factoryCode);
+
+      let data = JSON.stringify({
+        "factoryCode": surveyCode,
+        "surveyCode": factoryCode,
+        "content": this.content,
+      });
+      console.log('test', data);
+
+
+      var config = {
+        method: 'post',
+        url: 'http://localhost:4000/api/feedback',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+
+      axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="dropup">
     <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="material-icons">language</span>
+      <span class="material-icons" title="Language">language</span>
     </button>
     <ul class="dropdown-menu">
       <li><a href="#" class="lang-button" @click="changeLanguage">EN</a></li>
