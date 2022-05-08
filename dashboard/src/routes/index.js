@@ -9,10 +9,7 @@ import UsersComponent from "@/components/user/UsersComponent";
 import SurveysComponent from "@/components/survey/SurveysComponent";
 import QuestionComponent from "@/components/question/QuestionComponent";
 import FeedbacksComponent from "@/components/feedback/FeedbacksComponent";
-import LanguageForm from "@/components/language/LanguageForm";
-import LanguageIndex from "@/components/language/LanguageIndex";
-import LanguageList from "@/components/language/LanguageList";
-
+import AdminIndex from "@/components/admin/AdminIndex";
 
 const routes = [
     {
@@ -20,48 +17,34 @@ const routes = [
         name: 'home',
         component: DashboardHome,
         meta: {requiresAuth: true},
+
+    },
+    {
+        path: '/admin',
+        component: AdminIndex,
+        name: 'adminHome',
         children: [
             {
-                path: '',
-                name: 'languageList',
-                component: LanguageIndex,
-                children: [
-                    {
-                        path: '',
-                        name: 'languageList',
-                        component: LanguageList
-                    },
-                    {
-                        path: 'language/form',
-                        name: 'language_form',
-                        component: LanguageForm
-                    }
-                ]
-            }
+                path: '/surveys',
+                name: 'SurveysComponent',
+                component: SurveysComponent
+            },
+            {
+                path: '/questions',
+                name: 'QuestionComponent',
+                component: QuestionComponent
+            },
+            {
+                path: '/feedbacks',
+                name: 'FeedbacksComponent',
+                component: FeedbacksComponent
+            },
+            {
+                path: '/users',
+                name: 'UsersComponent',
+                component: UsersComponent
+            },
         ]
-    },
-
-    {
-        path: '/users/',
-        name: 'UsersComponent',
-        component: UsersComponent
-    },
-    {
-        path: '/surveys',
-        name: 'SurveysComponent',
-        component: SurveysComponent
-    },
-
-    {
-        path: '/questions',
-        name: 'QuestionComponent',
-        component: QuestionComponent
-    },
-
-    {
-        path: '/feedbacks',
-        name: 'FeedbacksComponent',
-        component: FeedbacksComponent
     },
     {
         path: '/user',
