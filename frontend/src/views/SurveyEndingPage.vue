@@ -53,11 +53,8 @@ export default {
 
       let axios = require('axios');
      const dataFromLocalStorage = LocalStorage.get('survey');
-     console.log('check', dataFromLocalStorage);
      const surveyCode = dataFromLocalStorage.surveyCode;
      const factoryCode = dataFromLocalStorage.factoryCode;
-     console.log('factory', factoryCode);
-
       let data = JSON.stringify({
         "factoryCode": surveyCode,
         "surveyCode": factoryCode,
