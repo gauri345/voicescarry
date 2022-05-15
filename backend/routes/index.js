@@ -9,7 +9,7 @@ const RegistrationController = require('../controller/RegistrationController');
 const FeedbackController = require('../controller/FeedbackController');
 
 router.route('/registration')
-        .post(RegistrationController.registerUser);
+    .post(RegistrationController.registerUser);
 
 router.route('/security/login')
     .post(SecurityController.login);
@@ -38,5 +38,8 @@ router.route('/answer/storeBulk/')
 router.route('/feedback')
     .get(FeedbackController.index)
     .post(FeedbackController.post);
+
+router.route('/feedback/:id')
+    .delete(FeedbackController.delete);
 
 module.exports = router;

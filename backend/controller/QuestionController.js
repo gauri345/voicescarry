@@ -51,7 +51,6 @@ exports.delete = async function (req, res) {
     const filter = {
         number: req.query.number
     };
-
     try {
         Question.remove(filter, function (err, question) {
             if (err)
