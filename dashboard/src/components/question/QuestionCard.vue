@@ -1,35 +1,33 @@
 <template>
-  <div class="card bg-dark">
-    <div class="card-body card-body-container">
-        <div class="add-question row">
-          <div class="col-auto">
-            <label class="col-form-label"> Question title:</label>
-          </div>
-            <div v-for="(questionField, index) in addQuestionField" :key="index" class="row m-1">
-              <div class="col-1"></div>
-              <div class="col-6">
-                <input v-model="questionField.question" :name="`addQuestionFiled[${index}][question]`"
-                       class="form-control" placeholder="Type a question" type="text">
-              </div>
+  <div class="card p-0">
+    <div class="card-body card-body-container align-items-start">
+      <div v-for="(questionField, index) in addQuestionField" :key="index" class="row m-0">
+        <div class="col-3">
+          <p class="text-dark">{{ cardTitle }}: </p>
+        </div>
+        <div class="col-4">
+          <input v-model="questionField.question" :name="`addQuestionFiled[${index}][question]`"
+                 class="form-control form-control-sm" placeholder="Type a question" type="text">
+        </div>
 
-              <div class="col-2">
-                <select v-model="questionField.language" :name="`addQuestionFiled[${index}][language]`"
-                        aria-label="Default select example" class="form-select form-control">
-                  <option v-for="(language, index) in languages " :key="index" :value="language.value">
-                    {{ language.text }}
-                  </option>
-                </select>
-              </div>
-              <div class="col-1">
-                <a href="javascript:void(0);" @click="DeleteQuestion(index)"> <span class="material-icons-outlined">delete</span></a>
-              </div>
-            </div>
-          <div class="col-1">
-            <div class="col-auto">
-              <a href="javascript:void(0);" @click="AddQuestion"> <span class="material-icons-outlined">add_circle_outline</span></a>
-            </div>
-          </div>
-          </div>
+        <div class="col-3">
+          <select v-model="questionField.language" :name="`addQuestionFiled[${index}][language]`"
+                  aria-label="Language" class="form-select form-select-sm">
+            <option v-for="(language, index) in languages " :key="index" :value="language.value">
+              {{ language.text }}
+            </option>
+          </select>
+        </div>
+        <div class="col-2">
+          <a href="javascript:void(0);" @click="addQuestion" class="link-success">
+            <span class="material-icons-outlined">add_circle_outline</span>
+          </a>
+          &nbsp;&nbsp;
+          <a href="javascript:void(0);" @click="deleteQuestion(index)" class="link-danger">
+            <span class="material-icons-outlined">delete</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -37,6 +35,12 @@
 <script>
 export default {
   name: "QuestionCard",
+  props: {
+    cardTitle: {
+      type: String,
+      default: "Question title"
+    }
+  },
   data() {
     return {
       addQuestionField: [
@@ -48,7 +52,7 @@ export default {
       ],
       languages: [
         {
-          text: 'Select language',
+          text: 'Language',
           value: ''
         },
         {
@@ -65,28 +69,28 @@ export default {
   },
 
   methods: {
-
-    AddQuestion() {
-
+    addQuestion() {
       this.addQuestionField.push({
         question: '',
         language: '',
 
       })
     },
-    DeleteQuestion(index){
+    deleteQuestion(index) {
       this.addQuestionField.splice(index, 1);
-
     }
-
   }
 
 }
 </script>
 
 <style scoped>
-.btn {
-margin-right: 10px;
+.card-body {
+  padding: 5px 0 5px 0;
+}
+
+.row {
+  text-align: start;
 }
 </style>
 

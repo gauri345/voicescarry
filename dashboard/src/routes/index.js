@@ -8,8 +8,10 @@ import UserIndex from "@/components/user/UserIndex";
 import UsersComponent from "@/components/user/UsersComponent";
 import SurveysComponent from "@/components/survey/SurveysComponent";
 import QuestionComponent from "@/components/question/QuestionComponent";
+import QuestionForm from "@/components/question/QuestionForm";
 import FeedbacksComponent from "@/components/feedback/FeedbacksComponent";
 import AdminIndex from "@/components/admin/AdminIndex";
+import QuestionList from "@/components/question/QuestionList";
 
 const routes = [
     {
@@ -30,14 +32,26 @@ const routes = [
                 component: SurveysComponent
             },
             {
-                path: '/questions',
+                path: '/question/',
                 name: 'QuestionComponent',
-                component: QuestionComponent
+                component: QuestionComponent,
+                children: [
+                    {
+                        path: '',
+                        name: 'QuestionList',
+                        component: QuestionList
+                    },
+                    {
+                        path: 'form',
+                        name: 'QuestionForm',
+                        component: QuestionForm
+                    }
+                ]
             },
             {
                 path: '/feedbacks',
                 name: 'FeedbacksComponent',
-                component: FeedbacksComponent
+                component: FeedbacksComponent,
             },
             {
                 path: '/users',

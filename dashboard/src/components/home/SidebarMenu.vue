@@ -14,7 +14,7 @@
         </li>
 
         <li class="nav-item">
-          <router-link class="nav-link text-info" to="/questions">
+          <router-link class="nav-link text-info" to="/question">
             <span class="material-icons-outlined">quiz</span>Questions</router-link>
         </li>
         <li class="nav-item">

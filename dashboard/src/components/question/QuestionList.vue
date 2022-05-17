@@ -1,4 +1,5 @@
 <template>
+  <router-link class="btn btn-dark" to="/question/form" style="float: right;">Add</router-link>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
@@ -6,7 +7,6 @@
       <th scope="col">Title</th>
       <th scope="col">Type</th>
       <th scope="col">Answers</th>
-
       <th scope="col">Action</th>
     </tr>
     </thead>
@@ -45,7 +45,6 @@
       <td>
         <a>
           <span class="material-icons-outlined text-danger" title="Delete question">delete</span>
-          <span class="material-icons-outlined">add_circle_outline</span>
           <span class="material-symbols-outlined">edit</span>
 
         </a>
