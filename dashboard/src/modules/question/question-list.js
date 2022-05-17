@@ -2,27 +2,27 @@ const axios = require('axios');
 
 export default {
     actions: {
-        async fetchFeedback({commit}) {
+        async fetchAllQuestions({commit}) {
             const config = {
                 method: 'get',
-                url: 'http://localhost:4000/api/feedback',
+                url: 'http://localhost:4000/api/question',
                 headers: {}
             };
 
             try {
                 const response = await axios(config);
 
-                const feedbackList = response.data.data;
+                const questionList = response.data.data;
 
-                commit('UPDATE_ALL_FEEDBACKS', feedbackList);
+                commit('UPDATE_ALL_question', questionList);
 
             } catch (error) {
                 commit('TOGGLE_SERVER_MESSAGE');
-                console.log("Failed fetching feedback.", error);
+                console.log("Failed fetching questions.", error);
             }
         },
 
-        async deleteFeedback({commit, state}, feedbackId) {
+       /* async deleteFeedback({commit, state}, feedbackId) {
             const config = {
                 method: 'delete',
                 url: 'http://localhost:4000/api/feedback/' + feedbackId
@@ -42,26 +42,20 @@ export default {
                 commit('TOGGLE_SERVER_MESSAGE');
                 console.log("Failed fetching feedback.", error);
             }
-        }
+        }*/
     },
     state: {
-        feedbackList: [],
-        feedbackDeleteError: false,
-        feedbackDeleteInfo: false,
-        serverErrorDisplayed: false
+        questionList: [],
     },
 
     getters: {
-        allFeedbacks: (state) => state.feedbackList,
-        feedbackDeleteError: (state) => state.errorMessageDisplayed,
-        feedbackDeleteInfo: (state) => state.infoMessageDisplayed,
+        allQuestions: (state) => state.questionList,
         serverErrorDisplayed: (state) => state.serverErrorDisplayed
+
     },
 
     mutations: {
-        UPDATE_ALL_FEEDBACKS: (state, feedbackList) => state.feedbackList = feedbackList,
-        TOGGLE_DELETE_FEEDBACK_ERROR_MESSAGE: (state) => state.errorMessageDisplayed = !state.errorMessageDisplayed,
-        TOGGLE_DELETE_FEEDBACK_INFO_MESSAGE: (state) => state.infoMessageDisplayed = !state.infoMessageDisplayed,
+        UPDATE_ALL_question: (state, questionList) => state.questionList = questionList,
         TOGGLE_SERVER_MESSAGE: (state) => state.serverErrorDisplayed = !state.serverErrorDisplayed
     }
 }

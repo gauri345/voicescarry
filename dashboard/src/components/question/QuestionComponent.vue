@@ -1,20 +1,19 @@
 <template>
   <ComponentHeader text="Questions"/>
-  <QuestionCard></QuestionCard>
+  <QuestionList />
 
 </template>
 
 <script>
 import ComponentHeader from "@/components/ComponentHeader";
-import QuestionCard from "@/components/question/QuestionCard";
+import QuestionList from "@/components/question/QuestionList";
 
 export default {
   name: "QuestionComponent",
   components: {
-    QuestionCard,
+    QuestionList,
     ComponentHeader
-  },
-
+  }
 }
 </script>
 

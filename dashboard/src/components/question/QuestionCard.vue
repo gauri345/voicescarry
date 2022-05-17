@@ -27,12 +27,9 @@
           <div class="col-1">
             <div class="col-auto">
               <a href="javascript:void(0);" @click="AddQuestion"> <span class="material-icons-outlined">add_circle_outline</span></a>
-
             </div>
           </div>
           </div>
-
-
     </div>
   </div>
 </template>
