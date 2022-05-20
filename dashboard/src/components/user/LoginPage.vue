@@ -20,7 +20,7 @@
                      @input="passwordChange"/>
             </div>
 
-            <div v-if="errorMessage" class="alert alert-danger" role="alert">{{ errorMessage }}</div>
+            <div v-if="getErrorMessage" class="alert alert-danger" role="alert">{{ getErrorMessage }}</div>
 
             <div class="mb-3">
               <input id="rememberMe" class="form-check-input m-1" type="checkbox" value="" v-model="rememberMe" aria-labelledby="rememberMeLabel">
@@ -66,7 +66,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['errorMessage']),
+    ...mapGetters(['getErrorMessage']),
   },
   methods: {
     ...mapActions(['loginAction']),

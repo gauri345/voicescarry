@@ -45,7 +45,7 @@ export default {
 
     },
     getters: {
-        errorMessage: function (state) {
+        getErrorMessage: function (state) {
             return state.errorMessage;
         }
     }

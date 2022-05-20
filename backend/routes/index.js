@@ -7,9 +7,12 @@ const AnswerController = require('../controller/AnswerController');
 const SecurityController = require('../controller/SecurityController');
 const RegistrationController = require('../controller/RegistrationController');
 const FeedbackController = require('../controller/FeedbackController');
+const UsersController = require('../controller/UsersController');
 
 router.route('/registration')
     .post(RegistrationController.registerUser);
+router.route('/users/all')
+    .get(UsersController.getAllUsers);
 
 router.route('/security/login')
     .post(SecurityController.login);

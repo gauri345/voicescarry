@@ -8,7 +8,7 @@
     Failed deleting the feedback.
     <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
   </div>
-  <div v-if="serverErrorDisplayed" class="alert alert-danger" role="alert">
+  <div v-if="getServerErrorDisplayed" class="alert alert-danger" role="alert">
     Problem connecting to server. Please try again.
     <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
   </div>
@@ -74,7 +74,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['allFeedbacks', 'feedbackDeleteError', 'feedbackDeleteInfo', 'serverErrorDisplayed'])
+    ...mapGetters(['allFeedbacks', 'feedbackDeleteError', 'feedbackDeleteInfo', 'getServerErrorDisplayed'])
   }
 }
 </script>

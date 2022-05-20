@@ -5,27 +5,31 @@
     <tr class="text-info">
       <th scope="col">Name</th>
       <th scope="col">Email</th>
-      <th scope="col">Role</th>
+      <th scope="col">address</th>
       <th scope="col">Activated</th>
       <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody class="table-bordered">
-    <tr v-for="user in userList" :key="user.id">
-      <td>{{ user.name }}</td>
+    <tr v-for="user in allUsers" :key="user.id">
+      <td>{{ user.fullName }}</td>
       <td>{{ user.email }}</td>
-      <td class="roles-td">{{ createRolesToDisplay(user.roles) }}</td>
+      <td>{{ user.address }}</td>
       <td>
         <a v-if="'active' === user.status" href="javascript:void(0);"> <span
             class="material-icons-outlined text-success" title="Deactivate User">check_circle</span></a>
 
-        <a v-else href="javascript:void(0);"> <span
-            class="material-icons-outlined text-danger" data-bs-target="#activateUser" data-bs-toggle="modal"
-            title="Activate User">highlight_off</span></a>
+        <a v-else href="javascript:void(0);">
+          <span
+              class="material-icons-outlined text-danger" data-bs-target="#activateUser" data-bs-toggle="modal"
+              title="Activate User">highlight_off</span>
+        </a>
       </td>
       <td>
-        <a href="javascript:void(0);"> <span class="material-icons-outlined text-danger" data-bs-target="#deleteUser"
-                                             data-bs-toggle="modal" title="Delete User">delete</span></a>
+        <a href="javascript:void(0);">
+          <span class="material-icons-outlined text-danger" data-bs-target="#deleteUser"
+                data-bs-toggle="modal" title="Delete User">delete</span>
+        </a>
       </td>
     </tr>
     </tbody>
@@ -39,6 +43,7 @@
 import ActivateUserModal from "@/components/user/ActivateUserModal";
 import ComponentHeader from "@/components/ComponentHeader";
 import DeleteConfirmationModel from "@/components/user/DeleteUserConfirmationModel";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "UsersComponent",
@@ -49,39 +54,17 @@ export default {
   },
 
   data() {
-    return {
-      userList: [
-        {
-          id: "kiringmiring",
-          name: "Gauri Upreti",
-          email: "gauri.upreti1@gmail.com",
-          status: "active",
-          roles: ["admin"]
-        },
-        {
-          id: "kiringmiring",
-          name: "Pawan Bhattarai",
-          email: "pawan.bhattarai@gmail.com",
-          status: "inactive",
-          roles: ["surveyor"]
-        },
-        {
-          id: "kiringmiring",
-          name: "John Doe",
-          email: "john.doe@gmail.com",
-          status: "inactive",
-          roles: ["ANALYST", "surveyor"]
-        }
-      ]
-    }
   },
 
   methods: {
-    createRolesToDisplay(roles) {
-      return roles
-          .map(role => role.toLowerCase())
-          .join(', ');
-    },
+    ...mapActions(['fetchAllUsers']),
+  },
+  computed: {
+    ...mapGetters(['allUsers', 'hasError', 'errorMessage'])
+  },
+
+  mounted() {
+    this.fetchAllUsers();
   }
 }
 </script>

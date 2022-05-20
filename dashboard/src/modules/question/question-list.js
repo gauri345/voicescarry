@@ -46,11 +46,12 @@ export default {
     },
     state: {
         questionList: [],
+        serverErrorDisplayed: false
     },
 
     getters: {
         allQuestions: (state) => state.questionList,
-        serverErrorDisplayed: (state) => state.serverErrorDisplayed
+        getServerErrorDisplayed: (state) => state.serverErrorDisplayed
 
     },
 
