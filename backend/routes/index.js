@@ -9,14 +9,22 @@ const RegistrationController = require('../controller/RegistrationController');
 const FeedbackController = require('../controller/FeedbackController');
 const UsersController = require('../controller/UsersController');
 
+/* SECURITY & LOGIN */
 router.route('/registration')
     .post(RegistrationController.registerUser);
-router.route('/users/all')
-    .get(UsersController.getAllUsers);
-
 router.route('/security/login')
     .post(SecurityController.login);
 
+/* USERS ADMINISTRATION */
+router.route('/users/all')
+    .get(UsersController.getAllUsers);
+router.route('/users/status/:userId')
+    .get(UsersController.getUserStatus);
+router.route('/users/status/:userId')
+    .post(UsersController.changeUserStatus);
+
+
+/* QUESTIONS MANAGEMENT */
 router.route('/question')
     .get(QuestionController.index)
     .post(QuestionController.post);

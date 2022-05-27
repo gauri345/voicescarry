@@ -6,8 +6,8 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">address</th>
-      <th scope="col">Activated</th>
-      <th scope="col">Action</th>
+      <th scope="col" class="text-center">Activated</th>
+      <th scope="col" class="text-center">Action</th>
     </tr>
     </thead>
     <tbody class="table-bordered">
@@ -15,17 +15,20 @@
       <td>{{ user.fullName }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.address }}</td>
-      <td>
-        <a v-if="'active' === user.status" href="javascript:void(0);"> <span
-            class="material-icons-outlined text-success" title="Deactivate User">check_circle</span></a>
-
-        <a v-else href="javascript:void(0);">
-          <span
-              class="material-icons-outlined text-danger" data-bs-target="#activateUser" data-bs-toggle="modal"
-              title="Activate User">highlight_off</span>
+      <td class="text-center">
+        <a v-if="user.isActive && !loadingActivateUser" href="javascript:void(0);" @click="toggleUserStatus(user)">
+          <span class="material-icons-outlined text-success" title="Deactivate User">check_circle</span>
         </a>
+        <a v-else-if="!user.isActive && !loadingActivateUser" href="javascript:void(0);" @click="toggleUserStatus(user)">
+          <span class="material-icons-outlined text-danger" title="Deactivate User">cancel</span>
+        </a>
+
+        <div v-if="loadingActivateUser" class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+
       </td>
-      <td>
+      <td class="text-center">
         <a href="javascript:void(0);">
           <span class="material-icons-outlined text-danger" data-bs-target="#deleteUser"
                 data-bs-toggle="modal" title="Delete User">delete</span>
@@ -53,14 +56,11 @@ export default {
     ActivateUserModal
   },
 
-  data() {
-  },
-
   methods: {
-    ...mapActions(['fetchAllUsers']),
+    ...mapActions(['fetchAllUsers', 'toggleUserStatus'])
   },
   computed: {
-    ...mapGetters(['allUsers', 'hasError', 'errorMessage'])
+    ...mapGetters(['allUsers', 'hasError', 'errorMessage', 'loadingActivateUser'])
   },
 
   mounted() {

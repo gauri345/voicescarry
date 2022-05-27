@@ -25,6 +25,7 @@ const routes = [
         path: '/admin',
         component: AdminIndex,
         name: 'adminHome',
+        meta: {requiresAuth: true},
         children: [
             {
                 path: '/surveys',

@@ -8,20 +8,20 @@
           <button aria-label="Close" class="btn-close bg-light" data-bs-dismiss="modal" type="button"></button>
         </div>
         <div class="modal-body bg-secondary">
-          <h4>Select roles for the user</h4>
+          <h5 class="h5">Activated user can perform the following</h5>
+          <ul class="list-group list-group-flush bg-dark">
+            <li class="list-group-item text-info">An item</li>
+            <li class="list-group-item text-info">A second item</li>
+            <li class="list-group-item text-info">A third item</li>
+            <li class="list-group-item text-info">A fourth item</li>
+            <li class="list-group-item text-info">And a fifth one</li>
+          </ul>
+
+
           <div class="list-group ">
-            <label class="list-group-item text-light">
-              <input class="form-check-input me-1" type="checkbox" value="">
-              Admin (will have access to all available features)
-            </label>
-            <label class="list-group-item text-light">
-              <input class="form-check-input me-1" type="checkbox" value="">
-              Surveyor (will have access to questions)
-            </label>
-            <label class="list-group-item text-light">
-              <input class="form-check-input me-1" type="checkbox" value="">
-              Analyst (Can analyse the result of the data)
-            </label>
+            <div class="list-group-item">
+              <h5 class="h6 text-info"></h5>
+            </div>
           </div>
         </div>
         <div class="modal-footer bg-dark">
