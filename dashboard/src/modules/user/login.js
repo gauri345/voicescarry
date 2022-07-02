@@ -1,3 +1,5 @@
+import ApiConfig from "@/config/ApiConfig";
+
 const axios = require('axios');
 import router from '../../routes';
 
@@ -17,7 +19,7 @@ export default {
 
             const config = {
                 method: 'post',
-                url: 'http://localhost:4000/api/security/login',
+                url: `${ApiConfig.API_BASE_URL}/security/login`,
                 headers: {
                     'Content-Type': 'application/json'
                 },

@@ -1,3 +1,5 @@
+import ApiConfig from "@/config/ApiConfig";
+
 const axios = require('axios');
 
 export default {
@@ -5,7 +7,7 @@ export default {
         async fetchAllQuestions({commit}) {
             const config = {
                 method: 'get',
-                url: 'http://localhost:4000/api/question',
+                url:  `${ApiConfig.API_BASE_URL}/question`,
                 headers: {}
             };
 

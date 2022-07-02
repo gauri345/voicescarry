@@ -1,11 +1,12 @@
 const axios = require('axios');
+import ApiConfig from "@/config/ApiConfig";
 
 export default {
     actions: {
         async fetchFeedback({commit}) {
             const config = {
                 method: 'get',
-                url: 'http://localhost:4000/api/feedback',
+                url:  `${ApiConfig.API_BASE_URL}/feedback`,
                 headers: {}
             };
 
@@ -25,7 +26,7 @@ export default {
         async deleteFeedback({commit, state}, feedbackId) {
             const config = {
                 method: 'delete',
-                url: 'http://localhost:4000/api/feedback/' + feedbackId
+                url: `${ApiConfig.API_BASE_URL}/feedback/${feedbackId}`
             };
 
             try {
@@ -35,7 +36,7 @@ export default {
                     commit('TOGGLE_DELETE_FEEDBACK_INFO_MESSAGE');
                     const newFeedbackList = state.feedbackList.filter(feedback => feedback._id !== feedbackId);
                     commit('UPDATE_ALL_FEEDBACKS', newFeedbackList);
-                } if (response.status == 404) {
+                } if (response.status === 404) {
                     commit('TOGGLE_DELETE_FEEDBACK_ERROR_MESSAGE');
                 }
             } catch (error) {

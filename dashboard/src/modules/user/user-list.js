@@ -1,11 +1,13 @@
 import axios from "axios";
 
+import ApiConfig from "@/config/ApiConfig";
+
 export default {
     state: {
         allUsers: [],
         hasError: false,
         errorMessage: "",
-        loadingActivateUser: false
+        activeToggleRequests: []
     },
 
     actions: {
@@ -13,10 +15,7 @@ export default {
 
             const config = {
                 method: 'get',
-                url: 'http://localhost:4000/api/users/all',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                url: `${ApiConfig.API_BASE_URL}/users/all`
             };
 
             try {
@@ -28,12 +27,18 @@ export default {
             }
         },
 
+        async deleteUser({commit}, userId) {
+                console.log('user to delete', userId);
+
+                commit('');
+        },
+
         async toggleUserStatus({commit}, user) {
-            commit('TOGGLE_LOADING_ACTIVATE_USER');
+            commit('ADD_USER_ID_TO_ACTIVE_TOGGLE_REQUEST', user._id);
 
             const config = {
                 method: 'post',
-                url: `http://localhost:4000/api/users/status/${user._id}`,
+                url: `${ApiConfig.API_BASE_URL}/users/status/${user._id}`,
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -46,12 +51,11 @@ export default {
                 await axios(config);
                 user.isActive = !user.isActive;
                 commit('UPDATE_SINGLE_USER', user);
+                commit('REMOVE_USER_ID_FROM_ACTIVE_TOGGLE_REQUEST', user._id);
             } catch (error) {
                 commit('TOGGLE_ERROR', []);
                 commit('UPDATE_ERROR_MESSAGE', "Failed activating user. Please try again.");
             }
-
-            commit('TOGGLE_LOADING_ACTIVATE_USER');
         }
     },
 
@@ -59,17 +63,18 @@ export default {
         allUsers: (state) => state.allUsers,
         hasError: (state) => state.hasError,
         errorMessage: (state) => state.errorMessage,
-        loadingActivateUser: (state) => state.loadingActivateUser
+        activeToggleRequests: (state) => state.activeToggleRequests
     },
 
     mutations: {
         UPDATE_ALL_USERS: (state, userList) => state.allUsers = userList,
         TOGGLE_ERROR: (state) => state.hasError = !state.hasError,
         UPDATE_ERROR_MESSAGE: (state, message) => state.errorMessage = message,
-        TOGGLE_LOADING_ACTIVATE_USER: (state) => state.loadingActivateUser = !state.loadingActivateUser,
         UPDATE_SINGLE_USER: (state, userToUpdate) => {
             const index = state.allUsers.findIndex((user => user._id === userToUpdate._id));
             state.allUsers[index] = userToUpdate;
-        }
+        },
+        ADD_USER_ID_TO_ACTIVE_TOGGLE_REQUEST: (state, userId) => state.activeToggleRequests.push(userId),
+        REMOVE_USER_ID_FROM_ACTIVE_TOGGLE_REQUEST: (state, userId) => state.activeToggleRequests = state.activeToggleRequests.filter(id => userId !== id),
     }
 }

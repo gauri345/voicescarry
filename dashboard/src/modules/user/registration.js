@@ -1,5 +1,6 @@
 const axios = require('axios');
 import router from '../../routes';
+import ApiConfig from "@/config/ApiConfig";
 
 export default {
     state: {
@@ -17,7 +18,7 @@ export default {
 
             const config = {
                 method: 'post',
-                url: 'http://localhost:4000/api/registration',
+                url: `${ApiConfig.API_BASE_URL}/registration`,
                 headers: {
                     'Content-Type': 'application/json'
                 },

@@ -1,3 +1,26 @@
+exports.deleteUserById = async function (req, res) {
+    const userId =req.params.userId;
+    const deletedItems = await User.deleteOne({_id: userId});
+
+    if (deletedItems <= 0) {
+        res
+            .status(404)
+            .json({
+                status: "error",
+                message: `User with id ${userId} not found in the database.`
+            });
+    } else {
+        res
+            .status(200)
+            .json(
+                {
+                    status: "success",
+                    message: `User with id ${userId} removed from database.`
+                }
+            )
+    }
+}
+
 const User = require("../model/userModel");
 
 exports.getAllUsers = async function (req, res) {

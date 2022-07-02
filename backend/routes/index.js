@@ -22,6 +22,8 @@ router.route('/users/status/:userId')
     .get(UsersController.getUserStatus);
 router.route('/users/status/:userId')
     .post(UsersController.changeUserStatus);
+router.route('/users/:userId')
+    .delete(UsersController.deleteUserById);
 
 
 /* QUESTIONS MANAGEMENT */

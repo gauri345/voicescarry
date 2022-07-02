@@ -6,8 +6,8 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">address</th>
-      <th scope="col" class="text-center">Activated</th>
-      <th scope="col" class="text-center">Action</th>
+      <th class="text-center" scope="col">Activated</th>
+      <th class="text-center" scope="col">Action</th>
     </tr>
     </thead>
     <tbody class="table-bordered">
@@ -16,34 +16,35 @@
       <td>{{ user.email }}</td>
       <td>{{ user.address }}</td>
       <td class="text-center">
-        <a v-if="user.isActive && !loadingActivateUser" href="javascript:void(0);" @click="toggleUserStatus(user)">
-          <span class="material-icons-outlined text-success" title="Deactivate User">check_circle</span>
-        </a>
-        <a v-else-if="!user.isActive && !loadingActivateUser" href="javascript:void(0);" @click="toggleUserStatus(user)">
-          <span class="material-icons-outlined text-danger" title="Deactivate User">cancel</span>
+
+        <a v-if="'deactivate' === getToggle(user)" href="javascript:void(0);" @click="toggleUserStatus(user)">
+          <span class="material-icons-outlined text-success" title="Click to deactivate User">check_circle</span>
         </a>
 
-        <div v-if="loadingActivateUser" class="spinner-border text-success" role="status">
+        <a v-else-if="'activate' === getToggle(user)" href="javascript:void(0);" @click="toggleUserStatus(user)">
+          <span class="material-icons-outlined text-danger" title="Click to activate User">cancel</span>
+        </a>
+
+        <div v-if="'loading' === getToggle(user)" class="spinner-border text-white spinner-border-sm" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
 
       </td>
       <td class="text-center">
         <a href="javascript:void(0);">
-          <span class="material-icons-outlined text-danger" data-bs-target="#deleteUser"
+          <span class="material-icons-outlined text-danger" :data-bs-target="'#deleteUser' + user._id"
                 data-bs-toggle="modal" title="Delete User">delete</span>
+          <DeleteConfirmationModel :user-id="user._id"/>
         </a>
       </td>
     </tr>
     </tbody>
   </table>
-  <ActivateUserModal/>
-  <DeleteConfirmationModel/>
+
 
 </template>
 
 <script>
-import ActivateUserModal from "@/components/user/ActivateUserModal";
 import ComponentHeader from "@/components/ComponentHeader";
 import DeleteConfirmationModel from "@/components/user/DeleteUserConfirmationModel";
 import {mapActions, mapGetters} from "vuex";
@@ -52,15 +53,28 @@ export default {
   name: "UsersComponent",
   components: {
     DeleteConfirmationModel,
-    ComponentHeader,
-    ActivateUserModal
+    ComponentHeader
   },
 
   methods: {
-    ...mapActions(['fetchAllUsers', 'toggleUserStatus'])
+    ...mapActions(['fetchAllUsers', 'toggleUserStatus', 'deleteUser']),
+
+    getToggle(user) {
+      if (this.activeToggleRequests.filter(value => value === user._id).length >= 1) {
+        return 'loading';
+      }
+
+      if (user.isActive) {
+        return 'deactivate';
+      }
+
+      if (!user.isActive) {
+        return 'activate';
+      }
+    }
   },
   computed: {
-    ...mapGetters(['allUsers', 'hasError', 'errorMessage', 'loadingActivateUser'])
+    ...mapGetters(['allUsers', 'hasError', 'errorMessage', 'activeToggleRequests'])
   },
 
   mounted() {
@@ -76,11 +90,4 @@ export default {
   margin-right: 2px;
 }
 
-.add-new-button {
-  font-weight: 300;
-}
-
-.roles-td {
-  text-transform: capitalize;
-}
 </style>
