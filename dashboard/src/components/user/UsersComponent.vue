@@ -1,5 +1,13 @@
 <template>
   <ComponentHeader text="Users"/>
+  <div v-if="userDeleteSucceed" class="alert alert-success" role="alert">
+    User successfully deleted.
+    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
+  </div>
+  <div v-if="userDeleteError" class="alert alert-danger" role="alert">
+    Failed deleting the User.
+    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
+  </div>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
@@ -74,7 +82,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['allUsers', 'hasError', 'errorMessage', 'activeToggleRequests'])
+    ...mapGetters(['allUsers', 'hasError', 'errorMessage', 'activeToggleRequests', 'userDeleteError', 'userDeleteSucceed'])
   },
 
   mounted() {
