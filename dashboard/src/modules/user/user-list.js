@@ -5,34 +5,23 @@ import ApiConfig from "@/config/ApiConfig";
 export default {
     state: {
         allUsers: [],
-        hasError: false,
-        errorMessage: "",
         activeToggleRequests: [],
-        userDeleteError: false,
-        userDeleteSucceed: false,
     },
 
     actions: {
-        async fetchAllUsers({commit}) {
-
-            const config = {
-                method: 'get',
-                url: `${ApiConfig.API_BASE_URL}/users/all`
-            };
-
+        async fetchAllUsers({commit, dispatch}) {
             try {
-                const response = await axios(config);
+                const response = await axios({
+                    method: 'get',
+                    url: `${ApiConfig.API_BASE_URL}/users/all`
+                });
                 commit('UPDATE_ALL_USERS', response.data.data);
             } catch (error) {
-
-                commit('TOGGLE_ERROR', []);
-                commit('UPDATE_ERROR_MESSAGE', "Failed loading users from database.");
+                dispatch('showError', "Failed loading users from database.", {root: true});
             }
         },
 
-        async deleteUser({commit}, userId) {
-            console.log('user to delete', userId);
-
+        async deleteUser({commit, dispatch}, userId) {
             const config = {
                 method: 'delete',
                 url: `${ApiConfig.API_BASE_URL}/users/${userId}`,
@@ -44,13 +33,13 @@ export default {
             try {
                 await axios(config);
                 commit('REMOVE_USER_FROM_THE_LIST_BY_ID', userId);
-                commit('TOGGLE_DELETE_USER_SUCCEED');
+                dispatch('showInfo', " User successfully deleted.", {root: true});
             } catch (error) {
-                commit('TOGGLE_DELETE_USER_ERROR');
+                dispatch('showError', " Failed deleting the User.", {root: true});
             }
         },
 
-        async toggleUserStatus({commit}, user) {
+        async toggleUserStatus({commit, dispatch}, user) {
             commit('ADD_USER_ID_TO_ACTIVE_TOGGLE_REQUEST', user._id);
 
             const config = {
@@ -71,24 +60,18 @@ export default {
                 commit('REMOVE_USER_ID_FROM_ACTIVE_TOGGLE_REQUEST', user._id);
             } catch (error) {
                 commit('TOGGLE_ERROR', []);
-                commit('UPDATE_ERROR_MESSAGE', "Failed activating user. Please try again.");
+                dispatch('showError', " Failed activating user. Please try again.", {root: true});
             }
         }
     },
 
     getters: {
         allUsers: (state) => state.allUsers,
-        hasError: (state) => state.hasError,
-        errorMessage: (state) => state.errorMessage,
         activeToggleRequests: (state) => state.activeToggleRequests,
-        userDeleteError: (state) => state.userDeleteError,
-        userDeleteSucceed: (state) => state.userDeleteSucceed
     },
 
     mutations: {
         UPDATE_ALL_USERS: (state, userList) => state.allUsers = userList,
-        TOGGLE_ERROR: (state) => state.hasError = !state.hasError,
-        UPDATE_ERROR_MESSAGE: (state, message) => state.errorMessage = message,
         UPDATE_SINGLE_USER: (state, userToUpdate) => {
             const index = state.allUsers.findIndex((user => user._id === userToUpdate._id));
             state.allUsers[index] = userToUpdate;
@@ -96,7 +79,5 @@ export default {
         ADD_USER_ID_TO_ACTIVE_TOGGLE_REQUEST: (state, userId) => state.activeToggleRequests.push(userId),
         REMOVE_USER_ID_FROM_ACTIVE_TOGGLE_REQUEST: (state, userId) => state.activeToggleRequests = state.activeToggleRequests.filter(id => userId !== id),
         REMOVE_USER_FROM_THE_LIST_BY_ID: (state, userId) => state.allUsers = state.allUsers.filter(user => userId !== user._id),
-        TOGGLE_DELETE_USER_ERROR: (state) => state.errorMessageDisplayed = !state.errorMessageDisplayed,
-        TOGGLE_DELETE_USER_SUCCEED: (state) => state.userDeleteSucceed = !state.infoMessageDisplayed,
     }
 }

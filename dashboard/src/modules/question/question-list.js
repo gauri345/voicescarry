@@ -24,7 +24,7 @@ export default {
             }
         },
 
-       /* async deleteFeedback({commit, state}, feedbackId) {
+       async deleteFeedback({commit, state}, feedbackId) {
             const config = {
                 method: 'delete',
                 url: 'http://localhost:4000/api/feedback/' + feedbackId
@@ -44,7 +44,7 @@ export default {
                 commit('TOGGLE_SERVER_MESSAGE');
                 console.log("Failed fetching feedback.", error);
             }
-        }*/
+        }
     },
     state: {
         questionList: [],

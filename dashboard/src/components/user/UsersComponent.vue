@@ -1,13 +1,6 @@
 <template>
   <ComponentHeader text="Users"/>
-  <div v-if="userDeleteSucceed" class="alert alert-success" role="alert">
-    User successfully deleted.
-    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
-  </div>
-  <div v-if="userDeleteError" class="alert alert-danger" role="alert">
-    Failed deleting the User.
-    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
-  </div>
+  <AlertBox/>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
@@ -40,7 +33,7 @@
       </td>
       <td class="text-center">
         <a href="javascript:void(0);">
-          <span class="material-icons-outlined text-danger" :data-bs-target="'#deleteUser' + user._id"
+          <span :data-bs-target="'#deleteUser' + user._id" class="material-icons-outlined text-danger"
                 data-bs-toggle="modal" title="Delete User">delete</span>
           <DeleteConfirmationModel :user-id="user._id"/>
         </a>
@@ -48,18 +41,18 @@
     </tr>
     </tbody>
   </table>
-
-
 </template>
 
 <script>
 import ComponentHeader from "@/components/ComponentHeader";
 import DeleteConfirmationModel from "@/components/user/DeleteUserConfirmationModel";
 import {mapActions, mapGetters} from "vuex";
+import AlertBox from "@/components/util/AlertBox";
 
 export default {
   name: "UsersComponent",
   components: {
+    AlertBox,
     DeleteConfirmationModel,
     ComponentHeader
   },
@@ -82,7 +75,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['allUsers', 'hasError', 'errorMessage', 'activeToggleRequests', 'userDeleteError', 'userDeleteSucceed'])
+    ...mapGetters(['allUsers', 'activeToggleRequests'])
   },
 
   mounted() {

@@ -6,8 +6,8 @@
     <div class="col-md-6">
       <select class="form-select form-select" id="questionType">
         <option selected>Question Type</option>
-        <option value="1">Select</option>
-        <option value="2">Scale</option>
+        <option value="select">Select</option>
+        <option value="scale">Scale</option>
       </select>
     </div>
     <div class="col-12">
@@ -33,7 +33,7 @@
       <input id="inputZip" class="form-control" type="text">
     </div>
     <div class="col-12">
-      <button class="btn btn-primary" type="submit">Save</button>
+      <button class="btn btn-primary" type="button/">Save</button>
       &nbsp;&nbsp;
       <router-link to="/question/" class="btn btn-danger">Cancel</router-link>
     </div>

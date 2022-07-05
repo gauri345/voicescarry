@@ -1,5 +1,6 @@
 <template>
-  <router-link class="btn btn-dark" to="/question/form" style="float: right;">Add</router-link>
+  <router-link class="btn btn-dark" style="float: right;" to="/question/form">Add</router-link>
+  <AlertBox message="This is test message" type="danger"/>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
@@ -19,34 +20,36 @@
         <a :data-bs-target="`#answerModal_${question._id}`" data-bs-toggle="modal" href="javascript:void(0)">
           View
         </a>
-        <div :id="`answerModal_${question._id}`" aria-hidden="true" aria-labelledby="answerModalLabel" class="modal fade"
+        <div :id="`answerModal_${question._id}`" aria-hidden="true" aria-labelledby="answerModalLabel"
+             class="modal fade"
              tabindex="-1">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 id="answerModalLabel" class="modal-title">Answers for {{question.number}}</h5>
+                <h5 id="answerModalLabel" class="modal-title">Answers for {{ question.number }}</h5>
                 <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
               </div>
               <div class="modal-body">
                 <div class="container">
-                  <div class="row"  v-for="answer in question.answers" :key="answer._id">
-                    <div class="col">{{answer.value}}</div>
-                    <div class="col">{{createDefaultTitle(answer.items)}}</div>
+                  <div v-for="answer in question.answers" :key="answer._id" class="row">
+                    <div class="col">{{ answer.value }}</div>
+                    <div class="col">{{ createDefaultTitle(answer.items) }}</div>
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
               </div>
             </div>
           </div>
         </div>
       </td>
       <td>
-        <a>
-          <span class="material-icons-outlined text-danger" title="Delete question">delete</span>
-          <span class="material-symbols-outlined">edit</span>
-
+        <a href="javascript:void(0);" title="Edit Question" data-bs-toggle="tooltip">
+          <span class="material-icons">edit</span>
+        </a>
+        <a href="javascript:void(0);" data-bs-toggle="tooltip" title="Delete question">
+          <span class="material-icons text-danger">delete</span>
         </a>
       </td>
     </tr>
@@ -56,9 +59,13 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import AlertBox from "@/components/util/AlertBox";
 
 export default {
   name: "QuestionList",
+  components: {
+    AlertBox
+  },
   methods: {
     ...mapActions(['fetchAllQuestions']),
     createDefaultTitle: (questionTitles) => {

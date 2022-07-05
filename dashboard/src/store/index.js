@@ -5,6 +5,7 @@ import registration from "@/modules/user/registration";
 import feedbackList from "@/modules/feedback/feedback-list";
 import questionList from "@/modules/question/question-list";
 import userList from "@/modules/user/user-list";
+import alertBox from "@/modules/util/alert-box";
 
 export default createStore({
     modules: {
@@ -12,6 +13,7 @@ export default createStore({
         registration,
         feedbackList,
         questionList,
-        userList
+        userList,
+        alertBox
     }
 });
