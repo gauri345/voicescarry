@@ -38,7 +38,7 @@ exports.createSurvey = async function (req, res) {
     }
 };
 
-exports.allSurveys =  async function(req, res) {
+exports.allSurveys = async function (req, res) {
     try {
         const allSurveys = await Survey.find();
         res
@@ -60,7 +60,7 @@ exports.allSurveys =  async function(req, res) {
     }
 }
 
-exports.downloadAnswers = async function(req, res) {
+exports.downloadAnswers = async function (req, res) {
     const surveyCode = req.params.surveyCode;
 
     if (!surveyCode) {
@@ -75,8 +75,7 @@ exports.downloadAnswers = async function(req, res) {
             const answers = await AnswerModel.find({surveyCode: surveyCode});
             const fileName = `${__dirname}/${surveyCode}.json`;
             fs.writeFile(fileName, JSON.stringify(answers), 'utf8')
-                .then(res.download(fileName))
-                .finally(async () => await fs.unlink(fileName));
+                .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
         } catch (error) {
             res
                 .status(500)
@@ -88,7 +87,7 @@ exports.downloadAnswers = async function(req, res) {
     }
 }
 
-exports.surveyAnswersByCode = async function(req, res) {
+exports.surveyAnswersByCode = async function (req, res) {
     const surveyCode = req.params.surveyCode;
 
     if (!surveyCode) {
