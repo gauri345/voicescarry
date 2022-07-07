@@ -39,7 +39,7 @@ export default {
 
                 commit('UPDATE_QUESTION', response.data.data);
             } catch (error) {
-                dispatch('showError', " Failed deleting the User.", {root: true});
+                dispatch('showError', " Failed deleting the question to edit.", {root: true});
             }
         },
         addNewAnswer({commit}) {
@@ -47,7 +47,6 @@ export default {
         },
 
         removeExistingAnswer({commit}, answerIndex) {
-            console.log(answerIndex);
             commit('REMOVE_ANSWER_BY_INDEX', answerIndex);
         },
 

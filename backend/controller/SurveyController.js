@@ -63,8 +63,33 @@ exports.allSurveys =  async function(req, res) {
 exports.downloadAnswers = async function(req, res) {
     const surveyCode = req.params.surveyCode;
 
-    console.log(__dirname);
-    console.log(surveyCode);
+    if (!surveyCode) {
+        res
+            .status(400)
+            .json({
+                status: "error",
+                message: 'Survey code is required to download answers.'
+            });
+    } else {
+        try {
+            const answers = await AnswerModel.find({surveyCode: surveyCode});
+            const fileName = `${__dirname}/${surveyCode}.json`;
+            fs.writeFile(fileName, JSON.stringify(answers), 'utf8')
+                .then(res.download(fileName))
+                .finally(async () => await fs.unlink(fileName));
+        } catch (error) {
+            res
+                .status(500)
+                .json({
+                    status: "error",
+                    message: "Failed downloading file. Please contact your administrator."
+                });
+        }
+    }
+}
+
+exports.surveyAnswersByCode = async function(req, res) {
+    const surveyCode = req.params.surveyCode;
 
     if (!surveyCode) {
         res
@@ -74,10 +99,26 @@ exports.downloadAnswers = async function(req, res) {
                 message: 'Survey code is required to download answers.'
             });
     } else {
-        const answers = await AnswerModel.find({surveyCode: surveyCode});
-        const fileName = `${__dirname}/${surveyCode}.json`;
-        fs.writeFile(fileName, JSON.stringify(answers), 'utf8')
-            .then(res.download(fileName))
-            .finally(async () => await fs.unlink(fileName));
+
+        try {
+            const answers = await AnswerModel.find({surveyCode: surveyCode});
+
+            res
+                .status(200)
+                .json(
+                    {
+                        status: "success",
+                        message: `Total [${answers.length}] answers received`,
+                        data: answers
+                    }
+                )
+        } catch (error) {
+            res
+                .status(404)
+                .json({
+                    status: "error",
+                    message: `Error occurred while fetching the survey answers from database [${error}}].`
+                });
+        }
     }
 }

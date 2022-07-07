@@ -4,7 +4,7 @@ const axios = require('axios');
 
 export default {
     actions: {
-        async fetchAllQuestions({commit}) {
+        async fetchAllQuestions({commit, dispatch}) {
             const config = {
                 method: 'get',
                 url:  `${ApiConfig.API_BASE_URL}/question`,
@@ -13,18 +13,13 @@ export default {
 
             try {
                 const response = await axios(config);
-
-                const questionList = response.data.data;
-
-                commit('UPDATE_ALL_QUESTIONS', questionList);
-
+                commit('UPDATE_ALL_QUESTIONS', response.data.data);
             } catch (error) {
-                commit('TOGGLE_SERVER_MESSAGE');
-                console.log("Failed fetching questions.", error);
+                dispatch('showError', " Failed fetching questions.", {root: true});
             }
         },
 
-       async deleteFeedback({commit, state}, feedbackId) {
+       async deleteFeedback({commit, state, dispatch}, feedbackId) {
             const config = {
                 method: 'delete',
                 url: 'http://localhost:4000/api/feedback/' + feedbackId
@@ -41,14 +36,12 @@ export default {
                     commit('TOGGLE_DELETE_FEEDBACK_ERROR_MESSAGE');
                 }
             } catch (error) {
-                commit('TOGGLE_SERVER_MESSAGE');
-                console.log("Failed fetching feedback.", error);
+                dispatch('showError', " Failed deleting the Questions.", {root: true});
             }
         }
     },
     state: {
         questionList: [],
-        serverErrorDisplayed: false
     },
 
     getters: {
@@ -59,6 +52,5 @@ export default {
 
     mutations: {
         UPDATE_ALL_QUESTIONS: (state, questionList) => state.questionList = questionList,
-        TOGGLE_SERVER_MESSAGE: (state) => state.serverErrorDisplayed = !state.serverErrorDisplayed
     }
 }

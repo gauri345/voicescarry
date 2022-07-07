@@ -13,6 +13,7 @@ import FeedbacksComponent from "@/components/feedback/FeedbacksComponent";
 import AdminIndex from "@/components/admin/AdminIndex";
 import QuestionList from "@/components/question/QuestionList";
 import SurveyList from "@/components/survey/SurveyList";
+import SurveyAnswerList from "@/components/survey/SurveyAnswerList";
 
 const routes = [
     {
@@ -37,6 +38,11 @@ const routes = [
                         path: '',
                         name: 'SurveyList',
                         component: SurveyList
+                    },
+                    {
+                        path: 'answers/survey-code=:surveyCode',
+                        name: 'SurveyAnswerList',
+                        component: SurveyAnswerList
                     },
                 ]
             },

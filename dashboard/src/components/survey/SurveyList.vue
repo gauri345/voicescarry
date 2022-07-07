@@ -15,7 +15,7 @@
       <td>{{ survey.factoryCode }}</td>
       <td>{{ survey.surveyDate }}</td>
       <td>
-        <a class="material-icons text-decoration-none text-info" href="#">preview</a>
+        <a class="material-icons text-decoration-none text-info" href="javascript:void(0);" @click="previewAnswers(survey.surveyCode)" >preview</a>
         <a class="material-icons text-decoration-none text-info" href="javascript:void(0);"
            @click="downloadSurveyAnswers(survey.surveyCode)">download</a>
       </td>
@@ -38,6 +38,9 @@ export default {
     ...mapActions(['fetchAllSurveys']),
     downloadSurveyAnswers(surveyCode) {
       window.location.href = `${ApiConfig.API_BASE_URL}/surveys/downloadAnswers/${surveyCode}`;
+    },
+    previewAnswers(surveyCode) {
+      this.$router.push('/surveys/answers/survey-code=' + surveyCode)
     }
   },
   mounted() {

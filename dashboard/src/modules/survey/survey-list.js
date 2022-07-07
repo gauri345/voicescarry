@@ -7,7 +7,7 @@ export default {
         surveyList: []
     },
     actions: {
-        async fetchAllSurveys({commit}) {
+        async fetchAllSurveys({commit, dispatch}) {
             const config = {
                 method: 'get',
                 url: `${ApiConfig.API_BASE_URL}/surveys`,
@@ -16,10 +16,9 @@ export default {
 
             try {
                 const response = await axios(config);
-
                 commit('UPDATE_ALL_SURVEYS', response.data.data);
             } catch (error) {
-                commit('TOGGLE_SERVER_MESSAGE');
+                dispatch('showError', " Failed deleting the User.", {root: true});
                 console.log("Failed fetching surveys.", error);
             }
         }

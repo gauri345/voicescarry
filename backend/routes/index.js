@@ -51,6 +51,9 @@ router.route('/surveys/')
 router.route('/surveys/downloadAnswers/:surveyCode')
     .get(SurveyController.downloadAnswers);
 
+router.route('/surveys/answers/:surveyCode')
+    .get(SurveyController.surveyAnswersByCode);
+
 router.route('/survey/start/:factoryCode')
     .get(SurveyController.createSurvey)
 
