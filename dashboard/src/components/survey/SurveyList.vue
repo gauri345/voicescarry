@@ -19,6 +19,7 @@
 
         <button class="btn btn-sm btn-warning ms-1" type="button" @click="filterSurveys">Filter</button>
         <button class="btn btn-sm btn-danger ms-1" type="button" @click="resetFilters">Reset</button>
+        <a class="btn btn-dark material-icons ms-1" style="float: right;" @click="downloadAllSurveyAnswers" title="Download all Survey Answers">download</a>
 
       </div>
 
@@ -65,6 +66,9 @@ export default {
     ...mapActions(['fetchAllSurveys', 'filterSurveys', 'resetFilters']),
     downloadSurveyAnswers(surveyCode) {
       window.location.href = `${ApiConfig.API_BASE_URL}/surveys/downloadAnswers/${surveyCode}`;
+    },
+    downloadAllSurveyAnswers() {
+      window.location.href = `${ApiConfig.API_BASE_URL}/surveys/downloadAnswers`;
     },
     previewAnswers(surveyCode) {
       this.$router.push('/surveys/answers/survey-code=' + surveyCode)

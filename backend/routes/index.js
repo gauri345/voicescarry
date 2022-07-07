@@ -52,7 +52,7 @@ router.route('/factory/exists')
 router.route('/surveys/')
     .get(SurveyController.allSurveys);
 
-router.route('/surveys/downloadAnswers/:surveyCode')
+router.route('/surveys/downloadAnswers/:surveyCode?')
     .get(SurveyController.downloadAnswers);
 
 router.route('/surveys/filterByDate')

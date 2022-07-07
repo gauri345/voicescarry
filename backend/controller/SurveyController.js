@@ -63,29 +63,30 @@ exports.allSurveys = async function (req, res) {
 exports.downloadAnswers = async function (req, res) {
     const surveyCode = req.params.surveyCode;
 
-    if (!surveyCode) {
+    try {
+        let answers, fileName;
+
+        if (!surveyCode) {
+            answers = await AnswerModel.find();
+            fileName = `${__dirname}/survey_answers.json`;
+        } else {
+            answers = await AnswerModel.find({surveyCode: surveyCode});
+            fileName = `${__dirname}/${surveyCode}.json`;
+        }
+
+        fs
+            .writeFile(fileName, JSON.stringify(answers), 'utf8')
+            .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
+    } catch (error) {
         res
-            .status(400)
+            .status(500)
             .json({
                 status: "error",
-                message: 'Survey code is required to download answers.'
+                message: "Failed downloading file. Please contact your administrator."
             });
-    } else {
-        try {
-            const answers = await AnswerModel.find({surveyCode: surveyCode});
-            const fileName = `${__dirname}/${surveyCode}.json`;
-            fs.writeFile(fileName, JSON.stringify(answers), 'utf8')
-                .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
-        } catch (error) {
-            res
-                .status(500)
-                .json({
-                    status: "error",
-                    message: "Failed downloading file. Please contact your administrator."
-                });
-        }
     }
 }
+
 
 exports.surveyAnswersByCode = async function (req, res) {
     const surveyCode = req.params.surveyCode;
