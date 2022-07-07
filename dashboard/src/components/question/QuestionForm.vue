@@ -66,16 +66,16 @@
                   <div class="col">
                     <input :value="answer.answerValue"
                            class="form-control mt-1"
-                           placeholder="Value (in English)" type="text" @blur="updateAnswer($event, index, 'answerValue')" required/>
+                           placeholder="Value (in English)" type="text" @keyup="updateAnswer($event, index, 'answerValue')" required/>
 
                   </div>
 
                   <div class="col mt-2">
                     <input :value="answer.answerTitleEnglish"
                            class="form-control mb-2"
-                           placeholder="Text (English)" type="text" required @blur="updateAnswer($event, index, 'answerTitleEnglish')"/>
+                           placeholder="Text (English)" type="text" required @keyup="updateAnswer($event, index, 'answerTitleEnglish')"/>
                     <input :value="answer.answerTitleVietnamese"
-                           class="form-control mb-2" placeholder="Text (Vietnamese)" type="text" @blur="updateAnswer($event, index, 'answerTitleVietnamese')" />
+                           class="form-control mb-2" placeholder="Text (Vietnamese)" type="text" @keyup="updateAnswer($event, index, 'answerTitleVietnamese')" />
                   </div>
 
                   <div v-if="index !== 0" class="col mt-2">
@@ -89,7 +89,7 @@
               </div>
 
               <div class="col-auto">
-                <button class="btn btn-success material-icons text-white text-decoration-none" @click="addAnswer" type="button">
+                <button class="btn btn-success material-icons text-white text-decoration-none" @click="addNewAnswer" type="button">
                   add
                 </button> &nbsp;
 
@@ -154,15 +154,6 @@ export default {
     },
     updateAnswer(event, answerIndex, fieldName) {
       this.updateAnswerFieldByIndex({index: answerIndex, fieldName: fieldName, value: event.currentTarget.value});
-    },
-    addAnswer() {
-      this.addNewAnswer(
-          {
-            answerValueEnglish: '',
-            answerValueVietnamese: ''
-          }
-      );
-
     },
     removeAnswer(index) {
       this.removeExistingAnswer(index)
