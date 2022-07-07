@@ -22,6 +22,26 @@ export default {
                 dispatch('showError', " Failed fetching factories.", {root: true});
             }
         },
+        async deleteFactory({commit, state, dispatch}, factoryId) {
+            const config = {
+                method: 'delete',
+                url: `${ApiConfig.API_BASE_URL}/factory/${factoryId}`
+            };
+
+            try {
+                const response = await axios(config);
+                if (response.status === 200) {
+                    const newFactoryList = state.factoryList.filter(factory => factory._id !== factoryId);
+                    dispatch('showInfo', "Factory successfully deleted.", {root: true});
+                    commit('UPDATE_ALL_FACTORIES', newFactoryList);
+                }
+                if (response.status === 404) {
+                    dispatch('showError', "Failed deleting factory.", {root: true});
+                }
+            } catch (error) {
+                dispatch('showError', "Failed deleting factory.", {root: true});
+            }
+        },
     },
     getters: {
         allFactories: (state) => state.factoryList,

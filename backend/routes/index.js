@@ -44,6 +44,7 @@ router.route('/factory')
 
 router.route('/factory/:id')
     .get(FactoryController.findById)
+    .delete(FactoryController.delete);
 
 router.route('/factory/exists')
     .get(FactoryController.checkIfExists);

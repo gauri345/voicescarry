@@ -100,3 +100,34 @@ exports.checkIfExists = async function (req, res) {
         res.sendStatus(500)
     }
 }
+
+exports.delete = async function (req, res) {
+    const factoryId = req.params.id;
+
+    try {
+        const existingFactory = await Factory.findById(factoryId);
+        if (existingFactory) {
+            await Factory.findByIdAndRemove(factoryId);
+            res
+                .status(200)
+                .json({
+                    status: "success",
+                    message: "Factory with provided id: " + factoryId + ' was deleted from the database.'
+                });
+        } else {
+            res
+                .status(404)
+                .json({
+                    status: "error",
+                    message: "Factory with provided id: " + factoryId + ' not found in database.'
+                });
+        }
+    } catch (error) {
+        res
+            .status(500)
+            .json({
+                status: "error",
+                message: "Failed deleting factory."
+            });
+    }
+}

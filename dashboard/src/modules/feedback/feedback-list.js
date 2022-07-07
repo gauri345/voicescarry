@@ -37,7 +37,7 @@ export default {
                     dispatch('showError', "Failed deleting feedback.", {root: true});
                 }
             } catch (error) {
-                dispatch('showError', "Failed fetching feedback.", {root: true});
+                dispatch('showError', "Failed deleting feedback.", {root: true});
             }
         },
         downloadFeedbacks() {

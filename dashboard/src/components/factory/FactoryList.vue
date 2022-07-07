@@ -16,7 +16,27 @@
       <th scope="col">{{ factory.name }}</th>
       <th scope="col">{{ factory.code }}</th>
       <th scope="col">
-        <router-link :to="`/factory/form/id=${factory._id}`" class="material-icons text-decoration-none text-danger" title="Edit Factory">edit</router-link>
+        <router-link :to="`/factory/form/id=${factory._id}`" class="material-icons text-decoration-none text-info" title="Edit Factory">edit</router-link>
+        <a :data-bs-target="`#deleteFactory_${factory._id}`" data-bs-toggle="modal" href="javascript:void(0);">
+          <span class="material-icons-outlined text-danger" title="Delete Factory">delete</span>
+        </a>
+        <!-- Modal -->
+        <div :id="`deleteFactory_${factory._id}`" aria-hidden="true" class="modal fade" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-body text-danger">
+                Are you sure you want to delete?
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-dismiss="modal" type="button"
+                        @click="deleteFactory(factory._id)">Yes
+                </button>
+                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </th>
     </tr>
     </tbody>
@@ -34,7 +54,7 @@ export default {
     AlertBox
   },
   methods: {
-    ...mapActions(['fetchAllFactories']),
+    ...mapActions(['fetchAllFactories', 'deleteFactory']),
   },
   computed: {
     ...mapGetters(['allFactories'])
