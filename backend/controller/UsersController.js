@@ -28,7 +28,7 @@ exports.getAllUsers = async function (req, res) {
     try {
         const allUsers = await User.find();
         res
-            .status(201)
+            .status(200)
             .json(
                 {
                     status: "success",

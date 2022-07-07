@@ -1,6 +1,9 @@
+
+
 const Factory = require("../model/factoryModel");
 const Survey = require("../model/surveyModel");
 const {randomUUID} = require('crypto');
+const User = require("../model/userModel");
 
 exports.createSurvey = async function (req, res) {
     try {
@@ -35,3 +38,25 @@ exports.createSurvey = async function (req, res) {
         res.sendStatus(500)
     }
 };
+
+exports.allSurveys =  async function(req, res) {
+    try {
+        const allSurveys = await Survey.find();
+        res
+            .status(200)
+            .json(
+                {
+                    status: "success",
+                    message: `Total [${allSurveys.length}] surveys received`,
+                    data: allSurveys
+                }
+            )
+    } catch (error) {
+        res
+            .status(404)
+            .json({
+                status: "error",
+                message: `Error occurred while fetching the surveys from database [${error}}].`
+            });
+    }
+}

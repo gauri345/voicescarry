@@ -44,6 +44,10 @@ router.route('/factory')
 router.route('/factory/exists')
     .get(FactoryController.checkIfExists);
 
+
+router.route('/surveys/')
+    .get(SurveyController.allSurveys);
+
 router.route('/survey/start/:factoryCode')
     .get(SurveyController.createSurvey)
 
