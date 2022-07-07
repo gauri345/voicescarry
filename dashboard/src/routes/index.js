@@ -12,6 +12,7 @@ import QuestionForm from "@/components/question/QuestionForm";
 import FeedbacksComponent from "@/components/feedback/FeedbacksComponent";
 import AdminIndex from "@/components/admin/AdminIndex";
 import QuestionList from "@/components/question/QuestionList";
+import SurveyList from "@/components/survey/SurveyList";
 
 const routes = [
     {
@@ -30,7 +31,14 @@ const routes = [
             {
                 path: '/surveys',
                 name: 'SurveysComponent',
-                component: SurveysComponent
+                component: SurveysComponent,
+                children: [
+                    {
+                        path: '',
+                        name: 'SurveyList',
+                        component: SurveyList
+                    },
+                ]
             },
             {
                 path: '/question/',

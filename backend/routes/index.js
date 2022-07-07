@@ -48,6 +48,9 @@ router.route('/factory/exists')
 router.route('/surveys/')
     .get(SurveyController.allSurveys);
 
+router.route('/surveys/downloadAnswers/:surveyCode')
+    .get(SurveyController.downloadAnswers);
+
 router.route('/survey/start/:factoryCode')
     .get(SurveyController.createSurvey)
 

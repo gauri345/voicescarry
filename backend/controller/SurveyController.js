@@ -1,9 +1,8 @@
-
-
 const Factory = require("../model/factoryModel");
 const Survey = require("../model/surveyModel");
 const {randomUUID} = require('crypto');
-const User = require("../model/userModel");
+const AnswerModel = require("../model/answerModel");
+const fs = require('fs').promises;
 
 exports.createSurvey = async function (req, res) {
     try {
@@ -58,5 +57,27 @@ exports.allSurveys =  async function(req, res) {
                 status: "error",
                 message: `Error occurred while fetching the surveys from database [${error}}].`
             });
+    }
+}
+
+exports.downloadAnswers = async function(req, res) {
+    const surveyCode = req.params.surveyCode;
+
+    console.log(__dirname);
+    console.log(surveyCode);
+
+    if (!surveyCode) {
+        res
+            .status(400)
+            .json({
+                status: "error",
+                message: 'Survey code is required to download answers.'
+            });
+    } else {
+        const answers = await AnswerModel.find({surveyCode: surveyCode});
+        const fileName = `${__dirname}/${surveyCode}.json`;
+        fs.writeFile(fileName, JSON.stringify(answers), 'utf8')
+            .then(res.download(fileName))
+            .finally(async () => await fs.unlink(fileName));
     }
 }

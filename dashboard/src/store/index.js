@@ -7,6 +7,7 @@ import questionList from "@/modules/question/question-list";
 import questionForm from "@/modules/question/question-form";
 import userList from "@/modules/user/user-list";
 import alertBox from "@/modules/util/alert-box";
+import surveyList from "@/modules/survey/survey-list";
 
 export default createStore({
     modules: {
@@ -15,6 +16,7 @@ export default createStore({
         feedbackList,
         questionList,
         questionForm,
+        surveyList,
         userList,
         alertBox
     }
