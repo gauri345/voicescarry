@@ -16,7 +16,7 @@ export default {
 
                 const questionList = response.data.data;
 
-                commit('UPDATE_ALL_question', questionList);
+                commit('UPDATE_ALL_QUESTIONS', questionList);
 
             } catch (error) {
                 commit('TOGGLE_SERVER_MESSAGE');
@@ -37,7 +37,7 @@ export default {
                     commit('TOGGLE_DELETE_FEEDBACK_INFO_MESSAGE');
                     const newFeedbackList = state.feedbackList.filter(feedback => feedback._id !== feedbackId);
                     commit('UPDATE_ALL_FEEDBACKS', newFeedbackList);
-                } if (response.status == 404) {
+                } if (response.status === 404) {
                     commit('TOGGLE_DELETE_FEEDBACK_ERROR_MESSAGE');
                 }
             } catch (error) {
@@ -58,7 +58,7 @@ export default {
     },
 
     mutations: {
-        UPDATE_ALL_question: (state, questionList) => state.questionList = questionList,
+        UPDATE_ALL_QUESTIONS: (state, questionList) => state.questionList = questionList,
         TOGGLE_SERVER_MESSAGE: (state) => state.serverErrorDisplayed = !state.serverErrorDisplayed
     }
 }

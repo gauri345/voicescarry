@@ -1,6 +1,6 @@
 export default {
     state: {
-        alertMessage: 'test',
+        alertMessage: '',
         alertType: 'info',
         isHidden: true
     },

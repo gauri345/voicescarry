@@ -16,6 +16,26 @@ exports.index = function (req, res) {
     });
 };
 
+exports.findById = async (req, res) => {
+    const questionId = req.params.id;
+    try {
+        res.json(
+            {
+                status: "success",
+                message: 'Question found',
+                data: await Question.findById(questionId)
+            }
+        );
+    } catch (error) {
+        res
+            .status(404)
+            .json({
+                status: "error",
+                message: "Question with provided id: " + questionId + ' not found in database.'
+            });
+    }
+}
+
 exports.post = async function (req, res) {
     try {
 

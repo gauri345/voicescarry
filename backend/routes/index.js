@@ -27,6 +27,9 @@ router.route('/users/:userId')
 
 
 /* QUESTIONS MANAGEMENT */
+router.route('/question/:id')
+    .get(QuestionController.findById);
+
 router.route('/question')
     .get(QuestionController.index)
     .post(QuestionController.post);

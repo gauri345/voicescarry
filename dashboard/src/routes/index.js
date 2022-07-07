@@ -43,7 +43,7 @@ const routes = [
                         component: QuestionList
                     },
                     {
-                        path: 'form',
+                        path: 'form/id=:id?',
                         name: 'QuestionForm',
                         component: QuestionForm
                     }

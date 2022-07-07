@@ -1,6 +1,6 @@
 <template>
-  <router-link class="btn btn-dark" style="float: right;" to="/question/form">Add</router-link>
-  <AlertBox message="This is test message" type="danger"/>
+  <router-link class="btn btn-dark" style="float: right;" to="/question/form/id=">Add</router-link>
+  <AlertBox />
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
@@ -45,9 +45,9 @@
         </div>
       </td>
       <td>
-        <a href="javascript:void(0);" title="Edit Question" data-bs-toggle="tooltip">
+        <router-link :to="'/question/form/id=' + question._id" title="Edit Question" data-bs-toggle="tooltip">
           <span class="material-icons">edit</span>
-        </a>
+        </router-link>
         <a href="javascript:void(0);" data-bs-toggle="tooltip" title="Delete question">
           <span class="material-icons text-danger">delete</span>
         </a>
