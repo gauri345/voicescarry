@@ -7,22 +7,17 @@ import _ from 'lodash';
 export default {
     state: {
         questionType: 'select',
-        questionNumber: '',
-        questionSlug: 'e1',
-        questionTitleEnglish: 'e1',
-        questionTitleVietnamese: 'v1',
-        additionalInformationEnglish: 'e2',
-        additionalInformationVietnamese: 'v2',
+        questionNumber: null,
+        questionSlug: null,
+        questionTitleEnglish: null,
+        questionTitleVietnamese: null,
+        additionalInformationEnglish: null,
+        additionalInformationVietnamese: null,
         answers: [
             {
-                answerValue: 'english answer 1',
-                answerTitleEnglish: 'Englisch Title',
-                answerTitleVietnamese: 'Vietnamese Title'
-            },
-            {
-                answerValue: 'english answer 2',
-                answerTitleEnglish: 'Englisch Title 2',
-                answerTitleVietnamese: 'Vietnamese Title 2'
+                answerValue: null,
+                answerTitleEnglish: null,
+                answerTitleVietnamese: null
             }
         ]
     },
@@ -47,59 +42,75 @@ export default {
                 dispatch('showError', " Failed deleting the User.", {root: true});
             }
         },
-        addNewAnswer({commit}, answer) {
-            commit('ADD_NEW_ANSWER', answer);
+        addNewAnswer({commit}) {
+            commit('ADD_NEW_EMPTY_ANSWER');
         },
 
         removeExistingAnswer({commit}, answerIndex) {
             console.log(answerIndex);
-            commit('ADD_NEW_ANSWER_BY_INDEX', answerIndex);
+            commit('REMOVE_ANSWER_BY_INDEX', answerIndex);
         },
 
         createSlug({commit}) {
             commit('UPDATE_SLUG');
         },
 
+        updateAnswerFieldByIndex({commit, state}, dataForUpdate) {
+            const answerToUpdate = state.answers[dataForUpdate.index];
+
+            if ('answerValue' === dataForUpdate.fieldName) {
+                answerToUpdate.answerValue = dataForUpdate.value;
+            }
+            if ('answerTitleEnglish' === dataForUpdate.fieldName) {
+                answerToUpdate.answerTitleEnglish = dataForUpdate.value;
+            }
+
+            if ('answerTitleVietnamese' === dataForUpdate.fieldName) {
+                answerToUpdate.answerTitleVietnamese = dataForUpdate.value;
+            }
+
+            commit('UPDATE_ANSWER_ITEM_BY_INDEX', answerToUpdate, dataForUpdate.index);
+        },
+
         async saveQuestion({state, dispatch}) {
 
-
             const questionToSave = {
-                "number": state.questionNumber,
-                "slug": state.questionSlug,
-                "questionType": state.questionType,
-                "titles": [
+                number: state.questionNumber,
+                slug: state.questionSlug,
+                questionType: state.questionType,
+                titles: [
                     {
-                        "lang": "en",
-                        "content": state.questionTitleEnglish
+                        lang: "en",
+                        content: state.questionTitleEnglish
                     },
                     {
-                        "lang": "vi",
-                        "content": state.questionTitleVietnamese
+                        lang: "vi",
+                        content: state.questionTitleVietnamese
                     }
                 ],
-                "answers": state.answers.map(ans => {
+                answers: state.answers.map(ans => {
                     return {
-                        "value": ans.answerValue,
-                        "items": [
+                        value: ans.answerValue,
+                        items: [
                             {
-                                "lang": "en",
-                                "content": ans.answerTitleEnglish
+                                lang: "en",
+                                content: ans.answerTitleEnglish
                             },
                             {
-                                "lang": "vi",
-                                "content": ans.answerTitleVietnamese
+                                lang: "vi",
+                                content: ans.answerTitleVietnamese
                             }
                         ]
                     };
                 }),
-                "additionalInformation": [
+                additionalInformation: [
                     {
-                        "lang": "en",
-                        "content": state.additionalInformationEnglish
+                        lang: "en",
+                        content: state.additionalInformationEnglish
                     },
                     {
-                        "lang": "vi",
-                        "content": state.additionalInformationVietnamese
+                        lang: "vi",
+                        content: state.additionalInformationVietnamese
                     }
                 ],
             }
@@ -132,8 +143,13 @@ export default {
             state.questionType = question.questionType;
             state.questionNumber = question.number;
         },
-        ADD_NEW_ANSWER: (state, answer) => state.answers.push(answer),
+        ADD_NEW_EMPTY_ANSWER: (state) => state.answers.push({
+            answerValue: null,
+            answerTitleEnglish: null,
+            answerTitleVietnamese: null
+        }),
         UPDATE_SLUG: (state) => state.questionSlug = _.snakeCase(state.questionTitleEnglish).substring(0, 50),
-        ADD_NEW_ANSWER_BY_INDEX: (state, index) => state.answers.splice(index, 1)
+        REMOVE_ANSWER_BY_INDEX: (state, index) => state.answers.splice(index, 1),
+        UPDATE_ANSWER_ITEM_BY_INDEX: (state, item, index) => state.answers[index] = item
     }
 }
