@@ -14,6 +14,9 @@ import AdminIndex from "@/components/admin/AdminIndex";
 import QuestionList from "@/components/question/QuestionList";
 import SurveyList from "@/components/survey/SurveyList";
 import SurveyAnswerList from "@/components/survey/SurveyAnswerList";
+import FactoryComponent from "@/components/factory/FactoryComponent";
+import FactoryList from "@/components/factory/FactoryList";
+import FactoryForm from "@/components/factory/FactoryForm";
 
 const routes = [
     {
@@ -73,6 +76,23 @@ const routes = [
                 name: 'UsersComponent',
                 component: UsersComponent
             },
+            {
+                path: '/factory/',
+                name: 'FactoryComponent',
+                component: FactoryComponent,
+                children: [
+                    {
+                        path: '',
+                        name: 'FactoryList',
+                        component: FactoryList
+                    },
+                    {
+                        path: 'form/id=:id?',
+                        name: 'FactoryForm',
+                        component: FactoryForm
+                    }
+                ]
+            }
         ]
     },
     {

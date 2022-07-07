@@ -47,7 +47,6 @@ export default {
     getters: {
         allQuestions: (state) => state.questionList,
         getServerErrorDisplayed: (state) => state.serverErrorDisplayed
-
     },
 
     mutations: {
