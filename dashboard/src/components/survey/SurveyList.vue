@@ -1,6 +1,29 @@
 <template>
   <AlertBox/>
-  <table class="table bg-dark text-info text-lg-start">
+  <table class="table bg-dark text-info text-lg-start caption-top">
+    <caption>
+      <div class="input-group mb-3">
+        <DatePicker v-model="dateFrom">
+          <template v-slot="{ inputValue, togglePopover }">
+            <span class="text-white h6">From: </span>
+            <input :value="inputValue" class="form-control-sm me-3" readonly
+                   @click="togglePopover()"/>
+          </template>
+        </DatePicker>
+        <DatePicker v-model="dateTo">
+          <template v-slot="{ inputValue, togglePopover }">
+            <span class="text-white h6">To: </span>
+            <input :value="inputValue" class="form-control-sm" readonly @click="togglePopover()"/>
+          </template>
+        </DatePicker>
+
+        <button class="btn btn-sm btn-warning ms-1" type="button" @click="filterSurveys">Filter</button>
+        <button class="btn btn-sm btn-danger ms-1" type="button" @click="resetFilters">Reset</button>
+
+      </div>
+
+    </caption>
+
     <thead class="table-bordered">
     <tr class="text-info">
       <th scope="col">#</th>
@@ -15,7 +38,8 @@
       <td>{{ survey.factoryCode }}</td>
       <td>{{ survey.surveyDate }}</td>
       <td>
-        <a class="material-icons text-decoration-none text-info" href="javascript:void(0);" @click="previewAnswers(survey.surveyCode)" >preview</a>
+        <a class="material-icons text-decoration-none text-info" href="javascript:void(0);"
+           @click="previewAnswers(survey.surveyCode)">preview</a>
         <a class="material-icons text-decoration-none text-info" href="javascript:void(0);"
            @click="downloadSurveyAnswers(survey.surveyCode)">download</a>
       </td>
@@ -28,14 +52,17 @@
 import AlertBox from "@/components/util/AlertBox";
 import {mapActions, mapGetters} from "vuex";
 import ApiConfig from "@/config/ApiConfig";
+import {DatePicker} from 'v-calendar';
+import {mapFields} from "vuex-map-fields";
 
 export default {
   name: "SurveyList",
   components: {
-    AlertBox
+    AlertBox,
+    DatePicker
   },
   methods: {
-    ...mapActions(['fetchAllSurveys']),
+    ...mapActions(['fetchAllSurveys', 'filterSurveys', 'resetFilters']),
     downloadSurveyAnswers(surveyCode) {
       window.location.href = `${ApiConfig.API_BASE_URL}/surveys/downloadAnswers/${surveyCode}`;
     },
@@ -47,11 +74,11 @@ export default {
     this.fetchAllSurveys();
   },
   computed: {
-    ...mapGetters(['allSurveys'])
+    ...mapGetters(['allSurveys']),
+    ...mapFields(['dateFrom', 'dateTo']),
   }
 }
 </script>
 
 <style scoped>
-
 </style>

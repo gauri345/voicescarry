@@ -179,7 +179,6 @@ export default {
   },
   mounted() {
     if (this.$route.params.id) {
-      console.log("edit");
       this.fetchQuestionById(this.$route.params.id);
     }
   },

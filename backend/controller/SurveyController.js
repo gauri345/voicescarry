@@ -121,3 +121,35 @@ exports.surveyAnswersByCode = async function (req, res) {
         }
     }
 }
+
+exports.surveyListDateRange = async function (req, res) {
+    try {
+        const dateFrom = req.body.dateFrom;
+        const dateTo = req.body.dateTo;
+
+        console.log("from request", dateFrom, dateTo)
+
+        const filteredSurveys = await Survey.find({ //query today up to tonight
+            created_on: {
+                $gte: Date.parse(dateFrom),
+                $lt: Date.parse(dateTo)
+            }
+        });
+        res
+            .status(200)
+            .json(
+                {
+                    status: "success",
+                    message: `Total [${filteredSurveys.length}] surveys received`,
+                    data: filteredSurveys
+                }
+            )
+    } catch (error) {
+        res
+            .status(404)
+            .json({
+                status: "error",
+                message: `Error occurred while fetching the surveys from database [${error}}].`
+            });
+    }
+}

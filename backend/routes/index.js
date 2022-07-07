@@ -49,7 +49,10 @@ router.route('/surveys/')
     .get(SurveyController.allSurveys);
 
 router.route('/surveys/downloadAnswers/:surveyCode')
-    .get(SurveyController.downloadAnswers);
+    .post(SurveyController.downloadAnswers);
+
+router.route('/surveys/filterByDate')
+    .get(SurveyController.surveyListDateRange);
 
 router.route('/surveys/answers/:surveyCode')
     .get(SurveyController.surveyAnswersByCode);
