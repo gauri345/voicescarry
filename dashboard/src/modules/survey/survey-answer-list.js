@@ -4,7 +4,7 @@ const axios = require('axios');
 
 export default {
     state: {
-        surveyList: []
+        surveyAnswerList: []
     },
     actions: {
         async fetchAnswersBySurveyCode({commit, dispatch}, surveyCode) {
@@ -22,7 +22,10 @@ export default {
             }
         }
     },
+    getters: {
+        allSurveyAnswers: (state) => state.surveyAnswerList
+    },
     mutations: {
-        UPDATE_ALL_SURVEY_ANSWERS: (state, surveyList) => state.surveyList = surveyList
+        UPDATE_ALL_SURVEY_ANSWERS: (state, surveyAnswerList) => state.surveyAnswerList = surveyAnswerList
     }
 }

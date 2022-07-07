@@ -13,12 +13,12 @@ const answerModel = mongoose.Schema({
 
     answerValue: {
         type: String,
-        required: true
+        required: false
     },
 
     answerText: {
         type: String,
-        required: true
+        required: false
     },
 
     factoryCode: {

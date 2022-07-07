@@ -19,17 +19,28 @@
       <th scope="col">Answer Value</th>
     </tr>
     </thead>
-    <tbody class="table-bordered"></tbody>
+    <tbody class="table-bordered">
+    <tr v-for="(surveyAnswer, index) in allSurveyAnswers" v-bind:key="surveyAnswer._id">
+      <td>{{ index + 1 }}</td>
+      <td>{{surveyAnswer.factoryCode}}</td>
+      <td>{{surveyAnswer.questionNumber}}</td>
+      <td>{{surveyAnswer.answerText}}</td>
+      <td>{{surveyAnswer.answerValue}}</td>
+    </tr>
+    </tbody>
   </table>
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "SurveyAnswerList",
   methods: {
     ...mapActions(['fetchAnswersBySurveyCode'])
+  },
+  computed: {
+    ...mapGetters(['allSurveyAnswers'])
   },
   mounted() {
     this.fetchAnswersBySurveyCode(this.$route.params.surveyCode);
