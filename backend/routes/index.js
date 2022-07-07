@@ -53,7 +53,7 @@ router.route('/surveys/')
     .get(SurveyController.allSurveys);
 
 router.route('/surveys/downloadAnswers/:surveyCode')
-    .post(SurveyController.downloadAnswers);
+    .get(SurveyController.downloadAnswers);
 
 router.route('/surveys/filterByDate')
     .get(SurveyController.surveyListDateRange);
