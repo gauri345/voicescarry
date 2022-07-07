@@ -4,11 +4,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-dark">
-          <h5 id="exampleModalLabel" class="modal-title">Confirmation</h5>
+          <h5 class="modal-title text-danger">Are you sure you want to delete?</h5>
           <button aria-label="Close" class="btn-close bg-light" data-bs-dismiss="modal" type="button"></button>
         </div>
-        <div class="modal-body bg-secondary">
-          Do you want to permanently delete.
+        <div class="modal-body text-danger">
+          You are going to delete the user forever. Are you absolutely sure?
         </div>
         <div class="modal-footer bg-dark">
           <button class="btn btn-secondary" data-bs-dismiss="modal" type="button" @click="deleteUser(userId)">Yes
@@ -26,7 +26,8 @@ import {mapActions} from "vuex";
 export default {
   name: "DeleteUserConfirmationModel",
   props: {
-    userId: String
+    userId: String,
+    userName: String
   },
   methods: {
     ...mapActions(['deleteUser'])

@@ -35,7 +35,7 @@
         <a href="javascript:void(0);">
           <span :data-bs-target="'#deleteUser' + user._id" class="material-icons-outlined text-danger"
                 data-bs-toggle="modal" title="Delete User">delete</span>
-          <DeleteConfirmationModel :user-id="user._id"/>
+          <DeleteConfirmationModel :user-id="user._id" user-name="{{user.fullName}}"/>
         </a>
       </td>
     </tr>
