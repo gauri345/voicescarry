@@ -16,8 +16,7 @@
       <th scope="col">{{ factory.name }}</th>
       <th scope="col">{{ factory.code }}</th>
       <th scope="col">
-        <a class="material-icons text-decoration-none" href="javascript:void(0);">edit</a>
-        <a class="material-icons text-decoration-none text-danger" href="javascript:void(0);">delete</a>
+        <router-link :to="`/factory/form/id=${factory._id}`" class="material-icons text-decoration-none text-danger" title="Edit Factory">edit</router-link>
       </th>
     </tr>
     </tbody>

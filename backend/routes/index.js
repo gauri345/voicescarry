@@ -37,14 +37,18 @@ router.route('/question')
 router.route('/question/:number')
     .delete(QuestionController.delete);
 
+/* FACTORY MANAGEMENT */
 router.route('/factory')
     .get(FactoryController.index)
     .post(FactoryController.post);
 
+router.route('/factory/:id')
+    .get(FactoryController.findById)
+
 router.route('/factory/exists')
     .get(FactoryController.checkIfExists);
 
-
+/* SURVEY MANAGEMENT */
 router.route('/surveys/')
     .get(SurveyController.allSurveys);
 

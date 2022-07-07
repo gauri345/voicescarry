@@ -1,4 +1,5 @@
 const Factory = require("../model/factoryModel");
+const Question = require("../model/questionModel");
 
 exports.index = function (req, res) {
     Factory.get(function (err, questions) {
@@ -15,6 +16,26 @@ exports.index = function (req, res) {
         });
     });
 };
+
+exports.findById = async function (req, res) {
+    const factoryId = req.params.id;
+    try {
+        res.json(
+            {
+                status: "success",
+                message: 'Factory found',
+                data: await Factory.findById(req.params.id)
+            }
+        );
+    } catch (error) {
+        res
+            .status(404)
+            .json({
+                status: "error",
+                message: "Factory with provided id: " + factoryId + ' not found in database.'
+            });
+    }
+}
 
 exports.post = async function (req, res) {
 
