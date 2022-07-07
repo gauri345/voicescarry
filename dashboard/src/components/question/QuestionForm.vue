@@ -178,6 +178,7 @@ export default {
     };
   },
   mounted() {
+    this.$store.dispatch('hideAlert');
     if (this.$route.params.id) {
       this.fetchQuestionById(this.$route.params.id);
     }

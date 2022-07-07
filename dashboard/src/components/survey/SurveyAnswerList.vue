@@ -43,6 +43,7 @@ export default {
     ...mapGetters(['allSurveyAnswers'])
   },
   mounted() {
+    this.$store.dispatch('hideAlert');
     this.fetchAnswersBySurveyCode(this.$route.params.surveyCode);
   }
 }

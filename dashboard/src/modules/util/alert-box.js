@@ -16,6 +16,9 @@ export default {
             commit('UPDATE_ALERT_MESSAGE', message);
             commit('UPDATE_ALERT_TYPE', "info");
             commit('SHOW_ALERT');
+        },
+        hideAlert: ({commit}) => {
+            commit('HIDE_ALERT');
         }
     },
     getters: {
@@ -26,6 +29,7 @@ export default {
     mutations: {
         UPDATE_ALERT_MESSAGE: (state, message) => state.alertMessage = message,
         UPDATE_ALERT_TYPE: (state, type) => state.alertType = type,
-        SHOW_ALERT: (state) => state.isHidden = false
+        SHOW_ALERT: (state) => state.isHidden = false,
+        HIDE_ALERT: (state) => state.isHidden = true
     }
 }

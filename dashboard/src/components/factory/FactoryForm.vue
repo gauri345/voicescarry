@@ -1,38 +1,58 @@
 <template>
-  <form>
-    <div class="mb-3 row">
-      <label class="col-sm-2 col-form-label d-flex justify-content-start" for="factoryName">Factory Name</label>
-      <input name="factoryName" v-model="factoryName" class="form-control-color" placeholder="Factory Name" type="text">
-    </div>
+  <AlertBox/>
 
-    <div class="mb-3 row">
-      <label class="col-sm-2 col-form-label d-flex justify-content-start" for="factoryCode">Factory Code</label>
-      <input name="factoryCode" v-model="factoryCode" class="form-control-color" placeholder="Factory Code" type="text">
-    </div>
+  <div class="mb-3 row">
+    <label class="col-sm-2 col-form-label d-flex justify-content-start" for="factoryName">Factory Name</label>
+    <input v-model="factoryName" class="form-control-color" name="factoryName" placeholder="Factory Name"
+           type="text">
+  </div>
 
-    <div class="d-flex justify-content-start border-top border-1 mt-1">
-      <button class="btn btn-success mt-3" type="submit">Save</button>&nbsp;&nbsp;
-      <button class="btn btn-danger mt-3" @click="$router.push('/factory')">Cancel</button>
-    </div>
-  </form>
+  <div class="mb-3 row">
+    <label class="col-sm-2 col-form-label d-flex justify-content-start" for="factoryCode">Factory Code</label>
+    <input v-model="factoryCode" class="form-control-color" name="factoryCode" placeholder="Factory Code"
+           type="text">
+  </div>
+
+  <div class="d-flex justify-content-start border-top border-1 mt-1">
+    <button class="btn btn-success mt-3" type="button" @click="saveFactory">Save</button>&nbsp;&nbsp;
+    <button class="btn btn-danger mt-3" @click="$router.push('/factory')">Cancel</button>
+  </div>
 
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions} from "vuex";
+import AlertBox from "@/components/util/AlertBox";
 
 export default {
   name: "FactoryForm",
+  components: {
+    AlertBox
+  },
   computed: {
-    ...mapGetters(['factoryCode', 'factoryName']),
+    factoryCode: {
+      get () {
+        return this.$store.state.factoryForm.factoryCode
+      },
+      set (value) {
+        this.$store.commit('UPDATE_FACTORY_CODE', value)
+      }
+    },
+    factoryName: {
+      get () {
+        return this.$store.state.factoryForm.factoryName
+      },
+      set (value) {
+        this.$store.commit('UPDATE_FACTORY_NAME', value)
+      }
+    },
   },
   methods: {
-    ...mapActions(['fetchFactoryById']),
+    ...mapActions(['fetchFactoryById', 'saveFactory']),
   },
   mounted() {
-    if (this.$route.params.id) {
-      this.fetchFactoryById(this.$route.params.id);
-    }
+    this.$store.dispatch('hideAlert');
+    this.fetchFactoryById(this.$route.params.id);
   },
 }
 </script>

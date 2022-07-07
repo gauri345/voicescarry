@@ -1,9 +1,5 @@
 <template>
-    <div class="card">
-      <div class="card-body bg-dark">
-        <img class="img-fluid" :src="require('../../assets/charts.png')" alt="england flag"/>
-      </div>
-  </div>
+  <h3>Welcome</h3>
 </template>
 
 <script>

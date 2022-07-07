@@ -1,5 +1,4 @@
 const Factory = require("../model/factoryModel");
-const Question = require("../model/questionModel");
 
 exports.index = function (req, res) {
     Factory.get(function (err, questions) {
@@ -43,25 +42,36 @@ exports.post = async function (req, res) {
 
     const filter = {name: factory.name};
 
-    const existingFactory = await Factory.findOne(filter);
+    try {
+        const existingFactory = await Factory.findOne(filter);
 
-    if (existingFactory) {
-        res.json(
-            {
-                status: "success",
-                message: 'factory updated',
-                data: await Factory.findOneAndUpdate(filter, factory)
-            }
-        );
-    } else {
-        res.json(
-            {
-                status: "success",
-                message: 'factory added',
-                data: await Factory.create(req.body)
-            }
-        );
+        if (existingFactory) {
+            res.json(
+                {
+                    status: "success",
+                    message: 'factory updated',
+                    data: await Factory.findOneAndUpdate(filter, factory)
+                }
+            );
+        } else {
+            res.json(
+                {
+                    status: "success",
+                    message: 'factory added',
+                    data: await Factory.create(req.body)
+                }
+            );
+        }
+    } catch (error) {
+        res
+            .status(500)
+            .json({
+                status: "error",
+                message: "Failed Storing factory in database."
+            });
     }
+
+
 };
 
 exports.checkIfExists = async function (req, res) {

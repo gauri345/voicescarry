@@ -73,6 +73,9 @@ export default {
     this.fetchFeedback();
   },
 
+  created() {
+  },
+
   computed: {
     ...mapGetters(['allFeedbacks', 'feedbackDeleteError', 'feedbackDeleteInfo', 'getServerErrorDisplayed'])
   }

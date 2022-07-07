@@ -5,7 +5,7 @@
     <thead class="table-bordered">
     <tr class="text-info">
       <th scope="col">Number</th>
-      <th scope="col">Factory Nme</th>
+      <th scope="col">Factory Name</th>
       <th scope="col">Code</th>
       <th scope="col">Action</th>
     </tr>
@@ -40,6 +40,7 @@ export default {
     ...mapGetters(['allFactories'])
   },
   mounted() {
+    this.$store.dispatch('hideAlert');
     this.fetchAllFactories();
   }
 }

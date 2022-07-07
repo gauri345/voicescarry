@@ -119,16 +119,14 @@ export default {
   },
 
   created() {
-    const kando = JSON.parse(localStorage.getItem('remember_me' ));
-    if (kando) {
-      const bytes = CryptoJS.AES.decrypt(kando.password, 'test');
+    const itemFromLocalStorage = JSON.parse(localStorage.getItem('remember_me' ));
+    if (itemFromLocalStorage) {
+      const bytes = CryptoJS.AES.decrypt(itemFromLocalStorage.password, 'test');
       const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
       this.password = originalPassword
-      this.email = kando.email;
+      this.email = itemFromLocalStorage.email;
       this.passwordValid = true;
       this.emailValid = true;
-
-      console.log(this.email, this.password);
       this.rememberMe = true
     }
   }
