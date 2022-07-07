@@ -33,7 +33,7 @@ const routes = [
         meta: {requiresAuth: true},
         children: [
             {
-                path: '/surveys',
+                path: '/surveys/',
                 name: 'SurveysComponent',
                 component: SurveysComponent,
                 children: [
@@ -96,7 +96,7 @@ const routes = [
         ]
     },
     {
-        path: '/user',
+        path: '/user/',
         name: 'users',
         component: UserIndex,
         children: [
@@ -116,7 +116,7 @@ const routes = [
                 component: UserRegistrationPage
             },
             {
-                path: '/registration-success',
+                path: 'registration-success',
                 name: 'userRegistrationSuccess',
                 component: UserRegistrationSuccess
             }
