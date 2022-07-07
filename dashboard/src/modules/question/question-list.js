@@ -19,26 +19,6 @@ export default {
             }
         },
 
-       async deleteFeedback({commit, state, dispatch}, feedbackId) {
-            const config = {
-                method: 'delete',
-                url: 'http://localhost:4000/api/feedback/' + feedbackId
-            };
-
-            try {
-                const response = await axios(config);
-
-                if (response.status === 200) {
-                    commit('TOGGLE_DELETE_FEEDBACK_INFO_MESSAGE');
-                    const newFeedbackList = state.feedbackList.filter(feedback => feedback._id !== feedbackId);
-                    commit('UPDATE_ALL_FEEDBACKS', newFeedbackList);
-                } if (response.status === 404) {
-                    commit('TOGGLE_DELETE_FEEDBACK_ERROR_MESSAGE');
-                }
-            } catch (error) {
-                dispatch('showError', " Failed deleting the Questions.", {root: true});
-            }
-        }
     },
     state: {
         questionList: [],
@@ -46,7 +26,6 @@ export default {
 
     getters: {
         allQuestions: (state) => state.questionList,
-        getServerErrorDisplayed: (state) => state.serverErrorDisplayed
     },
 
     mutations: {

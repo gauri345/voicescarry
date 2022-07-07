@@ -1,17 +1,7 @@
 <template>
   <component-header text="Feedbacks"/>
-  <div v-if="feedbackDeleteInfo" class="alert alert-success" role="alert">
-    Feedback successfully deleted
-    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
-  </div>
-  <div v-if="feedbackDeleteError" class="alert alert-danger" role="alert">
-    Failed deleting the feedback.
-    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
-  </div>
-  <div v-if="getServerErrorDisplayed" class="alert alert-danger" role="alert">
-    Problem connecting to server. Please try again.
-    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
-  </div>
+  <AlertBox />
+  <a class="btn btn-dark material-icons" style="float: right;" @click="downloadFeedbacks">download</a>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
@@ -56,14 +46,16 @@
 <script>
 import ComponentHeader from "@/components/ComponentHeader";
 import {mapActions, mapGetters} from "vuex";
+import AlertBox from "@/components/util/AlertBox";
 
 export default {
   name: "FeedbacksComponent",
   components: {
-    ComponentHeader
+    ComponentHeader,
+    AlertBox
   },
   methods: {
-    ...mapActions(['fetchFeedback', 'deleteFeedback']),
+    ...mapActions(['fetchFeedback', 'deleteFeedback', 'downloadFeedbacks']),
     handleDeleteFeedback(feedbackId) {
       this.deleteFeedback(feedbackId);
       return true;

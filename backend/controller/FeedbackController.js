@@ -1,6 +1,22 @@
 const Feedback = require("../model/feedbackModel");
-const AnswerModel = require("../model/answerModel");
-const Question = require("../model/questionModel");
+const {promises: fs} = require("fs");
+
+exports.downloadAll = async function (req, res) {
+
+    try {
+        const feedbackList = await Feedback.find();
+        const fileName = `${__dirname}/feedbacks.json`;
+        fs.writeFile(fileName, JSON.stringify(feedbackList), 'utf8')
+            .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
+    } catch (error) {
+        res
+            .status(500)
+            .json({
+                status: "error",
+                message: "Failed downloading file. Please contact your administrator."
+            });
+    }
+};
 
 exports.index = function (req, res) {
     Feedback.get(function (err, content) {
@@ -17,6 +33,7 @@ exports.index = function (req, res) {
         });
     });
 };
+
 exports.post = async function (req, res) {
     try {
         const feedback = await Feedback.create(req.body);

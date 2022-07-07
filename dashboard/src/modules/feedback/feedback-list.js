@@ -3,10 +3,10 @@ import ApiConfig from "@/config/ApiConfig";
 
 export default {
     actions: {
-        async fetchFeedback({commit}) {
+        async fetchFeedback({commit, dispatch}) {
             const config = {
                 method: 'get',
-                url:  `${ApiConfig.API_BASE_URL}/feedback`,
+                url: `${ApiConfig.API_BASE_URL}/feedback`,
                 headers: {}
             };
 
@@ -16,14 +16,12 @@ export default {
                 const feedbackList = response.data.data;
 
                 commit('UPDATE_ALL_FEEDBACKS', feedbackList);
-
             } catch (error) {
-                commit('TOGGLE_SERVER_MESSAGE');
-                console.log("Failed fetching feedback.", error);
+                dispatch('showError', "Failed fetching feedback.", {root: true});
             }
         },
 
-        async deleteFeedback({commit, state}, feedbackId) {
+        async deleteFeedback({commit, state, dispatch}, feedbackId) {
             const config = {
                 method: 'delete',
                 url: `${ApiConfig.API_BASE_URL}/feedback/${feedbackId}`
@@ -31,38 +29,30 @@ export default {
 
             try {
                 const response = await axios(config);
-
                 if (response.status === 200) {
-                    commit('TOGGLE_DELETE_FEEDBACK_INFO_MESSAGE');
                     const newFeedbackList = state.feedbackList.filter(feedback => feedback._id !== feedbackId);
                     commit('UPDATE_ALL_FEEDBACKS', newFeedbackList);
-                } if (response.status === 404) {
-                    commit('TOGGLE_DELETE_FEEDBACK_ERROR_MESSAGE');
+                }
+                if (response.status === 404) {
+                    dispatch('showError', "Failed deleting feedback.", {root: true});
                 }
             } catch (error) {
-                commit('TOGGLE_SERVER_MESSAGE');
-                console.log("Failed fetching feedback.", error);
+                dispatch('showError', "Failed fetching feedback.", {root: true});
             }
-        }
+        },
+        downloadFeedbacks() {
+            window.location.href = `${ApiConfig.API_BASE_URL}/feedback/download-all`;
+        },
     },
     state: {
         feedbackList: [],
-        feedbackDeleteError: false,
-        feedbackDeleteInfo: false,
-        serverErrorDisplayed: false
     },
 
     getters: {
         allFeedbacks: (state) => state.feedbackList,
-        feedbackDeleteError: (state) => state.errorMessageDisplayed,
-        feedbackDeleteInfo: (state) => state.infoMessageDisplayed,
-        serverErrorDisplayed: (state) => state.serverErrorDisplayed
     },
 
     mutations: {
         UPDATE_ALL_FEEDBACKS: (state, feedbackList) => state.feedbackList = feedbackList,
-        TOGGLE_DELETE_FEEDBACK_ERROR_MESSAGE: (state) => state.errorMessageDisplayed = !state.errorMessageDisplayed,
-        TOGGLE_DELETE_FEEDBACK_INFO_MESSAGE: (state) => state.infoMessageDisplayed = !state.infoMessageDisplayed,
-        TOGGLE_SERVER_MESSAGE: (state) => state.serverErrorDisplayed = !state.serverErrorDisplayed
     }
 }

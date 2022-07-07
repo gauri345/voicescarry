@@ -62,7 +62,6 @@ export default {
     getters: {
         factoryName: (state) => state.factoryName,
         factoryCode: (state) => state.factoryCode,
-        factoryId: (state) => state.factoryId
     },
     mutations: {
         UPDATE_FACTORY_NAME: (state, factoryName) => {

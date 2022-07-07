@@ -68,6 +68,10 @@ router.route('/answer/storeBulk/')
     .get(AnswerController.index)
     .post(AnswerController.insertBulk);
 
+/* FEEDBACK MANAGEMENT */
+router.route('/feedback/download-all')
+    .get(FeedbackController.downloadAll)
+
 router.route('/feedback')
     .get(FeedbackController.index)
     .post(FeedbackController.post);
