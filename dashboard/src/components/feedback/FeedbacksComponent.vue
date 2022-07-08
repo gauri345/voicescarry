@@ -62,6 +62,7 @@ export default {
     },
   },
   mounted() {
+    this.$store.dispatch('hideAlert');
     this.fetchFeedback();
   },
 
