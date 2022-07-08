@@ -123,17 +123,15 @@ exports.surveyAnswersByCode = async function (req, res) {
     }
 }
 
-exports.surveyListDateRange = async function (req, res) {
+exports.filteredSurveyAnswerList = async function (req, res) {
     try {
         const dateFrom = req.body.dateFrom;
         const dateTo = req.body.dateTo;
 
-        console.log("from request", dateFrom, dateTo)
-
         const filteredSurveys = await Survey.find({ //query today up to tonight
-            created_on: {
-                $gte: Date.parse(dateFrom),
-                $lt: Date.parse(dateTo)
+            surveyDate: {
+                $gte: dateFrom,
+                $lt: dateTo
             }
         });
         res

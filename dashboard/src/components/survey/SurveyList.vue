@@ -54,7 +54,6 @@ import AlertBox from "@/components/util/AlertBox";
 import {mapActions, mapGetters} from "vuex";
 import ApiConfig from "@/config/ApiConfig";
 import {DatePicker} from 'v-calendar';
-import {mapFields} from "vuex-map-fields";
 
 export default {
   name: "SurveyList",
@@ -80,7 +79,22 @@ export default {
   },
   computed: {
     ...mapGetters(['allSurveys']),
-    ...mapFields(['dateFrom', 'dateTo']),
+    dateFrom: {
+      get () {
+        return this.$store.state.surveyList.dateFrom
+      },
+      set (value) {
+        this.$store.commit('UPDATE_DATE_FROM', value)
+      }
+    },
+    dateTo: {
+      get () {
+        return this.$store.state.surveyList.dateTo
+      },
+      set (value) {
+        this.$store.commit('UPDATE_TO_FROM', value)
+      }
+    },
   }
 }
 </script>

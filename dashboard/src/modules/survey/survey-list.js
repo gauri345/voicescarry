@@ -24,10 +24,10 @@ export default {
             }
         },
         async filterSurveys({commit, state, dispatch}) {
-            console.log(state)
+
             const config = {
                 method: 'post',
-                url: `${ApiConfig.API_BASE_URL}/surveys/filterByDate`,
+                url: `${ApiConfig.API_BASE_URL}/surveys/answers/filtered`,
                 headers: {},
                 data: {
                     dateFrom: state.dateFrom,
@@ -37,24 +37,25 @@ export default {
 
             try {
                 const response = await axios(config);
+
+                console.log(response.data.data)
+
                 commit('UPDATE_ALL_SURVEYS', response.data.data);
             } catch (error) {
                 dispatch('showError', " Failed fetching surveys Please try again.", {root: true});
             }
         },
 
-        resetFilters({state, dispatch, commit}) {
-            state.dateFrom = null;
-            state.dateTo = null;
-            commit('RESET_DATE_FROM');
-            commit('RESET_TO_FROM');
+        resetFilters({ dispatch, commit}) {
             dispatch('fetchAllSurveys');
+            commit('UPDATE_DATE_FROM', '');
+            commit('UPDATE_TO_FROM', '');
         }
     },
     mutations: {
         UPDATE_ALL_SURVEYS: (state, surveyList) => state.surveyList = surveyList,
-        RESET_DATE_FROM: (state) => state.dateFrom = '',
-        RESET_TO_FROM: (state) => state.dateFrom = '',
+        UPDATE_DATE_FROM: (state, dateFrom) => state.dateFrom = dateFrom,
+        UPDATE_TO_FROM: (state, dateTo) => state.dateTo = dateTo,
     },
     getters: {
         allSurveys: (state) => state.surveyList,

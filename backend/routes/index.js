@@ -56,8 +56,8 @@ router.route('/surveys/')
 router.route('/surveys/downloadAnswers/:surveyCode?')
     .get(SurveyController.downloadAnswers);
 
-router.route('/surveys/filterByDate')
-    .get(SurveyController.surveyListDateRange);
+router.route('/surveys/answers/filtered')
+    .post(SurveyController.filteredSurveyAnswerList);
 
 router.route('/surveys/answers/:surveyCode')
     .get(SurveyController.surveyAnswersByCode);
