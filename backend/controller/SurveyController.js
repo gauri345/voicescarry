@@ -87,6 +87,33 @@ exports.downloadAnswers = async function (req, res) {
     }
 }
 
+exports.downloadFilteredSurveyAnswers = async function (req, res) {
+    try {
+
+        const dateFrom = req.params.dateFrom;
+        const dateTo = req.params.dateTo;
+
+        const filteredSurveys = await Survey.find({ //query today up to tonight
+            surveyDate: {
+                $gte: dateFrom,
+                $lt: dateTo
+            }
+        });
+
+            const fileName = `${__dirname}/survey_answers.json`;
+        fs
+            .writeFile(fileName, JSON.stringify(filteredSurveys), 'utf8')
+            .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
+    } catch (error) {
+        res
+            .status(500)
+            .json({
+                status: "error",
+                message: "Failed downloading file. Please contact your administrator."
+            });
+    }
+}
+
 
 exports.surveyAnswersByCode = async function (req, res) {
     const surveyCode = req.params.surveyCode;

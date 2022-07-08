@@ -53,6 +53,9 @@ router.route('/factory/exists')
 router.route('/surveys/')
     .get(SurveyController.allSurveys);
 
+router.route('/surveys/download/answers/filtered/from=:fromDate&to=:toDate')
+    .get(SurveyController.downloadFilteredSurveyAnswers);
+
 router.route('/surveys/downloadAnswers/:surveyCode?')
     .get(SurveyController.downloadAnswers);
 

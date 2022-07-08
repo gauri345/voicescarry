@@ -17,9 +17,9 @@
           </template>
         </DatePicker>
 
-        <button class="btn btn-sm btn-warning ms-1" type="button" @click="filterSurveys">Filter</button>
-        <button class="btn btn-sm btn-danger ms-1" type="button" @click="resetFilters">Reset</button>
-        <a class="btn btn-dark material-icons ms-1" style="float: right;" @click="downloadAllSurveyAnswers" title="Download all Survey Answers">download</a>
+        <a class="btn btn-sm btn-warning ms-1" type="button" @click="filterSurveys" title="Click to apply the filters.">Filter</a>
+        <a class="btn btn-sm btn-dark material-icons ms-1" style="float: right;" @click="downloadAllSurveyAnswers" title="Download all Survey Answers">download</a>
+        <a class="btn btn-sm btn-danger ms-1" type="button" @click="resetFilters" title="Reset all filters">Reset</a>
 
       </div>
 
@@ -62,7 +62,7 @@ export default {
     DatePicker
   },
   methods: {
-    ...mapActions(['fetchAllSurveys', 'filterSurveys', 'resetFilters']),
+    ...mapActions(['fetchAllSurveys', 'filterSurveys', 'resetFilters', 'downloadFilteredSurveyAnswers']),
     downloadSurveyAnswers(surveyCode) {
       window.location.href = `${ApiConfig.API_BASE_URL}/surveys/downloadAnswers/${surveyCode}`;
     },

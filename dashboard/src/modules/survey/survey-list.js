@@ -50,6 +50,10 @@ export default {
             dispatch('fetchAllSurveys');
             commit('UPDATE_DATE_FROM', '');
             commit('UPDATE_TO_FROM', '');
+        },
+
+        async downloadFilteredSurveyAnswers({state}) {
+            window.location.href = `${ApiConfig.API_BASE_URL}/surveys/download/answers/filtered/from=${state.dateFrom}&to=${state.dateTo}`;
         }
     },
     mutations: {
