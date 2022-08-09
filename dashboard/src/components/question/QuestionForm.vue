@@ -138,7 +138,6 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
-import {mapFields} from 'vuex-map-fields';
 import AlertBox from "@/components/util/AlertBox";
 
 export default {
@@ -147,7 +146,14 @@ export default {
     AlertBox
   },
   methods: {
-    ...mapActions(['fetchQuestionById', 'createSlug', 'addNewAnswer', 'removeExistingAnswer', 'saveQuestion', 'updateAnswerFieldByIndex']),
+    ...mapActions([
+        'fetchQuestionById',
+      'createSlug',
+      'addNewAnswer',
+      'removeExistingAnswer',
+      'saveQuestion',
+      'updateAnswerFieldByIndex'
+    ]),
     submitForm(event) {
       this.saveQuestion();
       event.preventDefault();
@@ -184,17 +190,56 @@ export default {
     }
   },
   computed: {
-    ...mapFields(
-        [
-          'questionType',
-          'questionNumber',
-          'questionTitleEnglish',
-          'questionTitleVietnamese',
-          'additionalInformationEnglish',
-          'additionalInformationVietnamese'
-        ]
-    ),
-    ...mapGetters(['getQuestionSlug', 'getAnswers'])
+    ...mapGetters(['getQuestionSlug', 'getAnswers']),
+    questionType: {
+      get () {
+        return this.$store.state.questionForm.questionType
+      },
+      set (value) {
+        console.log("test ", value)
+        this.$store.commit('UPDATE_QUESTION_TYPE', value)
+      }
+    },
+    questionNumber: {
+      get () {
+        return this.$store.state.questionForm.questionNumber
+      },
+      set (value) {
+        this.$store.commit('UPDATE_QUESTION_NUMBER', value)
+      }
+    },
+    questionTitleEnglish: {
+      get () {
+        return this.$store.state.questionForm.questionTitleEnglish
+      },
+      set (value) {
+        this.$store.commit('UPDATE_QUESTION_TITLE_ENGLISH', value)
+      }
+    },
+    questionTitleVietnamese: {
+      get () {
+        return this.$store.state.questionForm.questionTitleVietnamese
+      },
+      set (value) {
+        this.$store.commit('UPDATE_QUESTION_TITLE_VIETNAMESE', value)
+      }
+    },
+    additionalInformationEnglish: {
+      get () {
+        return this.$store.state.questionForm.additionalInformationEnglish
+      },
+      set (value) {
+        this.$store.commit('UPDATE_ADDITIONAL_INFORMATION_ENGLISH', value)
+      }
+    },
+    additionalInformationVietnamese: {
+      get () {
+        return this.$store.state.questionForm.additionalInformationVietnamese
+      },
+      set (value) {
+        this.$store.commit('UPDATE_ADDITIONAL_INFORMATION_VIETNAMESE', value)
+      }
+    }
   }
 }
 </script>

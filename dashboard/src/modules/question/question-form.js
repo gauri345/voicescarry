@@ -1,6 +1,5 @@
 import ApiConfig from "@/config/ApiConfig";
 import axios from "axios";
-import {getField, updateField} from "vuex-map-fields";
 import router from "@/routes";
 import _ from 'lodash';
 
@@ -22,8 +21,10 @@ export default {
         ]
     },
     getters: {
-        getField,
-        getAnswers: (state) => state.answers,
+        getAnswers: (state) => {
+            console.log(state.answers);
+            return state.answers
+        },
         getQuestionSlug: (state) => state.questionSlug
     },
     actions: {
@@ -37,6 +38,7 @@ export default {
 
                 const response = await axios(config);
 
+                commit('UPDATE_ALL_ANSWERS', response.data.data);
                 commit('UPDATE_QUESTION', response.data.data);
             } catch (error) {
                 dispatch('showError', " Failed deleting the question to edit.", {root: true});
@@ -137,10 +139,18 @@ export default {
         }
     },
     mutations: {
-        updateField,
         UPDATE_QUESTION: (state, question) => {
+            const questionTitleInEng = question.titles.filter(questionTitle => questionTitle.lang === 'en')[0].content;
+            const questionTitleInVi = question.titles.filter(questionTitle => questionTitle.lang === 'vi')[0].content;
+            const additionalInformationEng = question.additionalInformation.filter(additionalInformation => additionalInformation.lang === 'en')[0].content;
+            const additionalInformationVi = question.additionalInformation.filter(additionalInformation => additionalInformation.lang === 'vi')[0].content;
+
             state.questionType = question.questionType;
             state.questionNumber = question.number;
+            state.questionTitleEnglish = questionTitleInEng;
+            state.questionTitleVietnamese = questionTitleInVi;
+            state.additionalInformationEnglish = additionalInformationEng;
+            state.additionalInformationVietnamese = additionalInformationVi;
         },
         ADD_NEW_EMPTY_ANSWER: (state) => state.answers.push({
             answerValue: null,
@@ -148,7 +158,23 @@ export default {
             answerTitleVietnamese: null
         }),
         UPDATE_SLUG: (state) => state.questionSlug = _.snakeCase(state.questionTitleEnglish).substring(0, 50),
+        UPDATE_QUESTION_TYPE:(state, questionType) => state.questionType = questionType,
+        UPDATE_QUESTION_NUMBER:(state, questionNumber) => state.questionNumber = questionNumber,
+        UPDATE_QUESTION_TITLE_ENGLISH:(state, questionTitleEnglish) => state.questionTitleEnglish = questionTitleEnglish,
+        UPDATE_QUESTION_TITLE_VIETNAMESE:(state, questionTitleVietnamese) => state.questionTitleVietnamese = questionTitleVietnamese,
+        UPDATE_ADDITIONAL_INFORMATION_ENGLISH:(state, additionalInformationEnglish) => state.additionalInformationEnglish = additionalInformationEnglish,
+        UPDATE_ADDITIONAL_INFORMATION_VIETNAMESE:(state, additionalInformationVietnamese) => state.additionalInformationVietnamese = additionalInformationVietnamese,
+
+        UPDATE_ALL_ANSWERS: (state, question) => {
+            state.answers = question.answers.map(answer => {
+                return {
+                    answerValue: answer.value,
+                    answerTitleEnglish: answer.items.filter(answer => answer.lang==='en')[0].content,
+                    answerTitleVietnamese: answer.items.filter(answer => answer.lang==='vi')[0].content,
+                };
+            });
+        },
         REMOVE_ANSWER_BY_INDEX: (state, index) => state.answers.splice(index, 1),
-        UPDATE_ANSWER_ITEM_BY_INDEX: (state, item, index) => state.answers[index] = item
+        UPDATE_ANSWER_ITEM_BY_INDEX: (state, item, index) => state.answers[index] = item,
     }
 }

@@ -41,6 +41,8 @@ exports.post = async function (req, res) {
 
         const question = req.body;
 
+        console.log(question);
+
         const filter = {number: question.number};
 
         const existingQuestion = await Question.findOne(filter);
@@ -63,7 +65,15 @@ exports.post = async function (req, res) {
             );
         }
     } catch (error) {
-        res.sendStatus(500)
+        console.log(error);
+        res
+            .status(500)
+            .json(
+            {
+                status: "error",
+                message: error,
+            }
+        );
     }
 };
 
