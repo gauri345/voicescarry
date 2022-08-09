@@ -17,6 +17,7 @@ import SurveyAnswerList from "@/components/survey/SurveyAnswerList";
 import FactoryComponent from "@/components/factory/FactoryComponent";
 import FactoryList from "@/components/factory/FactoryList";
 import FactoryForm from "@/components/factory/FactoryForm";
+import SurveyForm from "@/components/survey/SurveyForm";
 
 const routes = [
     {
@@ -46,6 +47,11 @@ const routes = [
                         path: 'answers/survey-code=:surveyCode',
                         name: 'SurveyAnswerList',
                         component: SurveyAnswerList
+                    },
+                    {
+                        path: 'form/id=:id?',
+                        name: 'SurveyForm',
+                        component: SurveyForm
                     },
                 ]
             },

@@ -9,6 +9,7 @@ import userList from "@/modules/user/user-list";
 import alertBox from "@/modules/util/alert-box";
 import surveyList from "@/modules/survey/survey-list";
 import surveyAnswerList from "@/modules/survey/survey-answer-list";
+import surveyForm from "@/modules/survey/survey-form";
 import factoryList from "@/modules/factory/factory-list";
 import factoryForm from "@/modules/factory/factory-form";
 
@@ -21,6 +22,7 @@ export default createStore({
         questionForm,
         surveyList,
         surveyAnswerList,
+        surveyForm,
         factoryList,
         factoryForm,
         userList,

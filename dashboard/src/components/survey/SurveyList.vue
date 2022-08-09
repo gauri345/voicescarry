@@ -1,5 +1,6 @@
 <template>
   <AlertBox/>
+  <router-link to="/surveys/form/id=" class="btn btn-success">Add New</router-link>
   <table class="table bg-dark text-info text-lg-start caption-top">
     <caption>
       <div class="input-group mb-3">
@@ -39,6 +40,7 @@
       <td>{{ survey.factoryCode }}</td>
       <td>{{ survey.surveyDate }}</td>
       <td>
+        <router-link :to="`/surveys/form/id=${survey._id}`" class="material-icons text-decoration-none text-info" title="Edit Survey">edit</router-link>
         <a class="material-icons text-decoration-none text-info" href="javascript:void(0);"
            @click="previewAnswers(survey.surveyCode)">preview</a>
         <a class="material-icons text-decoration-none text-info" href="javascript:void(0);"
