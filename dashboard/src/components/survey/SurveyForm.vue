@@ -6,7 +6,7 @@
       <td>
         <select id="factoryCode" class="form-select form-select" required>
           <option>Select a Factory</option>
-          <option>Vaude</option>
+          <option v-for="factory in factoryList" :key="factory._id" :value="factory.code">{{factory.name}}</option>
         </select>
       </td>
     </tr>
@@ -16,9 +16,6 @@
         <ul class="list-group">
           <li class="list-group-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">An item</li>
           <li class="list-group-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">A second item</li>
-          <li class="list-group-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">A third item</li>
-          <li class="list-group-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">A fourth item</li>
-          <li class="list-group-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">And a fifth one</li>
         </ul>
       </td>
     </tr>
@@ -33,17 +30,23 @@
 
 <script>
 import AlertBox from "@/components/util/AlertBox";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "SurveyForm",
-  components: {
-    AlertBox
+  components:{AlertBox},
+  methods: {
+    ...mapActions(["fetchFactories"])
   },
+  computed:{
+    ...mapGetters(["factoryList"])
+  },
+  mounted() {
+    this.$store.dispatch('hideAlert');
+    this.fetchFactories();
+  }
 }
 </script>
 
 <style scoped>
-.form-control-color {
-  width: 25rem;
-}
 </style>
