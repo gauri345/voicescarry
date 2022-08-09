@@ -14,8 +14,11 @@
       <th>Questions:</th>
       <td>
         <ul class="list-group">
-          <li class="list-group-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">An item</li>
-          <li class="list-group-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">A second item</li>
+          <li class="list-group-item" v-for="question in questionList" :key="question.questionId">
+            <input class="form-check-input" type="checkbox" :value="question.questionId" id="flexCheckDefault">
+            {{question.questionTitle}}
+          </li>
+
         </ul>
       </td>
     </tr>
@@ -36,14 +39,15 @@ export default {
   name: "SurveyForm",
   components:{AlertBox},
   methods: {
-    ...mapActions(["fetchFactories"])
+    ...mapActions(["fetchFactories", "fetchAllQuestions"])
   },
   computed:{
-    ...mapGetters(["factoryList"])
+    ...mapGetters(["factoryList", "questionList"])
   },
   mounted() {
     this.$store.dispatch('hideAlert');
     this.fetchFactories();
+    this.fetchAllQuestions()
   }
 }
 </script>
