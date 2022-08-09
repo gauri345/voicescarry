@@ -20,7 +20,6 @@ export default {
 
                     const response = await axios(config);
 
-                    console.log('sdfsdfsdf', response.data.data);
                     if (response.data.data) {
                         commit('UPDATE_FACTORY_NAME', response.data.data.name);
                         commit('UPDATE_FACTORY_CODE', response.data.data.code);
@@ -37,16 +36,22 @@ export default {
         },
         async saveFactory({ state, dispatch}) {
             try {
+
+                const dataToStore =  {
+                    code: state.factoryCode,
+                    name: state.factoryName,
+                    id: state.factoryId
+                };
+
+                console.log(dataToStore);
+
                 const config = {
                     method: 'post',
                     url: `${ApiConfig.API_BASE_URL}/factory/`,
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    data: {
-                        code: state.factoryCode,
-                        name: state.factoryCode
-                    }
+                    data: dataToStore
                 };
 
                 await axios(config);

@@ -37,20 +37,17 @@ exports.findById = async function (req, res) {
 }
 
 exports.post = async function (req, res) {
-
     const factory = req.body;
 
-    const filter = {name: factory.name};
-
     try {
-        const existingFactory = await Factory.findOne(filter);
+        const existingFactory = await Factory.findById(factory.id);
 
         if (existingFactory) {
             res.json(
                 {
                     status: "success",
                     message: 'factory updated',
-                    data: await Factory.findOneAndUpdate(filter, factory)
+                    data: await Factory.findByIdAndUpdate(factory.id, factory)
                 }
             );
         } else {
