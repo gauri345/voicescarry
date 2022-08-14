@@ -1,10 +1,43 @@
 const Factory = require("../model/factoryModel");
 const Survey = require("../model/surveyModel");
-const {randomUUID} = require('crypto');
 const AnswerModel = require("../model/answerModel");
+const QuestionModel = require("../model/questionModel");
 const fs = require('fs').promises;
 
-exports.createSurvey = async function (req, res) {
+exports.surveyQuestions = async function (req, res) {
+    const surveyId = req.params.surveyId;
+    try {
+        const existingSurvey = await Survey.findOne({_id: surveyId});
+        if (!existingSurvey) {
+            return res
+                .status(404)
+                .json({
+                    status: "failed",
+                    message: 'Provided surveyId does not exists in system.',
+                });
+        } else {
+            const questionList = existingSurvey.questions.map(async questionId => {
+                return QuestionModel.findById(questionId);
+            });
+
+            res.json({
+                status: "success",
+                message: `Total ${questionList.length} questions retrieved`,
+                data: await Promise.all(questionList)
+            });
+        }
+    } catch (error) {
+        console.error(error);
+        return res
+            .status(500)
+            .json({
+                status: "failed",
+                message: error,
+            });
+    }
+};
+
+exports.startSurvey = async function (req, res) {
     try {
         const factoryCode = req.params.factoryCode;
         const existingFactory = await Factory.findOne({code: factoryCode});
@@ -14,29 +47,41 @@ exports.createSurvey = async function (req, res) {
                 .status(404)
                 .json({
                     status: "failed",
-                    message: 'factory does not exists to start a survey.',
+                    message: 'Factory does not exists to start a survey.',
                 });
+        } else {
+            const survey = await Survey.findOne({factoryId: existingFactory._id});
+            if (!survey) {
+                return res
+                    .status(400)
+                    .json({
+                        status: "failed",
+                        message: 'Survey for the provided factory does not exists to start a survey.',
+                    });
+            } else {
+                res.json(
+                    {
+                        status: "success",
+                        message: 'survey created',
+                        data: {
+                            "factoryCode": factoryCode,
+                            "surveyId": survey._id,
+                            "surveyDate": Date.now()
+                        }
+                    }
+                );
+            }
         }
-
-        const survey = await Survey.create(
-            {
-                "factoryCode": factoryCode,
-                "surveyCode": randomUUID(),
-                "surveyDate": Date.now()
-            }
-        );
-
-        res.json(
-            {
-                status: "success",
-                message: 'survey created',
-                data: survey
-            }
-        );
     } catch (error) {
-        res.sendStatus(500)
+        console.error(error);
+        return res
+            .status(500)
+            .json({
+                status: "failed",
+                message: error,
+            });
     }
-};
+}
 
 exports.addSurvey = async function (req, res) {
     try {
@@ -131,7 +176,7 @@ exports.downloadFilteredSurveyAnswers = async function (req, res) {
             }
         });
 
-            const fileName = `${__dirname}/survey_answers.json`;
+        const fileName = `${__dirname}/survey_answers.json`;
         fs
             .writeFile(fileName, JSON.stringify(filteredSurveys), 'utf8')
             .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));

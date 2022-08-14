@@ -1,6 +1,7 @@
 import HttpClient from "@/util/http_client";
 import LocalStorage from "@/util/local_storage";
 import router from "@/router";
+import {SURVEY_SESSION_TTL_SECONDS} from "@/config";
 
 export default {
     state: {
@@ -20,9 +21,10 @@ export default {
 
     actions: {
         async initializeQuestionState({commit, state}, questionNumber) {
+            const survey = LocalStorage.get("survey");
             if (state.allQuestions.length <= 0) {
                 try {
-                    const response = await HttpClient.get('question');
+                    const response = await HttpClient.get(`survey/questions/${survey.surveyId}`  );
                     commit('SET_ALL_QUESTIONS', response.data.data);
                 } catch (error) {
                     console.error(error)

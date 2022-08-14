@@ -21,13 +21,18 @@ const answerModel = mongoose.Schema({
         required: false
     },
 
-    factoryCode: {
+    factoryId: {
         type: String,
         required: true
     },
 
-    surveyCode: {
+    surveyId: {
         type: String,
+        required: true
+    },
+
+    answerDate: {
+        type: Date,
         required: true
     }
 });

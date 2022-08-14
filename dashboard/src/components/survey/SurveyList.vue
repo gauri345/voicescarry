@@ -32,7 +32,7 @@
     <tr class="text-info">
       <th scope="col">#</th>
       <th scope="col">Survey Name</th>
-      <th scope="col">Factory Code</th>
+      <th scope="col">Factory Name</th>
       <th scope="col">Questions</th>
       <th scope="col">Action</th>
     </tr>
