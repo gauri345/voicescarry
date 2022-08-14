@@ -62,13 +62,23 @@ exports.addSurvey = async function (req, res) {
 exports.allSurveys = async function (req, res) {
     try {
         const allSurveys = await Survey.find();
+        const surveysToReturn = allSurveys.map(async survey => {
+            return {
+                _id: survey._id,
+                surveyName: survey.surveyName,
+                factoryId: survey.factoryId,
+                questions: survey.questions,
+                factory: await Factory.findOne({_id: survey.factoryId})
+            };
+        });
+
         res
             .status(200)
             .json(
                 {
                     status: "success",
                     message: `Total [${allSurveys.length}] surveys received`,
-                    data: allSurveys
+                    data: await Promise.all(surveysToReturn)
                 }
             )
     } catch (error) {

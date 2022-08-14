@@ -32,6 +32,7 @@
     <tr class="text-info">
       <th scope="col">#</th>
       <th scope="col">Survey Name</th>
+      <th scope="col">Factory Code</th>
       <th scope="col">Questions</th>
       <th scope="col">Action</th>
     </tr>
@@ -40,6 +41,7 @@
     <tr v-for="(survey, index) in allSurveys" :key="index">
       <td>{{ index + 1 }}</td>
       <td>{{ survey.surveyName }}</td>
+      <td>{{ survey.factory.name }}</td>
       <td>{{ survey.questions.length }}</td>
       <td>
         <router-link :to="`/surveys/form/id=${survey._id}`" class="material-icons text-decoration-none text-info"
