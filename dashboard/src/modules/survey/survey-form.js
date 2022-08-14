@@ -6,19 +6,26 @@ const axios = require('axios');
 export default {
     state: {
         factoryList: [],
-        questionList: [],
         survey: {
             surveyName: '',
             factoryId: '',
-            questions: []
+            questions: [{}],
         }
     },
     actions: {
+        toggleSelectAllQuestions({commit, state}) {
+            if (!state.survey.questions[0].isSelected) {
+                commit('ADD_ALL_QUESTIONS_TO_SURVEY');
+            } else {
+                commit('REMOVE_ALL_QUESTIONS_FROM_SURVEY');
+            }
+        },
+
         toggleQuestionToSurvey({commit, state}, questionId) {
-            if (state.survey.questions.includes(questionId)) {
+            if (state.survey.questions.find(question => question.questionId === questionId)) {
                 commit('REMOVE_QUESTION_FROM_SURVEY', questionId);
             } else {
-                commit('ADD_QUESTION_FROM_SURVEY', questionId);
+                commit('ADD_QUESTION_TO_SURVEY', questionId);
             }
         },
         async fetchFactories({commit, dispatch}) {
@@ -50,6 +57,12 @@ export default {
         },
 
         async addSurvey({state, dispatch}) {
+            const surveyToSave = {
+                surveyName: state.survey.surveyName,
+                factoryId: state.survey.factoryId,
+                questions: state.survey.questions.map(question => question.questionId)
+            };
+
             try {
                 const config = {
                     method: 'post',
@@ -57,7 +70,7 @@ export default {
                     header: {
                         'content-Type': 'application/json'
                     },
-                    data: state.survey
+                    data: surveyToSave
                 };
 
                 await axios(config);
@@ -65,34 +78,54 @@ export default {
 
                 dispatch('showInfo', "A new survey is successfully added.", {root: true});
             } catch (error) {
-                dispatch('showError', "Failed saving survey in database.", {root: true});
+                dispatch('showError', "Failed saving survey. Please make sure you enter correct data.", {root: true});
             }
         }
     },
     getters: {
         factoryList: (state) => state.factoryList,
-        questionList: (state) => state.questionList
+        questionList: (state) => state.survey.questions
     },
     mutations: {
         UPDATE_ALL_FACTORY_CODE: (state, factoryList) => {
             state.factoryList = factoryList
         },
         UPDATE_QUESTIONS_LIST: (state, questionList) => {
-            state.questionList = questionList.map((question) => {
+            state.survey.questions = questionList.map((question) => {
                 return {
                     questionId: question._id,
-                    questionTitle: question.titles.filter(title => title.lang === 'en')[0].content
+                    isSelected: false,
+                    title: question.titles.filter(title => title.lang === 'en')[0].content
                 };
             });
         },
         UPDATE_FACTORY_ID_IN_SURVEY: (state, factoryId) => state.survey.factoryId = factoryId,
         UPDATE_SURVEY_NAME_IN_SURVEY: (state, surveyName) => state.survey.surveyName = surveyName,
         REMOVE_QUESTION_FROM_SURVEY: (state, questionId) => {
-            const index = state.survey.questions.indexOf(questionId)
-            if (index !== -1) {
-                state.survey.questions.splice(index, 1)
-            }
+            state.survey.questions = state.survey.questions.map(question => {
+                if (question.questionId === questionId)
+                    question.isSelected = false;
+                return question;
+            });
         },
-        ADD_QUESTION_FROM_SURVEY: (state, questionId) => state.survey.questions.push(questionId)
+        ADD_QUESTION_TO_SURVEY: (state, questionId) => {
+            state.survey.questions = state.survey.questions.map(question => {
+                if (question.questionId === questionId)
+                    question.isSelected = true;
+                return question;
+            });
+        },
+        REMOVE_ALL_QUESTIONS_FROM_SURVEY: (state) => {
+            state.survey.questions = state.survey.questions.map(question => {
+                question.isSelected = false;
+                return question;
+            });
+        },
+        ADD_ALL_QUESTIONS_TO_SURVEY: (state) => {
+            state.survey.questions = state.survey.questions.map(question => {
+                question.isSelected = true;
+                return question;
+            });
+        }
     }
 }

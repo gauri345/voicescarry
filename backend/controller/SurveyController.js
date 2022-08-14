@@ -86,7 +86,6 @@ exports.startSurvey = async function (req, res) {
 exports.addSurvey = async function (req, res) {
     try {
         const storedSurvey = await Survey.create(req.body);
-
         res.json(
             {
                 status: "success",
@@ -95,6 +94,7 @@ exports.addSurvey = async function (req, res) {
             }
         );
     } catch (error) {
+        console.error(error);
         return res
             .status(500)
             .json({
