@@ -43,8 +43,6 @@ export default {
                     id: state.factoryId
                 };
 
-                console.log(dataToStore);
-
                 const config = {
                     method: 'post',
                     url: `${ApiConfig.API_BASE_URL}/factory/`,

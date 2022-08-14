@@ -2,6 +2,18 @@
   <AlertBox/>
   <table class="table-borderless text-left">
     <tr>
+      <th>Survey Name:</th>
+      <td>
+        <div class="container text-start">
+          <div class="row">
+            <div class="col mb-2">
+              <input class="form-control" name="surveyName" v-model="surveyName"  placeholder="A name for the survey."/>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
       <th>Factory:</th>
       <td>
         <div class="container text-start">
@@ -44,7 +56,7 @@
             <div class="col">
               <div class="d-flex justify-content-start mt-1">
                 <button class="btn btn-success mt-3" type="button" @click="addSurvey">Save</button>&nbsp;&nbsp;
-                <button class="btn btn-danger mt-3" @click="$router.push('/survey')">Cancel</button>
+                <button class="btn btn-danger mt-3" @click="$router.push('/surveys')">Cancel</button>
               </div>
             </div>
           </div>
@@ -85,6 +97,14 @@ export default {
       },
       set(value) {
         this.$store.commit('UPDATE_FACTORY_ID_IN_SURVEY', value)
+      }
+    },
+    surveyName: {
+      get() {
+        return this.$store.state.surveyForm.survey.surveyName
+      },
+      set(value) {
+        this.$store.commit('UPDATE_SURVEY_NAME_IN_SURVEY', value)
       }
     },
   },

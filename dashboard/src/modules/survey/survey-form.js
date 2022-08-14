@@ -1,4 +1,5 @@
 import ApiConfig from "@/config/ApiConfig";
+import router from "@/routes";
 
 const axios = require('axios');
 
@@ -7,15 +8,16 @@ export default {
         factoryList: [],
         questionList: [],
         survey: {
+            surveyName: '',
             factoryId: '',
             questions: []
         }
     },
     actions: {
-        toggleQuestionToSurvey({commit, state}, questionId){
-            if (state.survey.questions.includes(questionId)){
+        toggleQuestionToSurvey({commit, state}, questionId) {
+            if (state.survey.questions.includes(questionId)) {
                 commit('REMOVE_QUESTION_FROM_SURVEY', questionId);
-            }else{
+            } else {
                 commit('ADD_QUESTION_FROM_SURVEY', questionId);
             }
         },
@@ -47,11 +49,7 @@ export default {
             }
         },
 
-        async addSurvey({state}) {
-            console.log('on add survey');
-            console.log(state.survey);
-
-            /*
+        async addSurvey({state, dispatch}) {
             try {
                 const config = {
                     method: 'post',
@@ -61,16 +59,15 @@ export default {
                     },
                     data: state.survey
                 };
-                await axios(config);
-                //await router.push("/survey/save")
-                dispatch('showInfo', "survey successfully added", {root: true});
 
-            } catch(error) {
+                await axios(config);
+                await router.push({name: 'SurveyList'});
+
+                dispatch('showInfo', "A new survey is successfully added.", {root: true});
+            } catch (error) {
                 dispatch('showError', "Failed saving survey in database.", {root: true});
             }
-            */
-        },
-
+        }
     },
     getters: {
         factoryList: (state) => state.factoryList,
@@ -89,10 +86,11 @@ export default {
             });
         },
         UPDATE_FACTORY_ID_IN_SURVEY: (state, factoryId) => state.survey.factoryId = factoryId,
-        REMOVE_QUESTION_FROM_SURVEY:(state, questionId) => {
+        UPDATE_SURVEY_NAME_IN_SURVEY: (state, surveyName) => state.survey.surveyName = surveyName,
+        REMOVE_QUESTION_FROM_SURVEY: (state, questionId) => {
             const index = state.survey.questions.indexOf(questionId)
             if (index !== -1) {
-               state.survey.questions.splice(index, 1)
+                state.survey.questions.splice(index, 1)
             }
         },
         ADD_QUESTION_FROM_SURVEY: (state, questionId) => state.survey.questions.push(questionId)

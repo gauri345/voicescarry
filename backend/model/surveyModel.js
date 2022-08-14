@@ -1,16 +1,12 @@
 const mongoose = require('mongoose');
 
 const surveySchema = mongoose.Schema({
-    factoryCode: {
+    surveyName: {
         type: String,
         required: true
     },
-    surveyCode: {
+    factoryId: {
         type: String,
-        required: true
-    },
-    surveyDate: {
-        type: Date,
         required: true
     },
     questions: [

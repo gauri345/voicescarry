@@ -38,38 +38,9 @@ exports.createSurvey = async function (req, res) {
     }
 };
 
-/**
- * Will create new or updates an existing survey.
- * The request can look as follows:
- * {
- *     "surveyId": "3446457564",
- *     "factoryCode": "vaude",
- *     "surveyCode": "dgfdgfdg",
- *     "surveyDate": "2020-02-02",
- *     "questions": ['6205a8d53abec2d01df3db37', '6205a8e03abec2d01df3db45', '6205a8e93abec2d01df3db53']
- * }
- */
 exports.addSurvey = async function (req, res) {
     try {
-
-        const survey = req.body;
-
-        const existingFactory = await Survey.findOne({code: survey.factoryCode});
-
-        if (!existingFactory) {
-            return res
-                .status(404)
-                .json({
-                    status: "failed",
-                    message: 'factory does not exists to create or update a survey.',
-                });
-        }
-
-        const storedSurvey = await Survey.updateOne(
-            {_id: survey.surveyId},
-            survey,
-            {upsert: true, setDefaultsOnInsert: true}
-        );
+        const storedSurvey = await Survey.create(req.body);
 
         res.json(
             {
