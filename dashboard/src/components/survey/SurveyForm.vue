@@ -7,9 +7,9 @@
         <div class="container text-start">
           <div class="row">
             <div class="col mb-2">
-              <select id="factoryCode" class="form-select form-select" required>
+              <select id="factoryId" v-model="factoryId" class="form-select form-select" required>
                 <option>Select a Factory</option>
-                <option v-for="factory in factoryList" :key="factory._id" :value="factory.code">
+                <option v-for="factory in factoryList" :key="factory._id" :value="factory._id">
                   {{ factory.name }}
                 </option>
               </select>
@@ -26,7 +26,8 @@
             <div v-for="(chunk, index) in groupQuestionList(questionList)" :key="index" class="col">
               <div v-for="question in chunk" :key="question.questionId" class="input-group">
                 <div class="input-group-text rounded-0">
-                  <input :id="question.questionId" :value="question.questionId" class="form-check" type="checkbox">
+                  <input :id="question.questionId" :value="question.questionId" class="form-check" type="checkbox"
+                         @change="toggleQuestionToSurvey(question.questionId)">
                 </div>
                 <label class="form-control rounded-0"> {{ question.questionTitle }}</label>
               </div>
@@ -62,30 +63,30 @@ export default {
   name: "SurveyForm",
   components: {AlertBox},
   methods: {
-    ...mapActions(["fetchFactories", "fetchAllQuestions", "addSurvey"]),
+    ...mapActions(["fetchFactories", "fetchAllQuestions", "addSurvey", "toggleQuestionToSurvey"]),
     groupQuestionList(questionList) {
       let chunks = [[], [], []];
-
       let count = 0;
       let row = 0;
-
       for (let i = 0; i < questionList.length; i++) {
-
-        if (count % 3 !== 0) {
-          row++;
-        } else {
-          row = 0;
-        }
-
+        if (count % 3 !== 0) row++;
+        else row = 0;
         chunks[row].push(questionList[i]);
         count++;
       }
-
       return chunks;
     }
   },
   computed: {
-    ...mapGetters(["factoryList", "questionList"])
+    ...mapGetters(["factoryList", "questionList"]),
+    factoryId: {
+      get() {
+        return this.$store.state.surveyForm.survey.factoryId
+      },
+      set(value) {
+        this.$store.commit('UPDATE_FACTORY_ID_IN_SURVEY', value)
+      }
+    },
   },
   mounted() {
     this.$store.dispatch('hideAlert');

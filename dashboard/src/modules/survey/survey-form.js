@@ -1,4 +1,3 @@
-
 import ApiConfig from "@/config/ApiConfig";
 
 const axios = require('axios');
@@ -6,15 +5,20 @@ const axios = require('axios');
 export default {
     state: {
         factoryList: [],
-        questionList:[],
+        questionList: [],
         survey: {
-            factoryCode:'',
-            surveyCode: '12345',
-            surveyDate: new Date().getDate(),
+            factoryId: '',
             questions: []
         }
     },
     actions: {
+        toggleQuestionToSurvey({commit, state}, questionId){
+            if (state.survey.questions.includes(questionId)){
+                commit('REMOVE_QUESTION_FROM_SURVEY', questionId);
+            }else{
+                commit('ADD_QUESTION_FROM_SURVEY', questionId);
+            }
+        },
         async fetchFactories({commit, dispatch}) {
             const config = {
                 method: 'get',
@@ -29,7 +33,7 @@ export default {
                 dispatch('showError', " Failed loading factories. Please try again.", {root: true});
             }
         },
-        async fetchAllQuestions({commit, dispatch}){
+        async fetchAllQuestions({commit, dispatch}) {
             const config = {
                 method: 'get',
                 url: `${ApiConfig.API_BASE_URL}/question`,
@@ -39,9 +43,10 @@ export default {
                 const response = await axios(config)
                 commit('UPDATE_QUESTIONS_LIST', response.data.data);
             } catch (error) {
-                dispatch('showError', " Failed loading questions. Please try again.", {root:true})
+                dispatch('showError', " Failed loading questions. Please try again.", {root: true})
             }
         },
+
         async addSurvey({state}) {
             console.log('on add survey');
             console.log(state.survey);
@@ -76,15 +81,20 @@ export default {
             state.factoryList = factoryList
         },
         UPDATE_QUESTIONS_LIST: (state, questionList) => {
-
-            const mapperFunction = (question) => {
+            state.questionList = questionList.map((question) => {
                 return {
                     questionId: question._id,
                     questionTitle: question.titles.filter(title => title.lang === 'en')[0].content
                 };
-            };
-
-          state.questionList = questionList.map(mapperFunction);
-        }
+            });
+        },
+        UPDATE_FACTORY_ID_IN_SURVEY: (state, factoryId) => state.survey.factoryId = factoryId,
+        REMOVE_QUESTION_FROM_SURVEY:(state, questionId) => {
+            const index = state.survey.questions.indexOf(questionId)
+            if (index !== -1) {
+               state.survey.questions.splice(index, 1)
+            }
+        },
+        ADD_QUESTION_FROM_SURVEY: (state, questionId) => state.survey.questions.push(questionId)
     }
 }
