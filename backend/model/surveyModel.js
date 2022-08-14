@@ -12,7 +12,13 @@ const surveySchema = mongoose.Schema({
     surveyDate: {
         type: Date,
         required: true
-    }
+    },
+    questions: [
+        {
+            type: String,
+            required: true
+        }
+    ]
 });
 
 const Survey = module.exports = mongoose.model('Survey', surveySchema);

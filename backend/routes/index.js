@@ -68,6 +68,9 @@ router.route('/surveys/answers/:surveyCode')
 router.route('/survey/start/:factoryCode')
     .get(SurveyController.createSurvey)
 
+router.route('/survey/save')
+    .post(SurveyController.addSurvey)
+
 router.route('/answer/storeBulk/')
     .get(AnswerController.index)
     .post(AnswerController.insertBulk);
