@@ -129,7 +129,7 @@ export default {
 
                 await axios(config);
 
-                router.push("/question");
+                await router.push("/question");
 
                 dispatch('showInfo', "New question successfully added", {root: true});
 
