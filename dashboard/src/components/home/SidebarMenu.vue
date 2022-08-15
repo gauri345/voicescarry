@@ -14,9 +14,23 @@
         </li>
 
         <li class="nav-item">
-          <router-link class="nav-link text-info" to="/question">
+          <a aria-controls="questionsCollapse" aria-expanded="false" class="nav-link text-info" data-bs-toggle="collapse"
+             href="#questionsCollapse" role="button">
             <span class="material-icons-outlined">quiz</span>Questions
-          </router-link>
+          </a>
+
+          <div id="questionsCollapse" class="collapse">
+            <div class="card card-body">
+              <router-link class="nav-link text-info" to="/question-type">
+                <span class="material-icons-outlined">rule</span>Question Types
+              </router-link>
+              <router-link class="nav-link text-info" to="/question">
+                <span class="material-icons-outlined">question_mark</span>Questions
+              </router-link>
+            </div>
+          </div>
+
+
         </li>
         <li class="nav-item">
           <router-link class="nav-link text-info" to="/surveys">

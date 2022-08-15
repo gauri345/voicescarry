@@ -18,6 +18,9 @@ import FactoryComponent from "@/components/factory/FactoryComponent";
 import FactoryList from "@/components/factory/FactoryList";
 import FactoryForm from "@/components/factory/FactoryForm";
 import SurveyForm from "@/components/survey/SurveyForm";
+import QuestionTypeComponent from "@/components/question/type/QuestionTypeComponent";
+import QuestionTypeList from "@/components/question/type/QuestionTypeList";
+import QuestionTypeForm from "@/components/question/type/QuestionTypeForm";
 
 const routes = [
     {
@@ -69,6 +72,23 @@ const routes = [
                         path: 'form/id=:id?',
                         name: 'QuestionForm',
                         component: QuestionForm
+                    }
+                ]
+            },
+            {
+                path: '/question-type/',
+                name: 'QuestionTypeComponent',
+                component: QuestionTypeComponent,
+                children: [
+                    {
+                        path: '',
+                        name: 'QuestionTypeList',
+                        component: QuestionTypeList
+                    },
+                    {
+                        path: 'form/id=:id?',
+                        name: 'QuestionTypeForm',
+                        component: QuestionTypeForm
                     }
                 ]
             },
