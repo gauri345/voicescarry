@@ -23,7 +23,7 @@ exports.findById = async function (req, res) {
             {
                 status: "success",
                 message: 'Factory found',
-                data: await Factory.findById(req.params.id)
+                data: await Factory.findById(factoryId)
             }
         );
     } catch (error) {
@@ -55,7 +55,7 @@ exports.post = async function (req, res) {
                 {
                     status: "success",
                     message: 'factory added',
-                    data: await Factory.create(req.body)
+                    data: await Factory.create(factory)
                 }
             );
         }
@@ -67,8 +67,6 @@ exports.post = async function (req, res) {
                 message: "Failed Storing factory in database."
             });
     }
-
-
 };
 
 exports.checkIfExists = async function (req, res) {
