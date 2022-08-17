@@ -1,5 +1,5 @@
 <template>
-
+  <AlertBox/>
   <div class="mb-3 row">
     <label class="col-sm-2 col-form-label d-flex justify-content-start">Answer Type</label>
     <div class="col-auto">
@@ -43,9 +43,11 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import AlertBox from "@/components/util/AlertBox";
 
 export default {
   name: "QuestionTypeForm",
+  components: {AlertBox},
   methods: {
     ...mapActions(['saveQuestionsType', 'fetchQuestionTypeById']),
     addNewAnswerValue() {

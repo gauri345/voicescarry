@@ -12,24 +12,32 @@ export default {
     actions: {
         async saveQuestionsType({state, dispatch}) {
             try {
-                const dataToStore = {
-                    _id: state.questionTypeId,
-                    questionType: state.questionType,
-                    answerValues: state.answerValues,
+                if (state.questionType === ''){
+                    dispatch('showError', "Answer type is empty.", {root: true});
+                } else if (state.answerValues === ''){
+                    dispatch('showError', "Answer value is empty.", {root: true});
+                } else {
+                    dispatch('hideAlert', {root: true});
 
-                };
-                const config = {
-                    method: 'post',
-                    url: `${ApiConfig.API_BASE_URL}/question-type/`,
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    data: dataToStore
-                };
-                await axios(config);
+                    const dataToStore = {
+                        _id: state.questionTypeId,
+                        questionType: state.questionType,
+                        answerValues: state.answerValues,
+                    };
+                    const config = {
+                        method: 'post',
+                        url: `${ApiConfig.API_BASE_URL}/question-type/`,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        data: dataToStore
+                    };
+                    await axios(config);
 
-                await router.push("/question-type/");
-                dispatch('showInfo', "questions type and answers type successfully added", {root: true});
+                    await router.push("/question-type/");
+                    dispatch('showInfo', "questions type and answers type successfully added", {root: true});
+                }
+
             } catch (error) {
                 dispatch('showError', "Failed saving questions type in database.", {root: true});
             }
