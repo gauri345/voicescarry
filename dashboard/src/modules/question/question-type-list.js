@@ -35,7 +35,7 @@ export default {
             try {
                 const response = await axios(config);
                 if (response.status === 200) {
-                    const newQuestionTypes = state.questionTypes.filter(question => question._id !== question);
+                    const newQuestionTypes = state.questionTypes.filter(question => question._id !== questionTypeId);
                     dispatch('showInfo', "Question type successfully deleted.", {root: true});
                     commit('UPDATE_ALL_QUESTION_TYPES', newQuestionTypes);
                 }

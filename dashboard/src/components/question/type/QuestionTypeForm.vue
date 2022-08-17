@@ -2,30 +2,38 @@
 
   <div class="mb-3 row">
     <label class="col-sm-2 col-form-label d-flex justify-content-start">Question Type</label>
-    <input v-model="questionType" class="form-control-color" name="questionType"
-           placeholder="Question Type" type="text">
+    <div class="col-auto">
+      <input v-model="questionType" class="form-control" name="questionType"
+             placeholder="Question Type" type="text">
+    </div>
   </div>
   <div class="mb-3 row">
     <label class="col-sm-2 col-form-label d-flex justify-content-start">Answer Values:</label>
-
-
-    <div class="row">
-      <div class="col-auto">
-        <input v-model="answerValue" class="form-control-color" name="questionType" placeholder="Value"
-               type="text">
-        <button class="btn btn-success material-icons text-white text-decoration-none" type="button"
-                @click="addNewAnswerValue">
-          add
-        </button> &nbsp;
-        <ul class="list-group answers-list ">
-          <li v-for="(answer, index) in answerValues" :key="index" class="list-group-item">
-            {{ answer }}
-            <span class="material-icons text-danger delete-answer-icon" @click="removeAnswerValue(answer)">close</span>
-          </li>
-        </ul>
+    <div class="col-auto">
+      <div class="row">
+        <div class="col-auto">
+          <input v-model="answerValue" class="form-control" name="questionType" placeholder="Value"
+                 type="text">
+        </div>
+        <div class="col-auto">
+          <a class="btn btn-success material-icons text-white text-decoration-none" type="button"
+             @click="addNewAnswerValue">
+            add
+          </a> &nbsp;
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-auto">
+          <ul class="list-group answers-list mt-2 ">
+            <li v-for="(answer, index) in answerValues" :key="index" class="list-group-item mb-1">
+              {{ answer }}
+              <span class="material-icons text-danger delete-answer-icon"
+                    @click="removeAnswerValue(answer)">close</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-
   </div>
   <div class="d-flex justify-content-start border-top border-1">
     <button class=" btn btn-success mt-3" type="button" @click="saveQuestionsType">Save</button>
@@ -68,17 +76,12 @@ export default {
   },
 
   mounted() {
-      this.fetchQuestionTypeById(this.$route.params.id);
+    this.fetchQuestionTypeById(this.$route.params.id);
   }
 }
 </script>
 
 <style scoped>
-.form-control-color {
-  width: 25rem;
-  cursor: none !important;
-}
-
 .answers-list {
   width: 25rem;
 }
