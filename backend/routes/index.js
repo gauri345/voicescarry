@@ -29,7 +29,7 @@ router.route('/users/:userId')
 
 /* QUESTIONS MANAGEMENT */
 router.route('/question-type/')
-    .post(QuestionTypeController.save)
+    .post(QuestionTypeController.post)
     .get(QuestionTypeController.getAll);
 
 router.route('/question-type/:id')

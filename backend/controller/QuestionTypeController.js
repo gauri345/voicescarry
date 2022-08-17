@@ -22,7 +22,7 @@ exports.getAll = async function (req, res) {
     }
 }
 
-exports.save = async function (req, res) {
+exports.post = async function (req, res) {
     const questionType = req.body;
 
     try {

@@ -5,6 +5,8 @@ import registration from "@/modules/user/registration";
 import feedbackList from "@/modules/feedback/feedback-list";
 import questionList from "@/modules/question/question-list";
 import questionForm from "@/modules/question/question-form";
+import questionTypeForm from "@/modules/question/question-type-form";
+import questionTypeList from "@/modules/question/question-type.-list";
 import userList from "@/modules/user/user-list";
 import alertBox from "@/modules/util/alert-box";
 import surveyList from "@/modules/survey/survey-list";
@@ -20,6 +22,8 @@ export default createStore({
         feedbackList,
         questionList,
         questionForm,
+        questionTypeForm,
+        questionTypeList,
         surveyList,
         surveyAnswerList,
         surveyForm,

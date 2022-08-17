@@ -4,7 +4,7 @@
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
-      <th scope="col">#</th>
+      <th scope="col">Number</th>
       <th scope="col">Type</th>
       <th scope="col">Answer Values</th>
       <th scope="col">Action</th>
