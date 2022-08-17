@@ -4,17 +4,16 @@ import router from "@/routes";
 
 export default {
     state: {
-        question: null,
-        answer: null,
+        questionType: '',
+        answerValues: '',
     },
     actions: {
         async saveQuestionsType({state, dispatch}) {
             try {
                 const dataToStore = {
-                    questionType: state.question,
-                    answerValues: state.answer,
+                    questionType: state.questionType,
+                    answerValues: [state.answerValues],
                 };
-                console.log('test')
                 const config = {
                     method: 'post',
                     url: `${ApiConfig.API_BASE_URL}/question-type/`,
@@ -33,6 +32,8 @@ export default {
         }
     },
     mutations: {
+        UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType,
+        UPDATE_QUESTION_TYPE_VALUES: (state, answerValues) => state.answerValues = answerValues
     },
     getters: {
         question: (state) => state.question,

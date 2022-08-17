@@ -2,13 +2,14 @@
 
   <div class="mb-3 row">
     <label class="col-sm-2 col-form-label d-flex justify-content-start">Question Type</label>
-    <input v-model="question" class="form-control-color" name="questionType"
+    <input v-model="questionType" class="form-control-color" name="questionType"
            placeholder="Question Type" type="text">
   </div>
   <div class="mb-3 row">
     <label class="col-sm-2 col-form-label d-flex justify-content-start">Answer Values</label>
-    <input v-model="answer" class="form-control-color" name="questionType"
-           placeholder="Answer Values" type="text">
+    <input v-model="answerValues" class="form-control-color" name="questionType" placeholder="Answer Values"
+           type="text">
+
   </div>
   <div class="d-flex justify-content-start border-top border-1">
     <button class=" btn btn-success mt-3" type="button" @click="saveQuestionsType">Save</button>
@@ -21,8 +22,26 @@ import {mapActions} from "vuex";
 
 export default {
   name: "QuestionTypeForm",
-  method: {
-    ...mapActions(['saveQuestionsType']),
+  methods: {
+    ...mapActions(['saveQuestionsType'])
+  },
+  computed: {
+    questionType: {
+      get() {
+        return this.$store.state.questionTypeForm.questionType
+      },
+      set(value) {
+        this.$store.commit('UPDATE_QUESTION_TYPE', value)
+      }
+    },
+    answerValues: {
+      get() {
+        return this.$store.state.questionTypeForm.answerValues
+      },
+      set(value) {
+        this.$store.commit('UPDATE_QUESTION_TYPE_VALUES', value)
+      }
+    },
   }
 }
 </script>

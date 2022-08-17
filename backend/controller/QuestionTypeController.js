@@ -1,5 +1,4 @@
 const QuestionType = require('../model/QuestionTypeModel');
-const Factory = require("../model/factoryModel");
 
 exports.getAll = async function (req, res) {
     try {

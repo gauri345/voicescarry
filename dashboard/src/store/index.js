@@ -6,7 +6,7 @@ import feedbackList from "@/modules/feedback/feedback-list";
 import questionList from "@/modules/question/question-list";
 import questionForm from "@/modules/question/question-form";
 import questionTypeForm from "@/modules/question/question-type-form";
-import questionTypeList from "@/modules/question/question-type.-list";
+import questionTypeList from "@/modules/question/question-type-list";
 import userList from "@/modules/user/user-list";
 import alertBox from "@/modules/util/alert-box";
 import surveyList from "@/modules/survey/survey-list";
