@@ -196,7 +196,6 @@ export default {
         return this.$store.state.questionForm.questionType
       },
       set (value) {
-        console.log("test ", value)
         this.$store.commit('UPDATE_QUESTION_TYPE', value)
       }
     },
