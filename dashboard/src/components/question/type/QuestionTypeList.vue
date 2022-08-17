@@ -12,7 +12,7 @@
     </thead>
     <tbody class="table-bordered">
     <tr v-for="(questionType, index) in questionTypes" :key="index">
-      <td>{{ index }}</td>
+      <td>{{ index + 1 }}</td>
       <td>{{ questionType.questionType }}</td>
       <td>
         <ul class="list-group list-group-horizontal">

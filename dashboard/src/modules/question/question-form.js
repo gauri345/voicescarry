@@ -4,8 +4,10 @@ import router from "@/routes";
 import _ from 'lodash';
 
 export default {
+    namespaced: true,
     state: {
         questionType: 'select',
+        questionTypes: [],
         questionNumber: null,
         questionSlug: null,
         questionTitleEnglish: null,
@@ -22,10 +24,22 @@ export default {
     },
     getters: {
         getAnswers: (state) => {
-            console.log(state.answers);
             return state.answers
         },
-        getQuestionSlug: (state) => state.questionSlug
+        questionTypes: (state) => state.questionTypes,
+        getQuestionSlug: (state) => state.questionSlug,
+        selectedQuestionType: (state) => {
+            const filtered = state.questionTypes.filter(qt => qt.questionType === state.questionType);
+
+            if (filtered[0]) {
+                return filtered[0];
+            } else {
+                return {
+                    questionType: state.questionType,
+                    answerValues: []
+                };
+            }
+        }
     },
     actions: {
         async fetchQuestionById({commit, dispatch}, questionId) {
@@ -44,6 +58,27 @@ export default {
                 dispatch('showError', " Failed deleting the question to edit.", {root: true});
             }
         },
+
+        async fetchQuestionTypes({commit, dispatch}) {
+            try {
+                const config = {
+                    method: 'get',
+                    url: `${ApiConfig.API_BASE_URL}/question-type/`,
+                    headers: {}
+                };
+
+                const response = await axios(config);
+
+                commit('UPDATE_QUESTION_TYPES', response.data.data);
+            } catch (error) {
+                dispatch('showError', " Failed deleting the question to edit.", {root: true});
+            }
+        },
+
+        reloadAnswerList({ state}) {
+            console.log(state.questionType);
+        },
+
         addNewAnswer({commit}) {
             commit('ADD_NEW_EMPTY_ANSWER');
         },
@@ -158,7 +193,7 @@ export default {
             answerTitleVietnamese: null
         }),
         UPDATE_SLUG: (state) => state.questionSlug = _.snakeCase(state.questionTitleEnglish).substring(0, 50),
-        UPDATE_QUESTION_TYPE:(state, questionType) => state.questionType = questionType,
+        UPDATE_QUESTION_TYPES:(state, questionTypes) => state.questionTypes = questionTypes,
         UPDATE_QUESTION_NUMBER:(state, questionNumber) => state.questionNumber = questionNumber,
         UPDATE_QUESTION_TITLE_ENGLISH:(state, questionTitleEnglish) => state.questionTitleEnglish = questionTitleEnglish,
         UPDATE_QUESTION_TITLE_VIETNAMESE:(state, questionTitleVietnamese) => state.questionTitleVietnamese = questionTitleVietnamese,
@@ -176,5 +211,6 @@ export default {
         },
         REMOVE_ANSWER_BY_INDEX: (state, index) => state.answers.splice(index, 1),
         UPDATE_ANSWER_ITEM_BY_INDEX: (state, item, index) => state.answers[index] = item,
+        UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType
     }
 }

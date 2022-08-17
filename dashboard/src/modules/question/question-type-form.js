@@ -58,7 +58,7 @@ export default {
                 }
             } else {
                 commit('UPDATE_QUESTION_TYPE', '');
-                commit('UPDATE_ANSWER_VALUE', []);
+                commit('UPDATE_ANSWER_VALUES', []);
             }
         }
     },
@@ -70,7 +70,7 @@ export default {
         REMOVE_ANSWER_VALUE: (state, answerValue) => state.answerValues = state.answerValues.filter(ans => ans !== answerValue),
         UPDATE_QUESTION_TYPE_VALUES: (state) => {
 
-            if (!state.answerValues.includes(state.answerValue) && 0 !== state.answerValue.length) {
+            if (!state.answerValues.includes(state.answerValue) && '' !== state.answerValue) {
                 state.answerValues.push(state.answerValue);
             }
 
