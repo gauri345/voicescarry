@@ -1,10 +1,10 @@
 <template>
 
   <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label d-flex justify-content-start">Question Type</label>
+    <label class="col-sm-2 col-form-label d-flex justify-content-start">Answer Type</label>
     <div class="col-auto">
-      <input v-model="questionType" class="form-control" name="questionType"
-             placeholder="Question Type" type="text">
+      <input v-model="answerType" class="form-control" name="answerType"
+             placeholder="Answer Type" type="text">
     </div>
   </div>
   <div class="mb-3 row">
@@ -57,7 +57,7 @@ export default {
   },
   computed: {
     ...mapGetters(['answerValue', 'answerValues']),
-    questionType: {
+    answerType: {
       get() {
         return this.$store.state.questionTypeForm.questionType
       },
