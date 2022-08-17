@@ -16,16 +16,38 @@
       <td>{{ questionType.questionType }}</td>
       <td>
         <ul class="list-group list-group-horizontal">
-          <li class="list-group-item" v-for="(answer, index) in questionType.answerValues" :key="index">{{ answer }}</li>
+          <li v-for="(answer, index) in questionType.answerValues" :key="index" class="list-group-item">{{
+              answer
+            }}
+          </li>
         </ul>
       </td>
       <td>
-        <router-link :to="'/question/form/id=1'" data-bs-toggle="tooltip" title="Edit Question">
+        <router-link :to="`/question-type/form/id=${questionType._id}`" data-bs-toggle="tooltip"
+                     title="Edit question type">
           <span class="material-icons text-info">edit</span>
         </router-link>
-        <a data-bs-toggle="tooltip" href="javascript:void(0);" title="Delete question">
+        <a :data-bs-target="`#deleteQuestionType${questionType._id}`" data-bs-toggle="modal" href="javascript:void(0);"
+           title="Delete question type">
           <span class="material-icons text-danger">delete</span>
         </a>
+        <!-- Modal -->
+        <div :id="`deleteQuestionType${questionType._id}`" aria-hidden="true" class="modal fade" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">2
+
+              <div class="modal-body text-danger">
+                Are you sure you want to delete?
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-dismiss="modal" type="button"
+                        @click="deleteQuestionType(questionType._id)">Yes
+                </button>
+                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </td>
     </tr>
     </tbody>
@@ -44,7 +66,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(['fetchAllQuestionTypes'])
+    ...mapActions(['fetchAllQuestionTypes', 'deleteQuestionType'])
   },
 
   computed: {

@@ -24,7 +24,28 @@ export default {
             } catch (error) {
                 dispatch('showError', " Failed fetching factories.", {root: true});
             }
-        }
+        },
+
+        async deleteQuestionType({commit, state, dispatch}, questionTypeId) {
+            const config = {
+                method: 'delete',
+                url: `${ApiConfig.API_BASE_URL}/question-type/${questionTypeId}`
+            };
+
+            try {
+                const response = await axios(config);
+                if (response.status === 200) {
+                    const newQuestionTypes = state.questionTypes.filter(question => question._id !== question);
+                    dispatch('showInfo', "Question type successfully deleted.", {root: true});
+                    commit('UPDATE_ALL_QUESTION_TYPES', newQuestionTypes);
+                }
+                if (response.status === 404) {
+                    dispatch('showError', "Failed deleting question type.", {root: true});
+                }
+            } catch (error) {
+                dispatch('showError', "Failed deleting question type.", {root: true});
+            }
+        },
     },
 
     mutations: {

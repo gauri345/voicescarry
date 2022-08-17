@@ -39,7 +39,7 @@ import {mapActions, mapGetters} from "vuex";
 export default {
   name: "QuestionTypeForm",
   methods: {
-    ...mapActions(['saveQuestionsType']),
+    ...mapActions(['saveQuestionsType', 'fetchQuestionTypeById']),
     addNewAnswerValue() {
       this.$store.commit('UPDATE_QUESTION_TYPE_VALUES')
     },
@@ -65,6 +65,10 @@ export default {
         this.$store.commit('UPDATE_ANSWER_VALUE', value)
       }
     },
+  },
+
+  mounted() {
+      this.fetchQuestionTypeById(this.$route.params.id);
   }
 }
 </script>

@@ -25,14 +25,14 @@ exports.post = async function (req, res) {
     const questionType = req.body;
 
     try {
-        const existingQuestionType = await QuestionType.findById(questionType.id);
+        const existingQuestionType = await QuestionType.findById(questionType._id);
 
         if (existingQuestionType) {
             res.json(
                 {
                     status: "success",
                     message: 'question type updated',
-                    data: await QuestionType.findByIdAndUpdate(existingQuestionType.id, questionType)
+                    data: await QuestionType.findByIdAndUpdate(existingQuestionType._id, questionType)
                 }
             );
         } else {
@@ -54,7 +54,6 @@ exports.post = async function (req, res) {
             });
     }
 };
-
 
 exports.delete = async function (req, res) {
     const questionTypeId = req.params.id;
