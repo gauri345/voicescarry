@@ -5,14 +5,15 @@ import router from "@/routes";
 export default {
     state: {
         questionType: '',
-        answerValues: '',
+        answerValue: '',
+        answerValues: [],
     },
     actions: {
         async saveQuestionsType({state, dispatch}) {
             try {
                 const dataToStore = {
                     questionType: state.questionType,
-                    answerValues: [state.answerValues],
+                    answerValues: state.answerValues,
                 };
                 const config = {
                     method: 'post',
@@ -33,10 +34,20 @@ export default {
     },
     mutations: {
         UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType,
-        UPDATE_QUESTION_TYPE_VALUES: (state, answerValues) => state.answerValues = answerValues
+        UPDATE_ANSWER_VALUE: (state, answerValue) => state.answerValue = answerValue,
+        REMOVE_ANSWER_VALUE: (state, answerValue) => state.answerValues = state.answerValues.filter(ans => ans !== answerValue),
+        UPDATE_QUESTION_TYPE_VALUES: (state) => {
+
+            if (!state.answerValues.includes(state.answerValue) && '' !== state.answerValue) {
+                state.answerValues.push(state.answerValue);
+            }
+
+            state.answerValue = '';
+        }
     },
     getters: {
-        question: (state) => state.question,
-        answer: (state) => state.answer
+        questionType: (state) => state.questionType,
+        answerValue: (state) => state.answerValue,
+        answerValues: (state) => state.answerValues
     }
 }
