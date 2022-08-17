@@ -32,18 +32,20 @@ export default {
                         },
                         data: dataToStore
                     };
+
                     await axios(config);
 
                     await router.push("/question-type/");
-                    dispatch('showInfo', "questions type and answers type successfully added", {root: true});
+                    dispatch('showInfo', " answer values and type successfully added", {root: true});
                 }
 
             } catch (error) {
-                dispatch('showError', "Failed saving questions type in database.", {root: true});
+                dispatch('showError', "Failed saving answer type in database.", {root: true});
             }
         },
 
         async fetchQuestionTypeById({commit, dispatch}, questionTypeId) {
+            dispatch('hideAlert', {root: true});
             if (questionTypeId) {
 
                 try {
@@ -66,7 +68,7 @@ export default {
                 }
             } else {
                 commit('UPDATE_QUESTION_TYPE', '');
-                commit('UPDATE_ANSWER_VALUE', []);
+                commit('UPDATE_ANSWER_VALUES', []);
             }
         }
     },

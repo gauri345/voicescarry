@@ -12,6 +12,7 @@ export default {
 
     actions: {
        async fetchAllQuestionTypes({commit, dispatch}) {
+           dispatch('hideAlert', {root: true});
             const config = {
                 method: 'get',
                 url: `${ApiConfig.API_BASE_URL}/question-type`,
@@ -22,7 +23,7 @@ export default {
                 const response = await axios(config);
                 commit('UPDATE_ALL_QUESTION_TYPES', response.data.data);
             } catch (error) {
-                dispatch('showError', " Failed fetching factories.", {root: true});
+                dispatch('showError', " Failed fetching answers.", {root: true});
             }
         },
 
@@ -36,14 +37,14 @@ export default {
                 const response = await axios(config);
                 if (response.status === 200) {
                     const newQuestionTypes = state.questionTypes.filter(question => question._id !== questionTypeId);
-                    dispatch('showInfo', "Question type successfully deleted.", {root: true});
+                    dispatch('showInfo', "Answer type successfully deleted.", {root: true});
                     commit('UPDATE_ALL_QUESTION_TYPES', newQuestionTypes);
                 }
                 if (response.status === 404) {
-                    dispatch('showError', "Failed deleting question type.", {root: true});
+                    dispatch('showError', "Failed deleting answer type.", {root: true});
                 }
             } catch (error) {
-                dispatch('showError', "Failed deleting question type.", {root: true});
+                dispatch('showError', "Failed deleting answer type.", {root: true});
             }
         },
     },

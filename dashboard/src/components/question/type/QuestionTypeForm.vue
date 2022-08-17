@@ -78,6 +78,7 @@ export default {
   },
 
   mounted() {
+
     this.fetchQuestionTypeById(this.$route.params.id);
   }
 }
