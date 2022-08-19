@@ -1,6 +1,6 @@
 <template>
   <router-link class="btn btn-dark" style="float: right;" to="/question/form/id=">Add</router-link>
-  <AlertBox />
+  <AlertBox/>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody class="table-bordered">
-    <tr v-for="question in allQuestions" :key="question._id">
+    <tr v-for="question in questionList" :key="question._id">
       <td>{{ question.number }}</td>
       <td>{{ createDefaultTitle(question.titles) }}</td>
       <td>{{ question.questionType }}</td>
@@ -45,10 +45,10 @@
         </div>
       </td>
       <td>
-        <router-link :to="'/question/form/id=' + question._id" title="Edit Question" data-bs-toggle="tooltip">
+        <router-link :to="'/question/form/id=' + question._id" data-bs-toggle="tooltip" title="Edit Question">
           <span class="material-icons text-info">edit</span>
         </router-link>
-        <a href="javascript:void(0);" data-bs-toggle="tooltip" title="Delete question">
+        <a data-bs-toggle="tooltip" href="javascript:void(0);" title="Delete question">
           <span class="material-icons text-danger">delete</span>
         </a>
       </td>
@@ -67,9 +67,12 @@ export default {
     AlertBox
   },
   methods: {
-    ...mapActions(['fetchAllQuestions']),
+    ...mapActions({
+      fetchAllQuestions: 'questionList/fetchAllQuestions'
+    }),
     createDefaultTitle: (questionTitles) => {
-      const englishTitle = questionTitles.filter(questionTitle => questionTitle.lang === "en");
+
+      const englishTitle = questionTitles.filter(questionTitle => questionTitle.lang === "en" || questionTitle.lang === "english");
       return englishTitle[0].content;
     }
   },
@@ -79,7 +82,9 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['allQuestions', 'serverErrorDisplayed'])
+    ...mapGetters({
+      questionList: 'questionList/questionList'
+    })
   }
 }
 </script>

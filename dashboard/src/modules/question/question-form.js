@@ -76,9 +76,9 @@ export default {
     },
     actions: {
         languagesChanged: ({commit, state}) => {
-            const filtereLanguage = state.supportedLanguages.filter(language => language.isSelected);
+            const filteredLanguage = state.supportedLanguages.filter(language => language.isSelected);
 
-            filtereLanguage.forEach(language => {
+            filteredLanguage.forEach(language => {
                 const existingQuestionTitle = state.questionTitles.find(title => title.language === language.value);
                 if (!existingQuestionTitle) {
                     commit('ADD_TO_QUESTION_TITLE', {
@@ -90,7 +90,7 @@ export default {
                 }
             });
 
-            filtereLanguage
+            filteredLanguage
                 .forEach(language => {
                     const existingAdditionalInfo = state.additionalInformationList.find(info => info.language === language.value);
                     if (!existingAdditionalInfo) {
@@ -104,7 +104,7 @@ export default {
                 });
 
 
-            filtereLanguage
+            filteredLanguage
                 .forEach(language => {
                     const updatedAnswers = state.answers.map(answer => {
                         return {
@@ -137,7 +137,7 @@ export default {
         },
 
 
-        async fetchQuestionById({ dispatch}, questionId) {
+        async fetchQuestionById({dispatch}, questionId) {
             try {
                 const config = {
                     method: 'get',
@@ -187,9 +187,39 @@ export default {
 
         async saveQuestion({state, dispatch}) {
 
-            console.log(state)
+            //console.log(state)
 
-            const questionToSave = {}
+            const questionToSave = {
+                number: state.questionNumber,
+                questionType: state.questionType,
+                titles: state.questionTitles.map(questionTitle => {
+                    return {
+                        lang: questionTitle.language,
+                        content: questionTitle.text
+                    }
+                }),
+                additionalInformation: state.additionalInformationList.map(info => {
+                    return {
+                        lang: info.language,
+                        content: info.text
+                    }
+                }),
+                answers: state.answers
+                    .filter(answer => answer.type === state.questionType)
+                    .flatMap(answer => {
+                        return answer.values.flatMap(value => {
+                            return {
+                                value: value.value,
+                                items: value.details.map(detail => {
+                                    return {
+                                        lang: detail.language,
+                                        content: detail.text
+                                    };
+                                })
+                            }
+                        });
+                    })
+            }
 
             try {
                 const config = {

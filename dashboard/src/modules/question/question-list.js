@@ -3,11 +3,12 @@ import ApiConfig from "@/config/ApiConfig";
 const axios = require('axios');
 
 export default {
+    namespaced: true,
     actions: {
         async fetchAllQuestions({commit, dispatch}) {
             const config = {
                 method: 'get',
-                url:  `${ApiConfig.API_BASE_URL}/question`,
+                url: `${ApiConfig.API_BASE_URL}/question`,
                 headers: {}
             };
 
@@ -25,7 +26,7 @@ export default {
     },
 
     getters: {
-        allQuestions: (state) => state.questionList,
+        questionList: (state) => state.questionList,
     },
 
     mutations: {

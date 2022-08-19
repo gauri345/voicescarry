@@ -108,7 +108,7 @@
                       {{ ucFirst(detail.language) }}
                     </label>
                     <div class="col-md-9 mb-2">
-                      <input class="form-control" required type="text"/>
+                      <input class="form-control" required type="text" v-model="detail.text"/>
                     </div>
                     <hr>
                   </template>
