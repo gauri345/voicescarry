@@ -226,6 +226,6 @@ export default {
         },
         UPDATE_ANSWERS: (state, answers) => state.answers = answers,
         UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType,
-        UPDATE_QUESTION_NUMBER: (state, questionNumber) => state.questionType = questionNumber
+        UPDATE_QUESTION_NUMBER: (state, questionNumber) => state.questionNumber = questionNumber
     }
 }

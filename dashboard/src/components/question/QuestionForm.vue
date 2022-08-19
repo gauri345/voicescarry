@@ -48,7 +48,7 @@
 
           <template v-for="(questionTitle, index) in questionTitles" :key="index">
             <div class="col-sm-9 mb-1">
-             <textarea v-model="questionTitle.value" :placeholder="ucFirst(questionTitle.language)"
+             <textarea v-model="questionTitle.text" :placeholder="ucFirst(questionTitle.language)"
                        class="form-control"
                        rows="3" @keyup="createSlug"></textarea>
             </div>
@@ -65,7 +65,7 @@
 
           <template v-for="(additionalInformation, index) in additionalInformationList" :key="index">
             <div class="col-sm-9 mb-1">
-              <textarea v-model="additionalInformation.value" :placeholder="ucFirst(additionalInformation.language)"
+              <textarea v-model="additionalInformation.text" :placeholder="ucFirst(additionalInformation.language)"
                         class="form-control"
                         rows="3"></textarea>
             </div>
@@ -88,6 +88,7 @@
               </option>
             </select>
           </div>
+
         </div>
       </div>
 
