@@ -1,6 +1,6 @@
 <template>
   <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar bg-dark collapse show">
-    <div class="position-sticky pt-3">
+    <div class="position-sticky pt-3 mt-4">
       <ul class="nav flex-column">
         <li class="nav-item">
           <a aria-current="page" class="nav-link text-info active" href="#">
@@ -14,24 +14,17 @@
         </li>
 
         <li class="nav-item">
-          <a aria-controls="questionsCollapse" aria-expanded="false" class="nav-link text-info" data-bs-toggle="collapse"
-             href="#questionsCollapse" role="button">
-            <span class="material-icons-outlined">quiz</span>Questions
-          </a>
-
-          <div id="questionsCollapse" class="collapse">
-            <div class="card card-body">
-              <router-link class="nav-link text-info" to="/question-type">
-                <span class="material-icons-outlined">rule</span>Question Types
-              </router-link>
-              <router-link class="nav-link text-info" to="/question">
-                <span class="material-icons-outlined">question_mark</span>Questions
-              </router-link>
-            </div>
-          </div>
-
-
+          <router-link class="nav-link text-info" to="/answer-type">
+            <span class="material-icons-outlined">rule</span>Answer Types
+          </router-link>
         </li>
+
+        <li class="nav-item">
+          <router-link class="nav-link text-info" to="/question">
+            <span class="material-icons-outlined">quiz</span>Questions
+          </router-link>
+        </li>
+
         <li class="nav-item">
           <router-link class="nav-link text-info" to="/surveys">
             <span class="material-icons-outlined">poll</span>Surveys
@@ -60,7 +53,7 @@ export default {
 
 <style scoped>
 .sidebar {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .nav-item {

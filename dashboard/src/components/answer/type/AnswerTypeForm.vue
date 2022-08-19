@@ -12,7 +12,7 @@
     <div class="col-auto">
       <div class="row">
         <div class="col-auto">
-          <input v-model="answerValue" class="form-control" name="questionType" placeholder="Value"
+          <input v-model="answerValue" class="form-control" name="answerType" placeholder="Value"
                  type="text">
         </div>
         <div class="col-auto">
@@ -36,8 +36,8 @@
     </div>
   </div>
   <div class="d-flex justify-content-start border-top border-1">
-    <button class=" btn btn-success mt-3" type="button" @click="saveQuestionsType">Save</button>
-    <button class="btn btn-danger mt-3" @click="$router.push('/question-type')">Cancel</button>
+    <button class=" btn btn-success mt-3" type="button" @click="saveAnswerType">Save</button>
+    <button class="btn btn-danger mt-3" @click="$router.push('/answer-type')">Cancel</button>
   </div>
 </template>
 
@@ -46,12 +46,12 @@ import {mapActions, mapGetters} from "vuex";
 import AlertBox from "@/components/util/AlertBox";
 
 export default {
-  name: "QuestionTypeForm",
+  name: "AnswerTypeForm",
   components: {AlertBox},
   methods: {
-    ...mapActions(['saveQuestionsType', 'fetchQuestionTypeById']),
+    ...mapActions(['saveAnswerType', 'fetchAnswerTypeById']),
     addNewAnswerValue() {
-      this.$store.commit('UPDATE_QUESTION_TYPE_VALUES')
+      this.$store.commit('UPDATE_ANSWER_TYPE_VALUES')
     },
     removeAnswerValue(answerValue) {
       this.$store.commit('REMOVE_ANSWER_VALUE', answerValue)
@@ -61,15 +61,15 @@ export default {
     ...mapGetters(['answerValue', 'answerValues']),
     answerType: {
       get() {
-        return this.$store.state.questionTypeForm.questionType
+        return this.$store.state.answerTypeForm.answerType
       },
       set(value) {
-        this.$store.commit('UPDATE_QUESTION_TYPE', value)
+        this.$store.commit('UPDATE_ANSWER_TYPE', value)
       }
     },
     answerValue: {
       get() {
-        return this.$store.state.questionTypeForm.answerValue
+        return this.$store.state.answerTypeForm.answerValue
       },
       set(value) {
         this.$store.commit('UPDATE_ANSWER_VALUE', value)
@@ -78,7 +78,7 @@ export default {
   },
 
   mounted() {
-    this.fetchQuestionTypeById(this.$route.params.id);
+    this.fetchAnswerTypeById(this.$route.params.id);
   }
 }
 </script>

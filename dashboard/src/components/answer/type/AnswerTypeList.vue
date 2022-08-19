@@ -1,6 +1,6 @@
 <template>
   <AlertBox/>
-  <router-link class="btn btn-dark" style="float: right;" to="/question-type/form/id=">Add</router-link>
+  <router-link class="btn btn-dark" style="float: right;" to="/answer-type/form/id=">Add</router-link>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
@@ -11,28 +11,28 @@
     </tr>
     </thead>
     <tbody class="table-bordered">
-    <tr v-for="(questionType, index) in questionTypes" :key="index">
+    <tr v-for="(answerType, index) in answerTypes" :key="index">
       <td>{{ index + 1 }}</td>
-      <td>{{ questionType.questionType }}</td>
+      <td>{{ answerType.answerType }}</td>
       <td>
         <ul class="list-group list-group-horizontal">
-          <li v-for="(answer, index) in questionType.answerValues" :key="index" class="list-group-item">{{
+          <li v-for="(answer, index) in answerType.answerValues" :key="index" class="list-group-item">{{
               answer
             }}
           </li>
         </ul>
       </td>
       <td>
-        <router-link :to="`/question-type/form/id=${questionType._id}`" data-bs-toggle="tooltip"
-                     title="Edit question type">
+        <router-link :to="`/answer-type/form/id=${answerType._id}`" data-bs-toggle="tooltip"
+                     title="Edit answer type">
           <span class="material-icons text-info">edit</span>
         </router-link>
-        <a :data-bs-target="`#deleteQuestionType${questionType._id}`" data-bs-toggle="modal" href="javascript:void(0);"
-           title="Delete question type">
+        <a :data-bs-target="`#deleteAnswerType${answerType._id}`" data-bs-toggle="modal" href="javascript:void(0);"
+           title="Delete answer type">
           <span class="material-icons text-danger">delete</span>
         </a>
         <!-- Modal -->
-        <div :id="`deleteQuestionType${questionType._id}`" aria-hidden="true" class="modal fade" tabindex="-1">
+        <div :id="`deleteAnswerType${answerType._id}`" aria-hidden="true" class="modal fade" tabindex="-1">
           <div class="modal-dialog">
             <div class="modal-content">2
 
@@ -41,7 +41,7 @@
               </div>
               <div class="modal-footer">
                 <button class="btn btn-danger" data-bs-dismiss="modal" type="button"
-                        @click="deleteQuestionType(questionType._id)">Yes
+                        @click="deleteAnswerType(answerType._id)">Yes
                 </button>
                 <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">No</button>
               </div>
@@ -60,21 +60,21 @@ import {mapActions, mapGetters} from "vuex";
 import AlertBox from "@/components/util/AlertBox";
 
 export default {
-  name: "QuestionTypeList",
+  name: "AnswerTypeList",
   components: {
     AlertBox
   },
 
   methods: {
-    ...mapActions(['fetchAllQuestionTypes', 'deleteQuestionType'])
+    ...mapActions(['fetchAllAnswerTypes', 'deleteAnswerType'])
   },
 
   computed: {
-    ...mapGetters(['questionTypes'])
+    ...mapGetters(['answerTypes'])
   },
 
   mounted() {
-    this.fetchAllQuestionTypes();
+    this.fetchAllAnswerTypes();
   }
 }
 </script>

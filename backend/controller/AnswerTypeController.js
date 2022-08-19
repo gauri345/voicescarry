@@ -1,8 +1,8 @@
-const QuestionType = require('../model/QuestionTypeModel');
+const AnswerType = require('../model/answerTypeModel');
 
 exports.getAll = async function (req, res) {
     try {
-        const allQuestions = await QuestionType.find();
+        const allQuestions = await AnswerType.find();
         res
             .json(
                 {
@@ -22,25 +22,25 @@ exports.getAll = async function (req, res) {
 }
 
 exports.post = async function (req, res) {
-    const questionType = req.body;
+    const answerType = req.body;
 
     try {
-        const existingQuestionType = await QuestionType.findById(questionType._id);
+        const existingAnswerType = await AnswerType.findById(answerType._id);
 
-        if (existingQuestionType) {
+        if (existingAnswerType) {
             res.json(
                 {
                     status: "success",
-                    message: 'question type updated',
-                    data: await QuestionType.findByIdAndUpdate(existingQuestionType._id, questionType)
+                    message: 'answer type updated',
+                    data: await AnswerType.findByIdAndUpdate(existingAnswerType._id, answerType)
                 }
             );
         } else {
             res.json(
                 {
                     status: "success",
-                    message: 'question type added',
-                    data: await QuestionType.create(questionType)
+                    message: 'answer type added',
+                    data: await AnswerType.create(answerType)
                 }
             );
         }
@@ -50,30 +50,30 @@ exports.post = async function (req, res) {
             .status(500)
             .json({
                 status: "error",
-                message: "Failed Storing question type in database."
+                message: "Failed Storing answer type in database."
             });
     }
 };
 
 exports.delete = async function (req, res) {
-    const questionTypeId = req.params.id;
+    const answerTypeId = req.params.id;
 
     try {
-        const existingFactory = await QuestionType.findById(questionTypeId);
+        const existingFactory = await AnswerType.findById(answerTypeId);
         if (existingFactory) {
-            await QuestionType.findByIdAndRemove(questionTypeId);
+            await AnswerType.findByIdAndRemove(answerTypeId);
             res
                 .status(200)
                 .json({
                     status: "success",
-                    message: "Question type with provided id: " + questionTypeId + ' was deleted from the database.'
+                    message: "Answer type with provided id: " + answerTypeId + ' was deleted from the database.'
                 });
         } else {
             res
                 .status(404)
                 .json({
                     status: "error",
-                    message: "Question type with provided id: " + questionTypeId + ' not found in database.'
+                    message: "Answer type with provided id: " + answerTypeId + ' not found in database.'
                 });
         }
     } catch (error) {
@@ -82,20 +82,20 @@ exports.delete = async function (req, res) {
             .status(500)
             .json({
                 status: "error",
-                message: "Failed deleting question type."
+                message: "Failed deleting answer type."
             });
     }
 }
 
 
 exports.findById = async function (req, res) {
-    const questionTypeId = req.params.id;
+    const answerTypeId = req.params.id;
     try {
         res.json(
             {
                 status: "success",
-                message: 'Question type found',
-                data: await QuestionType.findById(questionTypeId)
+                message: 'Answer type found',
+                data: await AnswerType.findById(answerTypeId)
             }
         );
     } catch (error) {
@@ -103,7 +103,7 @@ exports.findById = async function (req, res) {
             .status(404)
             .json({
                 status: "error",
-                message: "Question type with provided id: " + questionTypeId + ' not found in database.'
+                message: "Answer type with provided id: " + answerTypeId + ' not found in database.'
             });
     }
 }

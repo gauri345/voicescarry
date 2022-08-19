@@ -7,7 +7,7 @@
 import ComponentHeader from "@/components/ComponentHeader";
 
 export default {
-  name: "QuestionTypeComponent",
+  name: "AnswerTypeComponent",
   components: {
     ComponentHeader
   }

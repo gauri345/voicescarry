@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const QuestionTypeController = require("../controller/QuestionTypeController");
+const AnswerTypeController = require("../controller/AnswerTypeController");
 const QuestionController = require('../controller/QuestionController');
 const SurveyController = require('../controller/SurveyController');
 const FactoryController = require('../controller/FactoryController');
@@ -27,15 +27,16 @@ router.route('/users/:userId')
     .delete(UsersController.deleteUserById);
 
 
+/* ANSWERS MANAGEMENT */
+router.route('/answer-type/')
+    .post(AnswerTypeController.post)
+    .get(AnswerTypeController.getAll);
+
+router.route('/answer-type/:id')
+    .delete(AnswerTypeController.delete)
+    .get(AnswerTypeController.findById)
+
 /* QUESTIONS MANAGEMENT */
-router.route('/question-type/')
-    .post(QuestionTypeController.post)
-    .get(QuestionTypeController.getAll);
-
-router.route('/question-type/:id')
-    .delete(QuestionTypeController.delete)
-    .get(QuestionTypeController.findById)
-
 router.route('/question/:id')
     .get(QuestionController.findById);
 

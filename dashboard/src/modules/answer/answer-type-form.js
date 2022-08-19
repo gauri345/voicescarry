@@ -4,29 +4,29 @@ import router from "@/routes";
 
 export default {
     state: {
-        questionTypeId: null,
-        questionType: '',
+        answerTypeId: null,
+        answerType: '',
         answerValue: '',
         answerValues: [],
     },
     actions: {
-        async saveQuestionsType({state, dispatch}) {
+        async saveAnswerType({state, dispatch}) {
             try {
-                if (state.questionType === ''){
+                if (state.answerType === ''){
                     dispatch('showError', "Answer type is empty.", {root: true});
-                } else if (state.answerValues === ''){
+                } else if (state.answerValues === []){
                     dispatch('showError', "Answer value is empty.", {root: true});
                 } else {
                     dispatch('hideAlert', {root: true});
 
                     const dataToStore = {
-                        _id: state.questionTypeId,
-                        questionType: state.questionType,
+                        _id: state.answerTypeId,
+                        answerType: state.answerType,
                         answerValues: state.answerValues,
                     };
                     const config = {
                         method: 'post',
-                        url: `${ApiConfig.API_BASE_URL}/question-type/`,
+                        url: `${ApiConfig.API_BASE_URL}/answer-type/`,
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -34,49 +34,49 @@ export default {
                     };
                     await axios(config);
 
-                    await router.push("/question-type/");
-                    dispatch('showInfo', "questions type and answers type successfully added", {root: true});
+                    await router.push("/answer-type/");
+                    dispatch('showInfo', "answers type successfully added", {root: true});
                 }
 
             } catch (error) {
-                dispatch('showError', "Failed saving questions type in database.", {root: true});
+                dispatch('showError', "Failed saving answer type in database. Please tra again.", {root: true});
             }
         },
 
-        async fetchQuestionTypeById({commit, dispatch}, questionTypeId) {
-            if (questionTypeId) {
+        async fetchAnswerTypeById({commit, dispatch}, answerTypeId) {
+            if (answerTypeId) {
 
                 try {
                     const config = {
                         method: 'get',
-                        url: `${ApiConfig.API_BASE_URL}/question-type/${questionTypeId}`,
+                        url: `${ApiConfig.API_BASE_URL}/answer-type/${answerTypeId}`,
                         headers: {}
                     };
 
                     const response = await axios(config);
-                    const questionType = response.data.data;
+                    const answerType = response.data.data;
 
                     if (response.data.data) {
-                        commit('UPDATE_QUESTION_TYPE_ID', questionTypeId);
-                        commit('UPDATE_QUESTION_TYPE', questionType.questionType);
-                        commit('UPDATE_ANSWER_VALUES', questionType.answerValues);
+                        commit('UPDATE_ANSWER_TYPE_ID', answerTypeId);
+                        commit('UPDATE_ANSWER_TYPE', answerType.answerType);
+                        commit('UPDATE_ANSWER_VALUES', answerType.answerValues);
                     }
                 } catch (error) {
-                    dispatch('showError', " Failed fetching the factory to edit.", {root: true});
+                    dispatch('showError', " Failed fetching the answer type to edit.", {root: true});
                 }
             } else {
-                commit('UPDATE_QUESTION_TYPE', '');
+                commit('UPDATE_ANSWER_TYPE', '');
                 commit('UPDATE_ANSWER_VALUES', []);
             }
         }
     },
     mutations: {
-        UPDATE_QUESTION_TYPE_ID: (state, id) => state.questionTypeId = id,
-        UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType,
+        UPDATE_ANSWER_TYPE_ID: (state, id) => state.answerTypeId = id,
+        UPDATE_ANSWER_TYPE: (state, answerType) => state.answerType = answerType,
         UPDATE_ANSWER_VALUE: (state, answerValue) => state.answerValue = answerValue,
         UPDATE_ANSWER_VALUES: (state, answerValues) => state.answerValues = answerValues,
         REMOVE_ANSWER_VALUE: (state, answerValue) => state.answerValues = state.answerValues.filter(ans => ans !== answerValue),
-        UPDATE_QUESTION_TYPE_VALUES: (state) => {
+        UPDATE_ANSWER_TYPE_VALUES: (state) => {
 
             if (!state.answerValues.includes(state.answerValue) && '' !== state.answerValue) {
                 state.answerValues.push(state.answerValue);
@@ -86,7 +86,7 @@ export default {
         }
     },
     getters: {
-        questionType: (state) => state.questionType,
+        answerType: (state) => state.answerType,
         answerValue: (state) => state.answerValue,
         answerValues: (state) => state.answerValues
     }

@@ -7,7 +7,7 @@ export default {
     namespaced: true,
     state: {
         questionType: 'select',
-        questionTypes: [],
+        answerTypes: [],
         questionNumber: null,
         questionSlug: null,
         questionTitleEnglish: null,
@@ -26,10 +26,10 @@ export default {
         getAnswers: (state) => {
             return state.answers
         },
-        questionTypes: (state) => state.questionTypes,
+        answerTypes: (state) => state.answerTypes,
         getQuestionSlug: (state) => state.questionSlug,
         selectedQuestionType: (state) => {
-            const filtered = state.questionTypes.filter(qt => qt.questionType === state.questionType);
+            const filtered = state.answerTypes.filter(answerType => answerType.answerType === state.questionType);
 
             if (filtered[0]) {
                 return filtered[0];
@@ -59,11 +59,11 @@ export default {
             }
         },
 
-        async fetchQuestionTypes({commit, dispatch}) {
+        async fetchAnswerTypes({commit, dispatch}) {
             try {
                 const config = {
                     method: 'get',
-                    url: `${ApiConfig.API_BASE_URL}/question-type/`,
+                    url: `${ApiConfig.API_BASE_URL}/answer-type/`,
                     headers: {}
                 };
 
@@ -193,7 +193,7 @@ export default {
             answerTitleVietnamese: null
         }),
         UPDATE_SLUG: (state) => state.questionSlug = _.snakeCase(state.questionTitleEnglish).substring(0, 50),
-        UPDATE_QUESTION_TYPES:(state, questionTypes) => state.questionTypes = questionTypes,
+        UPDATE_QUESTION_TYPES:(state, questionTypes) => state.answerTypes = questionTypes,
         UPDATE_QUESTION_NUMBER:(state, questionNumber) => state.questionNumber = questionNumber,
         UPDATE_QUESTION_TITLE_ENGLISH:(state, questionTitleEnglish) => state.questionTitleEnglish = questionTitleEnglish,
         UPDATE_QUESTION_TITLE_VIETNAMESE:(state, questionTitleVietnamese) => state.questionTitleVietnamese = questionTitleVietnamese,
