@@ -13,8 +13,9 @@
               <div class="card-body">
                 <div v-for="language in supportedLanguages" :key="language" class="input-group mb-3">
                   <span class="input-group-text">
-                    <input v-bind:id="language.value" v-model="language.isSelected" name="language"
-                           type="checkbox" v-bind:value="language.value" @change="languagesChanged" :disabled="language.value === 'english'"/>
+                    <input v-bind:id="language.value" v-model="language.isSelected" :disabled="language.value === 'english'"
+                           name="language" type="checkbox" v-bind:value="language.value"
+                           @change="languagesChanged"/>
                   </span>
                   <label aria-label="Language" class="form-control"
                          type="text">{{ ucFirst(language.text) }}</label>
@@ -143,9 +144,6 @@ export default {
       languagesChanged: 'questionForm/languagesChanged',
       fetchAnswerTypes: 'questionForm/fetchAnswerTypes',
       fetchQuestionById: 'questionForm/fetchQuestionById',
-      createSlug: 'questionForm/createSlug',
-      addNewAnswer: 'questionForm/addNewAnswer',
-      removeExistingAnswer: 'questionForm/removeExistingAnswer',
       saveQuestion: 'questionForm/saveQuestion',
     }),
 
@@ -171,13 +169,7 @@ export default {
       questionTitles: 'questionForm/questionTitles',
       additionalInformationList: 'questionForm/additionalInformationList',
       answers: 'questionForm/answers',
-      selectedAnswer: 'questionForm/selectedAnswer',
-
-
-      getQuestionSlug: 'questionForm/getQuestionSlug',
-      getAnswers: 'questionForm/getAnswers',
-      answerTypes: 'questionForm/answerTypes',
-      selectedQuestionType: 'questionForm/selectedQuestionType',
+      selectedAnswer: 'questionForm/selectedAnswer'
     }),
     questionType: {
       get() {
@@ -192,7 +184,7 @@ export default {
         return this.$store.state.questionForm.questionNumber
       },
       set(value) {
-        this.$store.commit('UPDATE_QUESTION_NUMBER', value)
+        this.$store.commit('questionForm/UPDATE_QUESTION_NUMBER', value)
       }
     },
   }
@@ -200,17 +192,4 @@ export default {
 </script>
 
 <style scoped>
-table td, table th {
-  text-align: left;
-  min-width: 50px !important;
-}
-
-.question-number-label {
-}
-
-.form-group.required .control-label:after {
-  content: "*";
-  color: #f80202;
-  font-size: 20px;
-}
 </style>

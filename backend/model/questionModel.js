@@ -30,10 +30,6 @@ const questionSchema = mongoose.Schema({
         type: Number,
         requireD: true
     },
-    slug: {
-        type: String,
-        required: true
-    },
     questionType: {
         type: String,
         required: true

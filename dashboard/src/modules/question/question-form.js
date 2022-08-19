@@ -1,12 +1,12 @@
 import ApiConfig from "@/config/ApiConfig";
 import axios from "axios";
 import router from "@/routes";
-import _ from 'lodash';
+//import _ from 'lodash';
 
 export default {
     namespaced: true,
     state: {
-
+        questionNumber: null,
         supportedLanguages: [
             {
                 text: 'English',
@@ -57,15 +57,6 @@ export default {
                 ]
             }
         ],
-
-
-        answerTypes: [],
-        questionNumber: null,
-        questionSlug: null,
-        questionTitleEnglish: null,
-        questionTitleVietnamese: null,
-        additionalInformationEnglish: null,
-        additionalInformationVietnamese: null,
     },
     getters: {
         supportedLanguages: (state) => state.supportedLanguages,
@@ -82,23 +73,6 @@ export default {
             }
         },
         answers: (state) => state.answers,
-
-
-        getAnswers: (state) => state.answers,
-        answerTypes: (state) => state.answerTypes,
-        getQuestionSlug: (state) => state.questionSlug,
-        selectedQuestionType: (state) => {
-            const filtered = state.answerTypes.filter(answerType => answerType.answerType === state.questionType);
-
-            if (filtered[0]) {
-                return filtered[0];
-            } else {
-                return {
-                    questionType: state.questionType,
-                    answerValues: []
-                };
-            }
-        }
     },
     actions: {
         languagesChanged: ({commit, state}) => {
@@ -133,46 +107,37 @@ export default {
             filtereLanguage
                 .forEach(language => {
                     const updatedAnswers = state.answers.map(answer => {
+                        return {
+                            type: answer.type,
+                            values: answer.values.map(value => {
+                                const existingDetail = value.details.find(info => info.language === language.value);
 
+                                const valueToReturn = {
+                                    value: value.value
+                                };
 
-                        console.log('incoming', answer);
+                                if (!existingDetail) {
+                                    valueToReturn.details = value.details.concat(
+                                        {
+                                            language: language.value,
+                                            text: ''
+                                        }
+                                    );
+                                } else {
+                                    valueToReturn.details = value.details.filter(detail => detail.language === language.value);
+                                }
 
-                        const answerToReturn = {
-                            type: answer.type
+                                return valueToReturn;
+                            })
                         };
-
-                        answerToReturn.values = answer.values.map(value => {
-                            const existingDetail = value.details.find(info => info.language === language.value);
-
-                            const valueToReturn = {
-                                value: value.value
-                            };
-
-                            if (!existingDetail) {
-                                valueToReturn.details = value.details.concat(
-                                    {
-                                        language: language.value,
-                                        text: ''
-                                    }
-                                );
-                            } else {
-                                valueToReturn.details =  value.details.filter(detail => detail.language === language.value);
-                            }
-
-                            return valueToReturn;
-                        });
-
-                        console.log('resulting', answerToReturn)
-
-                        return answerToReturn;
                     });
 
-                    commit('UPDATE_ANSWERS' ,updatedAnswers)
+                    commit('UPDATE_ANSWERS', updatedAnswers)
                 });
         },
 
 
-        async fetchQuestionById({commit, dispatch}, questionId) {
+        async fetchQuestionById({ dispatch}, questionId) {
             try {
                 const config = {
                     method: 'get',
@@ -182,8 +147,7 @@ export default {
 
                 const response = await axios(config);
 
-                commit('UPDATE_ALL_ANSWERS', response.data.data);
-                commit('UPDATE_QUESTION', response.data.data);
+                console.log(response);
             } catch (error) {
                 dispatch('showError', " Failed deleting the question to edit.", {root: true});
             }
@@ -221,61 +185,11 @@ export default {
             }
         },
 
-        addNewAnswer({commit}) {
-            commit('ADD_NEW_EMPTY_ANSWER');
-        },
-
-        removeExistingAnswer({commit}, answerIndex) {
-            commit('REMOVE_ANSWER_BY_INDEX', answerIndex);
-        },
-
-        createSlug({commit}) {
-            commit('UPDATE_SLUG');
-        },
-
-
         async saveQuestion({state, dispatch}) {
 
-            const questionToSave = {
-                number: state.questionNumber,
-                slug: state.questionSlug,
-                questionType: state.questionType,
-                titles: [
-                    {
-                        lang: "en",
-                        content: state.questionTitleEnglish
-                    },
-                    {
-                        lang: "vi",
-                        content: state.questionTitleVietnamese
-                    }
-                ],
-                answers: state.answers.map(ans => {
-                    return {
-                        value: ans.answerValue,
-                        items: [
-                            {
-                                lang: "en",
-                                content: ans.answerTitleEnglish
-                            },
-                            {
-                                lang: "vi",
-                                content: ans.answerTitleVietnamese
-                            }
-                        ]
-                    };
-                }),
-                additionalInformation: [
-                    {
-                        lang: "en",
-                        content: state.additionalInformationEnglish
-                    },
-                    {
-                        lang: "vi",
-                        content: state.additionalInformationVietnamese
-                    }
-                ],
-            }
+            console.log(state)
+
+            const questionToSave = {}
 
             try {
                 const config = {
@@ -305,50 +219,13 @@ export default {
             state.questionTitles = state.questionTitles
                 .filter(questionTitle => questionTitle.language === language);
         },
-
         ADD_TO_ADDITIONAL_INFORMATION: (state, additionalInformation) => state.additionalInformationList.push(additionalInformation),
         REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE: (state, language) => {
             state.additionalInformationList = state.additionalInformationList
                 .filter(additionalInformation => additionalInformation.language === language);
         },
-
-
         UPDATE_ANSWERS: (state, answers) => state.answers = answers,
-
-
-        UPDATE_QUESTION: (state, question) => {
-            const questionTitleInEng = question.titles.filter(questionTitle => questionTitle.lang === 'en')[0].content;
-            const questionTitleInVi = question.titles.filter(questionTitle => questionTitle.lang === 'vi')[0].content;
-            const additionalInformationEng = question.additionalInformation.filter(additionalInformation => additionalInformation.lang === 'en')[0].content;
-            const additionalInformationVi = question.additionalInformation.filter(additionalInformation => additionalInformation.lang === 'vi')[0].content;
-
-            state.questionType = question.questionType;
-            state.questionNumber = question.number;
-            state.questionTitleEnglish = questionTitleInEng;
-            state.questionTitleVietnamese = questionTitleInVi;
-            state.additionalInformationEnglish = additionalInformationEng;
-            state.additionalInformationVietnamese = additionalInformationVi;
-        },
-        ADD_NEW_EMPTY_ANSWER: (state) => state.answers.push({
-            answerValue: null,
-            answerTitleEnglish: null,
-            answerTitleVietnamese: null
-        }),
-        UPDATE_SLUG: (state) => state.questionSlug = _.snakeCase(state.questionTitleEnglish).substring(0, 50),
-        UPDATE_QUESTION_TYPES: (state, questionTypes) => state.answerTypes = questionTypes,
-        UPDATE_ADDITIONAL_INFORMATION_ENGLISH: (state, additionalInformationEnglish) => state.additionalInformationEnglish = additionalInformationEnglish,
-        UPDATE_ADDITIONAL_INFORMATION_VIETNAMESE: (state, additionalInformationVietnamese) => state.additionalInformationVietnamese = additionalInformationVietnamese,
-
-        UPDATE_ALL_ANSWERS: (state, question) => {
-            state.answers = question.answers.map(answer => {
-                return {
-                    answerValue: answer.value,
-                    answerTitleEnglish: answer.items.filter(answer => answer.lang === 'en')[0].content,
-                    answerTitleVietnamese: answer.items.filter(answer => answer.lang === 'vi')[0].content,
-                };
-            });
-        },
-        REMOVE_ANSWER_BY_INDEX: (state, index) => state.answers.splice(index, 1),
-        UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType
+        UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType,
+        UPDATE_QUESTION_NUMBER: (state, questionNumber) => state.questionType = questionNumber
     }
 }
