@@ -12,9 +12,15 @@ export default {
                 text: 'English',
                 value: 'english',
                 isSelected: true
-            }, {
+            },
+            {
                 text: 'Vietnamese',
                 value: 'vietnamese',
+                isSelected: false
+            },
+            {
+                text: 'Nepali',
+                value: 'nepali',
                 isSelected: false
             }
         ],
@@ -33,8 +39,26 @@ export default {
             }
         ],
 
-
         questionType: 'select',
+
+        answers: [
+            {
+                type: 'select',
+                values: [
+                    {
+                        value: 1,
+                        details: [
+                            {
+                                text: '',
+                                language: 'english',
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+
+
         answerTypes: [],
         questionNumber: null,
         questionSlug: null,
@@ -42,18 +66,24 @@ export default {
         questionTitleVietnamese: null,
         additionalInformationEnglish: null,
         additionalInformationVietnamese: null,
-        answers: [
-            {
-                answerValue: null,
-                answerTitleEnglish: null,
-                answerTitleVietnamese: null
-            }
-        ]
     },
     getters: {
         supportedLanguages: (state) => state.supportedLanguages,
         questionTitles: (state) => state.questionTitles,
         additionalInformationList: (state) => state.additionalInformationList,
+        selectedAnswer: (state) => {
+            const filtered = state.answers.filter(answer => answer.type === state.questionType);
+            if (filtered.length >= 1) {
+                return filtered[0];
+            }
+            return {
+                type: '',
+                values: []
+            }
+        },
+        answers: (state) => state.answers,
+
+
         getAnswers: (state) => state.answers,
         answerTypes: (state) => state.answerTypes,
         getQuestionSlug: (state) => state.questionSlug,
@@ -99,6 +129,46 @@ export default {
                     }
                 });
 
+
+            filtereLanguage
+                .forEach(language => {
+                    const updatedAnswers = state.answers.map(answer => {
+
+
+                        console.log('incoming', answer);
+
+                        const answerToReturn = {
+                            type: answer.type
+                        };
+
+                        answerToReturn.values = answer.values.map(value => {
+                            const existingDetail = value.details.find(info => info.language === language.value);
+
+                            const valueToReturn = {
+                                value: value.value
+                            };
+
+                            if (!existingDetail) {
+                                valueToReturn.details = value.details.concat(
+                                    {
+                                        language: language.value,
+                                        text: ''
+                                    }
+                                );
+                            } else {
+                                valueToReturn.details =  value.details.filter(detail => detail.language === language.value);
+                            }
+
+                            return valueToReturn;
+                        });
+
+                        console.log('resulting', answerToReturn)
+
+                        return answerToReturn;
+                    });
+
+                    commit('UPDATE_ANSWERS' ,updatedAnswers)
+                });
         },
 
 
@@ -128,15 +198,27 @@ export default {
                 };
 
                 const response = await axios(config);
+                const answers = response.data.data.map(answerFromApi => {
+                    return {
+                        type: answerFromApi.answerType,
+                        values: answerFromApi.answerValues.map(value => {
+                            return {
+                                value: value,
+                                details: [
+                                    {
+                                        text: '',
+                                        language: 'english',
+                                    }
+                                ]
+                            };
+                        })
+                    };
+                });
 
-                commit('UPDATE_QUESTION_TYPES', response.data.data);
+                commit('UPDATE_ANSWERS', answers);
             } catch (error) {
                 dispatch('showError', " Failed deleting the question to edit.", {root: true});
             }
-        },
-
-        reloadAnswerList({state}) {
-            console.log(state.questionType);
         },
 
         addNewAnswer({commit}) {
@@ -148,7 +230,6 @@ export default {
         },
 
         createSlug({commit}) {
-            console.log('sdfsdff');
             commit('UPDATE_SLUG');
         },
 
@@ -230,6 +311,10 @@ export default {
             state.additionalInformationList = state.additionalInformationList
                 .filter(additionalInformation => additionalInformation.language === language);
         },
+
+
+        UPDATE_ANSWERS: (state, answers) => state.answers = answers,
+
 
         UPDATE_QUESTION: (state, question) => {
             const questionTitleInEng = question.titles.filter(questionTitle => questionTitle.lang === 'en')[0].content;
