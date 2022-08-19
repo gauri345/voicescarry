@@ -4,6 +4,30 @@
 
     <div class="row g3">
       <div class="col-md-6">
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label col-form-label-sm text-start" for="questionNumber">
+            Languages:
+          </label>
+          <div class="col-sm-9">
+            <div class="card">
+              <div class="card-body">
+                <div v-for="language in supportedLanguages" :key="language" class="input-group mb-3">
+                  <span id="language-english" class="input-group-text">
+                    <input v-bind:id="language.value" v-model="language.isSelected" name="language"
+                           type="checkbox" v-bind:value="language.value" @change="languagesChanged"/>
+                  </span>
+                  <label aria-describedby="language-english" aria-label="Language English" class="form-control"
+                         type="text">{{ language.text }}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">&nbsp;</div>
+
+      <div class="col-md-6">
         <div class="row">
           <label class="col-sm-3 col-form-label col-form-label-sm text-start" for="questionNumber">
             Question Number:
@@ -27,19 +51,17 @@
 
       <div class="col-md-6 form-group required">
         <div class="row">
-          <label class="col-sm-3 col-form-label col-form-label-sm text-start">
-            Question Title
-          </label>
-          <div class="col-sm-5">
-             <textarea id="questionTitleEnglish" v-model="questionTitleEnglish" class="form-control"
-                       name="questionTitleEnglish" placeholder="English"
-                       required rows="3" @keyup="createSlug"></textarea>
-          </div>
-          <div class="col-sm-4">
-            <textarea id="questionTitleVietnamese" v-model="questionTitleVietnamese" class="form-control"
-                      name="questionTitleVietnamese" placeholder="Vietnamese"
-                      rows="3"></textarea>
-          </div>
+          <label class="col-sm-3 col-form-label col-form-label-sm text-start">Question Title</label>
+
+          <template v-for="(questionTitle, index) in questionTitles" :key="index">
+            <div class="col-sm-9 mb-1">
+             <textarea v-model="questionTitle.value" :placeholder="questionTitle.language"
+                       class="form-control"
+                       rows="3" @keyup="createSlug"></textarea>
+            </div>
+            <div class="col-sm-3">&nbsp;</div>
+          </template>
+
         </div>
       </div>
 
@@ -47,21 +69,15 @@
 
       <div class="col-md-6 mt-3">
         <div class="row">
-          <label class="col-sm-3 col-form-label col-form-label-sm text-start">
-            Additional Information:
-          </label>
-          <div class="col-sm-5">
-            <textarea id="additionalInformationEnglish" v-model="additionalInformationEnglish" class="form-control"
-                      name="additionalInformationEnglish" placeholder="English"
-                      rows="3"></textarea>
-          </div>
-          <div class="col-sm-4">
-             <textarea id="additionalInformationVietnamese" v-model="additionalInformationVietnamese"
-                       class="form-control"
-                       name="additionalInformationVietnamese"
-                       placeholder="Vietnamese"
-                       rows="3"></textarea>
-          </div>
+          <label class="col-sm-3 col-form-label col-form-label-sm text-start">Additional Information:</label>
+
+          <template v-for="(additionalInformation, index) in additionalInformationList" :key="index">
+            <div class="col-sm-9 mb-1">
+              <textarea v-model="additionalInformation.value" class="form-control" :placeholder="additionalInformation.language"
+                        rows="3"></textarea>
+            </div>
+            <div class="col-sm-3">&nbsp;</div>
+          </template>
         </div>
       </div>
 
@@ -73,7 +89,8 @@
             Question Type:
           </label>
           <div class="col-sm-9">
-            <select id="questionType" v-model="questionType" class="form-select form-select-sm" required @change="reloadAnswerList">
+            <select id="questionType" v-model="questionType" class="form-select form-select-sm" required
+                    @change="reloadAnswerList">
               <option v-for="answerType in answerTypes" v-bind:key="answerType._id" :value="answerType.answerType">
                 {{ answerType.answerType }}
               </option>
@@ -135,31 +152,28 @@ export default {
   },
   methods: {
     ...mapActions({
+      languagesChanged: 'questionForm/languagesChanged',
       fetchAnswerTypes: 'questionForm/fetchAnswerTypes',
       fetchQuestionById: 'questionForm/fetchQuestionById',
       createSlug: 'questionForm/createSlug',
       addNewAnswer: 'questionForm/addNewAnswer',
       removeExistingAnswer: 'questionForm/removeExistingAnswer',
       saveQuestion: 'questionForm/saveQuestion',
-      updateAnswerFieldByInde: 'questionForm/updateAnswerFieldByIndex',
       reloadAnswerList: 'questionForm/reloadAnswerList'
     }),
+
+    generateTitles() {
+      const supportedLanguages = this.supportedLanguages.filter(language => language.isSelected);
+      console.log(supportedLanguages);
+
+      return 'test';
+    },
+
+
     submitForm(event) {
       this.saveQuestion();
       event.preventDefault();
     },
-    updateAnswer(event, answerIndex, fieldName) {
-      this.updateAnswerFieldByIndex(
-          {
-            index: answerIndex,
-            fieldName: fieldName,
-            value: event.currentTarget.value
-          }
-      );
-    },
-    removeAnswer(index) {
-      this.removeExistingAnswer(index)
-    }
   },
   mounted() {
     this.$store.dispatch('hideAlert');
@@ -173,7 +187,10 @@ export default {
       getQuestionSlug: 'questionForm/getQuestionSlug',
       getAnswers: 'questionForm/getAnswers',
       answerTypes: 'questionForm/answerTypes',
-      selectedQuestionType: 'questionForm/selectedQuestionType'
+      selectedQuestionType: 'questionForm/selectedQuestionType',
+      supportedLanguages: 'questionForm/supportedLanguages',
+      questionTitles: 'questionForm/questionTitles',
+      additionalInformationList: 'questionForm/additionalInformationList'
     }),
     questionType: {
       get() {
@@ -232,8 +249,10 @@ table td, table th {
   text-align: left;
   min-width: 50px !important;
 }
+
 .question-number-label {
 }
+
 .form-group.required .control-label:after {
   content: "*";
   color: #f80202;

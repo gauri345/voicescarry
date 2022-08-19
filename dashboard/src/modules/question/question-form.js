@@ -6,6 +6,34 @@ import _ from 'lodash';
 export default {
     namespaced: true,
     state: {
+
+        supportedLanguages: [
+            {
+                text: 'English',
+                value: 'english',
+                isSelected: true
+            }, {
+                text: 'Vietnamese',
+                value: 'vietnamese',
+                isSelected: false
+            }
+        ],
+
+        questionTitles: [
+            {
+                language: 'english',
+                text: ''
+            }
+        ],
+
+        additionalInformationList: [
+            {
+                language: 'english',
+                text: ''
+            }
+        ],
+
+
         questionType: 'select',
         answerTypes: [],
         questionNumber: null,
@@ -23,9 +51,10 @@ export default {
         ]
     },
     getters: {
-        getAnswers: (state) => {
-            return state.answers
-        },
+        supportedLanguages: (state) => state.supportedLanguages,
+        questionTitles: (state) => state.questionTitles,
+        additionalInformationList: (state) => state.additionalInformationList,
+        getAnswers: (state) => state.answers,
         answerTypes: (state) => state.answerTypes,
         getQuestionSlug: (state) => state.questionSlug,
         selectedQuestionType: (state) => {
@@ -42,6 +71,37 @@ export default {
         }
     },
     actions: {
+        languagesChanged: ({commit, state}) => {
+            const filtereLanguage = state.supportedLanguages.filter(language => language.isSelected);
+
+            filtereLanguage.forEach(language => {
+                const existingQuestionTitle = state.questionTitles.find(title => title.language === language.value);
+                if (!existingQuestionTitle) {
+                    commit('ADD_TO_QUESTION_TITLE', {
+                        language: language.value,
+                        text: ''
+                    });
+                } else {
+                    commit('REMOVE_QUESTION_TITLE_BY_LANGUAGE', language.value);
+                }
+            });
+
+            filtereLanguage
+                .forEach(language => {
+                    const existingAdditionalInfo = state.additionalInformationList.find(info => info.language === language.value);
+                    if (!existingAdditionalInfo) {
+                        commit('ADD_TO_ADDITIONAL_INFORMATION', {
+                            language: language.value,
+                            text: ''
+                        });
+                    } else {
+                        commit('REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE', language.value);
+                    }
+                });
+
+        },
+
+
         async fetchQuestionById({commit, dispatch}, questionId) {
             try {
                 const config = {
@@ -75,7 +135,7 @@ export default {
             }
         },
 
-        reloadAnswerList({ state}) {
+        reloadAnswerList({state}) {
             console.log(state.questionType);
         },
 
@@ -88,25 +148,10 @@ export default {
         },
 
         createSlug({commit}) {
+            console.log('sdfsdff');
             commit('UPDATE_SLUG');
         },
 
-        updateAnswerFieldByIndex({commit, state}, dataForUpdate) {
-            const answerToUpdate = state.answers[dataForUpdate.index];
-
-            if ('answerValue' === dataForUpdate.fieldName) {
-                answerToUpdate.answerValue = dataForUpdate.value;
-            }
-            if ('answerTitleEnglish' === dataForUpdate.fieldName) {
-                answerToUpdate.answerTitleEnglish = dataForUpdate.value;
-            }
-
-            if ('answerTitleVietnamese' === dataForUpdate.fieldName) {
-                answerToUpdate.answerTitleVietnamese = dataForUpdate.value;
-            }
-
-            commit('UPDATE_ANSWER_ITEM_BY_INDEX', answerToUpdate, dataForUpdate.index);
-        },
 
         async saveQuestion({state, dispatch}) {
 
@@ -174,6 +219,18 @@ export default {
         }
     },
     mutations: {
+        ADD_TO_QUESTION_TITLE: (state, questionTitle) => state.questionTitles.push(questionTitle),
+        REMOVE_QUESTION_TITLE_BY_LANGUAGE: (state, language) => {
+            state.questionTitles = state.questionTitles
+                .filter(questionTitle => questionTitle.language === language);
+        },
+
+        ADD_TO_ADDITIONAL_INFORMATION: (state, additionalInformation) => state.additionalInformationList.push(additionalInformation),
+        REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE: (state, language) => {
+            state.additionalInformationList = state.additionalInformationList
+                .filter(additionalInformation => additionalInformation.language === language);
+        },
+
         UPDATE_QUESTION: (state, question) => {
             const questionTitleInEng = question.titles.filter(questionTitle => questionTitle.lang === 'en')[0].content;
             const questionTitleInVi = question.titles.filter(questionTitle => questionTitle.lang === 'vi')[0].content;
@@ -193,24 +250,20 @@ export default {
             answerTitleVietnamese: null
         }),
         UPDATE_SLUG: (state) => state.questionSlug = _.snakeCase(state.questionTitleEnglish).substring(0, 50),
-        UPDATE_QUESTION_TYPES:(state, questionTypes) => state.answerTypes = questionTypes,
-        UPDATE_QUESTION_NUMBER:(state, questionNumber) => state.questionNumber = questionNumber,
-        UPDATE_QUESTION_TITLE_ENGLISH:(state, questionTitleEnglish) => state.questionTitleEnglish = questionTitleEnglish,
-        UPDATE_QUESTION_TITLE_VIETNAMESE:(state, questionTitleVietnamese) => state.questionTitleVietnamese = questionTitleVietnamese,
-        UPDATE_ADDITIONAL_INFORMATION_ENGLISH:(state, additionalInformationEnglish) => state.additionalInformationEnglish = additionalInformationEnglish,
-        UPDATE_ADDITIONAL_INFORMATION_VIETNAMESE:(state, additionalInformationVietnamese) => state.additionalInformationVietnamese = additionalInformationVietnamese,
+        UPDATE_QUESTION_TYPES: (state, questionTypes) => state.answerTypes = questionTypes,
+        UPDATE_ADDITIONAL_INFORMATION_ENGLISH: (state, additionalInformationEnglish) => state.additionalInformationEnglish = additionalInformationEnglish,
+        UPDATE_ADDITIONAL_INFORMATION_VIETNAMESE: (state, additionalInformationVietnamese) => state.additionalInformationVietnamese = additionalInformationVietnamese,
 
         UPDATE_ALL_ANSWERS: (state, question) => {
             state.answers = question.answers.map(answer => {
                 return {
                     answerValue: answer.value,
-                    answerTitleEnglish: answer.items.filter(answer => answer.lang==='en')[0].content,
-                    answerTitleVietnamese: answer.items.filter(answer => answer.lang==='vi')[0].content,
+                    answerTitleEnglish: answer.items.filter(answer => answer.lang === 'en')[0].content,
+                    answerTitleVietnamese: answer.items.filter(answer => answer.lang === 'vi')[0].content,
                 };
             });
         },
         REMOVE_ANSWER_BY_INDEX: (state, index) => state.answers.splice(index, 1),
-        UPDATE_ANSWER_ITEM_BY_INDEX: (state, item, index) => state.answers[index] = item,
         UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType
     }
 }
