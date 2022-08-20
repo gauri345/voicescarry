@@ -40,6 +40,11 @@
             <span class="material-icons-outlined">factory</span>Factory
           </router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link text-info" to="/language">
+            <span class="material-icons-outlined">language</span>Language
+          </router-link>
+        </li>
       </ul>
     </div>
   </nav>

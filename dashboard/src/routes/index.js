@@ -21,7 +21,9 @@ import SurveyForm from "@/components/survey/SurveyForm";
 import AnswerTypeComponent from "@/components/answer/type/AnswerTypeComponent";
 import AnswerTypeList from "@/components/answer/type/AnswerTypeList";
 import AnswerTypeForm from "@/components/answer/type/AnswerTypeForm";
-
+import LanguageComponent from "@/components/language/LanguageComponent";
+import LanguageForm from "@/components/language/LanguageForm";
+import LanguageList from "@/components/language/LanguageList";
 const routes = [
     {
         path: '/',
@@ -116,6 +118,23 @@ const routes = [
                         path: 'form/id=:id?',
                         name: 'FactoryForm',
                         component: FactoryForm
+                    }
+                ]
+            },
+            {
+                path: '/language/',
+                name: 'LanguageComponent',
+                component: LanguageComponent,
+                children: [
+                    {
+                        path: '',
+                        name: 'LanguageList',
+                        component: LanguageList
+                    },
+                    {
+                        path: 'form/id=:id?',
+                        name: 'LanguageForm',
+                        component: LanguageForm
                     }
                 ]
             }
