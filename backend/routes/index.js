@@ -9,6 +9,7 @@ const SecurityController = require('../controller/SecurityController');
 const RegistrationController = require('../controller/RegistrationController');
 const FeedbackController = require('../controller/FeedbackController');
 const UsersController = require('../controller/UsersController');
+const LanguageController = require('../controller/LanguageController')
 
 /* SECURITY & LOGIN */
 router.route('/registration')
@@ -58,6 +59,18 @@ router.route('/factory/:id')
 
 router.route('/factory/exists')
     .get(FactoryController.checkIfExists);
+
+/* Language Management*/
+ router.route('/language')
+     .get(LanguageController.index)
+     . post(LanguageController.post);
+
+router.route('/language/:id')
+    .get(LanguageController.findById)
+    .delete(LanguageController.delete);
+
+router.route('/language/exists')
+    .get(LanguageController.checkIfExists);
 
 /* SURVEY MANAGEMENT */
 router.route('/surveys/')
