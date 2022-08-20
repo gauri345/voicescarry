@@ -13,7 +13,8 @@
               <div class="card-body">
                 <div v-for="language in supportedLanguages" :key="language" class="input-group mb-3">
                   <span class="input-group-text">
-                    <input v-bind:id="language.value" v-model="language.isSelected" :disabled="language.value === 'english'"
+                    <input v-bind:id="language.value" v-model="language.isSelected"
+                           :disabled="language.value === 'english'"
                            name="language" type="checkbox" v-bind:value="language.value"
                            @change="languagesChanged"/>
                   </span>
@@ -48,9 +49,14 @@
 
           <template v-for="(questionTitle, index) in questionTitles" :key="index">
             <div class="col-sm-9 mb-1">
-             <textarea v-model="questionTitle.content" :placeholder="ucFirst(questionTitle.lang)"
-                       class="form-control"
-                       rows="3"></textarea>
+              <div class="row">
+                <label class="col-sm-2 col-form-label col-form-label-sm text-start">
+                  {{ ucFirst(questionTitle.lang) }}
+                </label>
+                <div class="col-sm-10">
+                  <textarea v-model="questionTitle.content" class="form-control" rows="3"></textarea>
+                </div>
+              </div>
             </div>
             <div class="col-sm-3">&nbsp;</div>
           </template>
@@ -65,9 +71,14 @@
 
           <template v-for="(additionalInformation, index) in additionalInformationList" :key="index">
             <div class="col-sm-9 mb-1">
-              <textarea v-model="additionalInformation.content" :placeholder="ucFirst(additionalInformation.lang)"
-                        class="form-control"
-                        rows="3"></textarea>
+              <div class="row">
+                <label class="col-sm-2 col-form-label col-form-label-sm text-start">
+                  {{ ucFirst(additionalInformation.lang) }}
+                </label>
+                <div class="col-sm-10">
+                  <textarea v-model="additionalInformation.content" class="form-control" rows="3"></textarea>
+                </div>
+              </div>
             </div>
             <div class="col-sm-3">&nbsp;</div>
           </template>
@@ -108,7 +119,7 @@
                       {{ ucFirst(detail.lang) }}
                     </label>
                     <div class="col-md-9 mb-2">
-                      <input class="form-control" required type="text" v-model="detail.content"/>
+                      <input v-model="detail.content" class="form-control" required type="text"/>
                     </div>
                     <hr>
                   </template>

@@ -1,7 +1,6 @@
 import ApiConfig from "@/config/ApiConfig";
 import axios from "axios";
 import router from "@/routes";
-//import _ from 'lodash';
 
 export default {
     namespaced: true,
@@ -76,63 +75,31 @@ export default {
     },
     actions: {
         languagesChanged: ({commit, state}) => {
-            const filteredLanguage = state.supportedLanguages.filter(language => language.isSelected);
+            state.supportedLanguages
+                .forEach(supportedLanguage => {
+                    if (supportedLanguage.isSelected) {
+                        const titleForSelectedLanguage = state.questionTitles.filter(title => title.lang === supportedLanguage.value);
+                        if (titleForSelectedLanguage.length < 1) {
+                            commit('ADD_TO_QUESTION_TITLE', {
+                                lang: supportedLanguage.value,
+                                content: ''
+                            });
 
-            filteredLanguage.forEach(language => {
-                const existingQuestionTitle = state.questionTitles.find(title => title.language === language.value);
-                if (!existingQuestionTitle) {
-                    commit('ADD_TO_QUESTION_TITLE', {
-                        lang: language.value,
-                        content: ''
-                    });
-                } else {
-                    commit('REMOVE_QUESTION_TITLE_BY_LANGUAGE', language.value);
-                }
-            });
+                            commit('ADD_TO_ADDITIONAL_INFORMATION', {
+                                lang: supportedLanguage.value,
+                                content: ''
+                            });
 
-            filteredLanguage
-                .forEach(language => {
-                    const existingAdditionalInfo = state.additionalInformationList.find(info => info.lang === language.value);
-                    if (!existingAdditionalInfo) {
-                        commit('ADD_TO_ADDITIONAL_INFORMATION', {
-                            lang: language.value,
-                            content: ''
-                        });
+                            commit('ADD_LANGUAGE_FIELD_TO_ANSWER', {
+                                lang: supportedLanguage.value,
+                                content: ''
+                            });
+                        }
                     } else {
-                        commit('REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE', language.value);
+                        commit('REMOVE_QUESTION_TITLE_BY_LANGUAGE', supportedLanguage.value);
+                        commit('REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE', supportedLanguage.value);
+                        commit('REMOVE_LANGUAGE_FIELD_ANSWER', supportedLanguage.value);
                     }
-                });
-
-
-            filteredLanguage
-                .forEach(language => {
-                    const updatedAnswers = state.answers.map(answer => {
-                        return {
-                            type: answer.type,
-                            values: answer.values.map(value => {
-                                const existingDetail = value.details.find(info => info.language === language.value);
-
-                                const valueToReturn = {
-                                    value: value.value
-                                };
-
-                                if (!existingDetail) {
-                                    valueToReturn.details = value.details.concat(
-                                        {
-                                            lang: language.value,
-                                            content: ''
-                                        }
-                                    );
-                                } else {
-                                    valueToReturn.details = value.details.filter(detail => detail.language === language.value);
-                                }
-
-                                return valueToReturn;
-                            })
-                        };
-                    });
-
-                    commit('UPDATE_ANSWERS', updatedAnswers)
                 });
         },
 
@@ -146,9 +113,9 @@ export default {
                 };
 
                 const response = await axios(config);
-
-
                 const questionFromApi = response.data.data;
+
+                commit('SET_SELECTED_LANGUAGES', questionFromApi.additionalInformation.map(info => info.lang));
 
                 commit('UPDATE_QUESTION_NUMBER', questionFromApi.number);
                 commit(
@@ -284,23 +251,70 @@ export default {
         UPDATE_QUESTION_TITLES: (state, questionTitles) => state.questionTitles = questionTitles,
         REMOVE_QUESTION_TITLE_BY_LANGUAGE: (state, language) => {
             state.questionTitles = state.questionTitles
-                .filter(questionTitle => questionTitle.language === language);
+                .filter(questionTitle => questionTitle.lang !== language);
         },
         ADD_TO_ADDITIONAL_INFORMATION: (state, additionalInformation) => state.additionalInformationList.push(additionalInformation),
         UPDATE_QUESTION_ADDITIONAL_INFORMATION: (state, additionalInformationList) => state.additionalInformationList = additionalInformationList,
         REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE: (state, language) => {
             state.additionalInformationList = state.additionalInformationList
-                .filter(additionalInformation => additionalInformation.language === language);
+                .filter(additionalInformation => additionalInformation.lang !== language);
         },
         UPDATE_ANSWERS: (state, answers) => state.answers = answers,
+        ADD_LANGUAGE_FIELD_TO_ANSWER: (state, answerToAdd) => {
+            state.answers.forEach(answer => {
+                answer.values.forEach(value => {
+                    value.details.push(answerToAdd);
+                });
+            });
+        },
+        REMOVE_LANGUAGE_FIELD_ANSWER: (state, language) => {
+            state.answers.forEach(answer => {
+                answer.values.forEach(value => {
+                    value.details = value.details.filter(detail => detail.lang !== language)
+                });
+            });
+        },
         UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType,
         UPDATE_QUESTION_NUMBER: (state, questionNumber) => state.questionNumber = questionNumber,
-        UPDATE_ANSWERS_WITH_ANSWER_FROM_API: (state, itemToUpdate) => state.answers = state.answers.map(answer => {
-            if (answer.type === state.questionType) {
-                answer.values = itemToUpdate
-            }
+        UPDATE_ANSWERS_WITH_ANSWER_FROM_API: (state, itemToUpdate) => {
+            state.answers = state.answers.map(answer => {
+                if (answer.type === state.questionType) {
+                    answer.values = itemToUpdate
+                } else {
+                    answer.values.forEach(value => {
+                        state.supportedLanguages
+                            .filter(supportedLanguage => supportedLanguage.isSelected)
+                            .forEach(supportedLanguage => {
+                                console.log( supportedLanguage)
 
-            return answer;
-        })
+                                if( value.details.find(detail => detail.lang !==  supportedLanguage.value)) {
+                                    value.details.push({
+                                        lang: supportedLanguage.value,
+                                        content: ''
+                                    })
+                                }
+
+
+
+
+                                console.log(value.details);
+                                console.log( '----------')
+
+                            })
+                    })
+                }
+
+                return answer;
+            })
+        },
+
+        SET_SELECTED_LANGUAGES: (state, languages) => {
+            state.supportedLanguages = state.supportedLanguages.map(supportedLanguage => {
+                if (languages.includes(supportedLanguage.value)) {
+                    supportedLanguage.isSelected = true
+                }
+                return supportedLanguage;
+            })
+        }
     }
 }
