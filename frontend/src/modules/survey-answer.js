@@ -45,7 +45,7 @@ export default {
                             }
                             break;
 
-                        case 'stronglyAgree':
+                        case 'strongly_agree':
                             answerToRender = {
                                 iconClass: "material-icons very_satisfied",
                                 value: answer.text,

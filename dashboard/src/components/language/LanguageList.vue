@@ -11,13 +11,22 @@
     </thead>
     <tbody class="table-bordered">
     <tr v-for="(language, index) in allLanguages" v-bind:key="index">
-      <th scope="col">{{language.name}}</th>
-      <th scope="col">{{language.code}}</th>
+      <th scope="col">{{ language.name }}</th>
+      <th scope="col">{{ language.code }}</th>
       <th scope="col">
-        <router-link :to="`/language/form/id=${language._id}`" class="material-icons text-decoration-none text-info" title="Edit language" >edit</router-link>
-        <a  :data-bs-target="`#deleteLanguage_${language._id}`" data-bs-toggle="modal" href="javascript:void(0);">
-          <span class="material-icons-outlined text-danger" title="Delete Language">delete</span>
-        </a>
+        <template v-if="'English' !== language.name">
+          <router-link :to="`/language/form/id=${language._id}`"
+                       class="material-icons text-decoration-none text-info" title="Edit language">edit
+          </router-link>
+          <a :data-bs-target="`#deleteLanguage_${language._id}`" data-bs-toggle="modal"
+             href="javascript:void(0);">
+            <span class="material-icons-outlined text-danger" title="Delete Language">delete</span>
+          </a>
+        </template>
+
+        <template v-else>
+          <span class="material-icons-outlined disabled text-danger" title="Delete Language">block</span>
+        </template>
 
         <!-- Modal -->
         <div :id="`deleteLanguage_${language._id}`" aria-hidden="true" class="modal fade" tabindex="-1">
@@ -45,6 +54,7 @@
 <script>
 import AlertBox from "@/components/util/AlertBox";
 import {mapActions, mapGetters} from "vuex";
+
 export default {
   name: "LanguageList",
   components: {

@@ -4,6 +4,7 @@ import LocalStorage from "@/util/local_storage";
 export default {
     actions: {
         async storeSurvey() {
+            const survey = LocalStorage.get('survey');
             const answers = LocalStorage.get("answer")
                 .map(storedQuestion => {
                     return {
@@ -12,8 +13,8 @@ export default {
                         answerValue: storedQuestion.answerValue ? storedQuestion.answerValue : '',
                         answerText: storedQuestion.answerText ? storedQuestion.answerText : '',
                         factoryCode: storedQuestion.survey.factoryCode,
-                        surveyCode: storedQuestion.survey.surveyCode,
-                        surveyDate: storedQuestion.survey.surveyDate
+                        surveyId: survey.surveyId,
+                        answerDate: storedQuestion.survey.surveyDate,
                     };
                 });
 

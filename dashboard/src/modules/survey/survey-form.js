@@ -50,6 +50,7 @@ export default {
             };
             try {
                 const response = await axios(config)
+                console.log( response.data.data);
                 commit('UPDATE_QUESTIONS_LIST', response.data.data);
             } catch (error) {
                 dispatch('showError', " Failed loading questions. Please try again.", {root: true})
@@ -95,7 +96,7 @@ export default {
                 return {
                     questionId: question._id,
                     isSelected: false,
-                    title: question.titles.filter(title => title.lang === 'en')[0].content
+                    title: question.titles.filter(title => title.lang === 'english')[0].content
                 };
             });
         },

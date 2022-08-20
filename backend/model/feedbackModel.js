@@ -10,7 +10,7 @@ const feedbackModel = mongoose.Schema({
         type: String,
         required: true
     },
-    surveyCode: {
+    surveyId: {
         type: String,
         required: true
     },

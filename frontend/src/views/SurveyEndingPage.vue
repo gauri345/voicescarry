@@ -58,7 +58,7 @@ export default {
       try {
         await HttpClient.post('/feedback', {
           "factoryCode": dataFromLocalStorage.factoryCode,
-          "surveyCode": dataFromLocalStorage.surveyCode,
+          "surveyId": dataFromLocalStorage.surveyId,
           "content": this.content,
         });
       } catch (error) {

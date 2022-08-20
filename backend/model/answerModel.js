@@ -21,7 +21,7 @@ const answerModel = mongoose.Schema({
         required: false
     },
 
-    factoryId: {
+    factoryCode: {
         type: String,
         required: true
     },
