@@ -157,6 +157,7 @@ export default {
       fetchAnswerTypes: 'questionForm/fetchAnswerTypes',
       fetchQuestionById: 'questionForm/fetchQuestionById',
       saveQuestion: 'questionForm/saveQuestion',
+      fetchLanguages: 'questionForm/fetchLanguages',
     }),
 
     ucFirst(string) {
@@ -170,6 +171,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('hideAlert');
+    this.fetchLanguages();
     this.fetchAnswerTypes();
     if (this.$route.params.id) {
       this.fetchQuestionById(this.$route.params.id);

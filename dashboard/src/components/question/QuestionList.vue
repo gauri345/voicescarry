@@ -48,9 +48,6 @@
         <router-link :to="'/question/form/id=' + question._id" data-bs-toggle="tooltip" title="Edit Question">
           <span class="material-icons text-info">edit</span>
         </router-link>
-        <a data-bs-toggle="tooltip" href="javascript:void(0);" title="Delete question">
-          <span class="material-icons text-danger">delete</span>
-        </a>
       </td>
     </tr>
     </tbody>

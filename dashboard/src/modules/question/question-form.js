@@ -6,23 +6,7 @@ export default {
     namespaced: true,
     state: {
         questionNumber: null,
-        supportedLanguages: [
-            {
-                text: 'English',
-                value: 'english',
-                isSelected: true
-            },
-            {
-                text: 'Vietnamese',
-                value: 'vietnamese',
-                isSelected: false
-            },
-            {
-                text: 'Nepali',
-                value: 'nepali',
-                isSelected: false
-            }
-        ],
+        supportedLanguages: [],
 
         questionTitles: [
             {
@@ -103,6 +87,45 @@ export default {
                 });
         },
 
+
+        async fetchLanguages({dispatch, commit}) {
+            try {
+                const config = {
+                    method: 'get',
+                    url: `${ApiConfig.API_BASE_URL}/language/`,
+                    headers: {}
+                };
+
+                const response = await axios(config);
+
+                const languageResponse  = response.data.data;
+
+                const kk = languageResponse.map(lang => {
+
+                    let isSelected = false;
+                    if (lang.name === 'English') {
+                        isSelected = true;
+                    }
+
+                    const language =  {
+                        text: lang.name,
+                        value: lang.name.toLowerCase(),
+                        isSelected: isSelected
+                    }
+
+                    console.log(language);
+
+
+                    return language;
+                });
+
+                console.log(kk)
+
+                commit('UPDATE_SUPPORTED_LANGUAGES', kk)
+            } catch (error) {
+                dispatch('showError', " Failed deleting the question to edit.", {root: true});
+            }
+        },
 
         async fetchQuestionById({commit, dispatch}, questionId) {
             try {
@@ -285,21 +308,12 @@ export default {
                         state.supportedLanguages
                             .filter(supportedLanguage => supportedLanguage.isSelected)
                             .forEach(supportedLanguage => {
-                                console.log( supportedLanguage)
-
-                                if( value.details.find(detail => detail.lang !==  supportedLanguage.value)) {
+                                if (value.details.find(detail => detail.lang !== supportedLanguage.value)) {
                                     value.details.push({
                                         lang: supportedLanguage.value,
                                         content: ''
                                     })
                                 }
-
-
-
-
-                                console.log(value.details);
-                                console.log( '----------')
-
                             })
                     })
                 }
@@ -315,6 +329,10 @@ export default {
                 }
                 return supportedLanguage;
             })
+        },
+
+        UPDATE_SUPPORTED_LANGUAGES: (state, languages) => {
+            state.supportedLanguages = languages
         }
     }
 }
