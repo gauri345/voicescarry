@@ -48,9 +48,9 @@
 
           <template v-for="(questionTitle, index) in questionTitles" :key="index">
             <div class="col-sm-9 mb-1">
-             <textarea v-model="questionTitle.text" :placeholder="ucFirst(questionTitle.language)"
+             <textarea v-model="questionTitle.content" :placeholder="ucFirst(questionTitle.lang)"
                        class="form-control"
-                       rows="3" @keyup="createSlug"></textarea>
+                       rows="3"></textarea>
             </div>
             <div class="col-sm-3">&nbsp;</div>
           </template>
@@ -65,7 +65,7 @@
 
           <template v-for="(additionalInformation, index) in additionalInformationList" :key="index">
             <div class="col-sm-9 mb-1">
-              <textarea v-model="additionalInformation.text" :placeholder="ucFirst(additionalInformation.language)"
+              <textarea v-model="additionalInformation.content" :placeholder="ucFirst(additionalInformation.lang)"
                         class="form-control"
                         rows="3"></textarea>
             </div>
@@ -105,10 +105,10 @@
                 <div class="row card-body">
                   <template v-for="(detail, index) in answerValue.details" :key="index">
                     <label class="col-sm-3 col-form-label col-form-label-sm question-form-label control-label">
-                      {{ ucFirst(detail.language) }}
+                      {{ ucFirst(detail.lang) }}
                     </label>
                     <div class="col-md-9 mb-2">
-                      <input class="form-control" required type="text" v-model="detail.text"/>
+                      <input class="form-control" required type="text" v-model="detail.content"/>
                     </div>
                     <hr>
                   </template>
@@ -159,10 +159,10 @@ export default {
   },
   mounted() {
     this.$store.dispatch('hideAlert');
+    this.fetchAnswerTypes();
     if (this.$route.params.id) {
       this.fetchQuestionById(this.$route.params.id);
     }
-    this.fetchAnswerTypes();
   },
   computed: {
     ...mapGetters({

@@ -27,15 +27,15 @@ export default {
 
         questionTitles: [
             {
-                language: 'english',
-                text: ''
+                lang: 'english',
+                content: ''
             }
         ],
 
         additionalInformationList: [
             {
-                language: 'english',
-                text: ''
+                lang: 'english',
+                content: ''
             }
         ],
 
@@ -46,11 +46,11 @@ export default {
                 type: 'select',
                 values: [
                     {
-                        value: 1,
+                        value: "1",
                         details: [
                             {
-                                text: '',
-                                language: 'english',
+                                content: '',
+                                lang: 'english',
                             }
                         ]
                     }
@@ -82,8 +82,8 @@ export default {
                 const existingQuestionTitle = state.questionTitles.find(title => title.language === language.value);
                 if (!existingQuestionTitle) {
                     commit('ADD_TO_QUESTION_TITLE', {
-                        language: language.value,
-                        text: ''
+                        lang: language.value,
+                        content: ''
                     });
                 } else {
                     commit('REMOVE_QUESTION_TITLE_BY_LANGUAGE', language.value);
@@ -92,11 +92,11 @@ export default {
 
             filteredLanguage
                 .forEach(language => {
-                    const existingAdditionalInfo = state.additionalInformationList.find(info => info.language === language.value);
+                    const existingAdditionalInfo = state.additionalInformationList.find(info => info.lang === language.value);
                     if (!existingAdditionalInfo) {
                         commit('ADD_TO_ADDITIONAL_INFORMATION', {
-                            language: language.value,
-                            text: ''
+                            lang: language.value,
+                            content: ''
                         });
                     } else {
                         commit('REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE', language.value);
@@ -119,8 +119,8 @@ export default {
                                 if (!existingDetail) {
                                     valueToReturn.details = value.details.concat(
                                         {
-                                            language: language.value,
-                                            text: ''
+                                            lang: language.value,
+                                            content: ''
                                         }
                                     );
                                 } else {
@@ -137,7 +137,7 @@ export default {
         },
 
 
-        async fetchQuestionById({dispatch}, questionId) {
+        async fetchQuestionById({commit, dispatch}, questionId) {
             try {
                 const config = {
                     method: 'get',
@@ -147,7 +147,46 @@ export default {
 
                 const response = await axios(config);
 
-                console.log(response);
+
+                const questionFromApi = response.data.data;
+
+                commit('UPDATE_QUESTION_NUMBER', questionFromApi.number);
+                commit(
+                    'UPDATE_QUESTION_TITLES',
+                    questionFromApi.titles.map(apiQuestionTitle => {
+                        return {
+                            lang: apiQuestionTitle.lang,
+                            content: apiQuestionTitle.content
+                        }
+                    })
+                );
+
+                commit(
+                    'UPDATE_QUESTION_ADDITIONAL_INFORMATION',
+                    questionFromApi.additionalInformation.map(info => {
+                        return {
+                            lang: info.lang,
+                            content: info.content,
+                        };
+                    })
+                );
+
+                commit('UPDATE_QUESTION_TYPE', questionFromApi.questionType);
+                commit(
+                    'UPDATE_ANSWERS_WITH_ANSWER_FROM_API',
+                    questionFromApi.answers.map(apiAnswerValues => {
+                        return {
+                            value: apiAnswerValues.value,
+                            details: apiAnswerValues.items.map(item => {
+                                return {
+                                    content: item.content,
+                                    lang: item.lang,
+                                }
+                            })
+                        };
+                    })
+                );
+
             } catch (error) {
                 dispatch('showError', " Failed deleting the question to edit.", {root: true});
             }
@@ -170,8 +209,8 @@ export default {
                                 value: value,
                                 details: [
                                     {
-                                        text: '',
-                                        language: 'english',
+                                        content: '',
+                                        lang: 'english',
                                     }
                                 ]
                             };
@@ -186,9 +225,6 @@ export default {
         },
 
         async saveQuestion({state, dispatch}) {
-
-            //console.log(state)
-
             const questionToSave = {
                 number: state.questionNumber,
                 questionType: state.questionType,
@@ -245,17 +281,26 @@ export default {
     },
     mutations: {
         ADD_TO_QUESTION_TITLE: (state, questionTitle) => state.questionTitles.push(questionTitle),
+        UPDATE_QUESTION_TITLES: (state, questionTitles) => state.questionTitles = questionTitles,
         REMOVE_QUESTION_TITLE_BY_LANGUAGE: (state, language) => {
             state.questionTitles = state.questionTitles
                 .filter(questionTitle => questionTitle.language === language);
         },
         ADD_TO_ADDITIONAL_INFORMATION: (state, additionalInformation) => state.additionalInformationList.push(additionalInformation),
+        UPDATE_QUESTION_ADDITIONAL_INFORMATION: (state, additionalInformationList) => state.additionalInformationList = additionalInformationList,
         REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE: (state, language) => {
             state.additionalInformationList = state.additionalInformationList
                 .filter(additionalInformation => additionalInformation.language === language);
         },
         UPDATE_ANSWERS: (state, answers) => state.answers = answers,
         UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType,
-        UPDATE_QUESTION_NUMBER: (state, questionNumber) => state.questionNumber = questionNumber
+        UPDATE_QUESTION_NUMBER: (state, questionNumber) => state.questionNumber = questionNumber,
+        UPDATE_ANSWERS_WITH_ANSWER_FROM_API: (state, itemToUpdate) => state.answers = state.answers.map(answer => {
+            if (answer.type === state.questionType) {
+                answer.values = itemToUpdate
+            }
+
+            return answer;
+        })
     }
 }
