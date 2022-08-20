@@ -98,30 +98,21 @@ export default {
 
                 const response = await axios(config);
 
-                const languageResponse  = response.data.data;
+                commit(
+                    'UPDATE_SUPPORTED_LANGUAGES',
+                    response.data.data.map(lang => {
+                        let isSelected = false;
+                        if (lang.name === 'English') {
+                            isSelected = true;
+                        }
 
-                const kk = languageResponse.map(lang => {
-
-                    let isSelected = false;
-                    if (lang.name === 'English') {
-                        isSelected = true;
-                    }
-
-                    const language =  {
-                        text: lang.name,
-                        value: lang.name.toLowerCase(),
-                        isSelected: isSelected
-                    }
-
-                    console.log(language);
-
-
-                    return language;
-                });
-
-                console.log(kk)
-
-                commit('UPDATE_SUPPORTED_LANGUAGES', kk)
+                        return {
+                            text: lang.name,
+                            value: lang.name.toLowerCase(),
+                            isSelected: isSelected
+                        }
+                    })
+                )
             } catch (error) {
                 dispatch('showError', " Failed deleting the question to edit.", {root: true});
             }
@@ -220,14 +211,14 @@ export default {
                 questionType: state.questionType,
                 titles: state.questionTitles.map(questionTitle => {
                     return {
-                        lang: questionTitle.language,
-                        content: questionTitle.text
+                        lang: questionTitle.lang,
+                        content: questionTitle.content
                     }
                 }),
                 additionalInformation: state.additionalInformationList.map(info => {
                     return {
-                        lang: info.language,
-                        content: info.text
+                        lang: info.lang,
+                        content: info.content
                     }
                 }),
                 answers: state.answers
@@ -238,8 +229,8 @@ export default {
                                 value: value.value,
                                 items: value.details.map(detail => {
                                     return {
-                                        lang: detail.language,
-                                        content: detail.text
+                                        lang: detail.lang,
+                                        content: detail.content
                                     };
                                 })
                             }
