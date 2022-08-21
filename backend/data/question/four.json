@@ -1,7 +1,7 @@
 {
   "number": 4,
   "slug": "physical-working-condition",
-  "questionType": "scale",
+  "questionType": "sentiment",
   "titles": [
     {
       "lang": "english",

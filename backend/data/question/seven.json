@@ -1,7 +1,7 @@
 {
   "number": 7,
   "slug": "my-work-environment-is-safe",
-  "questionType": "scale",
+  "questionType": "sentiment",
   "titles": [
     {
       "lang": "english",

@@ -1,7 +1,7 @@
 {
   "number": 18,
   "slug": "eat-healthy-food-at-work",
-  "questionType": "scale",
+  "questionType": "sentiment",
   "titles": [
     {
       "lang": "english",

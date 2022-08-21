@@ -1,7 +1,7 @@
 {
   "number": 22,
   "slug": "what-is-your-age?",
-  "questionType": "select",
+  "questionType": "age",
   "titles": [
     {
       "lang": "english",

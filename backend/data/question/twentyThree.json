@@ -1,7 +1,7 @@
 {
   "number": 23,
   "slug": "position-at-work",
-  "questionType": "select",
+  "questionType": "profession",
   "titles": [
     {
       "lang": "english",

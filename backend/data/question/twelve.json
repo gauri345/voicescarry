@@ -1,7 +1,7 @@
 {
   "number": 12,
   "slug": "opportunity-to-learn-new-skills",
-  "questionType": "scale",
+  "questionType": "sentiment",
   "titles": [
     {
       "lang": "english",

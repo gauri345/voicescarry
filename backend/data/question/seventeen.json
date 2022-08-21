@@ -1,7 +1,7 @@
 {
   "number": 17,
   "slug": "feel-healthy-at-work",
-  "questionType": "scale",
+  "questionType": "sentiment",
   "titles": [
     {
       "lang": "english",

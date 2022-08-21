@@ -1,7 +1,7 @@
 {
   "number": 15,
   "slug": "enthusiastic-about-my-job",
-  "questionType": "scale",
+  "questionType": "sentiment",
   "titles": [
     {
       "lang": "english",

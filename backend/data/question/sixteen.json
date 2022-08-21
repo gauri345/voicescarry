@@ -2,7 +2,7 @@
 
   "number": 16,
   "slug": "proud-the-work-that-i-do",
-  "questionType": "scale",
+  "questionType": "sentiment",
   "titles": [
     {
       "lang": "english",

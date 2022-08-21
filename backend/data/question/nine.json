@@ -1,7 +1,7 @@
 {
   "number": 9,
   "slug": "good-work-life-balance",
-  "questionType": "scale",
+  "questionType": "sentiment",
   "titles": [
     {
       "lang": "english",

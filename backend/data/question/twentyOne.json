@@ -1,7 +1,7 @@
 {
   "number": 21,
   "slug": "what-is-your-gender",
-  "questionType": "select",
+  "questionType": "gender",
   "titles": [
     {
       "lang": "english",

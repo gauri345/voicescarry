@@ -2,7 +2,7 @@
   "id": 6,
   "number": 6,
   "slug": "my-job -is-meaningful",
-  "questionType": "scale",
+  "questionType": "sentiment",
   "titles": [
     {
       "lang": "english",

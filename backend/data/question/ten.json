@@ -1,7 +1,7 @@
 {
   "number": 10,
   "slug": "expectation-at-work",
-  "questionType": "scale",
+  "questionType": "sentiment",
   "titles": [
     {
       "lang": "english",
