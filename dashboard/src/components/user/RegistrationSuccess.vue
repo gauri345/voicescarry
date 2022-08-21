@@ -19,7 +19,10 @@
 <script>
 import '@/assets/login.css';
 export default {
-  name: "RegistrationSuccess"
+  name: "RegistrationSuccess",
+  mounted() {
+    this.$store.dispatch('hideAlert');
+  }
 }
 </script>
 

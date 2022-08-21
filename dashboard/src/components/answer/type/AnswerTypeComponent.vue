@@ -10,9 +10,6 @@ export default {
   name: "AnswerTypeComponent",
   components: {
     ComponentHeader,
-  },
-  mounted() {
-    this.$store.dispatch('hideAlert');
   }
 }
 </script>

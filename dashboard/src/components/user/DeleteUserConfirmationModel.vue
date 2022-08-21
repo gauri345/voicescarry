@@ -31,6 +31,9 @@ export default {
   },
   methods: {
     ...mapActions(['deleteUser'])
+  },
+  mounted() {
+    this.$store.dispatch('hideAlert');
   }
 }
 </script>

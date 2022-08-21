@@ -129,6 +129,9 @@ export default {
       this.emailValid = true;
       this.rememberMe = true
     }
+  },
+  mounted() {
+    this.$store.dispatch('hideAlert');
   }
 }
 </script>

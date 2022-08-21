@@ -136,6 +136,9 @@ export default {
             });
       }
     }
+  },
+  mounted() {
+    this.$store.dispatch('hideAlert');
   }
 }
 
