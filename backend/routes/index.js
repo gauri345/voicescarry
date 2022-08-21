@@ -82,13 +82,13 @@ router.route('/survey/:id')
 router.route('/surveys/download/answers/filtered/from=:fromDate&to=:toDate')
     .get(SurveyController.downloadFilteredSurveyAnswers);
 
-router.route('/surveys/downloadAnswers/:surveyCode?')
+router.route('/surveys/downloadAnswers/:surveyId?')
     .get(SurveyController.downloadAnswers);
 
 router.route('/surveys/answers/filtered')
     .post(SurveyController.filteredSurveyAnswerList);
 
-router.route('/surveys/answers/:surveyCode')
+router.route('/surveys/answers/:surveyId')
     .get(SurveyController.surveyAnswersByCode);
 
 router.route('/survey/start/:factoryCode')

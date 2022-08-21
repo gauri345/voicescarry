@@ -6,7 +6,7 @@
     <thead class="table-bordered">
     <tr class="text-info">
       <th scope="col">Factory Code</th>
-      <th scope="col">Survey Code</th>
+      <th scope="col">Survey Name</th>
       <th scope="col">Feedback Message</th>
       <th scope="col">Action</th>
     </tr>
@@ -14,7 +14,7 @@
     <tbody class="table-bordered">
     <tr v-for="feedback in allFeedbacks" :key="feedback.id">
       <td>{{ feedback.factoryCode }}</td>
-      <td>{{ feedback.surveyCode }}</td>
+      <td>{{ feedback.survey.surveyName }}</td>
       <td class="roles-td">{{ feedback.content }}</td>
       <td>
         <a :data-bs-target="`#deleteFeedback_${feedback._id}`" data-bs-toggle="modal" href="javascript:void(0);">

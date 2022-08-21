@@ -1,14 +1,7 @@
 <template>
   <table class="table bg-dark text-info text-lg-start caption-top">
     <caption>
-      <input aria-describedby="factoryCode" aria-label="Factory Code" class="form-control-sm" placeholder="Factory Code"
-             type="text">
-      <input aria-describedby="factoryCode" aria-label="Question Number" class="form-control-sm ms-1"
-             placeholder="Question Number"
-             type="text">
-
-      <button class="btn btn-sm btn-warning ms-1" type="button">Filter</button>
-      <button class="btn btn-sm btn-danger ms-1" type="button">Reset</button>
+      <button class="btn btn-sm btn-danger ms-1" type="button" @click="$router.go(-1)">Back</button>
     </caption>
     <thead class="table-bordered">
     <tr class="text-info">
@@ -44,7 +37,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('hideAlert');
-    this.fetchAnswersBySurveyCode(this.$route.params.surveyCode);
+    this.fetchAnswersBySurveyCode(this.$route.params.surveyId);
   }
 }
 </script>

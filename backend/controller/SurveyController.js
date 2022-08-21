@@ -2,7 +2,6 @@ const Factory = require("../model/factoryModel");
 const Survey = require("../model/surveyModel");
 const AnswerModel = require("../model/answerModel");
 const QuestionModel = require("../model/questionModel");
-const Language = require("../model/languageModel");
 const fs = require('fs').promises;
 
 exports.findById = async function (req, res) {
@@ -173,17 +172,17 @@ exports.allSurveys = async function (req, res) {
 }
 
 exports.downloadAnswers = async function (req, res) {
-    const surveyCode = req.params.surveyCode;
+    const surveyId = req.params.surveyId;
 
     try {
         let answers, fileName;
 
-        if (!surveyCode) {
+        if (!surveyId) {
             answers = await AnswerModel.find();
             fileName = `${__dirname}/survey_answers.json`;
         } else {
-            answers = await AnswerModel.find({surveyCode: surveyCode});
-            fileName = `${__dirname}/${surveyCode}.json`;
+            answers = await AnswerModel.find({surveyId: surveyId});
+            fileName = `${__dirname}/${surveyId}.json`;
         }
 
         fs
@@ -228,19 +227,19 @@ exports.downloadFilteredSurveyAnswers = async function (req, res) {
 
 
 exports.surveyAnswersByCode = async function (req, res) {
-    const surveyCode = req.params.surveyCode;
+    const surveyId = req.params.surveyId;
 
-    if (!surveyCode) {
+    if (!surveyId) {
         res
             .status(400)
             .json({
                 status: "error",
-                message: 'Survey code is required to download answers.'
+                message: 'Survey id is required to fetch answers.'
             });
     } else {
 
         try {
-            const answers = await AnswerModel.find({surveyCode: surveyCode});
+            const answers = await AnswerModel.find({surveyId: surveyId});
 
             res
                 .status(200)
@@ -264,22 +263,33 @@ exports.surveyAnswersByCode = async function (req, res) {
 
 exports.filteredSurveyAnswerList = async function (req, res) {
     try {
-        const dateFrom = req.body.dateFrom;
-        const dateTo = req.body.dateTo;
+        const factoryId = req.body.factoryId;
 
-        const filteredSurveys = await Survey.find({ //query today up to tonight
-            surveyDate: {
-                $gte: dateFrom,
-                $lt: dateTo
+        console.log(factoryId);
+
+        const filteredSurveys = await Survey.find(
+            {
+                factoryId: factoryId
             }
+        );
+
+        const surveysToReturn = filteredSurveys.map(async survey => {
+            return {
+                _id: survey._id,
+                surveyName: survey.surveyName,
+                factoryId: survey.factoryId,
+                questions: survey.questions,
+                factory: await Factory.findOne({_id: survey.factoryId})
+            };
         });
+
         res
             .status(200)
             .json(
                 {
                     status: "success",
                     message: `Total [${filteredSurveys.length}] surveys received`,
-                    data: filteredSurveys
+                    data: await Promise.all(surveysToReturn)
                 }
             )
     } catch (error) {

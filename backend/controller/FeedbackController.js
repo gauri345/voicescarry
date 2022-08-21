@@ -1,8 +1,8 @@
 const Feedback = require("../model/feedbackModel");
 const {promises: fs} = require("fs");
+const Survey = require("../model/surveyModel");
 
 exports.downloadAll = async function (req, res) {
-
     try {
         const feedbackList = await Feedback.find();
         const fileName = `${__dirname}/feedbacks.json`;
@@ -18,20 +18,34 @@ exports.downloadAll = async function (req, res) {
     }
 };
 
-exports.index = function (req, res) {
-    Feedback.get(function (err, content) {
-        if (err) {
-            res.json({
-                status: "error",
-                message: err,
-            });
-        }
+exports.index = async function (req, res) {
+    try {
+        const allFeedbacks = await Feedback.find();
+
+        const updated = allFeedbacks.map(async feedback => {
+            return {
+                lang: feedback.lang,
+                content: feedback.content,
+                surveyId:feedback.surveyId,
+                survey:  await Survey.findById(feedback.surveyId),
+                factoryCode: feedback.factoryCode
+            };
+        });
+
         res.json({
             status: "success",
-            message: "feedback retrieved",
-            data: content
+            message: `Total ${updated.length} feedbacks retrieved`,
+            data: await Promise.all(updated)
         });
-    });
+    } catch (error) {
+        console.error(error)
+        res
+            .status(500)
+            .json({
+                status: "error",
+                message: "Failed fetching feedbacks from database."
+            });
+    }
 };
 
 exports.post = async function (req, res) {

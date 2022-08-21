@@ -3,30 +3,30 @@
   <table class="table bg-dark text-info text-lg-start caption-top">
     <caption>
       <div class="input-group mb-3">
-        <DatePicker v-model="dateFrom">
-          <template v-slot="{ inputValue, togglePopover }">
-            <span class="text-white h6">From: </span>
-            <input :value="inputValue" class="form-control-sm me-3" readonly
-                   @click="togglePopover()"/>
-          </template>
-        </DatePicker>
-        <DatePicker v-model="dateTo">
-          <template v-slot="{ inputValue, togglePopover }">
-            <span class="text-white h6">To: </span>
-            <input :value="inputValue" class="form-control-sm" readonly @click="togglePopover()"/>
-          </template>
-        </DatePicker>
+        <div class="input-group">
+          <div class="input-group-text me-3">Factory:
+          <select v-model="filteredFactoryCode" class="form-select-sm ms-2">
+            <option v-for="factory in surveyedFactories" :key="factory._id" v-bind:value="factory._id">
+              {{ factory.code }}
+            </option>
+          </select>
+          </div>
+          <a class="btn btn-sm btn-warning ms-1" title="Click to apply the filters." type="button"
+             @click="filterSurveys">Filter</a>
+          <a class="btn btn-sm btn-danger ms-1" title="Reset all filters" type="button" @click="resetFilters">Reset</a>
+          <a class="btn btn-sm btn-dark material-icons ms-1" style="float: right;" title="Download all Survey Answers"
+             @click="downloadAllSurveyAnswers">download</a>
+        </div>
 
-        <a class="btn btn-sm btn-warning ms-1" title="Click to apply the filters." type="button" @click="filterSurveys">Filter</a>
-        <a class="btn btn-sm btn-dark material-icons ms-1" style="float: right;" title="Download all Survey Answers"
-           @click="downloadAllSurveyAnswers">download</a>
-        <a class="btn btn-sm btn-danger ms-1" title="Reset all filters" type="button" @click="resetFilters">Reset</a>
-
-        <router-link class="btn btn-dark position-absolute" style="right: 15px;" to="/surveys/form/id=">Create new survey</router-link>
-
+        <router-link class="btn btn-dark position-absolute" style="right: 15px;" to="/surveys/form/id=">
+          Create new survey
+        </router-link>
       </div>
-
     </caption>
+
+
+
+
 
     <thead class="table-bordered">
     <tr class="text-info">
@@ -48,9 +48,9 @@
                      title="Edit Survey">edit
         </router-link>
         <a class="material-icons text-decoration-none text-info" href="javascript:void(0);"
-           @click="previewAnswers(survey.surveyCode)">preview</a>
+           @click="previewAnswers(survey._id)">preview</a>
         <a class="material-icons text-decoration-none text-info" href="javascript:void(0);"
-           @click="downloadSurveyAnswers(survey.surveyCode)">download</a>
+           @click="downloadSurveyAnswers(survey.surveyId)">download</a>
       </td>
     </tr>
     </tbody>
@@ -61,24 +61,22 @@
 import AlertBox from "@/components/util/AlertBox";
 import {mapActions, mapGetters} from "vuex";
 import ApiConfig from "@/config/ApiConfig";
-import {DatePicker} from 'v-calendar';
 
 export default {
   name: "SurveyList",
   components: {
     AlertBox,
-    DatePicker
   },
   methods: {
     ...mapActions(['fetchAllSurveys', 'filterSurveys', 'resetFilters', 'downloadFilteredSurveyAnswers']),
-    downloadSurveyAnswers(surveyCode) {
-      window.location.href = `${ApiConfig.API_BASE_URL}/surveys/downloadAnswers/${surveyCode}`;
+    downloadSurveyAnswers(surveyId) {
+      window.location.href = `${ApiConfig.API_BASE_URL}/surveys/downloadAnswers/${surveyId}`;
     },
     downloadAllSurveyAnswers() {
       window.location.href = `${ApiConfig.API_BASE_URL}/surveys/downloadAnswers`;
     },
-    previewAnswers(surveyCode) {
-      this.$router.push('/surveys/answers/survey-code=' + surveyCode)
+    previewAnswers(surveyId) {
+      this.$router.push('/surveys/answers/surveyId=' + surveyId)
     }
   },
   mounted() {
@@ -86,23 +84,15 @@ export default {
     this.fetchAllSurveys();
   },
   computed: {
-    ...mapGetters(['allSurveys']),
-    dateFrom: {
+    ...mapGetters(['allSurveys', 'surveyedFactories']),
+    filteredFactoryCode: {
       get() {
-        return this.$store.state.surveyList.dateFrom
+        return this.$store.state.surveyList.filteredFactoryCode
       },
       set(value) {
-        this.$store.commit('UPDATE_DATE_FROM', value)
+        this.$store.commit('UPDATE_FILTERED_FACTORY_CODE', value)
       }
-    },
-    dateTo: {
-      get() {
-        return this.$store.state.surveyList.dateTo
-      },
-      set(value) {
-        this.$store.commit('UPDATE_TO_FROM', value)
-      }
-    },
+    }
   }
 }
 </script>

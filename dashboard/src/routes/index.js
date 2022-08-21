@@ -49,7 +49,7 @@ const routes = [
                         component: SurveyList
                     },
                     {
-                        path: 'answers/survey-code=:surveyCode',
+                        path: 'answers/surveyId=:surveyId',
                         name: 'SurveyAnswerList',
                         component: SurveyAnswerList
                     },
