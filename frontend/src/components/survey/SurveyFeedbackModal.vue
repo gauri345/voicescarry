@@ -13,10 +13,10 @@
         </div>
         <div class="modal-body">
           <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
-          <p> {{ $t('survey_feedback_modal_text') }} </p>
+          <p> {{ $t('survey_feedback_modal_text') }}</p>
         </div>
         <div class="modal-footer">
-            <router-link :to="'/homepage'">
+            <router-link to="LandingPage">
               <button class="btn btn-secondary" background="" data-bs-dismiss="modal" type="button"> {{ $t('button_homepage') }} </button>
             </router-link>
         </div>

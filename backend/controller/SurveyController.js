@@ -85,6 +85,7 @@ exports.startSurvey = async function (req, res) {
                         status: "success",
                         message: 'survey created',
                         data: {
+                            "factoryId": existingFactory._id,
                             "factoryCode": factoryCode,
                             "surveyId": survey._id,
                             "surveyDate": Date.now()
@@ -264,9 +265,6 @@ exports.surveyAnswersByCode = async function (req, res) {
 exports.filteredSurveyAnswerList = async function (req, res) {
     try {
         const factoryId = req.body.factoryId;
-
-        console.log(factoryId);
-
         const filteredSurveys = await Survey.find(
             {
                 factoryId: factoryId

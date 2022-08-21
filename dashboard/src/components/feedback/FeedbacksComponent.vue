@@ -1,11 +1,26 @@
 <template>
   <component-header text="Feedbacks"/>
-  <AlertBox />
-  <a class="btn btn-dark material-icons" style="float: right;" @click="downloadFeedbacks">download</a>
-  <table class="table bg-dark text-info text-lg-start">
+  <AlertBox/>
+  <table class="table bg-dark text-info text-lg-start caption-top">
+    <caption>
+      <div class="input-group mb-3">
+        <div class="input-group">
+          <div class="input-group-text me-3">Factory:
+            <select v-model="selectedFactory" class="form-select-sm ms-2">
+              <option v-for="factory in factoryList" :key="factory._id" v-bind:value="factory._id">
+                {{ factory.name }}
+              </option>
+            </select>
+          </div>
+          <a class="btn btn-sm btn-warning" title="Click to apply the filters." type="button" @click="filterFeedback">Filter</a>
+          <a class="btn btn-sm btn-danger ms-1" title="Reset all filters" type="button" @click="resetFilters">Reset</a>
+          <a class="btn btn-dark material-icons ms-3" @click="downloadFeedbacks">download</a>
+        </div>
+      </div>
+    </caption>
     <thead class="table-bordered">
     <tr class="text-info">
-      <th scope="col">Factory Code</th>
+      <th scope="col">Factory Name</th>
       <th scope="col">Survey Name</th>
       <th scope="col">Feedback Message</th>
       <th scope="col">Action</th>
@@ -13,7 +28,7 @@
     </thead>
     <tbody class="table-bordered">
     <tr v-for="feedback in allFeedbacks" :key="feedback.id">
-      <td>{{ feedback.factoryCode }}</td>
+      <td>{{ feedback.factory.name }}</td>
       <td>{{ feedback.survey.surveyName }}</td>
       <td class="roles-td">{{ feedback.content }}</td>
       <td>
@@ -30,7 +45,7 @@
               </div>
               <div class="modal-footer">
                 <button class="btn btn-danger" data-bs-dismiss="modal" type="button"
-                @click="handleDeleteFeedback(feedback._id)">Yes
+                        @click="handleDeleteFeedback(feedback._id)">Yes
                 </button>
                 <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">No</button>
               </div>
@@ -55,7 +70,7 @@ export default {
     AlertBox
   },
   methods: {
-    ...mapActions(['fetchFeedback', 'deleteFeedback', 'downloadFeedbacks']),
+    ...mapActions(['fetchFeedback', 'deleteFeedback', 'downloadFeedbacks', 'filterFeedback', 'resetFilters']),
     handleDeleteFeedback(feedbackId) {
       this.deleteFeedback(feedbackId);
       return true;
@@ -66,11 +81,16 @@ export default {
     this.fetchFeedback();
   },
 
-  created() {
-  },
-
   computed: {
-    ...mapGetters(['allFeedbacks', 'feedbackDeleteError', 'feedbackDeleteInfo', 'getServerErrorDisplayed'])
+    ...mapGetters(['allFeedbacks', 'factoryList']),
+    selectedFactory: {
+      get() {
+        return this.$store.state.feedbackList.selectedFactory
+      },
+      set(value) {
+        this.$store.commit('UPDATE_SELECTED_FACTORY', value)
+      }
+    }
   }
 }
 </script>

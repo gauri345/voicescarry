@@ -16,7 +16,11 @@ const feedbackModel = mongoose.Schema({
     },
     factoryCode: {
         type: String,
-        required:true
+        required: true
+    },
+    factoryId: {
+        type: String,
+        required: true
     }
 });
 

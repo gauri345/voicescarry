@@ -58,9 +58,11 @@ export default {
       try {
         await HttpClient.post('/feedback', {
           "factoryCode": dataFromLocalStorage.factoryCode,
+          "factoryId": dataFromLocalStorage.factoryId,
           "surveyId": dataFromLocalStorage.surveyId,
           "content": this.content,
         });
+        LocalStorage.remove('survey');
       } catch (error) {
         console.log("Failed storing feedback", error);
       }

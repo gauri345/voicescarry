@@ -1,6 +1,7 @@
 const Feedback = require("../model/feedbackModel");
 const {promises: fs} = require("fs");
 const Survey = require("../model/surveyModel");
+const Factory = require("../model/factoryModel");
 
 exports.downloadAll = async function (req, res) {
     try {
@@ -23,11 +24,13 @@ exports.index = async function (req, res) {
         const allFeedbacks = await Feedback.find();
 
         const updated = allFeedbacks.map(async feedback => {
+            const factory = await Factory.findById(feedback.factoryId);
             return {
                 lang: feedback.lang,
                 content: feedback.content,
-                surveyId:feedback.surveyId,
-                survey:  await Survey.findById(feedback.surveyId),
+                surveyId: feedback.surveyId,
+                survey: await Survey.findById(feedback.surveyId),
+                factory: factory,
                 factoryCode: feedback.factoryCode
             };
         });
@@ -37,7 +40,8 @@ exports.index = async function (req, res) {
             message: `Total ${updated.length} feedbacks retrieved`,
             data: await Promise.all(updated)
         });
-    } catch (error) {
+    } catch
+        (error) {
         console.error(error)
         res
             .status(500)
@@ -46,7 +50,8 @@ exports.index = async function (req, res) {
                 message: "Failed fetching feedbacks from database."
             });
     }
-};
+}
+
 
 exports.post = async function (req, res) {
     try {
@@ -89,4 +94,44 @@ exports.delete = async function (req, res) {
     } catch (error) {
         res.sendStatus(500).message(error);
     }
+}
+
+
+exports.filteredFeedbackList = async function (req, res) {
+        const factoryId = req.body.factoryId;
+
+        try {
+            const filteredFeedbacks = await Feedback.find(
+                {
+                    factoryId: factoryId
+                }
+            );
+
+            const updated = filteredFeedbacks.map(async feedback => {
+                const factory = await Factory.findById(feedback.factoryId);
+                return {
+                    lang: feedback.lang,
+                    content: feedback.content,
+                    surveyId: feedback.surveyId,
+                    survey: await Survey.findById(feedback.surveyId),
+                    factory: factory,
+                    factoryCode: feedback.factoryCode
+                };
+            });
+
+            res.json({
+                status: "success",
+                message: `Total ${updated.length} feedbacks retrieved`,
+                data: await Promise.all(updated)
+            });
+        } catch
+            (error) {
+            console.error(error)
+            res
+                .status(500)
+                .json({
+                    status: "error",
+                    message: "Failed fetching feedbacks from database."
+                });
+        }
 }

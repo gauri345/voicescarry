@@ -23,11 +23,6 @@
         </router-link>
       </div>
     </caption>
-
-
-
-
-
     <thead class="table-bordered">
     <tr class="text-info">
       <th scope="col">#</th>

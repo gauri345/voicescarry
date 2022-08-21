@@ -36,7 +36,6 @@ export default {
 
             try {
                 const response = await axios(config);
-                console.log(response.data.data)
                 commit('UPDATE_ALL_SURVEYS', response.data.data);
             } catch (error) {
                 dispatch('showError', " Failed fetching surveys Please try again.", {root: true});

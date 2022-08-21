@@ -115,4 +115,7 @@ router.route('/feedback')
 router.route('/feedback/:id')
     .delete(FeedbackController.delete);
 
+router.route('/feedback/filtered')
+    .post(FeedbackController.filteredFeedbackList);
+
 module.exports = router;
