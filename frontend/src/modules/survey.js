@@ -30,28 +30,29 @@ export default {
                 }
             }
 
-            const previousQuestion = state.allQuestions.filter(question => {
-                return questionNumber - 1 === question.questionNumber;
-            });
+            console.log('current question number', questionNumber);
 
-            if (previousQuestion.length > 0) {
-                commit('SET_PREVIOUS_QUESTION', previousQuestion[0]);
+
+            const previousQuestion =state.allQuestions[questionNumber - 1];
+
+            if (previousQuestion) {
+                commit('SET_PREVIOUS_QUESTION', previousQuestion);
             }
 
-            const currentQuestion = state.allQuestions.filter(question => {
-                return questionNumber === question.questionNumber;
-            });
+            console.log(state.allQuestions)
 
-            if (currentQuestion.length > 0) {
-                commit('SET_CURRENT_QUESTION', currentQuestion[0]);
+            const currentQuestion =state.allQuestions[questionNumber];
+
+            if (currentQuestion) {
+                commit('SET_CURRENT_QUESTION', currentQuestion);
             }
 
-            const nextQuestion = state.allQuestions.filter(question => {
-                return questionNumber + 1 === question.questionNumber;
-            });
+            const nextQuestion = state.allQuestions[questionNumber + 1];
 
-            if (nextQuestion.length > 0) {
-                commit('SET_NEXT_QUESTION', nextQuestion[0]);
+            console.log(nextQuestion)
+
+            if (nextQuestion) {
+                commit('SET_NEXT_QUESTION', nextQuestion);
             }
         },
 
@@ -85,11 +86,11 @@ export default {
         },
 
         navigateToNextQuestion: ({state}) => {
-            router.push({name: 'SurveyPage', params: {number: state.nextQuestion.questionNumber}});
+            router.push({name: 'SurveyPage', params: {number: state.nextQuestion.order}});
         },
 
         navigateToPreviousQuestion: ({state}) => {
-            router.push({name: 'SurveyPage', params: {number: state.previousQuestion.questionNumber}});
+            router.push({name: 'SurveyPage', params: {number: state.previousQuestion.order}});
         }
     },
 
@@ -105,8 +106,9 @@ export default {
                 }
             };
 
-            state.allQuestions = questions.map(question => {
+            state.allQuestions = questions.map((question, index) => {
                 return {
+                    order: index,
                     questionId: question._id,
                     questionNumber: question.number,
                     questionType: question.questionType,

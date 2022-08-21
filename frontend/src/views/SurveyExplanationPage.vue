@@ -34,7 +34,7 @@
       <p> {{ $t('survey_explanation_rating') }} </p>
     </div>
     <div class=buttonwrapper>
-      <router-link to="/question/1">
+      <router-link to="/question/0">
       <Button style="align-items:baseline" id="surveystartbutton" :text="$t('button_start_survey')"/>
       </router-link>
     </div>
