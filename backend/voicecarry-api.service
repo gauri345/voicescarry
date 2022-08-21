@@ -3,7 +3,7 @@ Description=Voice Carry Api.
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/node /srv/www/virtual/voicescarry/htdocs/voicescarry/frontend/app.js
+ExecStart=/usr/bin/node /srv/www/virtual/voicescarry/htdocs/voicescarry/backend/index.js
 Restart=always
 User=nobody
 # Note Debian/Ubuntu uses 'nogroup', RHEL/Fedora uses 'nobody'
