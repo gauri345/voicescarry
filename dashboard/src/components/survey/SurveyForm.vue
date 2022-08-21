@@ -94,7 +94,8 @@ export default {
           fetchAllQuestions: "surveyForm/fetchAllQuestions",
           addSurvey: "surveyForm/addSurvey",
           toggleQuestionToSurvey: "surveyForm/toggleQuestionToSurvey",
-          toggleSelectAllQuestions: "surveyForm/toggleSelectAllQuestions"
+          toggleSelectAllQuestions: "surveyForm/toggleSelectAllQuestions",
+          fetchSurveyById: "surveyForm/fetchSurveyById"
         }
     ),
     groupQuestionList(questionList) {
@@ -143,6 +144,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('hideAlert');
+    this.fetchSurveyById(this.$route.params.id);
     this.fetchFactories();
     this.fetchAllQuestions()
   }

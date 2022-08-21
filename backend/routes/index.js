@@ -60,7 +60,7 @@ router.route('/factory/:id')
 router.route('/factory/exists')
     .get(FactoryController.checkIfExists);
 
-/* Language Management*/
+/* LANGUAGE MANAGEMENT*/
  router.route('/language')
      .get(LanguageController.index)
      . post(LanguageController.post);
@@ -75,6 +75,9 @@ router.route('/language/exists')
 /* SURVEY MANAGEMENT */
 router.route('/surveys/')
     .get(SurveyController.allSurveys);
+
+router.route('/survey/:id')
+    .get(SurveyController.findById);
 
 router.route('/surveys/download/answers/filtered/from=:fromDate&to=:toDate')
     .get(SurveyController.downloadFilteredSurveyAnswers);

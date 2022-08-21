@@ -2,7 +2,29 @@ const Factory = require("../model/factoryModel");
 const Survey = require("../model/surveyModel");
 const AnswerModel = require("../model/answerModel");
 const QuestionModel = require("../model/questionModel");
+const Language = require("../model/languageModel");
 const fs = require('fs').promises;
+
+exports.findById = async function (req, res) {
+    const surveyId = req.params.id;
+    try {
+        res.json(
+            {
+                status: "success",
+                message: 'Survey found',
+                data: await Survey.findById(surveyId)
+            }
+        );
+    } catch (error) {
+        res
+            .status(404)
+            .json({
+                status: "error",
+                message: "Survey with provided id: " + surveyId + ' was not found in database.'
+            });
+    }
+}
+
 
 exports.surveyQuestions = async function (req, res) {
     const surveyId = req.params.surveyId;
@@ -84,22 +106,36 @@ exports.startSurvey = async function (req, res) {
 }
 
 exports.addSurvey = async function (req, res) {
+
+    const survey = req.body;
+
     try {
-        const storedSurvey = await Survey.create(req.body);
-        res.json(
-            {
-                status: "success",
-                message: 'survey created',
-                data: storedSurvey
-            }
-        );
+        const existingSurvey = await Survey.findById(survey.id);
+
+        if (existingSurvey) {
+            res.json(
+                {
+                    status: "success",
+                    message: 'Survey updated',
+                    data: await Survey.findByIdAndUpdate(survey.id, survey)
+                }
+            );
+        } else {
+            res.json(
+                {
+                    status: "success",
+                    message: 'Survey added',
+                    data: await Survey.create(survey)
+                }
+            );
+        }
     } catch (error) {
-        console.error(error);
-        return res
+        console.log('error', error)
+        res
             .status(500)
             .json({
-                status: "failed",
-                message: error,
+                status: "error",
+                message: "Failed storing survey in database."
             });
     }
 };
