@@ -5,7 +5,7 @@
   "answerType": "yes_no",
   "titles": [
     {
-      "lang": "en",
+      "lang": "english",
       "content": "I am doing well at work"
     },
     {
@@ -18,7 +18,7 @@
       "slug": "overall-well-being",
       "titles": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "Overall Wellbeing"
         },
         {
@@ -30,7 +30,7 @@
   ],
   "additionalInformation": [
     {
-      "lang": "en",
+      "lang": "english",
       "content": "No explanation needed"
     },
     {
@@ -40,11 +40,11 @@
   ],
   "answers": [
     {
-      "lang": "en",
+      "lang": "english",
       "content": "yes"
     },
     {
-      "lang": "en",
+      "lang": "english",
       "content": "no"
     },
     {

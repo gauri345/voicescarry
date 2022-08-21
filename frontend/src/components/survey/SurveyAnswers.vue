@@ -92,13 +92,6 @@ export default {
             text: ''
           }
         }
-
-      }
-    },
-
-    answerClass(iconClass) {
-      return {
-        iconClass: true
       }
     }
   }

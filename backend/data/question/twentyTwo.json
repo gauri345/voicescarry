@@ -4,7 +4,7 @@
   "questionType": "select",
   "titles": [
     {
-      "lang": "en",
+      "lang": "english",
       "content": "What is your age?"
     }
   ],
@@ -13,7 +13,7 @@
       "value": "twenty-or-younger",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "20 or younger"
         }
       ]
@@ -22,7 +22,7 @@
       "value": "twenty-one-to-thirty",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "21 - 30"
         }
       ]
@@ -31,7 +31,7 @@
       "value": "thirty-one-to-forty",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "31 - 40"
         }
       ]
@@ -40,7 +40,7 @@
       "value": "forty-one-to-fifty",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "41 - 50"
         }
       ]
@@ -49,7 +49,7 @@
       "value": "fifty-one-to-sixty",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "51 - 60"
         }
       ]
@@ -58,7 +58,7 @@
       "value": "sixty-one-to-seventy",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "61 - 70"
         }
       ]
@@ -67,7 +67,7 @@
       "value": "seventy-or-older",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "71 or older"
         }
       ]
@@ -76,7 +76,7 @@
       "value": "not-saying",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "prefer not to say"
         }
       ]

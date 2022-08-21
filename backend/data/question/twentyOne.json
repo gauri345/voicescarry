@@ -4,7 +4,7 @@
   "questionType": "select",
   "titles": [
     {
-      "lang": "en",
+      "lang": "english",
       "content": "Gender Identity: I identify as..."
     }
   ],
@@ -13,7 +13,7 @@
       "value": "woman",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "a woman"
         }
       ]
@@ -22,7 +22,7 @@
       "value": "man",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "a man"
         }
       ]
@@ -31,7 +31,7 @@
       "value": "not-saying",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "prefer not to say"
         }
       ]

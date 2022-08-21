@@ -4,7 +4,7 @@
   "questionType": "select",
   "titles": [
     {
-      "lang": "en",
+      "lang": "english",
       "content": "In which position are you working?"
     }
   ],
@@ -13,7 +13,7 @@
       "value": "employee",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "Employee"
         }
       ]
@@ -22,7 +22,7 @@
       "value": "manager",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "Manager"
         }
       ]
@@ -31,7 +31,7 @@
       "value": "not-saying",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "prefer not to say"
         }
       ]

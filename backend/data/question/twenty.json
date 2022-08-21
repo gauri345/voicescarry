@@ -4,7 +4,7 @@
   "questionType": "scale",
   "titles": [
     {
-      "lang": "en",
+      "lang": "english",
       "content": "I have good housing"
     }
   ],
@@ -13,7 +13,7 @@
       "value": "strongly_disagree",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "5"
         }
       ]
@@ -22,7 +22,7 @@
       "value": "disagree",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "4"
         }
       ]
@@ -31,7 +31,7 @@
       "value": "neutral",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "3"
         }
       ]
@@ -40,7 +40,7 @@
       "value": "agree",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "2"
         }
       ]
@@ -49,7 +49,7 @@
       "value": "stronglyAgree",
       "items": [
         {
-          "lang": "en",
+          "lang": "english",
           "content": "1"
         }
       ]

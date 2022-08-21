@@ -15,7 +15,7 @@
 
         <li class="nav-item">
           <router-link class="nav-link text-info" to="/answer-type">
-            <span class="material-icons-outlined">rule</span>Answer Types
+            <span class="material-icons-outlined">rule</span>Answers
           </router-link>
         </li>
 

@@ -9,7 +9,7 @@ import ComponentHeader from "@/components/ComponentHeader";
 export default {
   name: "AnswerTypeComponent",
   components: {
-    ComponentHeader
+    ComponentHeader,
   }
 }
 </script>
