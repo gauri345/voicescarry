@@ -79,8 +79,11 @@ router.route('/surveys/')
 router.route('/survey/:id')
     .get(SurveyController.findById);
 
-router.route('/surveys/downloadAnswers/:surveyId?')
+router.route('/surveys/download/answers/:surveyId?')
     .get(SurveyController.downloadAnswers);
+
+router.route('/surveys/download/answers/filtered/:factoryId?')
+    .get(SurveyController.downloadAnswersWithFactory);
 
 router.route('/surveys/answers/filtered')
     .post(SurveyController.filteredSurveyAnswerList);

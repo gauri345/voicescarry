@@ -163,6 +163,7 @@ exports.allSurveys = async function (req, res) {
                 }
             )
     } catch (error) {
+        console.error(error);
         res
             .status(404)
             .json({
@@ -171,6 +172,75 @@ exports.allSurveys = async function (req, res) {
             });
     }
 }
+
+exports.downloadAnswersWithFactory = async function (req, res) {
+    const factoryId = req.params.factoryId;
+
+    try {
+        let answers, fileName;
+
+        if (!factoryId) {
+            answers = await AnswerModel.find();
+            fileName = `${__dirname}/survey_answers.json`;
+        } else {
+
+            const factory = await Factory.findById(factoryId);
+
+            if (factory) {
+                answers = await AnswerModel.find({factoryCode: factory.code});
+                fileName = `${__dirname}/${factoryId}.json`;
+            } else {
+                res
+                    .status(404)
+                    .json({
+                        status: "error",
+                        message: `No factory exists for provided ${factoryId}`
+                    });
+            }
+        }
+
+        const resolveData = await Promise.all(answers.map(answer => resolveAnswers(answer)));
+
+        fs
+            .writeFile(fileName, JSON.stringify(resolveData), 'utf8')
+            .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
+    } catch (error) {
+        console.error(error);
+        res
+            .status(500)
+            .json({
+                status: "error",
+                message: "Failed downloading file. Please contact your administrator."
+            });
+    }
+}
+
+resolveAnswers = async (answer) => {
+    const question = await QuestionModel.findById(answer.questionId);
+    let questionTitle = '';
+
+    if (question) {
+        const englishQuestionTitle = question.titles.filter(title => title.lang === 'english');
+
+        if (englishQuestionTitle.length >=1) {
+            questionTitle = englishQuestionTitle[0].content;
+        }
+    }
+
+    const factory = await Factory.findOne({code: answer.factoryCode});
+    const survey = await Survey.findById(answer.surveyId);
+
+    return {
+        questionTitleInEnglish: questionTitle,
+        questionNumber: answer.questionNumber,
+        answerValue: answer.answerValue,
+        answerText: answer.answerText,
+        factoryCode: answer.factoryCode,
+        factoryName: factory.name,
+        surveyName: survey.surveyName,
+        answerDate: answer.answerDate
+    }
+};
 
 exports.downloadAnswers = async function (req, res) {
     const surveyId = req.params.surveyId;
@@ -186,10 +256,13 @@ exports.downloadAnswers = async function (req, res) {
             fileName = `${__dirname}/${surveyId}.json`;
         }
 
+        const resolveData =  await Promise.all(answers.map(answer => resolveAnswers(answer)));
+
         fs
-            .writeFile(fileName, JSON.stringify(answers), 'utf8')
+            .writeFile(fileName, JSON.stringify(resolveData), 'utf8')
             .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
     } catch (error) {
+        console.error(error);
         res
             .status(500)
             .json({
@@ -224,6 +297,7 @@ exports.surveyAnswersByCode = async function (req, res) {
                     }
                 )
         } catch (error) {
+            console.error(error);
             res
                 .status(404)
                 .json({
@@ -263,6 +337,7 @@ exports.filteredSurveyAnswerList = async function (req, res) {
                 }
             )
     } catch (error) {
+        console.error(error);
         res
             .status(404)
             .json({

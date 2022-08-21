@@ -9,30 +9,30 @@
 
         <li class="nav-item">
           <router-link class="nav-link text-info" to="/users">
-            <span class="material-icons-outlined">people_outline</span> Users
+            <span class="material-icons-outlined">people_outline</span> User
           </router-link>
         </li>
 
         <li class="nav-item">
           <router-link class="nav-link text-info" to="/answer-type">
-            <span class="material-icons-outlined">rule</span>Answers
+            <span class="material-icons-outlined">rule</span>Answer
           </router-link>
         </li>
 
         <li class="nav-item">
           <router-link class="nav-link text-info" to="/question">
-            <span class="material-icons-outlined">quiz</span>Questions
+            <span class="material-icons-outlined">quiz</span>Question
           </router-link>
         </li>
 
         <li class="nav-item">
           <router-link class="nav-link text-info" to="/surveys">
-            <span class="material-icons-outlined">poll</span>Surveys
+            <span class="material-icons-outlined">poll</span>Survey
           </router-link>
         </li>
         <li class="nav-item">
           <router-link class="nav-link text-info" to="/feedbacks">
-            <span class="material-icons-outlined">reviews</span>Feedbacks
+            <span class="material-icons-outlined">reviews</span>Feedback
           </router-link>
         </li>
         <li class="nav-item">

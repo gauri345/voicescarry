@@ -6,6 +6,8 @@ export default {
     state: {
         surveyList: [],
         surveyedFactories: [],
+        filteredFactoryCode: ''
+
     },
     actions: {
         async fetchAllSurveys({commit, dispatch}) {
@@ -30,7 +32,7 @@ export default {
                 url: `${ApiConfig.API_BASE_URL}/surveys/answers/filtered`,
                 headers: {},
                 data: {
-                    factoryId: state.filteredFactoryCode
+                    factoryId: state.filteredFactoryId
                 }
             };
 
@@ -44,16 +46,22 @@ export default {
 
         resetFilters({ dispatch, commit}) {
             dispatch('fetchAllSurveys');
-            commit('UPDATE_FILTERED_FACTORY_CODE', '');
+            commit('UPDATE_FILTERED_FACTORY_ID', '');
         },
 
         async downloadFilteredSurveyAnswers({state}) {
-            window.location.href = `${ApiConfig.API_BASE_URL}/surveys/download/answers/filtered/from=${state.dateFrom}&to=${state.dateTo}`;
+            const filteredFactoryId = state.filteredFactoryId;
+
+            if (filteredFactoryId) {
+                window.location.href = `${ApiConfig.API_BASE_URL}/surveys/download/answers/filtered/${filteredFactoryId}`
+            } else {
+                window.location.href = `${ApiConfig.API_BASE_URL}/surveys/download/answers/filtered/`;
+            }
         }
     },
     mutations: {
         UPDATE_ALL_SURVEYS: (state, surveyList) => state.surveyList = surveyList,
-        UPDATE_FILTERED_FACTORY_CODE: (state, factoryCode) => state.filteredFactoryCode = factoryCode,
+        UPDATE_FILTERED_FACTORY_ID: (state, factoryId) => state.filteredFactoryId = factoryId,
         UPDATE_SURVEYED_FACTORIES: (state, factories) => state.surveyedFactories = factories
     },
     getters: {
