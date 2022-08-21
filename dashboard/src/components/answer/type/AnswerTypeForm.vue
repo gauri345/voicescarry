@@ -1,14 +1,19 @@
 <template>
   <AlertBox/>
   <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label d-flex justify-content-start">Answer Type</label>
+    <label class="col-sm-2 col-form-label d-flex justify-content-start">Category</label>
     <div class="col-auto">
-      <input v-model="answerType" class="form-control" name="answerType"
-             placeholder="Answer Type" type="text">
+      <input v-model="answerCategory" class="form-control" placeholder="Answer Category" type="text" />
     </div>
   </div>
   <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label d-flex justify-content-start">Answer Values:</label>
+    <label class="col-sm-2 col-form-label d-flex justify-content-start">Type</label>
+    <div class="col-auto">
+      <input v-model="answerType" class="form-control" placeholder="Answer Type" type="text" />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label class="col-sm-2 col-form-label d-flex justify-content-start">Values:</label>
     <div class="col-auto">
       <div class="row">
         <div class="col-auto">
@@ -73,6 +78,14 @@ export default {
       },
       set(value) {
         this.$store.commit('UPDATE_ANSWER_VALUE', value)
+      }
+    },
+    answerCategory: {
+      get() {
+        return this.$store.state.answerTypeForm.answerCategory
+      },
+      set(value) {
+        this.$store.commit('UPDATE_ANSWER_CATEGORY', value)
       }
     },
   },

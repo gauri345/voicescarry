@@ -7,6 +7,7 @@ export default {
         answerTypeId: null,
         answerType: '',
         answerValue: '',
+        answerCategory: '',
         answerValues: [],
     },
     actions: {
@@ -22,6 +23,7 @@ export default {
                     const dataToStore = {
                         _id: state.answerTypeId,
                         answerType: state.answerType,
+                        answerCategory: state.answerCategory,
                         answerValues: state.answerValues,
                     };
                     const config = {
@@ -59,6 +61,7 @@ export default {
                     if (response.data.data) {
                         commit('UPDATE_ANSWER_TYPE_ID', answerTypeId);
                         commit('UPDATE_ANSWER_TYPE', answerType.answerType);
+                        commit('UPDATE_ANSWER_CATEGORY', answerType.answerCategory);
                         commit('UPDATE_ANSWER_VALUES', answerType.answerValues);
                     }
                 } catch (error) {
@@ -74,6 +77,7 @@ export default {
         UPDATE_ANSWER_TYPE_ID: (state, id) => state.answerTypeId = id,
         UPDATE_ANSWER_TYPE: (state, answerType) => state.answerType = answerType,
         UPDATE_ANSWER_VALUE: (state, answerValue) => state.answerValue = answerValue,
+        UPDATE_ANSWER_CATEGORY: (state, answerCategory) => state.answerCategory = answerCategory,
         UPDATE_ANSWER_VALUES: (state, answerValues) => state.answerValues = answerValues,
         REMOVE_ANSWER_VALUE: (state, answerValue) => state.answerValues = state.answerValues.filter(ans => ans !== answerValue),
         UPDATE_ANSWER_TYPE_VALUES: (state) => {
@@ -88,6 +92,7 @@ export default {
     getters: {
         answerType: (state) => state.answerType,
         answerValue: (state) => state.answerValue,
+        answerCategory: (state) => state.answerCategory,
         answerValues: (state) => state.answerValues
     }
 }

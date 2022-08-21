@@ -5,6 +5,7 @@
     <thead class="table-bordered">
     <tr class="text-info">
       <th scope="col">#</th>
+      <th scope="col">Category</th>
       <th scope="col">Type</th>
       <th scope="col">Answer Values</th>
       <th scope="col">Action</th>
@@ -13,6 +14,7 @@
     <tbody class="table-bordered">
     <tr v-for="(answerType, index) in answerTypes" :key="index">
       <td>{{ index + 1 }}</td>
+      <td>{{ answerType.answerCategory }}</td>
       <td>{{ answerType.answerType }}</td>
       <td>
         <ul class="list-group list-group-horizontal">

@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const answerTypeSchema = mongoose.Schema({
+    answerCategory: {
+        type: String,
+        required: true
+    },
     answerType: {
         type: String,
         required: true
