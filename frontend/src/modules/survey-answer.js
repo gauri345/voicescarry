@@ -8,7 +8,7 @@ export default {
         getAnswers: (state, rootGetters) => {
             const currentQuestion = rootGetters.getCurrentQuestion;
 
-            if ('scale' === currentQuestion.questionType) {
+            if ("sentiment" === currentQuestion.questionType) {
                 return currentQuestion.answers.map(answer => {
                     let answerToRender = {};
 

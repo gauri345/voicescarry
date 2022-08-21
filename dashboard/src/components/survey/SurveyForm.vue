@@ -46,17 +46,18 @@
             </div>
           </div>
           <div class="row">
-            <div v-for="(chunk, index) in groupQuestionList(questionList)" :key="index" class="col">
-              <div v-for="question in chunk" :key="question.questionId" class="input-group mb-2">
-                <div class="input-group-text rounded-0">
-                  <input :id="question.questionId" :checked="question.isSelected" :value="question.questionId"
-                         class="form-check"
-                         type="checkbox" @change="toggleQuestionToSurvey(question.questionId)">
+            <template v-for="(chunk, index) in groupQuestionList(questionList)" :key="index">
+              <div class="col">
+                <div v-for="question in chunk" :key="question.questionId" class="input-group mb-2">
+                  <div class="input-group-text rounded-0">
+                    <input :id="question.questionId" :checked="question.isSelected" :value="question.questionId"
+                           class="form-check"
+                           type="checkbox" @change="toggleQuestionToSurvey(question.questionId)">
+                  </div>
+                  <label class="form-control rounded-0"> {{ question.title }}</label>
                 </div>
-                <label class="form-control rounded-0"> {{ question.title }}</label>
               </div>
-            </div>
-
+            </template>
           </div>
         </div>
       </td>
@@ -100,21 +101,17 @@ export default {
     ),
     groupQuestionList(questionList) {
       let chunks = [[], [], []];
-
-      if (questionList.length === 1) {
-        chunks = [[]];
-      } else if (questionList.length === 2) {
-        chunks = [[]];
-      }
-
-
       let count = 0;
       let row = 0;
+
       for (let i = 0; i < questionList.length; i++) {
         if (count % 3 !== 0) row++;
         else row = 0;
-        chunks[row].push(questionList[i]);
-        count++;
+
+        if(questionList[i]) {
+          chunks[row].push(questionList[i]);
+          count++;
+        }
       }
       return chunks;
     }

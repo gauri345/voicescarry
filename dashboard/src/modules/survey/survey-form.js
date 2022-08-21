@@ -25,7 +25,7 @@ export default {
         },
 
         toggleQuestionToSurvey({commit, state}, questionId) {
-            if (state.survey.questions.find(question => question.questionId === questionId)) {
+            if (state.survey.questions.find(question => question.questionId === questionId && question.isSelected)) {
                 commit('REMOVE_QUESTION_FROM_SURVEY', questionId);
             } else {
                 commit('ADD_QUESTION_TO_SURVEY', questionId);
@@ -40,7 +40,6 @@ export default {
                         headers: {}
                     };
                     const response = await axios(config);
-                    console.log(response.data.data)
 
                     if (response.data.data) {
                         commit('UPDATE_SURVEY_ID_IN_SURVEY', response.data.data._id);

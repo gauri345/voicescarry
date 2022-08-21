@@ -14,12 +14,12 @@
     </div>
   </div>
 
-  <div v-if="'scale' === getQuestionType" class="question-answers" id="scaleAnswers">
+  <div v-if="'sentiment' === getQuestionType" class="question-answers" id="scaleAnswers">
       <span v-for="answer in getAnswers" :key="answer.value" :class="answer.iconClass" :id="answer.text"
             @click="handleAnswered(answer)">{{ answer.text }}</span>
   </div>
 
-  <div v-if="'select' === getQuestionType" class="question-answers" @change="onChangeMethod($event)">
+  <div v-if="'gender' === getQuestionType || 'age' === getQuestionType || 'profession' === getQuestionType" class="question-answers" @change="onChangeMethod($event)">
     <select>
       <option :value="selectedOptionText.text">{{ selectedOptionText.text }}</option>
       <option v-for="answer in getAnswers" :key="answer.value" :value="answer.value">{{ answer.text }}</option>
@@ -76,7 +76,8 @@ export default {
     selectedOptionText() {
       const answers = this.getAnswers;
 
-      if ('select' === this.getQuestionType) {
+      const questionType = this.getQuestionType;
+      if ('gender' === questionType || 'age' === questionType || 'profession' === questionType) {
         const firstOption = answers.shift();
 
         this.handleAnswered(firstOption);
