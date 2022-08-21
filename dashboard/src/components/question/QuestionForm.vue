@@ -90,7 +90,7 @@
       <div class="col-md-6">
         <div class="row mt-4">
           <label class="col-sm-3 col-form-label col-form-label-sm text-start">
-            Type:
+            Category:
           </label>
           <div class="col-sm-9">
             <select id="questionType" v-model="questionType" class="form-select form-select-lg" required>

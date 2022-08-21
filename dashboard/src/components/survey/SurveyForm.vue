@@ -129,7 +129,7 @@ export default {
         return this.$store.state.surveyForm.survey.factoryId
       },
       set(value) {
-        this.$store.commit('UPDATE_FACTORY_ID_IN_SURVEY', value)
+        this.$store.commit('surveyForm/UPDATE_FACTORY_ID_IN_SURVEY', value)
       }
     },
     surveyName: {
@@ -137,7 +137,7 @@ export default {
         return this.$store.state.surveyForm.survey.surveyName
       },
       set(value) {
-        this.$store.commit('UPDATE_SURVEY_NAME_IN_SURVEY', value)
+        this.$store.commit('surveyForm/UPDATE_SURVEY_NAME_IN_SURVEY', value)
       }
     },
   },

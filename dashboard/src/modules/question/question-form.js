@@ -183,8 +183,9 @@ export default {
 
                 const response = await axios(config);
                 const answers = response.data.data.map(answerFromApi => {
+                    console.log(answerFromApi)
                     return {
-                        type: answerFromApi.answerType,
+                        type: answerFromApi.answerCategory,
                         values: answerFromApi.answerValues.map(value => {
                             return {
                                 value: value,
