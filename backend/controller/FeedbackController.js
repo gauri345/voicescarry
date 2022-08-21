@@ -135,3 +135,20 @@ exports.filteredFeedbackList = async function (req, res) {
                 });
         }
 }
+
+exports.downloadForFactory = async function (req, res) {
+    const factoryId = req.params.factoryId;
+    try {
+        const feedbackList = await Feedback.find({factoryId: factoryId});
+        const fileName = `${__dirname}/feedbacks_${factoryId} .json`;
+        fs.writeFile(fileName, JSON.stringify(feedbackList), 'utf8')
+            .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
+    } catch (error) {
+        res
+            .status(500)
+            .json({
+                status: "error",
+                message: "Failed downloading file. Please contact your administrator."
+            });
+    }
+};

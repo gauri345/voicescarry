@@ -79,9 +79,6 @@ router.route('/surveys/')
 router.route('/survey/:id')
     .get(SurveyController.findById);
 
-router.route('/surveys/download/answers/filtered/from=:fromDate&to=:toDate')
-    .get(SurveyController.downloadFilteredSurveyAnswers);
-
 router.route('/surveys/downloadAnswers/:surveyId?')
     .get(SurveyController.downloadAnswers);
 
@@ -117,5 +114,8 @@ router.route('/feedback/:id')
 
 router.route('/feedback/filtered')
     .post(FeedbackController.filteredFeedbackList);
+
+router.route('/feedback/download/:factoryId')
+    .get(FeedbackController.downloadForFactory)
 
 module.exports = router;

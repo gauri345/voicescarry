@@ -44,8 +44,12 @@ export default {
                 dispatch('showError', "Failed deleting feedback.", {root: true});
             }
         },
-        downloadFeedbacks() {
-            window.location.href = `${ApiConfig.API_BASE_URL}/feedback/download-all`;
+        downloadFeedbacks({state}) {
+            if (state.selectedFactory) {
+                window.location.href = `${ApiConfig.API_BASE_URL}//feedback/download/${state.selectedFactory}`;
+            } else {
+                window.location.href = `${ApiConfig.API_BASE_URL}/feedback/download-all`;
+            }
         },
 
         async filterFeedback({state, commit, dispatch}) {
@@ -66,7 +70,7 @@ export default {
             }
         },
 
-        resetFilters({ dispatch, commit}) {
+        resetFilters({dispatch, commit}) {
             dispatch('fetchFeedback');
             commit('UPDATE_SELECTED_FACTORY', '');
         },
