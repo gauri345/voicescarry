@@ -1,19 +1,23 @@
 const Question = require('../model/questionModel');
 
-exports.index = function (req, res) {
-    Question.get(function (err, questions) {
-        if (err) {
-            res.json({
-                status: "error",
-                message: err,
-            });
-        }
+exports.index = async function (req, res) {
+    try {
+        const questions = await Question.find().sort({number: 1});
+
         res.json({
             status: "success",
             message: `Total ${questions.length} questions retrieved`,
             data: questions
         });
-    });
+
+    } catch (error) {
+        res
+            .status(500)
+            .json({
+                status: "error",
+                message: "Failed fetching questions from database."
+            });
+    }
 };
 
 exports.findById = async (req, res) => {
@@ -69,11 +73,11 @@ exports.post = async function (req, res) {
         res
             .status(500)
             .json(
-            {
-                status: "error",
-                message: error,
-            }
-        );
+                {
+                    status: "error",
+                    message: error,
+                }
+            );
     }
 };
 

@@ -4,6 +4,7 @@ import router from "@/routes";
 const axios = require('axios');
 
 export default {
+    namespaced: true,
     state: {
         factoryList: [],
         survey: {
@@ -50,7 +51,6 @@ export default {
             };
             try {
                 const response = await axios(config)
-                console.log( response.data.data);
                 commit('UPDATE_QUESTIONS_LIST', response.data.data);
             } catch (error) {
                 dispatch('showError', " Failed loading questions. Please try again.", {root: true})
@@ -93,10 +93,18 @@ export default {
         },
         UPDATE_QUESTIONS_LIST: (state, questionList) => {
             state.survey.questions = questionList.map((question) => {
+                const englishQuestion = question.titles.filter(title => title.lang === 'english' || title.lang === 'en' || title.lang === '');
+
+
+                let title = '';
+                if (englishQuestion) {
+                    title = englishQuestion[0].content
+                }
+
                 return {
                     questionId: question._id,
                     isSelected: false,
-                    title: question.titles.filter(title => title.lang === 'english')[0].content
+                    title: `${question.number}: ${title}`
                 };
             });
         },

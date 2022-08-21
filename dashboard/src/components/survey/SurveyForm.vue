@@ -88,7 +88,15 @@ export default {
   name: "SurveyForm",
   components: {AlertBox},
   methods: {
-    ...mapActions(["fetchFactories", "fetchAllQuestions", "addSurvey", "toggleQuestionToSurvey", "toggleSelectAllQuestions"]),
+    ...mapActions(
+        {
+          fetchFactories: "surveyForm/fetchFactories",
+          fetchAllQuestions: "surveyForm/fetchAllQuestions",
+          addSurvey: "surveyForm/addSurvey",
+          toggleQuestionToSurvey: "surveyForm/toggleQuestionToSurvey",
+          toggleSelectAllQuestions: "surveyForm/toggleSelectAllQuestions"
+        }
+    ),
     groupQuestionList(questionList) {
       let chunks = [[], [], []];
 
@@ -111,7 +119,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["factoryList", "questionList"]),
+    ...mapGetters({
+          factoryList: "surveyForm/factoryList",
+          questionList: "surveyForm/questionList"
+        }
+    ),
     factoryId: {
       get() {
         return this.$store.state.surveyForm.survey.factoryId
