@@ -43,7 +43,7 @@ const questionSchema = mongoose.Schema({
     additionalInformation: [
         {
             type: localizedContentSchema,
-            required: true
+            required: false
         }
     ],
     answers: [
