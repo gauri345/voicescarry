@@ -4,6 +4,7 @@ import Landingpage from "@/modules/landingpage";
 import Application from "@/modules/application";
 import SurveyAnswer from "@/modules/survey-answer";
 import FinishModal from "@/modules/finish-modal";
+import languageSwitcher from "@/modules/language-switcher";
 
 const store = createStore({
     modules: {
@@ -11,7 +12,8 @@ const store = createStore({
         survey: Survey,
         surveyAnswer: SurveyAnswer,
         landingpage: Landingpage,
-        finishModal: FinishModal
+        finishModal: FinishModal,
+        languageSwitcher: languageSwitcher
     }
 });
 

@@ -4,22 +4,30 @@
       <span class="material-icons" title="Language">language</span>
     </button>
     <ul class="dropdown-menu">
-      <li><a href="#" class="lang-button" @click="changeLanguage">EN</a></li>
-      <li><a href="#" class="lang-button" @click="changeLanguage">VI&nbsp;</a></li>
+      <li v-for="language in languageList"><a href="#" class="lang-button" @click="changeLanguage">{{language.code}}</a></li>
     </ul>
   </div>
 </template>
 <script>
 
+import {mapActions, mapGetters} from "vuex";
+
 export default {
   name: 'LanguageSwitcher',
   components: {},
   methods: {
+    ...mapActions(['fetchAllLanguages']),
     changeLanguage(event) {
       const locale = event.target.innerHTML.toLocaleLowerCase();
       this.$i18n.locale = locale;
       localStorage.setItem('language', locale)
     }
+  },
+  computed: {
+    ...mapGetters(['languageList'])
+  },
+  mounted() {
+    this.fetchAllLanguages();
   }
 };
 </script>
