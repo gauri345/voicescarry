@@ -27,7 +27,7 @@ mongoose.connect('mongodb://localhost/workers_wellbeing',  () => {
 });
 
 
-app.use('/', routes);
+app.use('/api', routes);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docs));
 
 
