@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const host = "http://localhost:4000/api";
+//Use this when running locally
+//const host = "http://localhost:4000/api";
+
+// Use this when in production
+const host = "https://voicescarry.uni-mannheim.de/api";
 
 const url = (path) =>  `${host}/${path}`
 

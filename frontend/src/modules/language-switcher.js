@@ -7,7 +7,7 @@ export default {
     actions: {
         async fetchAllLanguages({commit}) {
             try {
-                const response = await HttpClient.get( '/language');
+                const response = await HttpClient.get( 'language');
                 commit('UPDATE_LANGUAGE_LIST', response.data.data);
             } catch (error) {
                console.error(error)

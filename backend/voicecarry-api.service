@@ -1,0 +1,16 @@
+[Unit]
+Description=Voice Carry Api.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /srv/www/virtual/voicescarry/htdocs/voicescarry/backend/index.js
+Restart=always
+User=nobody
+# Note Debian/Ubuntu uses 'nogroup', RHEL/Fedora uses 'nobody'
+Group=nobody
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/srv/www/virtual/voicescarry/htdocs/voicescarry
+
+[Install]
+WantedBy=multi-user.target
