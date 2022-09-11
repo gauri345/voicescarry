@@ -15,6 +15,7 @@ export function textReader (inputTxt) {
         }
         utterThis.pitch = 0.9;
         utterThis.rate = 1;
+        utterThis.lang = 'en-US';
         synth.speak(utterThis);
     }
 }

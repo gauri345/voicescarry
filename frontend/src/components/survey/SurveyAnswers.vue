@@ -109,7 +109,9 @@ export default {
   display: flex;
   align-items: center;
 }
-
+.audio-wrapper {
+  cursor: pointer;
+}
 .active-answer {
   border: 1px solid;
   border-radius: 25px;
