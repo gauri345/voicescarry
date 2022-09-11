@@ -12,7 +12,7 @@ export default {
         }
     },
     actions: {
-        async registerAction({commit}, payload) {
+        async registerAction({dispatch}, payload) {
 
             const data = JSON.stringify(payload);
 
@@ -25,11 +25,17 @@ export default {
                 data: data
             };
             try {
-                await axios(config);
-                await router.push('registration-success');
+                const response = await axios(config);
+
+                if (response.data.data) {
+                    await router.push('registration-success');
+                } else {
+                    dispatch('showError', "Failed registering the user. Please try again.", {root: true});
+                }
+
             } catch (error) {
-                console.log(error.response)
-                commit('UPDATE_ERROR_MESSAGE', error.response.data.message);
+                console.log(error.response);
+                dispatch('showError', "Failed registering the user. Please try again.", {root: true});
             }
         },
         clearErrorMessage({commit}) {

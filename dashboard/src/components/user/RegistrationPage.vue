@@ -2,6 +2,7 @@
   <div class="login-form-container">
     <div class="card bg-transparent border-0">
       <div class="card-body">
+        <AlertBox/>
 
         <div class="form-greetings py-3">
           <h3 class="h3">Registration Form</h3>
@@ -65,9 +66,13 @@
 import '@/assets/login.css';
 import FormValidation from "@/util/FormValidation";
 import {mapActions, mapGetters} from "vuex";
+import AlertBox from "@/components/util/AlertBox";
 
 export default {
   name: "RegistrationPage",
+  components: {
+    AlertBox
+  },
   data() {
     return {
       formValidated: false,

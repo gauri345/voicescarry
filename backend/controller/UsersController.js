@@ -55,7 +55,7 @@ exports.getUserStatus = async function (req, res) {
             .json(
                 {
                     status: "success",
-                    message: `Retreived status for user with id: ${userId}`,
+                    message: `Retrieved status for user with id: ${userId}`,
                     data: {status: user.isActive ? "active" : "inactive"}
                 }
             );
