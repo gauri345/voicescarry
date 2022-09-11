@@ -34,9 +34,7 @@
       <p> {{ $t('survey_explanation_rating') }} </p>
     </div>
     <div class=buttonwrapper>
-      <router-link to="/question/0">
-      <Button style="align-items:baseline" id="surveystartbutton" :text="$t('button_start_survey')"/>
-      </router-link>
+      <ConsentModal />
     </div>
   </div>
   <Footer/>
@@ -47,13 +45,15 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Button from "@/components/utils/Button"
 import {textReader} from "@/util/speech";
+import ConsentModal from "@/components/survey/ConsentModal";
 
 export default {
   name: 'SurveyExplanationPage',
   components: {
     Header,
     Footer,
-    Button
+    Button,
+    ConsentModal
     },
   data() {
     return {
@@ -103,10 +103,7 @@ export default {
 .material-icons.vd {
   color: #F44209;
 }
-#surveystartbutton {
-  width: 60%;
-  margin:0;
-}
+
 .text {
   font-size: 20px;
   margin-left: 10%;

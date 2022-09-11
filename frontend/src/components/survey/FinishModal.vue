@@ -1,27 +1,16 @@
 <template>
-  <div class="modal fade" id="completeSurvey" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="completeSurvey" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"> {{ $t('survey_finish_modal_title') }} </h5>
             <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close" @click="completeSurvey">
-              <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
           <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
           <p> 
-            {{ $t('survey_finish_modal_question_one') }}
-            <br><br>
-            {{ $t('survey_finish_modal_answer_one') }}
-            <br><br>
-            {{ $t('survey_finish_modal_question_two') }}
-            <br><br>
-            {{ $t('survey_finish_modal_answer_two') }}
-            <br><br>
-            {{ $t('survey_finish_modal_question_three') }}
-            <br><br>
-            {{ $t('survey_finish_modal_answer_three') }}
+            {{ $t('survey_finish_thank_you_message') }}
           </p>
         </div>
         <div class="modal-footer">
