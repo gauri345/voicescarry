@@ -1,11 +1,12 @@
 <template>
-  <router-link class="btn btn-dark" style="float: right;" to="/factory/form/id=">Add</router-link>
   <AlertBox/>
+  <router-link class="btn btn-dark" style="float: right;" to="/factory/form/id=">Add</router-link>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
       <th scope="col">Number</th>
       <th scope="col">Factory Name</th>
+      <th scope="col">Location</th>
       <th scope="col">Code</th>
       <th scope="col">Action</th>
     </tr>
@@ -14,6 +15,7 @@
     <tr v-for="(factory, index) in allFactories" v-bind:key="index">
       <th scope="col">{{ index + 1 }}</th>
       <th scope="col">{{ factory.name }}</th>
+      <th scope="col">{{ factory.city }}, {{ factory.country}}</th>
       <th scope="col">{{ factory.code }}</th>
       <th scope="col">
         <router-link :to="`/factory/form/id=${factory._id}`" class="material-icons text-decoration-none text-info" title="Edit Factory">edit</router-link>

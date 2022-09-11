@@ -6,7 +6,9 @@ export default {
     state: {
         factoryCode: null,
         factoryName: null,
-        factoryId: null
+        factoryId: null,
+        factoryCountry: null,
+        factoryCity: null
     },
     actions: {
         async fetchFactoryById({commit, dispatch}, factoryId) {
@@ -23,6 +25,8 @@ export default {
                     if (response.data.data) {
                         commit('UPDATE_FACTORY_NAME', response.data.data.name);
                         commit('UPDATE_FACTORY_CODE', response.data.data.code);
+                        commit('UPDATE_FACTORY_CITY', response.data.data.city);
+                        commit('UPDATE_FACTORY_COUNTRY', response.data.data.country);
                         commit('UPDATE_FACTORY_ID', response.data.data._id);
                     }
                 } catch (error) {
@@ -40,6 +44,8 @@ export default {
                 const dataToStore =  {
                     code: state.factoryCode,
                     name: state.factoryName,
+                    city: state.factoryCity,
+                    country: state.factoryCountry,
                     id: state.factoryId
                 };
 
@@ -72,6 +78,12 @@ export default {
         },
         UPDATE_FACTORY_CODE: (state, factoryCode) => {
             state.factoryCode = factoryCode;
+        },
+        UPDATE_FACTORY_CITY: (state, factoryCity) => {
+            state.factoryCity = factoryCity;
+        },
+        UPDATE_FACTORY_COUNTRY: (state, factoryCountry) => {
+            state.factoryCountry = factoryCountry;
         },
         UPDATE_FACTORY_ID: (state, factoryId) => {
             state.factoryId = factoryId;

@@ -1,6 +1,6 @@
 <template>
-  <router-link class="btn btn-dark" style="float: right;" to="/question/form/id=">Add</router-link>
   <AlertBox/>
+  <router-link class="btn btn-dark" style="float: right;" to="/question/form/id=">Add</router-link>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">

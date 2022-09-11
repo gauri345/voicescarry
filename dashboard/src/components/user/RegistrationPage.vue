@@ -44,9 +44,6 @@
                        placeholder="Repeat Password"
                        type="password" @input="repeatPasswordChange"/>
               </div>
-              <div class="mb-3">
-                <div v-if="userRegistrationErrorMessage" class="alert alert-danger" role="alert">{{userRegistrationErrorMessage}}</div>
-              </div>
 
               <div class="mb-3">
                 <button class="btn btn-info login-button" @click="registerConfirmChange">Register</button>

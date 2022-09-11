@@ -6,6 +6,16 @@ const factoryModel = mongoose.Schema({
         required: true
     },
 
+    city: {
+        type: String,
+        required: true
+    },
+
+    country: {
+        type: String,
+        required: true
+    },
+
     code: {
         type: String,
         required: true

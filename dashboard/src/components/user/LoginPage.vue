@@ -20,8 +20,6 @@
                      @input="passwordChange"/>
             </div>
 
-            <div v-if="getErrorMessage" class="alert alert-danger" role="alert">{{ getErrorMessage }}</div>
-
             <div class="mb-3">
               <input id="rememberMe" class="form-check-input m-1" type="checkbox" value="" v-model="rememberMe" aria-labelledby="rememberMeLabel">
               <label class="form-check-label" for="rememberMe" id="rememberMeLabel">
@@ -51,6 +49,7 @@ import FormValidation from "@/util/FormValidation";
 import '@/assets/login.css';
 import {mapActions, mapGetters} from "vuex";
 import CryptoJS from 'crypto-js';
+
 export default {
   name: "LoginPage",
   data() {
@@ -122,8 +121,7 @@ export default {
     const itemFromLocalStorage = JSON.parse(localStorage.getItem('remember_me' ));
     if (itemFromLocalStorage) {
       const bytes = CryptoJS.AES.decrypt(itemFromLocalStorage.password, 'test');
-      const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
-      this.password = originalPassword
+      this.password = bytes.toString(CryptoJS.enc.Utf8)
       this.email = itemFromLocalStorage.email;
       this.passwordValid = true;
       this.emailValid = true;
