@@ -45,7 +45,7 @@ export default {
       textReader(this.questionTitle)
     },
     handleAnswered: function (answer) {
-      if ('scale' === this.getQuestionType) {
+      if ('scale' === this.getQuestionType || 'sentiment' === this.getQuestionType) {
         const scaleAnswers = document.getElementById('scaleAnswers').children;
 
         for (let i = 0; i < scaleAnswers.length; i++) {
