@@ -30,16 +30,11 @@ export default {
                 }
             }
 
-            console.log('current question number', questionNumber);
-
-
             const previousQuestion =state.allQuestions[questionNumber - 1];
 
             if (previousQuestion) {
                 commit('SET_PREVIOUS_QUESTION', previousQuestion);
             }
-
-            console.log(state.allQuestions)
 
             const currentQuestion =state.allQuestions[questionNumber];
 
@@ -48,8 +43,6 @@ export default {
             }
 
             const nextQuestion = state.allQuestions[questionNumber + 1];
-
-            console.log(nextQuestion)
 
             if (nextQuestion) {
                 commit('SET_NEXT_QUESTION', nextQuestion);
