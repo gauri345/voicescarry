@@ -1,7 +1,7 @@
 import HttpClient from "@/util/http_client";
 import router from '@/router'
 import LocalStorage from "@/util/local_storage";
-import {SURVEY_SESSION_TTL_SECONDS} from "@/config";
+import ApiConfig from "@/config/AppConfig";
 
 export default {
     state: {
@@ -23,7 +23,7 @@ export default {
 
                     const survey = response.data.data;
 
-                    LocalStorage.set("survey", survey, SURVEY_SESSION_TTL_SECONDS);
+                    LocalStorage.set("survey", survey, ApiConfig.SURVEY_SESSION_TTL_SECONDS);
 
                     commit('UPDATE_SURVEY', survey, {root: true});
 

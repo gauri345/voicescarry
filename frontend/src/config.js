@@ -1,1 +1,0 @@
-export const SURVEY_SESSION_TTL_SECONDS = 10000;
