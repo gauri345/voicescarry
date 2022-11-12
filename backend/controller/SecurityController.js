@@ -22,11 +22,17 @@ exports.login = async function (request, response) {
             try {
                 const isValid = await bcrypt.compare(password, existingUser.password);
 
-                if (isValid) {
+                if (isValid && existingUser.isActive) {
                     jwt.sign({user: existingUser}, 'secretkey', (err, token) => {
                         response.status(200).json({
                             token
                         });
+                    });
+                } else if(!existingUser.isActive) {
+                    response.status(401)
+                        .json({
+                        status: 'failed',
+                        message: 'Provided user is not active yet. Please contact your administrator to activate it. '
                     });
                 } else {
                     response.status(400).json({

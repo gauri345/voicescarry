@@ -6,24 +6,28 @@
         <div class="form-greetings py-3">
           <h3 class="h3">WELCOME</h3>
         </div>
+        <AlertBox/>
 
         <div class="form-container">
           <div class="login-form">
             <div class="mb-3">
-              <input v-model="email" autocomplete="on" :class="userInputClasses(this.emailValid)" placeholder="Email" type="email"
-                     @input="emailChange"/>
+              <input v-model="email" :class="loginEmailInputClasses" autocomplete="on" placeholder="Email"
+                     type="email"
+                     @input="handleEmailChange"/>
             </div>
 
             <div class="mb-3">
-              <input v-model="password" :class="userInputClasses(this.passwordValid)" placeholder="Password"
+              <input v-model="password" :class="loginPasswordInputClasses" placeholder="Password"
                      type="password"
-                     @input="passwordChange"/>
+                     @input="handlePasswordChange"/>
             </div>
 
             <div class="mb-3">
-              <input id="rememberMe" class="form-check-input m-1" type="checkbox" value="" v-model="rememberMe" aria-labelledby="rememberMeLabel">
-              <label class="form-check-label" for="rememberMe" id="rememberMeLabel">
-            Remember me</label>
+              <input id="rememberMe" v-model="rememberMe" aria-labelledby="rememberMeLabel" class="form-check-input m-1"
+                     type="checkbox"
+                     value="">
+              <label id="rememberMeLabel" class="form-check-label" for="rememberMe">
+                Remember me</label>
             </div>
 
             <div class="mb-3">
@@ -45,59 +49,90 @@
 </template>
 
 <script>
-import FormValidation from "@/util/FormValidation";
 import '@/assets/login.css';
 import {mapActions, mapGetters} from "vuex";
 import CryptoJS from 'crypto-js';
+import AlertBox from "@/components/util/AlertBox";
 
 export default {
   name: "LoginPage",
+  components: {
+    AlertBox
+  },
   data() {
     return {
       formValidated: false,
-
-      emailValid: false,
-      passwordValid: false,
-
-      email: '',
-      password: '',
-      rememberMe: false
     }
   },
   computed: {
-    ...mapGetters(['getErrorMessage']),
+    ...mapGetters(['getErrorMessage','validEmail', 'validPassword']),
+    email: {
+      get() {
+        return this.$store.state.login.email
+      },
+      set(value) {
+        this.$store.commit('EMAIL', value)
+      }
+    },
+    password: {
+      get() {
+        return this.$store.state.login.password;
+      },
+      set(value) {
+        this.$store.commit('PASSWORD', value)
+      }
+    },
+    rememberMe: {
+      get() {
+        return this.$store.state.login.rememberMe;
+      },
+      set(value) {
+        this.$store.commit('REMEMBER_ME', value)
+      }
+    },
+    loginEmailInputClasses: function () {
+      if (this.validEmail) {
+        return {
+          'form-control': true,
+          'is-valid': true,
+          'is-invalid': false
+        }
+      } else {
+        return {
+          'form-control': true,
+          'is-valid': false,
+          'is-invalid': true
+        }
+      }
+    },
+
+    loginPasswordInputClasses: function () {
+      if (this.validPassword) {
+        return {
+          'form-control': true,
+          'is-valid': true,
+          'is-invalid': false
+        }
+      } else {
+        return {
+          'form-control': true,
+          'is-valid': false,
+          'is-invalid': true
+        }
+      }
+    }
   },
   methods: {
-    ...mapActions(['loginAction']),
+    ...mapActions(['loginAction', 'handleEmailChange', 'handlePasswordChange']),
 
-    userInputClasses: function (input) {
-      return {
-        'form-control': true,
-        'is-valid': input && this.formValidated,
-        'is-invalid': !input && this.formValidated,
-      }
-    },
-
-    emailChange() {
-      this.formValidated = true;
-      if (FormValidation.validateEmail(this.email)) {
-        this.emailValid = FormValidation.validateEmail(this.email);
-      }
-    },
-    passwordChange() {
-      this.formValidated = true;
-      this.passwordValid = this.password !== '';
-    },
-
-
-    encryptPassword(password){
+    encryptPassword(password) {
       return CryptoJS.AES.encrypt(password, 'test').toString();
     },
 
     loginConfirm() {
       this.formValidated = true;
       if (this.emailValid && this.passwordValid) {
-        if(this.rememberMe===true){
+        if (this.rememberMe === true) {
           const rememberMe = {
             email: this.email,
             password: this.encryptPassword(this.password)
@@ -118,7 +153,7 @@ export default {
   },
 
   created() {
-    const itemFromLocalStorage = JSON.parse(localStorage.getItem('remember_me' ));
+    const itemFromLocalStorage = JSON.parse(localStorage.getItem('remember_me'));
     if (itemFromLocalStorage) {
       const bytes = CryptoJS.AES.decrypt(itemFromLocalStorage.password, 'test');
       this.password = bytes.toString(CryptoJS.enc.Utf8)
@@ -129,6 +164,9 @@ export default {
     }
   },
   mounted() {
+    this.$store.dispatch("handleEmailChange");
+    this.$store.dispatch("handlePasswordChange");
+
     this.$store.dispatch('hideAlert');
   }
 }
