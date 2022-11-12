@@ -8,7 +8,7 @@ exports.downloadAll = async function (req, res) {
         const feedbackList = await Feedback.find();
         const fileName = `${__dirname}/feedbacks.json`;
         fs.writeFile(fileName, JSON.stringify(feedbackList), 'utf8')
-            .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
+            .finally(async () => res.sendFile(fileName, async () => await fs.unlink(fileName)));
     } catch (error) {
         res
             .status(500)

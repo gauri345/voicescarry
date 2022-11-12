@@ -203,7 +203,7 @@ exports.downloadAnswersWithFactory = async function (req, res) {
 
         fs
             .writeFile(fileName, JSON.stringify(resolveData), 'utf8')
-            .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
+            .finally(async () => res.sendFile(fileName, async () => await fs.unlink(fileName)));
     } catch (error) {
         console.error(error);
         res
@@ -260,7 +260,7 @@ exports.downloadAnswers = async function (req, res) {
 
         fs
             .writeFile(fileName, JSON.stringify(resolveData), 'utf8')
-            .finally(async () => res.download(fileName, async () => await fs.unlink(fileName)));
+            .finally(async () => res.sendFile(fileName, async () => await fs.unlink(fileName)));
     } catch (error) {
         console.error(error);
         res
