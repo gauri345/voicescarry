@@ -18,7 +18,7 @@
       <td>{{ user.address }}</td>
       <td class="text-center">
 
-        <a v-if="'deactivate' === getToggle(user)" href="javascript:void(0);" @click="toggleUserStatus(user)">
+        <a v-if="'deactivate' === getToggle(user) && !user.isAdmin" href="javascript:void(0);" @click="toggleUserStatus(user)">
           <span class="material-icons-outlined text-success" title="Click to deactivate User">check_circle</span>
         </a>
 
@@ -32,7 +32,7 @@
 
       </td>
       <td class="text-center">
-        <a href="javascript:void(0);">
+        <a href="javascript:void(0);" v-if=" !user.isAdmin">
           <span :data-bs-target="'#deleteUser' + user._id" class="material-icons-outlined text-danger"
                 data-bs-toggle="modal" title="Delete User">delete</span>
           <DeleteConfirmationModel :user-id="user._id" user-name="{{user.fullName}}"/>
