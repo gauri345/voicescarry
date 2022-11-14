@@ -45,6 +45,11 @@
             <span class="material-icons-outlined">language</span>Language
           </router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link text-info" to="/translation">
+            <span class="material-icons-outlined">translate</span>Translation
+          </router-link>
+        </li>
       </ul>
     </div>
   </nav>

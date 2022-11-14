@@ -1,7 +1,7 @@
 const Factory = require("../model/factoryModel");
 
 exports.index = function (req, res) {
-    Factory.get(function (err, questions) {
+    Factory.get(function (err, factories) {
         if (err) {
             res.json({
                 status: "error",
@@ -10,8 +10,8 @@ exports.index = function (req, res) {
         }
         res.json({
             status: "success",
-            message: "factories retrieved",
-            data: questions
+            message: `Total ${factories.length} factories retrieved`,
+            data: factories
         });
     });
 };

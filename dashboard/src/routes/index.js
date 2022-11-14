@@ -24,6 +24,9 @@ import AnswerTypeForm from "@/components/answer/type/AnswerTypeForm";
 import LanguageComponent from "@/components/language/LanguageComponent";
 import LanguageForm from "@/components/language/LanguageForm";
 import LanguageList from "@/components/language/LanguageList";
+import TranslationList from "@/components/translation/TranslationList";
+import TranslationForm from "@/components/translation/TranslationForm";
+import TranslationComponent from "@/components/translation/TranslationComponent";
 const routes = [
     {
         path: '/',
@@ -137,7 +140,24 @@ const routes = [
                         component: LanguageForm
                     }
                 ]
-            }
+            },
+            {
+                path: '/translation/',
+                name: 'TranslationComponent',
+                component: TranslationComponent,
+                children: [
+                    {
+                        path: '',
+                        name: 'TranslationList',
+                        component: TranslationList
+                    },
+                    {
+                        path: 'form/id=:id?',
+                        name: 'TranslationForm',
+                        component: TranslationForm
+                    }
+                ]
+            },
         ]
     },
     {

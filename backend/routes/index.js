@@ -10,6 +10,7 @@ const RegistrationController = require('../controller/RegistrationController');
 const FeedbackController = require('../controller/FeedbackController');
 const UsersController = require('../controller/UsersController');
 const LanguageController = require('../controller/LanguageController')
+const TranslationController = require('../controller/TranslationController')
 
 /* SECURITY & LOGIN */
 router.route('/registration')
@@ -72,6 +73,11 @@ router.route('/language/:id')
 router.route('/language/exists')
     .get(LanguageController.checkIfExists);
 
+/* TRANSLATION MANAGEMENT */
+router.route('/translation')
+    .get(TranslationController.index)
+    .post(TranslationController.post);
+
 /* SURVEY MANAGEMENT */
 router.route('/surveys/')
     .get(SurveyController.allSurveys);
@@ -119,6 +125,6 @@ router.route('/feedback/filtered')
     .post(FeedbackController.filteredFeedbackList);
 
 router.route('/feedback/download/:factoryId')
-    .get(FeedbackController.downloadForFactory)
+    .get(FeedbackController.downloadForFactory);
 
 module.exports = router;

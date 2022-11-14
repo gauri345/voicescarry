@@ -65,7 +65,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getErrorMessage','validEmail', 'validPassword']),
+    ...mapGetters(['getErrorMessage', 'validEmail', 'validPassword', 'validEmail', 'validPassword']),
     email: {
       get() {
         return this.$store.state.login.email
@@ -131,7 +131,7 @@ export default {
 
     loginConfirm() {
       this.formValidated = true;
-      if (this.emailValid && this.passwordValid) {
+      if (this.validEmail && this.validPassword) {
         if (this.rememberMe === true) {
           const rememberMe = {
             email: this.email,
@@ -158,7 +158,6 @@ export default {
       const bytes = CryptoJS.AES.decrypt(itemFromLocalStorage.password, 'test');
       this.password = bytes.toString(CryptoJS.enc.Utf8)
       this.email = itemFromLocalStorage.email;
-      this.passwordValid = true;
       this.emailValid = true;
       this.rememberMe = true
     }

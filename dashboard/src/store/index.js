@@ -15,7 +15,9 @@ import surveyForm from "@/modules/survey/survey-form";
 import factoryList from "@/modules/factory/factory-list";
 import factoryForm from "@/modules/factory/factory-form";
 import languageForm from "@/modules/language/language-form";
-import languageList from "@/modules/language/language-list"
+import languageList from "@/modules/language/language-list";
+import translationList from "@/modules/translation/translation-list";
+import translationForm from "@/modules/translation/translation-form";
 
 export default createStore({
     modules: {
@@ -34,7 +36,9 @@ export default createStore({
         userList,
         alertBox,
         languageForm,
-        languageList
+        languageList,
+        translationList,
+        translationForm
 
     }
 });
