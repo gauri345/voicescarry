@@ -30,32 +30,35 @@
         <!-- Modal -->
         <div :id="`viewTranslations_${translation._id}`" aria-hidden="true" class="modal fade" tabindex="-1">
           <div class="modal-dialog">
-            <div class="modal-header bg-dark">
-              <h5>Translations for key {{ translation.key }}</h5>
-              <button aria-label="Close" class="close bg-danger border-0 text-white" data-dismiss="modal" type="button">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
             <div class="modal-content">
-              <table class="table">
-                <thead>
-                <tr>
-                  <th scope="col">Lang</th>
-                  <th scope="col">Content</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="(translationDetail, detailsIndex) in translation.items" v-bind:key="detailsIndex">
-                  <th scope="row">{{ translationDetail.lang }}</th>
-                  <td>{{ translationDetail.content }}</td>
-                </tr>
-                </tbody>
-              </table>
-              <div class="modal-body text-danger">
-
+              <div class="modal-header bg-dark">
+                <h5>Translations for key <b class="text-white">[ {{ translation.key }} ]</b></h5>
+                <button aria-label="Close" class="close bg-danger border-0 text-white" data-dismiss="modal"
+                        type="button">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="modal-footer">
-                <button class="btn btn-danger" data-bs-dismiss="modal" type="button">Cancel</button>
+              <div class="modal-body">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th scope="col">Language</th>
+                    <th scope="col">Text</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="(translationDetail, detailsIndex) in translation.items" v-bind:key="detailsIndex">
+                    <th scope="row">{{ translationDetail.lang }}</th>
+                    <td>{{ translationDetail.content }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+                <div class="modal-body text-danger">
+
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-danger" data-bs-dismiss="modal" type="button">Cancel</button>
+                </div>
               </div>
             </div>
           </div>
@@ -81,7 +84,7 @@ export default {
     }),
 
     createStatusIconClasses(translation) {
-      if ( translation.isActive ) {
+      if (translation.isActive) {
         return {
           "material-icons-outlined": true,
           "text-success": true

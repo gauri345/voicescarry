@@ -1,21 +1,48 @@
 <template>
   <AlertBox/>
+  <form>
+    <div class="row g3">
+      <div class="col-md-6">
+        <div class="row">
+          <label class="col-sm-3 col-form-label col-form-label-sm text-start" for="key">Translation Key</label>
+          <div class="col-sm-9">
+            <input v-model="key" class="form-control-color disabled d-flex justify-content-start " disabled
+                   name="key" type="text"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">&nbsp;</div>
+    <div class="col-md-6">
+      <div class="row">
+        <label class="col-sm-3 form-check-label d-flex justify-content-start" for="isActive">Is active?</label>
+        <div class="col-sm-9">
+          <input id="isActive" v-model="isActive" class="form-check-input d-flex justify-content-start" name="isActive"
+                 type="checkbox"/>
+        </div>
+      </div>
+    </div>
 
-  <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label d-flex justify-content-start" for="key">Translation Key</label>
-    <input v-model="key" class="form-control-color disabled " name="key" type="text"/>
-  </div>
+    <template v-for="item in items" v-bind:key="item.lang">
+      <div class="col-md-6">&nbsp;</div>
+      <div class="col-md-6">
+        <div class="row">
+          <label class="col-sm-3 col-form-label d-flex justify-content-start" for="key">Text ({{ item.language }})</label>
+          <div class="col-sm-9 ">
+            <textarea v-model="item.content" class="form-text d-flex justify-content-start" rows="3" style="width: 100%" ></textarea>
+          </div>
+        </div>
+      </div>
 
-  <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label d-flex justify-content-start" for="languageCode">Is Active?</label>
-    <input v-model="isActive" class="form-control-color" name="languageCode" placeholder="language code"
-           type="checkbox" />
-  </div>
+    </template>
 
-  <div class="d-flex justify-content-start border-top border-1 mt-1">
-    <button class="btn btn-success mt-3" type="button">Save</button>&nbsp;&nbsp;
-    <button class="btn btn-danger mt-3" @click="$router.push('/translation')">Cancel</button>
-  </div>
+    <div class="col-md-6">&nbsp;</div>
+    <div class="d-flex justify-content-start border-top border-1 mt-1">
+      <button class="btn btn-success mt-3" type="button">Save</button>&nbsp;&nbsp;
+      <button class="btn btn-danger mt-3" @click="$router.push('/translation')">Cancel</button>
+    </div>
+  </form>
+
 
 </template>
 
@@ -30,11 +57,10 @@ export default {
   },
   computed: {
     ...mapGetters({
-      translation: 'translationForm/translations'
+      translation: 'translationForm/translations',
     }),
     key: {
       get() {
-        console.log(this.$store.state.translationForm.translation.key)
         return this.$store.state.translationForm.translation.key
       },
       set(value) {
@@ -49,6 +75,14 @@ export default {
         this.$store.commit('translationForm/UPDATE_STATUS', value)
       }
     },
+    items: {
+      get() {
+        return this.$store.state.translationForm.translation.items;
+      },
+      set(value) {
+        this.$store.commit('translationForm/UPDATE_ITEM', value)
+      }
+    }
   },
   methods: {
     ...mapActions({

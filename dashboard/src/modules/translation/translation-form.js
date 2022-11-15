@@ -7,12 +7,7 @@ export default {
         translation: {
             key: 'key',
             isActive: true,
-            items: [
-                {
-                    lang: 'en',
-                    content: ""
-                }
-            ]
+            items: []
         },
     },
     actions: {
@@ -36,13 +31,19 @@ export default {
         },
     },
 
-    getters : {
-        translations: (state) => state.translation
+    getters: {
+        translations: (state) => state.translation,
     },
     mutations: {
         UPDATE_TRANSLATION: (state, translation) => {
-            state.translation.key = translation.key
-            translation.items.forEach(item => state.translation.items.push(item));
+            state.translation.key = translation.key;
+            state.translation.isActive = translation.isActive;
+
+            translation.items.forEach(item => {
+                if (!state.translation.items.map(item => item.lang).includes(item.lang)) {
+                    state.translation.items.push(item)
+                }
+            });
         },
         UPDATE_TRANSLATION_KEY: (state, key) => state.key = key,
         UPDATE_STATUS: (state, status) => state.isActive = status
