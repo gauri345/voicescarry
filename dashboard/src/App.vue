@@ -12,6 +12,5 @@ import ApplicationIndex from "@/components/ApplicationIndex";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #b5d1ed;
 }
 </style>

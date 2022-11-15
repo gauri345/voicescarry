@@ -14,11 +14,11 @@
           <a class="btn btn-sm btn-warning ms-1" title="Click to apply the filters." type="button"
              @click="filterSurveys">Filter</a>
           <a class="btn btn-sm btn-danger ms-1" title="Reset all filters" type="button" @click="resetFilters">Reset</a>
-          <a class="btn btn-sm btn-dark material-icons ms-1" style="float: right;" title="Download survey answers"
+          <a class="btn btn-sm btn-success material-icons ms-1" style="float: right;" title="Download survey answers"
              @click="downloadFilteredSurveyAnswers">download</a>
         </div>
 
-        <router-link class="btn btn-dark position-absolute" style="right: 15px;" to="/surveys/form/id=">
+        <router-link class="btn btn-success position-absolute" style="right: 15px;" to="/surveys/form/id=">
           Create new survey
         </router-link>
       </div>

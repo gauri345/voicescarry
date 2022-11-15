@@ -78,6 +78,9 @@ router.route('/translation')
     .get(TranslationController.index)
     .post(TranslationController.post);
 
+router.route('/translation/:id')
+    .get(TranslationController.findById)
+
 /* SURVEY MANAGEMENT */
 router.route('/surveys/')
     .get(SurveyController.allSurveys);

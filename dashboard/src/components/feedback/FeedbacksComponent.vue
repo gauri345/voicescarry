@@ -14,7 +14,7 @@
           </div>
           <a class="btn btn-sm btn-warning" title="Click to apply the filters." type="button" @click="filterFeedback">Filter</a>
           <a class="btn btn-sm btn-danger ms-1" title="Reset all filters" type="button" @click="resetFilters">Reset</a>
-          <a class="btn btn-dark material-icons ms-3" @click="downloadFeedbacks">download</a>
+          <a class="btn btn-success material-icons ms-3" @click="downloadFeedbacks">download</a>
         </div>
       </div>
     </caption>

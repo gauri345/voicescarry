@@ -40,7 +40,7 @@
         <div class="container text-start">
           <div class="row">
             <div class="col mb-2">
-              <button class="btn btn-sm btn-dark" type="button" @click="toggleSelectAllQuestions">
+              <button class="btn btn-sm btn-info" type="button" @click="toggleSelectAllQuestions">
                 Select all
               </button>
             </div>

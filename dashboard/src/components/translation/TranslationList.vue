@@ -1,12 +1,12 @@
 <template>
   <AlertBox/>
-  <router-link class="btn btn-dark" style="float: right;" to="/language/form/id=">Add</router-link>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">
       <th scope="col">Translation Key</th>
       <th scope="col">Languages</th>
       <th scope="col">Excerpt (in English)</th>
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
     </thead>
@@ -16,13 +16,16 @@
       <th scope="col">{{ extractLanguages(translation.items) }}</th>
       <th scope="col">{{ extractEnglishExcerpt(translation.items) }}</th>
       <th scope="col">
-        <router-link :to="`/translation/form/id=1`"
+        <span :class="createStatusIconClasses(translation)"
+              title="Click to deactivate Translation">{{ translation.isActive ? "check_circle" : "cancel" }}</span>
+      </th>
+      <th scope="col">
+        <a :data-bs-target="`#viewTranslations_${translation._id}`" data-bs-toggle="modal" href="javascript:void(0);">
+          <span class="material-icons-outlined text-info" title="Preview Translation">preview</span>
+        </a>
+        <router-link :to="`/translation/form/id=${translation._id}`"
                      class="material-icons text-decoration-none text-info" title="Edit Translations">edit
         </router-link>
-        &nbsp;
-        <a :data-bs-target="`#viewTranslations_${translation._id}`" data-bs-toggle="modal" href="javascript:void(0);">
-          <span class="material-icons-outlined text-danger" title="Preview Translation">preview</span>
-        </a>
 
         <!-- Modal -->
         <div :id="`viewTranslations_${translation._id}`" aria-hidden="true" class="modal fade" tabindex="-1">
@@ -76,6 +79,20 @@ export default {
     ...mapActions({
       fetchAllTranslations: 'translationList/fetchAllTranslations'
     }),
+
+    createStatusIconClasses(translation) {
+      if ( translation.isActive ) {
+        return {
+          "material-icons-outlined": true,
+          "text-success": true
+        }
+      } else {
+        return {
+          "material-icons-outlined": true,
+          "text-danger": true
+        }
+      }
+    },
 
     extractLanguages(items) {
       return items.reduce((a, b) => a + ["", ", "][+!!a.length] + b.lang, "");
