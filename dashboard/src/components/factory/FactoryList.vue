@@ -3,8 +3,8 @@
   <router-link class="btn btn-success mb-2" style="float: right;" to="/factory/form/id=">Add</router-link>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
-    <tr class="text-info">
-      <th scope="col">Number</th>
+    <tr class="text-white">
+      <th scope="col">#</th>
       <th scope="col">Factory Name</th>
       <th scope="col">Location</th>
       <th scope="col">Code</th>

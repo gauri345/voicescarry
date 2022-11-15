@@ -3,16 +3,18 @@
   <AlertBox/>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
-    <tr class="text-info">
+    <tr class="text-white">
+      <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
-      <th scope="col">address</th>
+      <th scope="col">Address</th>
       <th class="text-center" scope="col">Activated</th>
       <th class="text-center" scope="col">Action</th>
     </tr>
     </thead>
     <tbody class="table-bordered">
-    <tr v-for="user in allUsers" :key="user.id">
+    <tr v-for="(user, index) in allUsers" :key="user.id">
+      <td>{{ index + 1 }}</td>
       <td>{{ user.fullName }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.address }}</td>

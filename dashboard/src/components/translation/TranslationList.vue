@@ -3,7 +3,8 @@
   <router-link class="btn btn-success mb-2" style="float: right;" to="/translation/key/form">Add new key</router-link>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
-    <tr class="text-info">
+    <tr class="text-white">
+      <th scope="col">#</th>
       <th scope="col">Translation Key</th>
       <th scope="col">Languages</th>
       <th scope="col">Excerpt (in English)</th>
@@ -13,6 +14,7 @@
     </thead>
     <tbody class="table-bordered">
     <tr v-for="(translation, index) in translations" v-bind:key="index">
+      <th scope="col">{{ index + 1 }}</th>
       <th scope="col">{{ translation.key }}</th>
       <th scope="col">{{ extractLanguages(translation.items) }}</th>
       <th scope="col">{{ extractEnglishExcerpt(translation.items) }}</th>

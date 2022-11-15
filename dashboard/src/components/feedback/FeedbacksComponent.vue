@@ -19,7 +19,8 @@
       </div>
     </caption>
     <thead class="table-bordered">
-    <tr class="text-info">
+    <tr class="text-white">
+      <th scope="col">#</th>
       <th scope="col">Factory Name</th>
       <th scope="col">Survey Name</th>
       <th scope="col">Feedback Message</th>
@@ -27,7 +28,8 @@
     </tr>
     </thead>
     <tbody class="table-bordered">
-    <tr v-for="feedback in allFeedbacks" :key="feedback.id">
+    <tr v-for="(feedback, index) in allFeedbacks" :key="feedback.id">
+      <td>{{ index + 1 }}</td>
       <td>{{ feedback.factory.name }}</td>
       <td>{{ feedback.survey.surveyName }}</td>
       <td class="roles-td">{{ feedback.content }}</td>

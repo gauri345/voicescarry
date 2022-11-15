@@ -3,8 +3,8 @@
   <router-link class="btn btn-success mb-2" style="float: right;" to="/question/form/id=">Add</router-link>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
-    <tr class="text-info">
-      <th scope="col">Number</th>
+    <tr class="text-white">
+      <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Type</th>
       <th scope="col">Answers</th>
@@ -17,7 +17,7 @@
       <td>{{ createDefaultTitle(question.titles) }}</td>
       <td>{{ question.questionType }}</td>
       <td>
-        <a :data-bs-target="`#answerModal_${question._id}`" data-bs-toggle="modal" href="javascript:void(0)">
+        <a :data-bs-target="`#answerModal_${question._id}`" data-bs-toggle="modal" href="javascript:void(0)" class="btn btn-sm btn-info">
           View
         </a>
         <div :id="`answerModal_${question._id}`" aria-hidden="true" aria-labelledby="answerModalLabel"

@@ -24,7 +24,7 @@
       </div>
     </caption>
     <thead class="table-bordered">
-    <tr class="text-info">
+    <tr class="text-white">
       <th scope="col">#</th>
       <th scope="col">Survey Name</th>
       <th scope="col">Factory Name</th>

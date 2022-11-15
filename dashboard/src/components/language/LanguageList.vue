@@ -3,7 +3,8 @@
   <router-link class="btn btn-success mb-2" style="float: right;" to="/language/form/id=">Add</router-link>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
-    <tr class="text-info">
+    <tr class="text-white">
+      <th scope="col">#</th>
       <th scope="col">Language</th>
       <th scope="col">Code</th>
       <th scope="col">Action</th>
@@ -11,6 +12,7 @@
     </thead>
     <tbody class="table-bordered">
     <tr v-for="(language, index) in allLanguages" v-bind:key="index">
+      <th scope="col">{{ index + 1 }}</th>
       <th scope="col">{{ language.name }}</th>
       <th scope="col">{{ language.code }}</th>
       <th scope="col">
