@@ -81,6 +81,10 @@ router.route('/translation')
 router.route('/translation/:id')
     .get(TranslationController.findById)
 
+router.route('/translation-key')
+    .get(TranslationController.getKeys)
+    .post(TranslationController.addKey)
+
 /* SURVEY MANAGEMENT */
 router.route('/surveys/')
     .get(SurveyController.allSurveys);

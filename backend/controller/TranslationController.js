@@ -69,6 +69,70 @@ exports.post = async function (req, res) {
     }
 };
 
+exports.addKey = async (req, res) => {
+    try {
+        const keyName = req.body.keyName;
+        const defaultText = req.body.defaultText;
+
+        const existing = await Translation.findOne({key: keyName});
+
+        if (existing) {
+            res
+                .status(400)
+                .json({
+                    status: "error",
+                    message: `Translation key [${keyName}] already exists.`
+                });
+        } else {
+            const translation = {
+                key: keyName,
+                items: [{
+                    lang: 'en',
+                    content: defaultText
+                }]
+            };
+
+            const created = await Translation.create(translation);
+
+            if (created) {
+                res.json(
+                    {
+                        status: "success",
+                        message: 'new translation added',
+                        data: await created
+                    }
+                );
+            }
+
+        }
+    } catch (error) {
+        res
+            .status(500)
+            .json({
+                status: "error",
+                message: "Failed adding new translation key."
+            });
+    }
+}
+
+exports.getKeys = async function (req, res) {
+    const allKey = await Translation.find().then(allTranslations => allTranslations.map(translation => translation.key));
+
+    Translation.get(function (err, translations) {
+        if (err) {
+            res.json({
+                status: "error",
+                message: err,
+            });
+        }
+        res.json({
+            status: "success",
+            message: `Total ${translations.length} translations keys retrieved`,
+            data: allKey
+        });
+    });
+}
+
 exports.delete = async function (req, res) {
     const translationId = req.params.id;
 

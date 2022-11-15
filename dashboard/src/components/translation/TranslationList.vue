@@ -1,5 +1,6 @@
 <template>
   <AlertBox/>
+  <router-link class="btn btn-success mb-2" style="float: right;" to="/translation/key/form">Add new key</router-link>
   <table class="table bg-dark text-info text-lg-start">
     <thead class="table-bordered">
     <tr class="text-info">

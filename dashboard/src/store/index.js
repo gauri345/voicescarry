@@ -18,6 +18,7 @@ import languageForm from "@/modules/language/language-form";
 import languageList from "@/modules/language/language-list";
 import translationList from "@/modules/translation/translation-list";
 import translationForm from "@/modules/translation/translation-form";
+import translationKeyForm from "@/modules/translation/translation-key-form";
 
 export default createStore({
     modules: {
@@ -38,7 +39,7 @@ export default createStore({
         languageForm,
         languageList,
         translationList,
-        translationForm
-
+        translationForm,
+        translationKeyForm
     }
 });

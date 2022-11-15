@@ -27,6 +27,8 @@ import LanguageList from "@/components/language/LanguageList";
 import TranslationList from "@/components/translation/TranslationList";
 import TranslationForm from "@/components/translation/TranslationForm";
 import TranslationComponent from "@/components/translation/TranslationComponent";
+import TranslationKeyForm from "@/components/translation/TranslationKeyForm";
+
 const routes = [
     {
         path: '/',
@@ -155,6 +157,11 @@ const routes = [
                         path: 'form/id=:id?',
                         name: 'TranslationForm',
                         component: TranslationForm
+                    },
+                    {
+                        path: 'key/form',
+                        name: 'TranslationKeyForm',
+                        component: TranslationKeyForm
                     }
                 ]
             },
