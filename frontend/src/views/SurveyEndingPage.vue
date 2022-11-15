@@ -1,5 +1,5 @@
 <template>
-  <Header HeaderIcon="spa" :HeaderText="$t('headerText')"/>
+  <Header HeaderIcon="spa" :HeaderText="$t('header_text')"/>
   <div id="body">
     <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
     <p> {{ $t('survey_ending_feedback') }} </p>

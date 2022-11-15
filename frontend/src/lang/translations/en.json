@@ -1,9 +1,9 @@
 {
-  "headerText": "Wellbeing at Work",
-  "headerTextComplaint": "Complaint",
-  "landing_Intro": "Hi! I will guide you through this app.",
+  "header_text": "Wellbeing at Work",
+  "header_text_complaint": "Complaint",
+  "landing_intro": "Hi! I will guide you through this app.",
   "landing_QR": "To enter, please type your factory code.",
-  "label_FactoryCode": "Factory code:",
+  "label_factory_code": "Factory code:",
   "button_landingpage": "Enter the app",
   "homepage_welcome_message": "Welcome to the survey on 'wellbeing at work'!",
   "homepage_info_message": "If you want to know more about the survey, please click on the info icon below.",

@@ -1,14 +1,19 @@
-import vi from './translations/vi';
-import en from './translations/en';
+import HttpClient from "@/util/http_client";
 
-import {createI18n} from "vue-i18n/index";
+export default async function fetchTranslations() {
+    const response = await HttpClient.get(`translation`);
 
-export default createI18n({
-    locale: localStorage.getItem('language') || 'en',
-    fallbackLocale: 'en',
-    globalInjection: true,
-    messages: {
-        vi,
-        en
-    }
-});
+    const translations = response.data.data;
+
+    const languages = translations[0].items.map(item => item.lang);
+
+    const messages = {};
+
+    languages.forEach(language => messages[language] = {});
+
+    translations.forEach(translation => {
+            translation.items.forEach(item => messages[item.lang][translation.key] = item.content);
+        }
+    );
+    return messages;
+}

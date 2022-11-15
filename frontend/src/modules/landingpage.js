@@ -15,7 +15,7 @@ export default {
 
     actions: {
         async submitForm({commit, state}) {
-            if (state.factoryCode.length < 5) {
+            if (state.factoryCode.length <= 0) {
                 commit("UPDATE_ERROR_MESSAGE", "Invalid factory code [must contain more than 5 characters.]")
             } else {
                 try {

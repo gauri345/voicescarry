@@ -1,5 +1,5 @@
 <template>
-  <Header id="headercomplaint" HeaderIcon="assignment_late" :HeaderText="$t('headerTextComplaint')"/>
+  <Header id="headercomplaint" HeaderIcon="assignment_late" :HeaderText="$t('header_text_complaint')"/>
   <div id="body">
     <span class="material-icons audio" v-on:click="readPageContent">volume_up</span>
     <p> {{ $t('complaint_intro') }}</p>

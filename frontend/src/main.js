@@ -8,10 +8,27 @@ import "bootstrap"
 import router from './router'
 import store from "@/store";
 
-import i18n from './lang';
+import {createI18n} from "vue-i18n";
+import fetchTranslations from "@/lang";
 
-createApp(App)
-    .use(router)
-    .use(store)
-    .use(i18n)
-    .mount('#app')
+const initApp = async () => {
+
+    const messages = await fetchTranslations();
+
+    const i18n = createI18n({
+        locale: localStorage.getItem('language') || 'en',
+        fallbackLocale: 'en',
+        globalInjection: true,
+        messages: messages
+    });
+
+    createApp(App)
+        .use(router)
+        .use(store)
+        .use(i18n)
+        .mount('#app')
+
+    return messages;
+};
+
+Promise.resolve(initApp());

@@ -1,7 +1,7 @@
 
 
 {
-  "headerText": "Dự án 'Đo lường phúc lợi của nhân viên'",
+  "header_text": "Dự án 'Đo lường phúc lợi của nhân viên'",
   "speechBubbleName": "Chào! Tên tôi là ... Tôi sẽ giúp bạn.",
   "speechBubbleQR": "Để tham gia khảo sát, vui lòng nhập mã nhà máy của bạn hoặc truy cập qua mã QR.",
   "labelFactoryCode": "Mã nhà máy:",

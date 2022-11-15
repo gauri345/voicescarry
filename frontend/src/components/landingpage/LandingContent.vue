@@ -5,7 +5,7 @@
         <img alt="Persona" src="../../assets/fullbody-persona.png"/>
       </div>
       <div class="speech-wrapper">
-        <SpeechBubble :description=" $t('landing_Intro') "/>
+        <SpeechBubble :description=" $t('landing_intro') "/>
         <SpeechBubble :description=" $t('landing_QR') "/>
       </div>
     </div>
@@ -13,7 +13,7 @@
 
   <section class="pageentry">
     <div class="form" @submit="handleSubmit">
-      <label>{{$t('label_FactoryCode')}}</label>
+      <label>{{$t('label_factory_code')}}</label>
       <input v-model="factoryCode" required type="text" @click="handleInputClick" autofocus>
       <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
       <div class="submit">

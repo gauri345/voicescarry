@@ -1,5 +1,5 @@
 <template>
-  <Header HeaderIcon="spa" :HeaderText="$t('headerText')"/>
+  <Header HeaderIcon="spa" :HeaderText="$t('header_text')"/>
   <div id="body">
     <span class="material-icons audio" v-on:click="readQuestionContent">volume_up</span>
     <div class="text">
