@@ -12,6 +12,11 @@
     <textarea v-model="defaultText" class="form-control" name="defaultText" style="width: 25rem;"></textarea>
   </div>
 
+  <div class="mb-3 row">
+    <label class="col-sm-2 col-form-label d-flex justify-content-start" for="defaultText">Is active?</label>
+    <input v-model="isActive" class="form-control-color" name="isActive" type="checkbox" />
+  </div>
+
   <div class="d-flex justify-content-start border-top border-1 mt-1">
     <button class="btn btn-success mt-3" type="button" @click="saveKey">Save</button>&nbsp;&nbsp;
     <button class="btn btn-danger mt-3" @click="$router.push('/translation')">Cancel</button>
@@ -49,7 +54,18 @@ export default {
       set(value) {
         this.$store.commit('translationKeyForm/UPDATE_DEFAULT_TEXT', value)
       }
+    } ,
+    isActive: {
+      get() {
+        return this.$store.state.translationKeyForm.isActive
+      },
+      set(value) {
+        this.$store.commit('translationKeyForm/UPDATE_IS_ACTIVE', value)
+      }
     }
+  },
+  created() {
+    this.$store.dispatch('hideAlert');
   }
 }
 </script>

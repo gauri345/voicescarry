@@ -6,14 +6,16 @@ export default {
     namespaced: true,
     state: {
         keyName: '',
-        defaultText: ''
+        defaultText: '',
+        isActive: true
     },
     actions: {
         saveKey: async ({state, dispatch}) => {
             try {
                 const dataToStore = {
                     keyName: state.keyName,
-                    defaultText: state.defaultText
+                    defaultText: state.defaultText,
+                    isActive: state.isActive
                 };
 
                 const config = {
@@ -33,10 +35,13 @@ export default {
             } catch (error) {
                 const errorMessage = error.response.data.message;
                 if (errorMessage) {
-                    dispatch('showError', `Failed saving translation key [${errorMessage}]`, {root: true});
+                    dispatch('showError', `Failed saving translation key. ${errorMessage}`, {root: true});
                 } else {
                     dispatch('showError', "Failed saving translation key in database.", {root: true});
                 }
+
+                state.keyName = '';
+                state.defaultText = '';
             }
         }
     },
@@ -45,6 +50,7 @@ export default {
     },
     mutations: {
         UPDATE_KEY_NAME: (state, keyName) => state.keyName = keyName,
-        UPDATE_DEFAULT_TEXT: (state, defaultText) => state.defaultText = defaultText
+        UPDATE_DEFAULT_TEXT: (state, defaultText) => state.defaultText = defaultText,
+        UPDATE_IS_ACTIVE: (state, isActive) => state.isActive = isActive
     }
 }

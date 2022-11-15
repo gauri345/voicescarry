@@ -103,7 +103,7 @@ export default {
     },
 
     extractEnglishExcerpt(translationItems) {
-      const englishItem = translationItems.filter(translationItem => translationItem.lang === 'np');
+      const englishItem = translationItems.filter(translationItem => translationItem.lang === 'en');
 
       if (englishItem.length >= 1) {
         return englishItem[0].content.substr(0, 50);

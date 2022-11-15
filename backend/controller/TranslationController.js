@@ -73,6 +73,7 @@ exports.addKey = async (req, res) => {
     try {
         const keyName = req.body.keyName;
         const defaultText = req.body.defaultText;
+        const isActive = req.body.isActive;
 
         const existing = await Translation.findOne({key: keyName});
 
@@ -88,8 +89,9 @@ exports.addKey = async (req, res) => {
                 key: keyName,
                 items: [{
                     lang: 'en',
-                    content: defaultText
-                }]
+                    content: defaultText,
+                }],
+                isActive: isActive
             };
 
             const created = await Translation.create(translation);
