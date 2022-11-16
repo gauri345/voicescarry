@@ -6,6 +6,7 @@ export default {
     namespaced: true,
     state: {
         translations: [],
+        activeToggleRequests: [],
     },
     actions: {
         async fetchAllTranslations({commit, dispatch}) {
@@ -43,11 +44,42 @@ export default {
                 dispatch('showError', "Failed deleting translation.", {root: true});
             }
         },
+
+        async toggleTranslationStatus({commit, dispatch}, translation) {
+            commit('ADD_TRANSLATION_ID_TO_ACTIVE_TOGGLE_REQUEST', translation._id);
+
+            const config = {
+                method: 'post',
+                url: `${ApiConfig.API_BASE_URL}/translation-status/${translation._id}`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    "status": translation.isActive ? "inactive" : "active"
+                }
+            };
+
+            try {
+                await axios(config);
+                translation.isActive = !translation.isActive;
+                commit('UPDATE_SINGLE_TRANSLATION', translation);
+                commit('REMOVE_USER_ID_FROM_ACTIVE_TOGGLE_REQUEST', translation._id);
+            } catch (error) {
+                dispatch('showError', " Failed activating translation. Please try again.", {root: true});
+            }
+        }
     },
     getters: {
         translations: (state) => state.translations,
+        activeToggleRequests: (state) => state.activeToggleRequests,
     },
     mutations: {
         UPDATE_ALL_TRANSLATIONS: (state, translations) => state.translations = translations,
+        UPDATE_SINGLE_TRANSLATION: (state, translationToUpdate) => {
+            const index = state.translations.findIndex((user => user._id === translationToUpdate._id));
+            state.translations[index] = translationToUpdate;
+        },
+        ADD_TRANSLATION_ID_TO_ACTIVE_TOGGLE_REQUEST: (state, translationId) => state.activeToggleRequests.push(translationId),
+        REMOVE_USER_ID_FROM_ACTIVE_TOGGLE_REQUEST: (state, translationId) => state.activeToggleRequests = state.activeToggleRequests.filter(id => translationId !== id),
     }
 }

@@ -82,6 +82,9 @@ router.route('/translation/:id')
     .get(TranslationController.findById)
     .delete(TranslationController.delete);
 
+router.route('/translation-status/:translationId')
+    .post(TranslationController.changeTranslationStatus);
+
 router.route('/translation-key')
     .get(TranslationController.getKeys)
     .post(TranslationController.addKey)

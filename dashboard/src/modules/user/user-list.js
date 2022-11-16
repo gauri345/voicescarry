@@ -59,7 +59,6 @@ export default {
                 commit('UPDATE_SINGLE_USER', user);
                 commit('REMOVE_USER_ID_FROM_ACTIVE_TOGGLE_REQUEST', user._id);
             } catch (error) {
-                commit('TOGGLE_ERROR', []);
                 dispatch('showError', " Failed activating user. Please try again.", {root: true});
             }
         }

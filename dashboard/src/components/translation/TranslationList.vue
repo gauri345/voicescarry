@@ -19,8 +19,20 @@
       <th scope="col">{{ extractLanguages(translation.items) }}</th>
       <th scope="col">{{ extractEnglishExcerpt(translation.items) }}</th>
       <th scope="col">
-        <span :class="createStatusIconClasses(translation)"
-              title="Click to deactivate Translation">{{ translation.isActive ? "check_circle" : "cancel" }}</span>
+
+        <a v-if="'deactivate' === getToggle(translation) && translation.isActive" href="javascript:void(0);"
+           @click="toggleTranslationStatus(translation)">
+          <span class="material-icons-outlined text-success" title="Click to deactivate Translation">check_circle</span>
+        </a>
+
+        <a v-else-if="'activate' === getToggle(translation)" href="javascript:void(0);" @click="toggleTranslationStatus(translation)">
+          <span class="material-icons-outlined text-danger" title="Click to activate Translation">cancel</span>
+        </a>
+
+        <div v-if="'loading' === getToggle(translation)" class="spinner-border text-white spinner-border-sm" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+
       </th>
       <th scope="col">
         <a :data-bs-target="`#viewTranslations_${translation._id}`" data-bs-toggle="modal" href="javascript:void(0);">
@@ -106,20 +118,20 @@ export default {
   methods: {
     ...mapActions({
       fetchAllTranslations: 'translationList/fetchAllTranslations',
-      deleteTranslation: 'translationList/deleteTranslation'
+      deleteTranslation: 'translationList/deleteTranslation',
+      toggleTranslationStatus: 'translationList/toggleTranslationStatus'
     }),
+    getToggle(translation) {
+      if (this.activeToggleRequests.filter(value => value === translation._id).length >= 1) {
+        return 'loading';
+      }
 
-    createStatusIconClasses(translation) {
       if (translation.isActive) {
-        return {
-          "material-icons-outlined": true,
-          "text-success": true
-        }
-      } else {
-        return {
-          "material-icons-outlined": true,
-          "text-danger": true
-        }
+        return 'deactivate';
+      }
+
+      if (!translation.isActive) {
+        return 'activate';
       }
     },
 
@@ -139,7 +151,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      translations: 'translationList/translations'
+      translations: 'translationList/translations',
+      activeToggleRequests: 'translationList/activeToggleRequests'
     })
   },
   mounted() {

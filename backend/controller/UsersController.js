@@ -22,6 +22,7 @@ exports.deleteUserById = async function (req, res) {
 }
 
 const User = require("../model/userModel");
+const {Transaction} = require("mongodb");
 
 exports.getAllUsers = async function (req, res) {
 
@@ -88,7 +89,7 @@ exports.changeUserStatus = async function (req, res) {
 
     try {
         const filter = {_id: userId};
-        const toBeUpdated = await User.findOneAndUpdate(filter, update);
+        const toBeUpdated = await Transaction.findOneAndUpdate(filter, update);
 
         if (!toBeUpdated) {
             return res
@@ -114,7 +115,7 @@ exports.changeUserStatus = async function (req, res) {
             .status(404)
             .json({
                 status: "error",
-                message: `Problem occurred while updating the status of hte user. [${error.message}].`
+                message: `Problem occurred while updating the status of the user. [${error.message}].`
             });
     }
 };

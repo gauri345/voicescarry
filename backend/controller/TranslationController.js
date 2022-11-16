@@ -1,4 +1,5 @@
 const Translation = require("../model/translationModel");
+const User = require("../model/userModel");
 
 exports.index = function (req, res) {
     Translation.get(function (err, translations) {
@@ -165,3 +166,52 @@ exports.delete = async function (req, res) {
             });
     }
 }
+
+
+exports.changeTranslationStatus = async function (req, res) {
+    const translationId = req.params.translationId;
+    let update = {isActive: false};
+
+    if ('active' === req.body.status) {
+        update.isActive = true;
+    } else if ('inactive' === req.body.status) {
+        update.isActive = false;
+    } else {
+        return res
+            .status(400)
+            .json({
+                status: "error",
+                message: `Invalid status value provided accepted is ['active', 'inactive'].`
+            });
+    }
+
+    try {
+        const updated = await Translation.findOneAndUpdate({_id: translationId}, update);
+
+        if (!updated) {
+            return res
+                .status(404)
+                .send({
+                    status: "error",
+                    message: `Translation with provided id [${translationId}] not found in database`
+                });
+        } else {
+            return res.status(200)
+                .send(
+                    {
+                        status: "success",
+                        message: `status for translation with id: ${translationId} has been successfully changed.`,
+                        data: `new status is ${updated.isActive ? 'active' : 'inactive'}.`
+                    }
+                );
+        }
+    } catch (error) {
+        console.log(error);
+        return res
+            .status(404)
+            .json({
+                status: "error",
+                message: `Problem occurred while updating the status of the Translation. [${error.message}].`
+            });
+    }
+};
