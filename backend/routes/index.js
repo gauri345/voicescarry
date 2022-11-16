@@ -80,6 +80,7 @@ router.route('/translation')
 
 router.route('/translation/:id')
     .get(TranslationController.findById)
+    .delete(TranslationController.delete);
 
 router.route('/translation-key')
     .get(TranslationController.getKeys)

@@ -22,6 +22,27 @@ export default {
                 dispatch('showError', " Failed fetching translations.", {root: true});
             }
         },
+        async deleteTranslation({commit, state, dispatch}, translationId) {
+            const config = {
+                method: 'delete',
+                url: `${ApiConfig.API_BASE_URL}/translation/${translationId}`
+            };
+
+            try {
+                const response = await axios(config);
+                if (response.status === 200) {
+                    const newTranslationList = state.translations.filter(translation => translation._id !== translationId);
+                    dispatch('showInfo', "Translation successfully deleted.", {root: true});
+                    commit('UPDATE_ALL_TRANSLATIONS', newTranslationList);
+                }
+                if (response.status === 404) {
+                    dispatch('showError', "Failed deleting translation.", {root: true});
+                }
+            } catch (error) {
+                console.log(error);
+                dispatch('showError', "Failed deleting translation.", {root: true});
+            }
+        },
     },
     getters: {
         translations: (state) => state.translations,

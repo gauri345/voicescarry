@@ -30,7 +30,29 @@
                      class="material-icons text-decoration-none text-info" title="Edit Translations">edit
         </router-link>
 
-        <!-- Modal -->
+        <a :data-bs-target="`#deleteTranslation${translation._id}`" data-bs-toggle="modal" href="javascript:void(0);">
+          <span class="material-icons-outlined text-danger" title="Delete Factory">delete</span>
+        </a>
+
+        <!-- Delete Modal -->
+        <div :id="`deleteTranslation${translation._id}`" aria-hidden="true" class="modal fade" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-body text-danger">
+                Are you sure you want to delete? <br> Doing this might break your application.
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-dismiss="modal" type="button"
+                        @click="deleteTranslation(translation._id)">Yes
+                </button>
+                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview Modal -->
         <div :id="`viewTranslations_${translation._id}`" aria-hidden="true" class="modal fade" tabindex="-1">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -83,7 +105,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchAllTranslations: 'translationList/fetchAllTranslations'
+      fetchAllTranslations: 'translationList/fetchAllTranslations',
+      deleteTranslation: 'translationList/deleteTranslation'
     }),
 
     createStatusIconClasses(translation) {
