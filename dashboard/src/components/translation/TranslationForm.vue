@@ -27,7 +27,7 @@
       <div class="col-md-6">&nbsp;</div>
       <div class="col-md-6">
         <div class="row">
-          <label class="col-sm-3 col-form-label d-flex justify-content-start" for="key">Text ({{ item.language }})</label>
+          <label class="col-sm-3 col-form-label d-flex justify-content-start" for="key">Text ({{ item.lang.toUpperCase() }})</label>
           <div class="col-sm-9 ">
             <textarea v-model="item.content" class="form-text d-flex justify-content-start" rows="3" style="width: 100%" ></textarea>
           </div>
@@ -38,7 +38,7 @@
 
     <div class="col-md-6">&nbsp;</div>
     <div class="d-flex justify-content-start border-top border-1 mt-1">
-      <button class="btn btn-success mt-3" type="button">Save</button>&nbsp;&nbsp;
+      <button class="btn btn-success mt-3" type="button" @click="saveTranslation">Save</button>&nbsp;&nbsp;
       <button class="btn btn-danger mt-3" @click="$router.push('/translation')">Cancel</button>
     </div>
   </form>
@@ -78,15 +78,13 @@ export default {
     items: {
       get() {
         return this.$store.state.translationForm.translation.items;
-      },
-      set(value) {
-        this.$store.commit('translationForm/UPDATE_ITEM', value)
       }
     }
   },
   methods: {
     ...mapActions({
-      fetchTranslationById: 'translationForm/fetchTranslationById'
+      fetchTranslationById: 'translationForm/fetchTranslationById',
+      saveTranslation: 'translationForm/saveTranslation'
     }),
   },
   mounted() {
