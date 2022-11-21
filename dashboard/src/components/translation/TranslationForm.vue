@@ -58,6 +58,8 @@ export default {
   computed: {
     ...mapGetters({
       translation: 'translationForm/translations',
+      languages: 'translationForm/languages',
+
     }),
     key: {
       get() {
@@ -84,12 +86,14 @@ export default {
   methods: {
     ...mapActions({
       fetchTranslationById: 'translationForm/fetchTranslationById',
-      saveTranslation: 'translationForm/saveTranslation'
+      saveTranslation: 'translationForm/saveTranslation',
+      fetchAllLanguages: 'translationForm/fetchAllLanguages'
     }),
   },
   mounted() {
     this.$store.dispatch('hideAlert');
-    this.fetchTranslationById(this.$route.params.id);
+    this.fetchTranslationById(this.$route.params.id).then(this.fetchAllLanguages());
+
   },
 }
 </script>

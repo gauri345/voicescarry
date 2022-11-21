@@ -72,7 +72,7 @@ exports.post = async function (req, res) {
 
 exports.addKey = async (req, res) => {
     try {
-        const keyName = req.body.keyName;
+        const keyName = req.body.keyName.toLowerCase();
         const defaultText = req.body.defaultText;
         const isActive = req.body.isActive;
 

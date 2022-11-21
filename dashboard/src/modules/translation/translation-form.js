@@ -5,6 +5,7 @@ import router from "@/routes";
 export default {
     namespaced: true,
     state: {
+        languages: [],
         translation: {
             id: null,
             key: 'key',
@@ -13,6 +14,20 @@ export default {
         },
     },
     actions: {
+        async fetchAllLanguages({commit, dispatch}) {
+            const config = {
+                method: 'get',
+                url: `${ApiConfig.API_BASE_URL}/language`,
+                headers: {}
+            };
+
+            try {
+                const response = await axios(config);
+                commit('UPDATE_TRANSLATIONS_WITH_LANGUAGES', response.data.data);
+            } catch (error) {
+                dispatch('showError', " Failed fetching languages.", {root: true});
+            }
+        },
         async fetchTranslationById({commit, dispatch}, translationId) {
             try {
                 const config = {
@@ -38,11 +53,12 @@ export default {
                     url: `${ApiConfig.API_BASE_URL}/translation`,
                     data: state.translation
                 };
+                console.log(config);
                 await axios(config);
                 await router.push("/translation");
 
                 dispatch('showInfo', "Translation successfully updated", {root: true});
-            }catch (error) {
+            } catch (error) {
                 console.log('error', error);
                 dispatch('showError', " Failed updating the translation.", {root: true});
             }
@@ -51,6 +67,7 @@ export default {
 
     getters: {
         translations: (state) => state.translation,
+        languages: (state) => state.languages,
     },
     mutations: {
         UPDATE_TRANSLATION: (state, translation) => {
@@ -65,6 +82,19 @@ export default {
             });
         },
         UPDATE_TRANSLATION_KEY: (state, key) => state.key = key,
-        UPDATE_STATUS: (state, status) => state.translation.isActive = status
+        UPDATE_STATUS: (state, status) => state.translation.isActive = status,
+        UPDATE_TRANSLATIONS_WITH_LANGUAGES: (state, languageList) => {
+            const storedLanguage = state.translation.items.map(item => item.lang);
+            languageList
+                .map(language => language.code)
+                .forEach(language => {
+                    if (!storedLanguage.includes(language)) {
+                        state.translation.items.push({lang: language, content: ''});
+                    }
+                })
+
+            state.languages = languageList
+        },
+        UPDATE_LANGUAGES: (state, languageList) => state.languages = languageList
     }
 }
