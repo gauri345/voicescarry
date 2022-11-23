@@ -36,8 +36,7 @@
         <!-- Modal -->
         <div :id="`deleteAnswerType${answerType._id}`" aria-hidden="true" class="modal fade" tabindex="-1">
           <div class="modal-dialog">
-            <div class="modal-content">2
-
+            <div class="modal-content">
               <div class="modal-body text-danger">
                 Are you sure you want to delete?
               </div>

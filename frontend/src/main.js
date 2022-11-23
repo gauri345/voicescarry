@@ -15,6 +15,10 @@ const initApp = async () => {
 
     const messages = await fetchTranslations();
 
+    if (!localStorage.getItem('language')) {
+        localStorage.setItem('language', 'en');
+    }
+
     const i18n = createI18n({
         locale: localStorage.getItem('language') || 'en',
         fallbackLocale: 'en',

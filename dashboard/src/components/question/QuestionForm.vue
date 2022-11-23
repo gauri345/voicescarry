@@ -14,7 +14,7 @@
                 <div v-for="language in supportedLanguages" :key="language" class="input-group mb-3">
                   <span class="input-group-text">
                     <input v-bind:id="language.value" v-model="language.isSelected"
-                           :disabled="language.value === 'english'"
+                           :disabled="language.code === 'en'"
                            name="language" type="checkbox" v-bind:value="language.value"
                            @change="languagesChanged"/>
                   </span>
@@ -51,7 +51,7 @@
             <div class="col-sm-9 mb-1">
               <div class="row">
                 <label class="col-sm-2 col-form-label col-form-label-sm text-start">
-                  {{ ucFirst(questionTitle.lang) }}
+                  {{ questionTitle.lang.toUpperCase() }}
                 </label>
                 <div class="col-sm-10">
                   <textarea v-model="questionTitle.content" class="form-control" rows="3"></textarea>
@@ -73,7 +73,7 @@
             <div class="col-sm-9 mb-1">
               <div class="row">
                 <label class="col-sm-2 col-form-label col-form-label-sm text-start">
-                  {{ ucFirst(additionalInformation.lang) }}
+                  {{ additionalInformation.lang.toUpperCase() }}
                 </label>
                 <div class="col-sm-10">
                   <textarea v-model="additionalInformation.content" class="form-control" rows="3"></textarea>
@@ -94,7 +94,7 @@
           </label>
           <div class="col-sm-9">
             <select id="questionType" v-model="questionType" class="form-select form-select-lg" required>
-              <option v-for="answer in answers" v-bind:key="answer.type" :value="answer.type">
+              <option v-for="(answer, index) in answers" v-bind:key="index" :value="answer.type">
                 {{ ucFirst(answer.type) }}
               </option>
             </select>
@@ -114,8 +114,6 @@
               <div v-for="answerValue in selectedAnswer.values" :key="answerValue" class="col-sm-auto">
                 <div class="alert-info alert m-0">{{ answerValue.value }}</div>
                 <div class="row card-body">
-                  <!-- <AnswerInput :answer-details="answerValue.details" :answer-value="answerValue.value" :languages="activeLanguages()" @answered="test"/> -->
-
                   <template v-for="(language, index) in activeLanguages()" v-bind:key="index">
                     <label class="col-sm-3 col-form-label col-form-label-sm question-form-label control-label">
                       {{ language.text }}
@@ -154,30 +152,44 @@ export default {
   },
   data() {
     return {
-      answerValues: [],
-      languages: [],
-      answerValue: '',
-      answerDetails: [],
       inputValues: [],
-      collected: []
     };
   },
   methods: {
     handleInput(event, language, answerDetail) {
-      this.collected[language.code] = {
+      const answerValue = answerDetail.value;
+
+      if (!this.inputValues[answerValue]) {
+        this.inputValues[answerValue] = [];
+      }
+
+      this.inputValues[answerDetail.value][language.code] = {
         value: event.currentTarget.value,
         language: language
       };
-
-      console.log(this.collected)
-
-     this.inputValues[answerDetail.value] = this.collected;
-
-      console.log(this.inputValues)
-
     },
     extractValue(language, selectedAnswer, answerValue) {
+
       const filtered = selectedAnswer.values
+          .map(answerDetail => {
+
+            if (!this.inputValues[answerDetail.value]) {
+              this.inputValues[answerDetail.value] = [];
+            }
+
+            if(answerDetail.value === answerDetail.value) {
+              answerDetail.details.forEach(detail => {
+                if( detail.lang === language.code) {
+                  this.inputValues[answerDetail.value][language.code] = {
+                    value: detail.content,
+                    language: language
+                  };
+                }
+              });
+            }
+
+            return answerDetail;
+          })
           .filter(answerDetail => answerDetail.value === answerValue.value)
           .flatMap(answerDetail => answerDetail.details.filter(detail => detail.lang === language.code));
 

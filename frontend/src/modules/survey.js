@@ -92,10 +92,16 @@ export default {
 
             const localized = (contentList) => {
                 const lang = localStorage.getItem('language');
-                const language = (null === lang) ? 'english' : lang;
+                const language = (null === lang) ? 'en' : lang;
 
                 if (contentList.length > 0) {
-                    return contentList.filter(content => content.lang === language)[0].content;
+                    const filtered =  contentList.filter(content => content.lang === language);
+
+                    if (filtered.length > 0) {
+                        return filtered[0].content
+                    } else {
+                        return contentList.filter(content => content.lang === 'en')[0].content;
+                    }
                 }
             };
 

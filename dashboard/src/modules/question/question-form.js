@@ -7,23 +7,19 @@ export default {
     state: {
         questionNumber: null,
         supportedLanguages: [],
-
         questionTitles: [
             {
                 lang: 'en',
                 content: ''
             }
         ],
-
         additionalInformationList: [
             {
                 lang: 'en',
                 content: ''
             }
         ],
-
         questionType: 'select',
-
         answers: [
             {
                 type: 'select',
@@ -62,27 +58,27 @@ export default {
             state.supportedLanguages
                 .forEach(supportedLanguage => {
                     if (supportedLanguage.isSelected) {
-                        const titleForSelectedLanguage = state.questionTitles.filter(title => title.lang === supportedLanguage.value);
+                        const titleForSelectedLanguage = state.questionTitles.filter(title => title.lang === supportedLanguage.code);
                         if (titleForSelectedLanguage.length < 1) {
                             commit('ADD_TO_QUESTION_TITLE', {
-                                lang: supportedLanguage.value,
+                                lang: supportedLanguage.code,
                                 content: ''
                             });
 
                             commit('ADD_TO_ADDITIONAL_INFORMATION', {
-                                lang: supportedLanguage.value,
+                                lang: supportedLanguage.code,
                                 content: ''
                             });
 
                             commit('ADD_LANGUAGE_FIELD_TO_ANSWER', {
-                                lang: supportedLanguage.value,
+                                lang: supportedLanguage.code,
                                 content: ''
                             });
                         }
                     } else {
-                        commit('REMOVE_QUESTION_TITLE_BY_LANGUAGE', supportedLanguage.value);
-                        commit('REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE', supportedLanguage.value);
-                        commit('REMOVE_LANGUAGE_FIELD_ANSWER', supportedLanguage.value);
+                        commit('REMOVE_QUESTION_TITLE_BY_LANGUAGE', supportedLanguage.code);
+                        commit('REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE', supportedLanguage.code);
+                        commit('REMOVE_LANGUAGE_FIELD_ANSWER', supportedLanguage.code);
                     }
                 });
         },
@@ -208,13 +204,10 @@ export default {
 
         async saveQuestion({state, dispatch}, answerValues) {
 
-            console.log(answerValues)
             const answersToSave = answerValues.map((answerTexts, answerValue) => {
                 const items = state.supportedLanguages
                     .filter(lang => lang.isSelected)
                     .map(lang => {
-                        console.log(lang)
-                        console.log(answerValue, answerTexts)
                         return {
                             content: answerTexts[lang.code].value,
                             lang: answerTexts[lang.code].language.code
@@ -225,8 +218,6 @@ export default {
                     items: items
                 };
             });
-
-            console.log(answersToSave);
 
             const questionToSave = {
                 number: state.questionNumber,

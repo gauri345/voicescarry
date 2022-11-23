@@ -3,7 +3,7 @@ import HttpClient from "@/util/http_client";
 export default {
     namespaced: true,
     state: {
-        currentLanguage:  localStorage.getItem('language'),
+        currentLanguage:  localStorage.getItem('language') || 'en',
         languageList: [],
     },
     actions: {
@@ -18,6 +18,7 @@ export default {
         changeLanguage({commit}, language) {
             localStorage.setItem('language', language)
             commit('UPDATE_CURRENT_LANGUAGE', language);
+            location.reload();
         }
     },
 
