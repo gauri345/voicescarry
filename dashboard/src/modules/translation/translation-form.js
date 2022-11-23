@@ -39,6 +39,7 @@ export default {
 
                 if (response.data.data) {
                     commit('UPDATE_TRANSLATION', response.data.data);
+                    dispatch('fetchAllLanguages');
                 }
             } catch (error) {
                 console.log('error', error)
@@ -53,7 +54,6 @@ export default {
                     url: `${ApiConfig.API_BASE_URL}/translation`,
                     data: state.translation
                 };
-                console.log(config);
                 await axios(config);
                 await router.push("/translation");
 
@@ -74,12 +74,7 @@ export default {
             state.translation.key = translation.key;
             state.translation.isActive = translation.isActive;
             state.translation.id = translation._id;
-
-            translation.items.forEach(item => {
-                if (!state.translation.items.map(item => item.lang).includes(item.lang)) {
-                    state.translation.items.push(item)
-                }
-            });
+            state.translation.items = translation.items;
         },
         UPDATE_TRANSLATION_KEY: (state, key) => state.key = key,
         UPDATE_STATUS: (state, status) => state.translation.isActive = status,
@@ -94,7 +89,6 @@ export default {
                 })
 
             state.languages = languageList
-        },
-        UPDATE_LANGUAGES: (state, languageList) => state.languages = languageList
+        }
     }
 }

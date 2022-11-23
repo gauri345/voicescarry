@@ -114,20 +114,21 @@
               <div v-for="answerValue in selectedAnswer.values" :key="answerValue" class="col-sm-auto">
                 <div class="alert-info alert m-0">{{ answerValue.value }}</div>
                 <div class="row card-body">
-                  <template v-for="(detail, index) in answerValue.details" :key="index">
+                  <!-- <AnswerInput :answer-details="answerValue.details" :answer-value="answerValue.value" :languages="activeLanguages()" @answered="test"/> -->
+
+                  <template v-for="(language, index) in activeLanguages()" v-bind:key="index">
                     <label class="col-sm-3 col-form-label col-form-label-sm question-form-label control-label">
-                      {{ ucFirst(detail.lang) }}
+                      {{ language.text }}
                     </label>
                     <div class="col-md-9 mb-2">
-                      <input v-model="detail.content" class="form-control" required type="text"/>
+                      <input :value="extractValue(language, selectedAnswer, answerValue)" class="form-control" required
+                             type="text" @input="handleInput($event, language, answerValue)"/>
                     </div>
-                    <hr>
                   </template>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -151,7 +152,41 @@ export default {
   components: {
     AlertBox
   },
+  data() {
+    return {
+      answerValues: [],
+      languages: [],
+      answerValue: '',
+      answerDetails: [],
+      inputValues: [],
+      collected: []
+    };
+  },
   methods: {
+    handleInput(event, language, answerDetail) {
+      this.collected[language.code] = {
+        value: event.currentTarget.value,
+        language: language
+      };
+
+      console.log(this.collected)
+
+     this.inputValues[answerDetail.value] = this.collected;
+
+      console.log(this.inputValues)
+
+    },
+    extractValue(language, selectedAnswer, answerValue) {
+      const filtered = selectedAnswer.values
+          .filter(answerDetail => answerDetail.value === answerValue.value)
+          .flatMap(answerDetail => answerDetail.details.filter(detail => detail.lang === language.code));
+
+      if (filtered.length > 0) {
+        return filtered[0].content;
+      }
+
+      return '';
+    },
     ...mapActions({
       languagesChanged: 'questionForm/languagesChanged',
       fetchAnswerTypes: 'questionForm/fetchAnswerTypes',
@@ -160,12 +195,16 @@ export default {
       fetchLanguages: 'questionForm/fetchLanguages',
     }),
 
+    activeLanguages() {
+      return this.supportedLanguages.filter(language => language.isSelected);
+    },
+
     ucFirst(string) {
       return string[0].toUpperCase() + string.slice(1);
     },
 
     submitForm(event) {
-      this.saveQuestion();
+      this.saveQuestion(this.inputValues);
       event.preventDefault();
     },
   },

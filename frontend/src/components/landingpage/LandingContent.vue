@@ -6,7 +6,7 @@
       </div>
       <div class="speech-wrapper">
         <SpeechBubble :description=" $t('landing_intro') "/>
-        <SpeechBubble :description=" $t('landing_QR') "/>
+        <SpeechBubble :description=" $t('landing_qr') "/>
       </div>
     </div>
   </section>

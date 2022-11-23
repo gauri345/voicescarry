@@ -91,7 +91,7 @@ export default {
         SET_ALL_QUESTIONS: (state, questions) => {
 
             const localized = (contentList) => {
-                const lang = LocalStorage.get('language');
+                const lang = localStorage.getItem('language');
                 const language = (null === lang) ? 'english' : lang;
 
                 if (contentList.length > 0) {

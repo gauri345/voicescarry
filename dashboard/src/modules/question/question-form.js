@@ -10,14 +10,14 @@ export default {
 
         questionTitles: [
             {
-                lang: 'english',
+                lang: 'en',
                 content: ''
             }
         ],
 
         additionalInformationList: [
             {
-                lang: 'english',
+                lang: 'en',
                 content: ''
             }
         ],
@@ -33,7 +33,7 @@ export default {
                         details: [
                             {
                                 content: '',
-                                lang: 'english',
+                                lang: 'en',
                             }
                         ]
                     }
@@ -109,6 +109,7 @@ export default {
                         return {
                             text: lang.name,
                             value: lang.name.toLowerCase(),
+                            code: lang.code,
                             isSelected: isSelected
                         }
                     })
@@ -183,7 +184,6 @@ export default {
 
                 const response = await axios(config);
                 const answers = response.data.data.map(answerFromApi => {
-                    console.log(answerFromApi)
                     return {
                         type: answerFromApi.answerCategory,
                         values: answerFromApi.answerValues.map(value => {
@@ -192,7 +192,7 @@ export default {
                                 details: [
                                     {
                                         content: '',
-                                        lang: 'english',
+                                        lang: 'en',
                                     }
                                 ]
                             };
@@ -206,7 +206,28 @@ export default {
             }
         },
 
-        async saveQuestion({state, dispatch}) {
+        async saveQuestion({state, dispatch}, answerValues) {
+
+            console.log(answerValues)
+            const answersToSave = answerValues.map((answerTexts, answerValue) => {
+                const items = state.supportedLanguages
+                    .filter(lang => lang.isSelected)
+                    .map(lang => {
+                        console.log(lang)
+                        console.log(answerValue, answerTexts)
+                        return {
+                            content: answerTexts[lang.code].value,
+                            lang: answerTexts[lang.code].language.code
+                        }
+                    });
+                return {
+                    value: answerValue,
+                    items: items
+                };
+            });
+
+            console.log(answersToSave);
+
             const questionToSave = {
                 number: state.questionNumber,
                 questionType: state.questionType,
@@ -222,21 +243,7 @@ export default {
                         content: info.content
                     }
                 }),
-                answers: state.answers
-                    .filter(answer => answer.type === state.questionType)
-                    .flatMap(answer => {
-                        return answer.values.flatMap(value => {
-                            return {
-                                value: value.value,
-                                items: value.details.map(detail => {
-                                    return {
-                                        lang: detail.lang,
-                                        content: detail.content
-                                    };
-                                })
-                            }
-                        });
-                    })
+                answers: answersToSave.filter(x => x)
             }
 
             try {

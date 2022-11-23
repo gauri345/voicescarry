@@ -92,8 +92,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('hideAlert');
-    this.fetchTranslationById(this.$route.params.id).then(this.fetchAllLanguages());
-
+    this.fetchTranslationById(this.$route.params.id);
   },
 }
 </script>

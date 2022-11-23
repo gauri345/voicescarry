@@ -1,19 +1,29 @@
 import HttpClient from "@/util/http_client";
 
 export default async function fetchTranslations() {
-    const response = await HttpClient.get(`translation`);
 
-    const translations = response.data.data;
+    try {
+        const languagesResponse = await HttpClient.get('language');
 
-    const languages = translations[0].items.map(item => item.lang);
+        const languages = languagesResponse.data.data;
 
-    const messages = {};
+        const messages = {};
 
-    languages.forEach(language => messages[language] = {});
+        languages.forEach(language => messages[language.code] = {});
 
-    translations.forEach(translation => {
-            translation.items.forEach(item => messages[item.lang][translation.key] = item.content);
-        }
-    );
-    return messages;
+        const response = await HttpClient.get(`translation`);
+
+        const translations = response.data.data;
+
+        translations.forEach(translation => {
+                translation.items.forEach(item => {
+                    messages[item.lang][translation.key] = item.content
+                });
+            }
+        );
+        return messages;
+
+    } catch (error) {
+        console.log(error);
+    }
 }
