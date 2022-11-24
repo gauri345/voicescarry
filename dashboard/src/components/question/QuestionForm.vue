@@ -68,7 +68,6 @@
       <div class="col-md-6 mt-3">
         <div class="row">
           <label class="col-sm-3 col-form-label col-form-label-sm text-start">Additional Information:</label>
-
           <template v-for="(additionalInformation, index) in additionalInformationList" :key="index">
             <div class="col-sm-9 mb-1">
               <div class="row">
@@ -93,9 +92,10 @@
             Answer Types:
           </label>
           <div class="col-sm-9">
-            <select id="questionType" v-model="questionType" class="form-select form-select-lg" required>
+            <select id="questionType" v-model="questionType" class="form-select form-select-lg" required
+                    @input="rememberAnswerCategory($event)">
               <option v-for="answerType in allAnswerTypes" v-bind:key="answerType._id" :value="answerType.answerType">
-                {{ ucFirst(answerType.answerType) }}
+                {{ ucFirst(answerType.answerCategory) }}
               </option>
             </select>
           </div>
@@ -111,8 +111,8 @@
           <div class="col-sm-9">
             <div class="row card text-dark">
               <div v-for="(answer, index) in populateSelectedAnswer()" :key="index" class="col-sm-auto">
-                <div class="alert-info alert m-0" v-for="(value, valueIndex) in answer.answerValues" :key="valueIndex">
-                  {{value}}
+                <div v-for="(value, valueIndex) in answer.answerValues" :key="valueIndex" class="alert-info alert m-0">
+                  {{ value }}
                 </div>
               </div>
             </div>
@@ -141,6 +141,7 @@ export default {
   data() {
     return {
       inputValues: [],
+      questionCategory: ''
     };
   },
   methods: {
@@ -152,8 +153,11 @@ export default {
       fetchLanguages: 'questionForm/fetchLanguages',
     }),
 
+    rememberAnswerCategory(event) {
+      this.questionCategory = event.currentTarget.selectedOptions[0].text.toLowerCase();
+    },
     populateSelectedAnswer() {
-      const answers = this.allAnswerTypes.filter(answerType => answerType.answerType === this.questionType);
+      const answers = this.allAnswerTypes.filter(answerType => answerType.answerType === this.questionType && this.questionCategory === answerType.answerCategory);
       this.inputValues = answers;
 
       return answers;
