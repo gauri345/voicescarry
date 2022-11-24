@@ -19,23 +19,9 @@ export default {
                 content: ''
             }
         ],
-        questionType: 'select',
-        answers: [
-            {
-                type: 'select',
-                values: [
-                    {
-                        value: "1",
-                        details: [
-                            {
-                                content: '',
-                                lang: 'en',
-                            }
-                        ]
-                    }
-                ]
-            }
-        ],
+        questionType: null,
+        answers: {},
+        allAnswerTypes: [],
     },
     getters: {
         supportedLanguages: (state) => state.supportedLanguages,
@@ -52,6 +38,9 @@ export default {
             }
         },
         answers: (state) => state.answers,
+        allAnswerTypes: (state) => {
+            return state.allAnswerTypes
+        },
     },
     actions: {
         languagesChanged: ({commit, state}) => {
@@ -126,7 +115,7 @@ export default {
                 const response = await axios(config);
                 const questionFromApi = response.data.data;
 
-                commit('SET_SELECTED_LANGUAGES', questionFromApi.additionalInformation.map(info => info.lang));
+                commit('SET_SELECTED_LANGUAGES', questionFromApi.titles.map(info => info.lang));
 
                 commit('UPDATE_QUESTION_NUMBER', questionFromApi.number);
                 commit(
@@ -150,21 +139,7 @@ export default {
                 );
 
                 commit('UPDATE_QUESTION_TYPE', questionFromApi.questionType);
-                commit(
-                    'UPDATE_ANSWERS_WITH_ANSWER_FROM_API',
-                    questionFromApi.answers.map(apiAnswerValues => {
-                        return {
-                            value: apiAnswerValues.value,
-                            details: apiAnswerValues.items.map(item => {
-                                return {
-                                    content: item.content,
-                                    lang: item.lang,
-                                }
-                            })
-                        };
-                    })
-                );
-
+                commit('UPDATE_ANSWERS', questionFromApi.answers);
             } catch (error) {
                 dispatch('showError', " Failed deleting the question to edit.", {root: true});
             }
@@ -179,24 +154,8 @@ export default {
                 };
 
                 const response = await axios(config);
-                const answers = response.data.data.map(answerFromApi => {
-                    return {
-                        type: answerFromApi.answerCategory,
-                        values: answerFromApi.answerValues.map(value => {
-                            return {
-                                value: value,
-                                details: [
-                                    {
-                                        content: '',
-                                        lang: 'en',
-                                    }
-                                ]
-                            };
-                        })
-                    };
-                });
 
-                commit('UPDATE_ANSWERS', answers);
+                commit('UPDATE_ALL_ANSWERS_TYPES', response.data.data);
             } catch (error) {
                 dispatch('showError', " Failed deleting the question to edit.", {root: true});
             }
@@ -273,6 +232,7 @@ export default {
                 .filter(additionalInformation => additionalInformation.lang !== language);
         },
         UPDATE_ANSWERS: (state, answers) => state.answers = answers,
+        UPDATE_ALL_ANSWERS_TYPES: (state, allAnswerTypes) => state.allAnswerTypes = allAnswerTypes,
         ADD_LANGUAGE_FIELD_TO_ANSWER: (state, answerToAdd) => {
             state.answers.forEach(answer => {
                 answer.values.forEach(value => {
@@ -289,32 +249,10 @@ export default {
         },
         UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType,
         UPDATE_QUESTION_NUMBER: (state, questionNumber) => state.questionNumber = questionNumber,
-        UPDATE_ANSWERS_WITH_ANSWER_FROM_API: (state, itemToUpdate) => {
-            state.answers = state.answers.map(answer => {
-                if (answer.type === state.questionType) {
-                    answer.values = itemToUpdate
-                } else {
-                    answer.values.forEach(value => {
-                        state.supportedLanguages
-                            .filter(supportedLanguage => supportedLanguage.isSelected)
-                            .forEach(supportedLanguage => {
-                                if (value.details.find(detail => detail.lang !== supportedLanguage.value)) {
-                                    value.details.push({
-                                        lang: supportedLanguage.value,
-                                        content: ''
-                                    })
-                                }
-                            })
-                    })
-                }
-
-                return answer;
-            })
-        },
-
         SET_SELECTED_LANGUAGES: (state, languages) => {
             state.supportedLanguages = state.supportedLanguages.map(supportedLanguage => {
-                if (languages.includes(supportedLanguage.value)) {
+
+                if (languages.includes(supportedLanguage.code)) {
                     supportedLanguage.isSelected = true
                 }
                 return supportedLanguage;

@@ -1,7 +1,7 @@
 <template>
   <AlertBox/>
   <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label d-flex justify-content-start">Category</label>
+    <label class="col-sm-2 col-form-label d-flex justify-content-start">Type Name</label>
     <div class="col-auto">
       <input v-model="answerCategory" class="form-control" placeholder="Answer Category" type="text" />
     </div>

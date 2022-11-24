@@ -13,9 +13,9 @@
               <div class="card-body">
                 <div v-for="language in supportedLanguages" :key="language" class="input-group mb-3">
                   <span class="input-group-text">
-                    <input v-bind:id="language.value" v-model="language.isSelected"
+                    <input v-bind:id="language.code" v-model="language.isSelected"
                            :disabled="language.code === 'en'"
-                           name="language" type="checkbox" v-bind:value="language.value"
+                           name="language" type="checkbox" v-bind:value="language.code"
                            @change="languagesChanged"/>
                   </span>
                   <label aria-label="Language" class="form-control"
@@ -90,16 +90,15 @@
       <div class="col-md-6">
         <div class="row mt-4">
           <label class="col-sm-3 col-form-label col-form-label-sm text-start">
-            Category:
+            Answer Types:
           </label>
           <div class="col-sm-9">
             <select id="questionType" v-model="questionType" class="form-select form-select-lg" required>
-              <option v-for="(answer, index) in answers" v-bind:key="index" :value="answer.type">
-                {{ ucFirst(answer.type) }}
+              <option v-for="answerType in allAnswerTypes" v-bind:key="answerType._id" :value="answerType.answerType">
+                {{ ucFirst(answerType.answerType) }}
               </option>
             </select>
           </div>
-
         </div>
       </div>
 
@@ -111,32 +110,21 @@
           </label>
           <div class="col-sm-9">
             <div class="row card text-dark">
-              <div v-for="answerValue in selectedAnswer.values" :key="answerValue" class="col-sm-auto">
-                <div class="alert-info alert m-0">{{ answerValue.value }}</div>
-                <div class="row card-body">
-                  <template v-for="(language, index) in activeLanguages()" v-bind:key="index">
-                    <label class="col-sm-3 col-form-label col-form-label-sm question-form-label control-label">
-                      {{ language.text }}
-                    </label>
-                    <div class="col-md-9 mb-2">
-                      <input :value="extractValue(language, selectedAnswer, answerValue)" class="form-control" required
-                             type="text" @input="handleInput($event, language, answerValue)"/>
-                    </div>
-                  </template>
+              <div v-for="(answer, index) in populateSelectedAnswer()" :key="index" class="col-sm-auto">
+                <div class="alert-info alert m-0" v-for="(value, valueIndex) in answer.answerValues" :key="valueIndex">
+                  {{value}}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
     <hr/>
     <div class="ms-3 mb-5 row">
       <button class="col-auto btn btn-success" type="submit">Save</button>&nbsp;&nbsp;
       <button class="col-auto btn btn-danger" @click="$router.push('/question')">Cancel</button>
     </div>
-
   </form>
 
 </template>
@@ -156,49 +144,6 @@ export default {
     };
   },
   methods: {
-    handleInput(event, language, answerDetail) {
-      const answerValue = answerDetail.value;
-
-      if (!this.inputValues[answerValue]) {
-        this.inputValues[answerValue] = [];
-      }
-
-      this.inputValues[answerDetail.value][language.code] = {
-        value: event.currentTarget.value,
-        language: language
-      };
-    },
-    extractValue(language, selectedAnswer, answerValue) {
-
-      const filtered = selectedAnswer.values
-          .map(answerDetail => {
-
-            if (!this.inputValues[answerDetail.value]) {
-              this.inputValues[answerDetail.value] = [];
-            }
-
-            if(answerDetail.value === answerDetail.value) {
-              answerDetail.details.forEach(detail => {
-                if( detail.lang === language.code) {
-                  this.inputValues[answerDetail.value][language.code] = {
-                    value: detail.content,
-                    language: language
-                  };
-                }
-              });
-            }
-
-            return answerDetail;
-          })
-          .filter(answerDetail => answerDetail.value === answerValue.value)
-          .flatMap(answerDetail => answerDetail.details.filter(detail => detail.lang === language.code));
-
-      if (filtered.length > 0) {
-        return filtered[0].content;
-      }
-
-      return '';
-    },
     ...mapActions({
       languagesChanged: 'questionForm/languagesChanged',
       fetchAnswerTypes: 'questionForm/fetchAnswerTypes',
@@ -207,8 +152,8 @@ export default {
       fetchLanguages: 'questionForm/fetchLanguages',
     }),
 
-    activeLanguages() {
-      return this.supportedLanguages.filter(language => language.isSelected);
+    populateSelectedAnswer() {
+      return this.allAnswerTypes.filter(answerType => answerType.answerType === this.questionType);
     },
 
     ucFirst(string) {
@@ -234,7 +179,8 @@ export default {
       questionTitles: 'questionForm/questionTitles',
       additionalInformationList: 'questionForm/additionalInformationList',
       answers: 'questionForm/answers',
-      selectedAnswer: 'questionForm/selectedAnswer'
+      selectedAnswer: 'questionForm/selectedAnswer',
+      allAnswerTypes: 'questionForm/allAnswerTypes',
     }),
     questionType: {
       get() {

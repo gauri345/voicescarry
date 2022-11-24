@@ -1,3 +1,5 @@
+const AnswerType = require("../model/answerTypeModel");
+
 const mongoose = require('mongoose');
 
 const localizedContentSchema = mongoose.Schema({
@@ -10,19 +12,6 @@ const localizedContentSchema = mongoose.Schema({
         type: String,
         required: false
     }
-});
-
-const answer = mongoose.Schema({
-    value: {
-        type: String,
-        required: true
-    },
-    items: [
-        {
-            type: localizedContentSchema,
-            required: true
-        }
-    ]
 });
 
 const questionSchema = mongoose.Schema({
@@ -48,7 +37,7 @@ const questionSchema = mongoose.Schema({
     ],
     answers: [
         {
-            type: answer,
+            type: AnswerType.schema,
             required: true
         }
     ]

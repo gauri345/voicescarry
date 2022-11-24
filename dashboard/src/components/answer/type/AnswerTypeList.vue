@@ -5,7 +5,7 @@
     <thead class="table-bordered">
     <tr class="text-white">
       <th scope="col">#</th>
-      <th scope="col">Category</th>
+      <th scope="col">Name</th>
       <th scope="col">Type</th>
       <th scope="col">Answer Values</th>
       <th scope="col">Action</th>
