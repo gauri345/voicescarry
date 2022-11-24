@@ -14,7 +14,7 @@ export default {
         getAllQuestions: (state) => state.allQuestions,
         getPreviousQuestion: (state) => state.previousQuestion,
         getCurrentQuestion: (state) => state.currentQuestion,
-        getNextQuestion: (state) =>  state.nextQuestion,
+        getNextQuestion: (state) => state.nextQuestion,
         getTotalQuestionCount: (state) => state.allQuestions.length
     },
 
@@ -23,20 +23,20 @@ export default {
             const survey = LocalStorage.get("survey");
             if (state.allQuestions.length <= 0) {
                 try {
-                    const response = await HttpClient.get(`survey/questions/${survey.surveyId}`  );
+                    const response = await HttpClient.get(`survey/questions/${survey.surveyId}`);
                     commit('SET_ALL_QUESTIONS', response.data.data);
                 } catch (error) {
                     console.error(error)
                 }
             }
 
-            const previousQuestion =state.allQuestions[questionNumber - 1];
+            const previousQuestion = state.allQuestions[questionNumber - 1];
 
             if (previousQuestion) {
                 commit('SET_PREVIOUS_QUESTION', previousQuestion);
             }
 
-            const currentQuestion =state.allQuestions[questionNumber];
+            const currentQuestion = state.allQuestions[questionNumber];
 
             if (currentQuestion) {
                 commit('SET_CURRENT_QUESTION', currentQuestion);
@@ -95,7 +95,7 @@ export default {
                 const language = (null === lang) ? 'en' : lang;
 
                 if (contentList.length > 0) {
-                    const filtered =  contentList.filter(content => content.lang === language);
+                    const filtered = contentList.filter(content => content.lang === language);
 
                     if (filtered.length > 0) {
                         return filtered[0].content
@@ -106,18 +106,14 @@ export default {
             };
 
             state.allQuestions = questions.map((question, index) => {
+                const answers = question.answers.length > 0 ? question.answers[0] : []
                 return {
                     order: index,
                     questionId: question._id,
                     questionNumber: question.number,
                     questionType: question.questionType,
                     questionTitle: localized(question.titles),
-                    answers: question.answers.map(answer => {
-                        return {
-                            value: answer.value,
-                            text: localized(answer.items)
-                        };
-                    })
+                    answers: answers
                 };
             });
         },

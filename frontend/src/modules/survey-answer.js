@@ -1,5 +1,3 @@
-import i18n from "@/lang";
-
 export default {
     state: {
     },
@@ -8,12 +6,13 @@ export default {
         getAnswers: (state, rootGetters) => {
             const currentQuestion = rootGetters.getCurrentQuestion;
 
-            if ("sentiment" === currentQuestion.questionType) {
-                return currentQuestion.answers.map(answer => {
+            if ("scale" === currentQuestion.questionType) {
+                return currentQuestion.answers.answerValues.map(answer => {
                     let answerToRender = {};
 
-                    switch (answer.value) {
+                    switch (answer) {
                         case 'strongly_disagree':
+                        case '1':
                             answerToRender = {
                                 iconClass: "material-icons very_dissatisfied",
                                 value: answer.text,
@@ -22,6 +21,7 @@ export default {
                             break;
 
                         case 'disagree':
+                        case '2':
                             answerToRender = {
                                 iconClass: "material-icons dissatisfied",
                                 value: answer.text,
@@ -30,6 +30,7 @@ export default {
                             break;
 
                         case 'neutral':
+                        case '3':
                             answerToRender = {
                                 iconClass: "material-icons neutral",
                                 value: answer.text,
@@ -38,6 +39,7 @@ export default {
                             break;
 
                         case 'agree':
+                        case '4':
                             answerToRender = {
                                 iconClass: "material-icons satisfied",
                                 value: answer.text,
@@ -46,6 +48,7 @@ export default {
                             break;
 
                         case 'strongly_agree':
+                        case '5':
                             answerToRender = {
                                 iconClass: "material-icons very_satisfied",
                                 value: answer.text,

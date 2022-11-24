@@ -9,8 +9,6 @@ import SurveyEntryPage from "@/views/SurveyEntryPage";
 import SurveyExplanationPage from "@/views/SurveyExplanationPage";
 import SurveyEndingPage from "@/views/SurveyEndingPage";
 
-import i18n from '../lang';
-
 const routes = [
     {
         path: "/",

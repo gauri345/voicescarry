@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <div v-if="'sentiment' === getQuestionType" class="question-answers" id="scaleAnswers">
+  <div v-if="'sentiment' === getQuestionType || 'scale' === getQuestionType " class="question-answers" id="scaleAnswers">
       <span v-for="answer in getAnswers" :key="answer.value" :class="answer.iconClass" :id="answer.text"
             @click="handleAnswered(answer)">{{ answer.text }}</span>
   </div>
@@ -63,7 +63,6 @@ export default {
     },
 
     onChangeMethod(event) {
-      console.log(event.target.value);
       this.handleAnswered({
             value: event.target.value,
             text: event.target.options[event.target.options.selectedIndex].text

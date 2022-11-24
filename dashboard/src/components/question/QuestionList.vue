@@ -81,9 +81,10 @@ export default {
       fetchAllQuestions: 'questionList/fetchAllQuestions'
     }),
     createDefaultTitle: (questionTitles) => {
-
-      const englishTitle = questionTitles.filter(questionTitle => questionTitle.lang === "en" || questionTitle.lang === "english");
-      return englishTitle[0].content;
+      if (questionTitles) {
+        const englishTitle = questionTitles.filter(questionTitle => questionTitle.lang === "en" || questionTitle.lang === "english");
+        return englishTitle[0].content;
+      }
     }
   },
   mounted() {

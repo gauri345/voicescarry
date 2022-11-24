@@ -58,16 +58,10 @@ export default {
                                 lang: supportedLanguage.code,
                                 content: ''
                             });
-
-                            commit('ADD_LANGUAGE_FIELD_TO_ANSWER', {
-                                lang: supportedLanguage.code,
-                                content: ''
-                            });
                         }
                     } else {
                         commit('REMOVE_QUESTION_TITLE_BY_LANGUAGE', supportedLanguage.code);
                         commit('REMOVE_ADDITIONAL_INFORMATION_BY_LANGUAGE', supportedLanguage.code);
-                        commit('REMOVE_LANGUAGE_FIELD_ANSWER', supportedLanguage.code);
                     }
                 });
         },
@@ -163,21 +157,6 @@ export default {
 
         async saveQuestion({state, dispatch}, answerValues) {
 
-            const answersToSave = answerValues.map((answerTexts, answerValue) => {
-                const items = state.supportedLanguages
-                    .filter(lang => lang.isSelected)
-                    .map(lang => {
-                        return {
-                            content: answerTexts[lang.code].value,
-                            lang: answerTexts[lang.code].language.code
-                        }
-                    });
-                return {
-                    value: answerValue,
-                    items: items
-                };
-            });
-
             const questionToSave = {
                 number: state.questionNumber,
                 questionType: state.questionType,
@@ -193,7 +172,7 @@ export default {
                         content: info.content
                     }
                 }),
-                answers: answersToSave.filter(x => x)
+                answers: answerValues
             }
 
             try {
@@ -205,7 +184,6 @@ export default {
                     },
                     data: questionToSave
                 };
-
 
                 await axios(config);
 
@@ -233,20 +211,6 @@ export default {
         },
         UPDATE_ANSWERS: (state, answers) => state.answers = answers,
         UPDATE_ALL_ANSWERS_TYPES: (state, allAnswerTypes) => state.allAnswerTypes = allAnswerTypes,
-        ADD_LANGUAGE_FIELD_TO_ANSWER: (state, answerToAdd) => {
-            state.answers.forEach(answer => {
-                answer.values.forEach(value => {
-                    value.details.push(answerToAdd);
-                });
-            });
-        },
-        REMOVE_LANGUAGE_FIELD_ANSWER: (state, language) => {
-            state.answers.forEach(answer => {
-                answer.values.forEach(value => {
-                    value.details = value.details.filter(detail => detail.lang !== language)
-                });
-            });
-        },
         UPDATE_QUESTION_TYPE: (state, questionType) => state.questionType = questionType,
         UPDATE_QUESTION_NUMBER: (state, questionNumber) => state.questionNumber = questionNumber,
         SET_SELECTED_LANGUAGES: (state, languages) => {

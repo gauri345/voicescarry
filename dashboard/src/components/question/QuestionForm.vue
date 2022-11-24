@@ -153,7 +153,10 @@ export default {
     }),
 
     populateSelectedAnswer() {
-      return this.allAnswerTypes.filter(answerType => answerType.answerType === this.questionType);
+      const answers = this.allAnswerTypes.filter(answerType => answerType.answerType === this.questionType);
+      this.inputValues = answers;
+
+      return answers;
     },
 
     ucFirst(string) {
