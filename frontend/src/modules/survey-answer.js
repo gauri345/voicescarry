@@ -6,25 +6,27 @@ export default {
         getAnswers: (state, rootGetters) => {
             const currentQuestion = rootGetters.getCurrentQuestion;
 
-            if ("scale" === currentQuestion.questionType) {
+
+            if ("scale" === currentQuestion.questionType || "sentiment" === currentQuestion.questionType) {
                 return currentQuestion.answers.answerValues.map(answer => {
+                    console.log(answer)
                     let answerToRender = {};
 
                     switch (answer) {
                         case 'strongly_disagree':
-                        case '1':
+                        case '5':
                             answerToRender = {
                                 iconClass: "material-icons very_dissatisfied",
-                                value: answer.text,
+                                value: 5,
                                 text: 'sentiment_very_dissatisfied'
                             }
                             break;
 
                         case 'disagree':
-                        case '2':
+                        case '4':
                             answerToRender = {
                                 iconClass: "material-icons dissatisfied",
-                                value: answer.text,
+                                value: 4,
                                 text: 'sentiment_dissatisfied'
                             }
                             break;
@@ -33,25 +35,25 @@ export default {
                         case '3':
                             answerToRender = {
                                 iconClass: "material-icons neutral",
-                                value: answer.text,
+                                value: 3,
                                 text: 'sentiment_neutral'
                             }
                             break;
 
                         case 'agree':
-                        case '4':
+                        case '2':
                             answerToRender = {
                                 iconClass: "material-icons satisfied",
-                                value: answer.text,
+                                value: 2,
                                 text: 'sentiment_satisfied'
                             }
                             break;
 
                         case 'strongly_agree':
-                        case '5':
+                        case '1':
                             answerToRender = {
                                 iconClass: "material-icons very_satisfied",
-                                value: answer.text,
+                                value: 1,
                                 text: 'sentiment_very_satisfied'
                             }
                             break;

@@ -19,6 +19,12 @@
             @click="handleAnswered(answer)">{{ answer.text }}</span>
   </div>
 
+  <div v-if="'select' === getQuestionType" class="question-answers" @change="onChangeMethod($event)">
+    <select>
+      <option v-for="answer in getAnswers.answerValues" :key="answer" :value="answer">{{$t(answer)}}</option>
+    </select>
+  </div>
+
   <div v-if="'gender' === getQuestionType || 'age' === getQuestionType || 'profession' === getQuestionType" class="question-answers" @change="onChangeMethod($event)">
     <select>
       <option :value="selectedOptionText.text">{{ selectedOptionText.text }}</option>
