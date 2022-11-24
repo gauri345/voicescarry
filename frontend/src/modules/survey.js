@@ -100,7 +100,12 @@ export default {
                     if (filtered.length > 0) {
                         return filtered[0].content
                     } else {
-                        return contentList.filter(content => content.lang === 'en')[0].content;
+                        const filtere = contentList.filter(content => content.lang === 'en');
+                        if (filtere) {
+                            return filtere[0].content
+                        }
+
+                        return '';
                     }
                 }
             };

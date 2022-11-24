@@ -90,7 +90,6 @@ button {
 
 .current-language-text {
   font-size: 15px;
-  opacity: 89%;
   text-transform: uppercase;
   font-weight: bolder;
 }
