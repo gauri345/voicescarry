@@ -92,9 +92,9 @@
             Answer Types:
           </label>
           <div class="col-sm-9">
-            <select id="questionType" v-model="questionType" class="form-select form-select-lg" required
+            <select id="questionType" v-model="questionCategory" class="form-select form-select-lg" required
                     @input="rememberAnswerCategory($event)">
-              <option v-for="answerType in allAnswerTypes" v-bind:key="answerType._id" :value="answerType.answerType">
+              <option v-for="answerType in allAnswerTypes" v-bind:key="answerType._id" :value="answerType.answerCategory">
                 {{ ucFirst(answerType.answerCategory) }}
               </option>
             </select>
@@ -150,7 +150,6 @@ export default {
     }),
 
     rememberAnswerCategory(event) {
-      console.log('changed')
       this.handleAnswerTypeChange(event)
     },
 
@@ -179,15 +178,15 @@ export default {
       answers: 'questionForm/answers',
       selectedAnswer: 'questionForm/selectedAnswer',
       allAnswerTypes: 'questionForm/allAnswerTypes',
-      questionType: 'questionForm/questionType',
+      questionCategory: 'questionForm/questionCategory',
       inputValues: 'questionForm/answerValues'
     }),
-    questionType: {
+    questionCategory: {
       get() {
-        return this.$store.state.questionForm.questionType
+        return this.$store.state.questionForm.questionCategory
       },
       set(value) {
-        this.$store.commit('questionForm/UPDATE_QUESTION_TYPE', value)
+        this.$store.commit('questionForm/UPDATE_QUESTION_CATEGORY', value)
       }
     },
     questionNumber: {

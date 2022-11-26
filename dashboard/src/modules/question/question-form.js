@@ -44,6 +44,7 @@ export default {
             return state.allAnswerTypes
         },
         questionType: (state) => state.questionType,
+        questionCategory: (state) => state.questionCategory,
         answerValues: (state) => state.answerValues
     },
     actions: {
