@@ -180,7 +180,7 @@ export default {
 
             const questionToSave = {
                 number: state.questionNumber,
-                questionType: state.questionType,
+                questionType: state.answerValues[0].answerType,
                 titles: state.questionTitles.map(questionTitle => {
                     return {
                         lang: questionTitle.lang,
