@@ -9,7 +9,6 @@ export default {
 
             if ("scale" === currentQuestion.questionType || "sentiment" === currentQuestion.questionType) {
                 return currentQuestion.answers.answerValues.map(answer => {
-                    console.log(answer)
                     let answerToRender = {};
 
                     switch (answer) {

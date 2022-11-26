@@ -110,7 +110,7 @@
           </label>
           <div class="col-sm-9">
             <div class="row card text-dark">
-              <div v-for="(answer, index) in populateSelectedAnswer()" :key="index" class="col-sm-auto">
+              <div v-for="(answer, index) in inputValues" :key="index" class="col-sm-auto">
                 <div v-for="(value, valueIndex) in answer.answerValues" :key="valueIndex" class="alert-info alert m-0">
                   {{ value }}
                 </div>
@@ -138,12 +138,6 @@ export default {
   components: {
     AlertBox
   },
-  data() {
-    return {
-      inputValues: [],
-      questionCategory: ''
-    };
-  },
   methods: {
     ...mapActions({
       languagesChanged: 'questionForm/languagesChanged',
@@ -151,16 +145,13 @@ export default {
       fetchQuestionById: 'questionForm/fetchQuestionById',
       saveQuestion: 'questionForm/saveQuestion',
       fetchLanguages: 'questionForm/fetchLanguages',
+      prepareAnswerValues: 'questionForm/prepareAnswerValues',
+      handleAnswerTypeChange: 'questionForm/handleAnswerTypeChange'
     }),
 
     rememberAnswerCategory(event) {
-      this.questionCategory = event.currentTarget.selectedOptions[0].text.toLowerCase();
-    },
-    populateSelectedAnswer() {
-      const answers = this.allAnswerTypes.filter(answerType => answerType.answerType === this.questionType && this.questionCategory === answerType.answerCategory);
-      this.inputValues = answers;
-
-      return answers;
+      console.log('changed')
+      this.handleAnswerTypeChange(event)
     },
 
     ucFirst(string) {
@@ -168,7 +159,7 @@ export default {
     },
 
     submitForm(event) {
-      this.saveQuestion(this.inputValues);
+      this.saveQuestion();
       event.preventDefault();
     },
   },
@@ -188,6 +179,8 @@ export default {
       answers: 'questionForm/answers',
       selectedAnswer: 'questionForm/selectedAnswer',
       allAnswerTypes: 'questionForm/allAnswerTypes',
+      questionType: 'questionForm/questionType',
+      inputValues: 'questionForm/answerValues'
     }),
     questionType: {
       get() {

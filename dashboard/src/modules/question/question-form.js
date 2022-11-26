@@ -20,8 +20,10 @@ export default {
             }
         ],
         questionType: null,
+        questionCategory: null,
         answers: {},
         allAnswerTypes: [],
+        answerValues: []
     },
     getters: {
         supportedLanguages: (state) => state.supportedLanguages,
@@ -41,8 +43,21 @@ export default {
         allAnswerTypes: (state) => {
             return state.allAnswerTypes
         },
+        questionType: (state) => state.questionType,
+        answerValues: (state) => state.answerValues
     },
     actions: {
+        prepareAnswerValues({commit, state}) {
+            const answersValues = state.allAnswerTypes.filter(answerType =>
+                state.questionCategory === answerType.answerCategory
+            );
+
+            commit('UPDATE_ANSWER_VALUES', answersValues);
+        },
+        handleAnswerTypeChange({commit, dispatch}, event) {
+            commit('UPDATE_QUESTION_CATEGORY', event.currentTarget.selectedOptions[0].text.toLowerCase());
+            dispatch('prepareAnswerValues');
+        },
         languagesChanged: ({commit, state}) => {
             state.supportedLanguages
                 .forEach(supportedLanguage => {
@@ -134,6 +149,11 @@ export default {
 
                 commit('UPDATE_QUESTION_TYPE', questionFromApi.questionType);
                 commit('UPDATE_ANSWERS', questionFromApi.answers);
+                if (questionFromApi.answers.length > 0 ) {
+                    commit('UPDATE_QUESTION_CATEGORY', questionFromApi.answers[0].answerCategory);
+                }
+
+                dispatch('prepareAnswerValues');
             } catch (error) {
                 dispatch('showError', " Failed deleting the question to edit.", {root: true});
             }
@@ -155,7 +175,7 @@ export default {
             }
         },
 
-        async saveQuestion({state, dispatch}, answerValues) {
+        async saveQuestion({state, dispatch}) {
 
             const questionToSave = {
                 number: state.questionNumber,
@@ -172,7 +192,7 @@ export default {
                         content: info.content
                     }
                 }),
-                answers: answerValues
+                answers: state.answerValues
             }
 
             try {
@@ -225,6 +245,9 @@ export default {
 
         UPDATE_SUPPORTED_LANGUAGES: (state, languages) => {
             state.supportedLanguages = languages
-        }
+        },
+
+        UPDATE_ANSWER_VALUES: (state, answers) => state.answerValues = answers,
+        UPDATE_QUESTION_CATEGORY: (state, category) => state.questionCategory = category
     }
 }
